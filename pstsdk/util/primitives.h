@@ -6,8 +6,8 @@
 //! \defgroup primitive Primitive Types
 //! \ingroup util
 
-#ifndef PSTSDK_UTIL_PRIMITIVES_H
-#define PSTSDK_UTIL_PRIMITIVES_H
+#ifndef FAIRPORT_UTIL_PRIMITIVES_H
+#define FAIRPORT_UTIL_PRIMITIVES_H
 
 #include <boost/config.hpp>
 #include <boost/cstdint.hpp>
@@ -30,19 +30,19 @@
 //! \brief Global Validation Settings
 //!
 //! You may optionally define one of the following values before including any pstsdk header:
-//! - PSTSDK_VALIDATION_LEVEL_NONE, no validation - except some type checks
-//! - PSTSDK_VALIDATION_LEVEL_WEAK, involves fast checks such as signature matching, param validation, etc
-//! - PSTSDK_VALIDATION_LEVEL_FULL, includes all weak checks plus crc validation and any other "expensive" checks
+//! - FAIRPORT_VALIDATION_LEVEL_NONE, no validation - except some type checks
+//! - FAIRPORT_VALIDATION_LEVEL_WEAK, involves fast checks such as signature matching, param validation, etc
+//! - FAIRPORT_VALIDATION_LEVEL_FULL, includes all weak checks plus crc validation and any other "expensive" checks
 //!
 //! Weak validation is the default.
 //! \ingroup primitive
-#ifndef PSTSDK_VALIDATION_LEVEL_NONE
-#define PSTSDK_VALIDATION_LEVEL_WEAK
+#ifndef FAIRPORT_VALIDATION_LEVEL_NONE
+#define FAIRPORT_VALIDATION_LEVEL_WEAK
 #endif
 
-#ifdef PSTSDK_VALIDATION_LEVEL_FULL
+#ifdef FAIRPORT_VALIDATION_LEVEL_FULL
 // full validation also implies weak validation
-#define PSTSDK_VALIDATION_LEVEL_WEAK
+#define FAIRPORT_VALIDATION_LEVEL_WEAK
 #endif
 
 // Many of the low-level data structures in pstsdk rely on being laid out
@@ -52,12 +52,12 @@
 // appropriate attribute declaration to the structure.  We're also tried
 // '#pragma ms_struct on', but it fails on at least some Linux systems.
 #ifdef __GNUC__
-#define PSTSDK_MS_STRUCT __attribute__((ms_struct))
+#define FAIRPORT_MS_STRUCT __attribute__((ms_struct))
 #else
-#define PSTSDK_MS_STRUCT
+#define FAIRPORT_MS_STRUCT
 #endif
 
-namespace pstsdk
+namespace fairport
 {
 
 /*! \addtogroup primitive
@@ -73,10 +73,10 @@ typedef boost::uint16_t ushort;
 /*! @} */
 
 //! \cond static_asserts
-static_assert(sizeof(byte) == 1, "pstsdk::byte unexpected size");
-static_assert(sizeof(ushort) == 2, "pstsdk::ushort unexpected size");
-static_assert(sizeof(uint) == 4, "pstsdk::uint unexpected size");
-static_assert(sizeof(ulonglong) == 8, "pstsdk::ulonglong unexpected size");
+static_assert(sizeof(byte) == 1, "fairport::byte unexpected size");
+static_assert(sizeof(ushort) == 2, "fairport::ushort unexpected size");
+static_assert(sizeof(uint) == 4, "fairport::uint unexpected size");
+static_assert(sizeof(ulonglong) == 8, "fairport::ulonglong unexpected size");
 //! \endcond
 
 /*! \addtogroup primitive
@@ -354,7 +354,7 @@ struct guid
     short data2;
     short data3;
     byte data4[8];
-} PSTSDK_MS_STRUCT;
+} FAIRPORT_MS_STRUCT;
 //! \cond static_asserts
 static_assert(sizeof(guid) == 16, "guid incorrect size");
 //! \endcond

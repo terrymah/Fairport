@@ -9,8 +9,8 @@
 //! \author Terry Mahaffey
 //! \ingroup pst
 
-#ifndef PSTSDK_PST_FOLDER_H
-#define PSTSDK_PST_FOLDER_H
+#ifndef FAIRPORT_PST_FOLDER_H
+#define FAIRPORT_PST_FOLDER_H
 
 #include <algorithm>
 #include <boost/iterator/filter_iterator.hpp>
@@ -26,7 +26,7 @@
 
 #include "pstsdk/pst/message.h"
 
-namespace pstsdk
+namespace fairport
 {
 
 //! \defgroup pst_folderrelated Folder Objects
@@ -334,16 +334,16 @@ private:
     shared_db_ptr m_db;
 };
 
-} // end namespace pstsdk
+} // end namespace fairport
 
-inline pstsdk::search_folder::search_folder(const pstsdk::search_folder& other)
+inline fairport::search_folder::search_folder(const fairport::search_folder& other)
 : m_db(other.m_db), m_bag(other.m_bag) 
 { 
     if(other.m_contents_table)
         m_contents_table.reset(new table(*other.m_contents_table));
 }
 
-inline pstsdk::folder::folder(const pstsdk::folder& other)
+inline fairport::folder::folder(const fairport::folder& other)
 : m_db(other.m_db), m_bag(other.m_bag) 
 { 
     if(other.m_contents_table)
@@ -354,12 +354,12 @@ inline pstsdk::folder::folder(const pstsdk::folder& other)
         m_contents_table.reset(new table(*other.m_hierarchy_table));
 }
 
-inline pstsdk::folder pstsdk::folder_transform_row::operator()(const pstsdk::const_table_row& row) const
+inline fairport::folder fairport::folder_transform_row::operator()(const fairport::const_table_row& row) const
 { 
     return folder(m_db, m_db->lookup_node(row.get_row_id()));
 }
 
-inline const pstsdk::table& pstsdk::search_folder::get_contents_table() const
+inline const fairport::table& fairport::search_folder::get_contents_table() const
 {
     if(!m_contents_table)
         m_contents_table.reset(new table(m_db->lookup_node(make_nid(nid_type_search_contents_table, get_nid_index(m_bag.get_node().get_id())))));
@@ -367,7 +367,7 @@ inline const pstsdk::table& pstsdk::search_folder::get_contents_table() const
     return *m_contents_table;
 }
 
-inline pstsdk::table& pstsdk::search_folder::get_contents_table()
+inline fairport::table& fairport::search_folder::get_contents_table()
 {
     return const_cast<table&>(const_cast<const search_folder*>(this)->get_contents_table());
 }
@@ -376,16 +376,16 @@ inline pstsdk::table& pstsdk::search_folder::get_contents_table()
 namespace compiler_workarounds
 {
 
-struct folder_name_equal : public std::unary_function<bool, const pstsdk::folder&>
+struct folder_name_equal : public std::unary_function<bool, const fairport::folder&>
 {
     folder_name_equal(const std::wstring& name) : m_name(name) { }
-    bool operator()(const pstsdk::folder& f) const { return f.get_name() == m_name; }
+    bool operator()(const fairport::folder& f) const { return f.get_name() == m_name; }
     std::wstring m_name;
 };
 
 } // end namespace compiler_workarounds
 
-inline pstsdk::folder pstsdk::folder::open_sub_folder(const std::wstring& name)
+inline fairport::folder fairport::folder::open_sub_folder(const std::wstring& name)
 {
     folder_iterator iter = std::find_if(sub_folder_begin(), sub_folder_end(), compiler_workarounds::folder_name_equal(name));
 
@@ -395,7 +395,7 @@ inline pstsdk::folder pstsdk::folder::open_sub_folder(const std::wstring& name)
     throw key_not_found<std::wstring>(name);
 }
 
-inline const pstsdk::table& pstsdk::folder::get_contents_table() const
+inline const fairport::table& fairport::folder::get_contents_table() const
 {
     if(!m_contents_table)
         m_contents_table.reset(new table(m_db->lookup_node(make_nid(nid_type_contents_table, get_nid_index(m_bag.get_node().get_id())))));
@@ -403,12 +403,12 @@ inline const pstsdk::table& pstsdk::folder::get_contents_table() const
     return *m_contents_table;
 }
 
-inline pstsdk::table& pstsdk::folder::get_contents_table()
+inline fairport::table& fairport::folder::get_contents_table()
 {
     return const_cast<table&>(const_cast<const folder*>(this)->get_contents_table());
 }
 
-inline const pstsdk::table& pstsdk::folder::get_hierarchy_table() const
+inline const fairport::table& fairport::folder::get_hierarchy_table() const
 {
     if(!m_hierarchy_table)
         m_hierarchy_table.reset(new table(m_db->lookup_node(make_nid(nid_type_hierarchy_table, get_nid_index(m_bag.get_node().get_id())))));
@@ -416,12 +416,12 @@ inline const pstsdk::table& pstsdk::folder::get_hierarchy_table() const
     return *m_hierarchy_table;
 }
 
-inline pstsdk::table& pstsdk::folder::get_hierarchy_table()
+inline fairport::table& fairport::folder::get_hierarchy_table()
 {
     return const_cast<table&>(const_cast<const folder*>(this)->get_hierarchy_table());
 }
 
-inline const pstsdk::table& pstsdk::folder::get_associated_contents_table() const
+inline const fairport::table& fairport::folder::get_associated_contents_table() const
 {
     if(!m_associated_contents_table)
         m_associated_contents_table.reset(new table(m_db->lookup_node(make_nid(nid_type_associated_contents_table, get_nid_index(m_bag.get_node().get_id())))));
@@ -429,7 +429,7 @@ inline const pstsdk::table& pstsdk::folder::get_associated_contents_table() cons
     return *m_associated_contents_table;
 }
 
-inline pstsdk::table& pstsdk::folder::get_associated_contents_table()
+inline fairport::table& fairport::folder::get_associated_contents_table()
 {
     return const_cast<table&>(const_cast<const folder*>(this)->get_associated_contents_table());
 }

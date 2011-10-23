@@ -5,7 +5,7 @@
 #include "pstsdk/util/btree.h"
 #include "test.h"
 
-using namespace pstsdk;
+using namespace fairport;
 using namespace std;
 
 class leaf : public btree_node_leaf<int, string>
@@ -14,11 +14,11 @@ public:
     leaf(int k1, string v1, int k2, string v2, int k3, string v3);
     ~leaf() { }
 
-    const string& get_value(pstsdk::uint pos) const 
+    const string& get_value(fairport::uint pos) const 
         { return values[pos]; }
-    const int& get_key(pstsdk::uint pos) const 
+    const int& get_key(fairport::uint pos) const 
         { return keys[pos]; }
-    pstsdk::uint num_values() const 
+    fairport::uint num_values() const 
         { return 3; }
 
 private:
@@ -32,13 +32,13 @@ public:
     non_leaf(int k1, leaf* l1, int k2, leaf* l2, int k3, leaf* l3);
     ~non_leaf() { }
 
-    const int& get_key(pstsdk::uint pos) const 
+    const int& get_key(fairport::uint pos) const 
         { return keys[pos]; }
-    btree_node<int,string>* get_child(pstsdk::uint i)
+    btree_node<int,string>* get_child(fairport::uint i)
         { return leafs[i]; }
-    const btree_node<int,string>* get_child(pstsdk::uint i) const 
+    const btree_node<int,string>* get_child(fairport::uint i) const 
         { return leafs[i]; }
-    pstsdk::uint num_values() const 
+    fairport::uint num_values() const 
         { return 3; }
 
 private:

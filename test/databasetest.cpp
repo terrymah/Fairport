@@ -5,8 +5,8 @@
 
 struct node_info
 {
-    pstsdk::node_id node;
-    pstsdk::node_id parent;
+    fairport::node_id node;
+    fairport::node_id parent;
 };
 
 const node_info node_info_uni[] = {
@@ -37,9 +37,9 @@ const node_info node_info_ansi[] = {
 
 struct block_info
 {
-    pstsdk::block_id block;
-    pstsdk::ushort size;
-    pstsdk::ushort refs;
+    fairport::block_id block;
+    fairport::ushort size;
+    fairport::ushort refs;
 };
 
 const block_info block_info_uni[] = {
@@ -69,10 +69,10 @@ const block_info block_info_ansi[] = {
     { 328, 104, 2 }, { 332, 132, 2 }
 };
 
-void process_node(const pstsdk::node& n)
+void process_node(const fairport::node& n)
 {
     using namespace std;
-    using namespace pstsdk;
+    using namespace fairport;
 
     for(const_subnodeinfo_iterator iter = n.subnode_info_begin();
                     iter != n.subnode_info_end();
@@ -100,33 +100,33 @@ size_t step_size_down(size_t i)
 }
 
 template<typename T>
-void test_node_impl(pstsdk::node& n, size_t expected)
+void test_node_impl(fairport::node& n, size_t expected)
 {
-    using namespace pstsdk;
+    using namespace fairport;
 
     assert(n.size() == expected);
 
     if(expected > 0)
     {
-        pstsdk::uint expected_page_count = expected / disk::external_block<T>::max_size;
+        fairport::uint expected_page_count = expected / disk::external_block<T>::max_size;
         if(expected % disk::external_block<T>::max_size != 0)
             expected_page_count++;
 
-        pstsdk::uint actual_page_count = n.get_page_count();
+        fairport::uint actual_page_count = n.get_page_count();
         assert(expected_page_count == actual_page_count);
 
-        pstsdk::uint test_value = 0xdeadbeef;
+        fairport::uint test_value = 0xdeadbeef;
         size_t offset = expected-sizeof(test_value);
         n.write(test_value, offset);
 
-        pstsdk::uint read_test_value = n.read<pstsdk::uint>(offset);
+        fairport::uint read_test_value = n.read<fairport::uint>(offset);
 
         assert(test_value == read_test_value);
     }
 }
 
 template<typename T>
-void test_node_resize(pstsdk::node n)
+void test_node_resize(fairport::node n)
 {
     // ramp up
     for(size_t i = 1000; i < 10000000; i += step_size_up(i))
@@ -144,10 +144,10 @@ void test_node_resize(pstsdk::node n)
 }
 
 template<typename T>
-void test_node_stream(pstsdk::node n)
+void test_node_stream(fairport::node n)
 {
     using namespace std;
-    using namespace pstsdk;
+    using namespace fairport;
 
     vector<byte> contents(n.size());
     byte b;
@@ -194,10 +194,10 @@ void test_db()
 {
     using namespace std;
     using namespace std::tr1;
-    using namespace pstsdk;
+    using namespace fairport;
     bool caught_invalid_format = false;
-    pstsdk::uint node = 0;
-    pstsdk::uint block = 0;
+    fairport::uint node = 0;
+    fairport::uint block = 0;
 
     try
     {
@@ -235,7 +235,7 @@ void test_db()
     {
         assert(iter->id == node_info_uni[node].node);
         assert(iter->parent_id == node_info_uni[node].parent);
-        pstsdk::node n(db_2, *iter);
+        fairport::node n(db_2, *iter);
         process_node(n);
     }
     test_node_resize<ulonglong>(db_2->lookup_node(nid_message_store));
@@ -260,11 +260,11 @@ void test_db()
     {
         assert(iter->id == node_info_ansi[node].node);
         assert(iter->parent_id == node_info_ansi[node].parent);
-        pstsdk::node n(db_3, *iter);
+        fairport::node n(db_3, *iter);
         process_node(n);
     }
-    test_node_resize<pstsdk::ulong>(db_3->lookup_node(nid_message_store));
-    test_node_stream<pstsdk::ulong>(db_2->lookup_node(nid_message_store));
+    test_node_resize<fairport::ulong>(db_3->lookup_node(nid_message_store));
+    test_node_stream<fairport::ulong>(db_2->lookup_node(nid_message_store));
 
     block = 0;
     std::tr1::shared_ptr<const bbt_page> bbt_root2 = db_3->read_bbt_root();

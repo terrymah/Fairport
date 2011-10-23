@@ -5,10 +5,10 @@
 #include "pstsdk/util.h"
 
 template<typename T>
-void test_block(pstsdk::file& file, pstsdk::disk::block_reference<T>& ref, pstsdk::ushort size, pstsdk::byte) 
+void test_block(fairport::file& file, fairport::disk::block_reference<T>& ref, fairport::ushort size, fairport::byte) 
 {
-    using namespace pstsdk;
-    using namespace pstsdk::disk;
+    using namespace fairport;
+    using namespace fairport::disk;
     using namespace std;
     size_t aligned_size = align_disk<T>(size);
 
@@ -23,10 +23,10 @@ void test_block(pstsdk::file& file, pstsdk::disk::block_reference<T>& ref, pstsd
 }
 
 template<typename T>
-void test_page(pstsdk::file& file, pstsdk::disk::block_reference<T> ref, pstsdk::byte crypt_method)
+void test_page(fairport::file& file, fairport::disk::block_reference<T> ref, fairport::byte crypt_method)
 {
-    using namespace pstsdk;
-    using namespace pstsdk::disk;
+    using namespace fairport;
+    using namespace fairport::disk;
     using namespace std;
 
     std::vector<byte> buffer(page_size);
@@ -71,10 +71,10 @@ void test_page(pstsdk::file& file, pstsdk::disk::block_reference<T> ref, pstsdk:
 }
 
 template<typename T>
-void test_disk_structures(pstsdk::file& file)
+void test_disk_structures(fairport::file& file)
 {
-    using namespace pstsdk;
-    using namespace pstsdk::disk;
+    using namespace fairport;
+    using namespace fairport::disk;
     using namespace std;
 
     std::vector<byte> buffer(sizeof(header<T>));
@@ -89,10 +89,10 @@ void test_disk_structures(pstsdk::file& file)
 void test_disk() 
 {
     using namespace std;
-    using namespace pstsdk;
+    using namespace fairport;
     file uni(L"test_unicode.pst");
     file ansi(L"test_ansi.pst");
 
-    test_disk_structures<pstsdk::ulonglong>(uni);
-    test_disk_structures<pstsdk::ulong>(ansi);
+    test_disk_structures<fairport::ulonglong>(uni);
+    test_disk_structures<fairport::ulong>(ansi);
 }

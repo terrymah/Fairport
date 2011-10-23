@@ -1,6 +1,6 @@
 //! \defgroup util Util Layer
-#ifndef PSTSDK_UTIL_H
-#define PSTSDK_UTIL_H
+#ifndef FAIRPORT_UTIL_H
+#define FAIRPORT_UTIL_H
 
 #include "pstsdk/util/btree.h"
 #include "pstsdk/util/errors.h"

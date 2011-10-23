@@ -6,7 +6,7 @@
 
 void test_wstring_conversion()
 {
-    using namespace pstsdk;
+    using namespace fairport;
 
     // Convert to and from Windows Unicode bytestring.
     const byte abc_data[] = { 'a', 0, 'b', 0, 'c', 0 };

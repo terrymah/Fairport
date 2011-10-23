@@ -63,8 +63,8 @@
 //! becoming a top level developer on this project.
 
 //! \defgroup pst PST Layer
-#ifndef PSTSDK_PST_H
-#define PSTSDK_PST_H
+#ifndef FAIRPORT_PST_H
+#define FAIRPORT_PST_H
 
 #include "pstsdk/pst/pst.h"
 #include "pstsdk/pst/folder.h"

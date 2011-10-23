@@ -6,13 +6,13 @@
 //! \defgroup exception Exceptions
 //! \ingroup util
 
-#ifndef PSTSDK_UTIL_ERRORS_H
-#define PSTSDK_UTIL_ERRORS_H
+#ifndef FAIRPORT_UTIL_ERRORS_H
+#define FAIRPORT_UTIL_ERRORS_H
 
 #include <stdexcept>
 #include "pstsdk/util/primitives.h"
 
-namespace pstsdk
+namespace fairport
 {
 
 //! \brief A block or node can not satisfy a resize request

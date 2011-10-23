@@ -10,8 +10,8 @@
 //! defines a stream interface to access large properties.
 //! \ingroup ltp
 
-#ifndef PSTSDK_LTP_OBJECT_H
-#define PSTSDK_LTP_OBJECT_H
+#ifndef FAIRPORT_LTP_OBJECT_H
+#define FAIRPORT_LTP_OBJECT_H
 
 #include <functional>
 #ifdef __GNUC__
@@ -38,7 +38,7 @@
 
 #include "pstsdk/ndb/node.h"
 
-namespace pstsdk
+namespace fairport
 {
 
 //! \defgroup ltp_objectrelated Property Objects
@@ -177,7 +177,7 @@ protected:
 } // end pstsdk namespace
 
 template<typename T>
-inline T pstsdk::const_property_object::read_prop(prop_id id) const
+inline T fairport::const_property_object::read_prop(prop_id id) const
 {
 #ifdef _MSC_VER
 #pragma warning(suppress:4127)
@@ -213,7 +213,7 @@ inline T pstsdk::const_property_object::read_prop(prop_id id) const
 }
 
 template<typename T>
-inline std::vector<T> pstsdk::const_property_object::read_prop_array(prop_id id) const
+inline std::vector<T> fairport::const_property_object::read_prop_array(prop_id id) const
 {
 #ifdef _MSC_VER
 #pragma warning(suppress:4127)
@@ -225,7 +225,7 @@ inline std::vector<T> pstsdk::const_property_object::read_prop_array(prop_id id)
     return std::vector<T>(reinterpret_cast<T*>(&buffer[0]), reinterpret_cast<T*>(&buffer[0] + buffer.size()));
 }
 
-namespace pstsdk
+namespace fairport
 {
 
 template<>
@@ -235,7 +235,7 @@ inline bool const_property_object::read_prop<bool>(prop_id id) const
 }
 
 template<>
-inline std::vector<bool> pstsdk::const_property_object::read_prop_array<bool>(prop_id id) const
+inline std::vector<bool> fairport::const_property_object::read_prop_array<bool>(prop_id id) const
 {
     using namespace std::tr1::placeholders;
 
@@ -300,14 +300,14 @@ template<>
 inline std::vector<std::vector<byte> > const_property_object::read_prop_array<std::vector<byte> >(prop_id id) const
 {
     std::vector<byte> buffer = get_value_variable(id);
-#ifdef PSTSDK_VALIDATION_LEVEL_WEAK
+#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
     if(buffer.size() < sizeof(ulong))
         throw std::length_error("mv prop too short");
 #endif
     disk::mv_toc* ptoc = reinterpret_cast<disk::mv_toc*>(&buffer[0]);
     std::vector<std::vector<byte> > results;
 
-#ifdef PSTSDK_VALIDATION_LEVEL_WEAK
+#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
     if(buffer.size() < (sizeof(ulong) + ptoc->count * sizeof(ulong)))
         throw std::length_error("mv prop too short");
 #endif
@@ -316,7 +316,7 @@ inline std::vector<std::vector<byte> > const_property_object::read_prop_array<st
     {
         ulong start = ptoc->offsets[i];
         ulong end = (i == (ptoc->count - 1)) ? buffer.size() : ptoc->offsets[i+1];
-#ifdef PSTSDK_VALIDATION_LEVEL_WEAK
+#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
         if(end < start)
             throw std::length_error("inconsistent mv prop toc");
 #endif

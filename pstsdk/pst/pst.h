@@ -10,8 +10,8 @@
 //! \author Terry Mahaffey
 //! \ingroup pst
 
-#ifndef PSTSDK_PST_PST_H
-#define PSTSDK_PST_PST_H
+#ifndef FAIRPORT_PST_PST_H
+#define FAIRPORT_PST_PST_H
 
 #include <boost/noncopyable.hpp>
 #include <boost/iterator/filter_iterator.hpp>
@@ -27,7 +27,7 @@
 #include "pstsdk/pst/folder.h"
 #include "pstsdk/pst/message.h"
 
-namespace pstsdk
+namespace fairport
 {
 
 //! \defgroup pst_pstrelated PST
@@ -172,7 +172,7 @@ private:
 
 } // end pstsdk namespace
 
-inline const pstsdk::property_bag& pstsdk::pst::get_property_bag() const
+inline const fairport::property_bag& fairport::pst::get_property_bag() const
 {
     if(!m_bag)
         m_bag.reset(new property_bag(m_db->lookup_node(nid_message_store)));
@@ -180,12 +180,12 @@ inline const pstsdk::property_bag& pstsdk::pst::get_property_bag() const
     return *m_bag;
 }
 
-inline pstsdk::property_bag& pstsdk::pst::get_property_bag()
+inline fairport::property_bag& fairport::pst::get_property_bag()
 {
     return const_cast<property_bag&>(const_cast<const pst*>(this)->get_property_bag());
 }
 
-inline const pstsdk::name_id_map& pstsdk::pst::get_name_id_map() const
+inline const fairport::name_id_map& fairport::pst::get_name_id_map() const
 {
     if(!m_map)
         m_map.reset(new name_id_map(m_db));
@@ -193,12 +193,12 @@ inline const pstsdk::name_id_map& pstsdk::pst::get_name_id_map() const
     return *m_map;
 }
 
-inline pstsdk::name_id_map& pstsdk::pst::get_name_id_map()
+inline fairport::name_id_map& fairport::pst::get_name_id_map()
 {
     return const_cast<name_id_map&>(const_cast<const pst*>(this)->get_name_id_map());
 }
 
-inline pstsdk::folder pstsdk::pst::open_folder(const std::wstring& name) const
+inline fairport::folder fairport::pst::open_folder(const std::wstring& name) const
 {
     folder_iterator iter = std::find_if(folder_begin(), folder_end(), compiler_workarounds::folder_name_equal(name));
 

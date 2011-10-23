@@ -13,19 +13,19 @@
 #include "pstsdk/pst/folder.h"
 #include "pstsdk/pst/pst.h"
 
-void process_recipient(const pstsdk::recipient& r)
+void process_recipient(const fairport::recipient& r)
 {
     using namespace std;
-    using namespace pstsdk;
+    using namespace fairport;
 
     wcout << "\t\t" << r.get_name() << "(" << r.get_email_address() << ")\n";
 }
 
-void process_message(const pstsdk::message& m);
-void process_attachment(const pstsdk::attachment& a)
+void process_message(const fairport::message& m);
+void process_attachment(const fairport::attachment& a)
 {
     using namespace std;
-    using namespace pstsdk;
+    using namespace fairport;
 
     wcout << "\t\t" << a.get_filename() << endl;
 
@@ -45,10 +45,10 @@ void process_attachment(const pstsdk::attachment& a)
     }
 }
 
-void process_message(const pstsdk::message& m)
+void process_message(const fairport::message& m)
 {
     using namespace std;
-    using namespace pstsdk;
+    using namespace fairport;
 
     wcout << "Message Subject: " << m.get_subject() << endl;
     wcout << "\tAttachment Count: " << m.get_attachment_count() << endl;
@@ -67,10 +67,10 @@ void process_message(const pstsdk::message& m)
 }
 
 
-void process_folder(const pstsdk::folder& f)
+void process_folder(const fairport::folder& f)
 {
     using namespace std;
-    using namespace pstsdk;
+    using namespace fairport;
 
     wcout << "Folder (M" << f.get_message_count() << ", F" << f.get_subfolder_count() << ") : " << f.get_name() << endl;
 
@@ -79,10 +79,10 @@ void process_folder(const pstsdk::folder& f)
     for_each(f.sub_folder_begin(), f.sub_folder_end(), process_folder);
 }
 
-void process_pst(const pstsdk::pst& p)
+void process_pst(const fairport::pst& p)
 {
     using namespace std;
-    using namespace pstsdk;
+    using namespace fairport;
 
     wcout << "PST Name: " << p.get_name() << endl;
     folder root = p.open_root_folder();
@@ -91,7 +91,7 @@ void process_pst(const pstsdk::pst& p)
 
 void test_pstlevel()
 {
-    using namespace pstsdk;
+    using namespace fairport;
 
     pst uni(L"test_unicode.pst");
     pst ansi(L"test_ansi.pst");

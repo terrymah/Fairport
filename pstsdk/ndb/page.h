@@ -12,8 +12,8 @@
 //! always modified in place.
 //! \ingroup ndb
 
-#ifndef PSTSDK_NDB_PAGE_H
-#define PSTSDK_NDB_PAGE_H
+#ifndef FAIRPORT_NDB_PAGE_H
+#define FAIRPORT_NDB_PAGE_H
 
 #include <vector>
 
@@ -27,7 +27,7 @@
 #pragma warning(disable:4250)
 #endif
 
-namespace pstsdk
+namespace fairport
 {
 
 //! \defgroup ndb_pagerelated Pages

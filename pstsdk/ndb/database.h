@@ -5,8 +5,8 @@
 //! Contains the db_context implementations for ANSI and Unicode stores
 //! \ingroup ndb
 
-#ifndef PSTSDK_NDB_DATABASE_H
-#define PSTSDK_NDB_DATABASE_H
+#ifndef FAIRPORT_NDB_DATABASE_H
+#define FAIRPORT_NDB_DATABASE_H
 
 #include <fstream>
 #include <memory>
@@ -22,7 +22,7 @@
 #include "pstsdk/ndb/page.h"
 #include "pstsdk/ndb/database_iface.h"
 
-namespace pstsdk 
+namespace fairport 
 { 
 
 class node;
@@ -35,7 +35,7 @@ typedef database_impl<ulong> small_pst;
 //! \brief Open a db_context for the given file
 //! \throws invalid_format if the file format is not understood
 //! \throws runtime_error if an error occurs opening the file
-//! \throws crc_fail (\ref PSTSDK_VALIDATION_LEVEL_WEAK) if the CRC of this header doesn't match
+//! \throws crc_fail (\ref FAIRPORT_VALIDATION_LEVEL_WEAK) if the CRC of this header doesn't match
 //! \param[in] filename The filename to open
 //! \returns A shared_ptr to the opened context
 //! \ingroup ndb_databaserelated
@@ -43,7 +43,7 @@ shared_db_ptr open_database(const std::wstring& filename);
 //! \brief Try to open the given file as an ANSI store
 //! \throws invalid_format if the file format is not ANSI
 //! \throws runtime_error if an error occurs opening the file
-//! \throws crc_fail (\ref PSTSDK_VALIDATION_LEVEL_WEAK) if the CRC of this header doesn't match
+//! \throws crc_fail (\ref FAIRPORT_VALIDATION_LEVEL_WEAK) if the CRC of this header doesn't match
 //! \param[in] filename The filename to open
 //! \returns A shared_ptr to the opened context
 //! \ingroup ndb_databaserelated
@@ -51,7 +51,7 @@ std::tr1::shared_ptr<small_pst> open_small_pst(const std::wstring& filename);
 //! \brief Try to open the given file as a Unicode store
 //! \throws invalid_format if the file format is not Unicode
 //! \throws runtime_error if an error occurs opening the file
-//! \throws crc_fail (\ref PSTSDK_VALIDATION_LEVEL_WEAK) if the CRC of this header doesn't match
+//! \throws crc_fail (\ref FAIRPORT_VALIDATION_LEVEL_WEAK) if the CRC of this header doesn't match
 //! \param[in] filename The filename to open
 //! \returns A shared_ptr to the opened context
 //! \ingroup ndb_databaserelated
@@ -137,22 +137,22 @@ protected:
     database_impl(const std::wstring& filename);
     //! \brief Validate the header of this file
     //! \throws invalid_format if this header is for a database format incompatible with this object
-    //! \throws crc_fail (\ref PSTSDK_VALIDATION_LEVEL_WEAK) if the CRC of this header doesn't match
+    //! \throws crc_fail (\ref FAIRPORT_VALIDATION_LEVEL_WEAK) if the CRC of this header doesn't match
     void validate_header();
 
     //! \brief Read block data, perform validation checks
     //! \param[in] bi The block information to read from disk
-    //! \throws unexpected_block (\ref PSTSDK_VALIDATION_LEVEL_WEAK) If the parameters of the block appear incorrect
-    //! \throws sig_mismatch (\ref PSTSDK_VALIDATION_LEVEL_WEAK) If the block trailer's signature appears incorrect
-    //! \throws crc_fail (\ref PSTSDK_VALIDATION_LEVEL_WEAK "PSTSDK_VALIDATION_LEVEL_FULL") If the block's CRC doesn't match the trailer
+    //! \throws unexpected_block (\ref FAIRPORT_VALIDATION_LEVEL_WEAK) If the parameters of the block appear incorrect
+    //! \throws sig_mismatch (\ref FAIRPORT_VALIDATION_LEVEL_WEAK) If the block trailer's signature appears incorrect
+    //! \throws crc_fail (\ref FAIRPORT_VALIDATION_LEVEL_WEAK "FAIRPORT_VALIDATION_LEVEL_FULL") If the block's CRC doesn't match the trailer
     //! \returns The validated block data (still "encrypted")
     std::vector<byte> read_block_data(const block_info& bi);
     //! \brief Read page data, perform validation checks
     //! \param[in] pi The page information to read from disk
-    //! \throws unexpected_page (\ref PSTSDK_VALIDATION_LEVEL_WEAK) If the parameters of the page appear incorrect
-    //! \throws sig_mismatch (\ref PSTSDK_VALIDATION_LEVEL_WEAK) If the page trailer's signature appears incorrect
-    //! \throws database_corrupt (\ref PSTSDK_VALIDATION_LEVEL_WEAK) If the page trailer's ptypeRepeat != ptype
-    //! \throws crc_fail (\ref PSTSDK_VALIDATION_LEVEL_WEAK "PSTSDK_VALIDATION_LEVEL_FULL") If the page's CRC doesn't match the trailer
+    //! \throws unexpected_page (\ref FAIRPORT_VALIDATION_LEVEL_WEAK) If the parameters of the page appear incorrect
+    //! \throws sig_mismatch (\ref FAIRPORT_VALIDATION_LEVEL_WEAK) If the page trailer's signature appears incorrect
+    //! \throws database_corrupt (\ref FAIRPORT_VALIDATION_LEVEL_WEAK) If the page trailer's ptypeRepeat != ptype
+    //! \throws crc_fail (\ref FAIRPORT_VALIDATION_LEVEL_WEAK "FAIRPORT_VALIDATION_LEVEL_FULL") If the page's CRC doesn't match the trailer
     //! \returns The validated page data
     std::vector<byte> read_page_data(const page_info& pi);
 
@@ -179,11 +179,11 @@ protected:
 template<>
 inline void database_impl<ulong>::validate_header()
 {
-    // the behavior of open_database depends on this throw; this can not go under PSTSDK_VALIDATION_WEAK
+    // the behavior of open_database depends on this throw; this can not go under FAIRPORT_VALIDATION_WEAK
     if(m_header.wVer >= disk::database_format_unicode_min)
         throw invalid_format();
 
-#ifdef PSTSDK_VALIDATION_LEVEL_WEAK
+#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
     ulong crc = disk::compute_crc(((byte*)&m_header) + disk::header_crc_locations<ulong>::start, disk::header_crc_locations<ulong>::length);
 
     if(crc != m_header.dwCRCPartial)
@@ -194,11 +194,11 @@ inline void database_impl<ulong>::validate_header()
 template<>
 inline void database_impl<ulonglong>::validate_header()
 {
-    // the behavior of open_database depends on this throw; this can not go under PSTSDK_VALIDATION_WEAK
+    // the behavior of open_database depends on this throw; this can not go under FAIRPORT_VALIDATION_WEAK
     if(m_header.wVer < disk::database_format_unicode_min)
         throw invalid_format();
 
-#ifdef PSTSDK_VALIDATION_LEVEL_WEAK
+#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
     ulong crc_partial = disk::compute_crc(((byte*)&m_header) + disk::header_crc_locations<ulonglong>::partial_start, disk::header_crc_locations<ulonglong>::partial_length);
     ulong crc_full = disk::compute_crc(((byte*)&m_header) + disk::header_crc_locations<ulonglong>::full_start, disk::header_crc_locations<ulonglong>::full_length);
 
@@ -212,7 +212,7 @@ inline void database_impl<ulonglong>::validate_header()
 //! \endcond
 } // end namespace
 
-inline pstsdk::shared_db_ptr pstsdk::open_database(const std::wstring& filename)
+inline fairport::shared_db_ptr fairport::open_database(const std::wstring& filename)
 {
     try 
     {
@@ -228,24 +228,24 @@ inline pstsdk::shared_db_ptr pstsdk::open_database(const std::wstring& filename)
     return db;
 }
 
-inline std::tr1::shared_ptr<pstsdk::small_pst> pstsdk::open_small_pst(const std::wstring& filename)
+inline std::tr1::shared_ptr<fairport::small_pst> fairport::open_small_pst(const std::wstring& filename)
 {
     std::tr1::shared_ptr<small_pst> db(new small_pst(filename));
     return db;
 }
 
-inline std::tr1::shared_ptr<pstsdk::large_pst> pstsdk::open_large_pst(const std::wstring& filename)
+inline std::tr1::shared_ptr<fairport::large_pst> fairport::open_large_pst(const std::wstring& filename)
 {
     std::tr1::shared_ptr<large_pst> db(new large_pst(filename));
     return db;
 }
 
 template<typename T>
-inline std::vector<pstsdk::byte> pstsdk::database_impl<T>::read_block_data(const block_info& bi)
+inline std::vector<fairport::byte> fairport::database_impl<T>::read_block_data(const block_info& bi)
 {
     size_t aligned_size = disk::align_disk<T>(bi.size);
 
-#ifdef PSTSDK_VALIDATION_LEVEL_WEAK
+#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
     if(aligned_size > disk::max_block_disk_size)
         throw unexpected_block("nonsensical block size");
 
@@ -258,7 +258,7 @@ inline std::vector<pstsdk::byte> pstsdk::database_impl<T>::read_block_data(const
 
     m_file.read(buffer, bi.address);    
 
-#ifdef PSTSDK_VALIDATION_LEVEL_WEAK
+#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
     if(bt->bid != bi.id)
         throw unexpected_block("wrong block id");
 
@@ -269,7 +269,7 @@ inline std::vector<pstsdk::byte> pstsdk::database_impl<T>::read_block_data(const
         throw sig_mismatch("block sig mismatch", bi.address, bi.id, disk::compute_signature(bi.id, bi.address), bt->signature);
 #endif
 
-#ifdef PSTSDK_VALIDATION_LEVEL_FULL
+#ifdef FAIRPORT_VALIDATION_LEVEL_FULL
     ulong crc = disk::compute_crc(&buffer[0], bi.size);
     if(crc != bt->crc)
         throw crc_fail("block crc failure", bi.address, bi.id, crc, bt->crc);
@@ -279,9 +279,9 @@ inline std::vector<pstsdk::byte> pstsdk::database_impl<T>::read_block_data(const
 }
 
 template<typename T>
-std::vector<pstsdk::byte> pstsdk::database_impl<T>::read_page_data(const page_info& pi)
+std::vector<fairport::byte> fairport::database_impl<T>::read_page_data(const page_info& pi)
 {
-#ifdef PSTSDK_VALIDATION_LEVEL_WEAK
+#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
     if(pi.address + disk::page_size > m_header.root_info.ibFileEof)
         throw unexpected_page("nonsensical page location; past eof");
 
@@ -294,13 +294,13 @@ std::vector<pstsdk::byte> pstsdk::database_impl<T>::read_page_data(const page_in
     
     m_file.read(buffer, pi.address);
 
-#ifdef PSTSDK_VALIDATION_LEVEL_FULL
+#ifdef FAIRPORT_VALIDATION_LEVEL_FULL
     ulong crc = disk::compute_crc(&buffer[0], disk::page<T>::page_data_size);
     if(crc != ppage->trailer.crc)
         throw crc_fail("page crc failure", pi.address, pi.id, crc, ppage->trailer.crc);
 #endif
 
-#ifdef PSTSDK_VALIDATION_LEVEL_WEAK
+#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
     if(ppage->trailer.bid != pi.id)
         throw unexpected_page("wrong page id");
 
@@ -316,7 +316,7 @@ std::vector<pstsdk::byte> pstsdk::database_impl<T>::read_page_data(const page_in
 
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::bbt_page> pstsdk::database_impl<T>::read_bbt_root()
+inline std::tr1::shared_ptr<fairport::bbt_page> fairport::database_impl<T>::read_bbt_root()
 { 
     if(!m_bbt_root)
     {
@@ -328,7 +328,7 @@ inline std::tr1::shared_ptr<pstsdk::bbt_page> pstsdk::database_impl<T>::read_bbt
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::nbt_page> pstsdk::database_impl<T>::read_nbt_root()
+inline std::tr1::shared_ptr<fairport::nbt_page> fairport::database_impl<T>::read_nbt_root()
 { 
     if(!m_nbt_root)
     {
@@ -340,7 +340,7 @@ inline std::tr1::shared_ptr<pstsdk::nbt_page> pstsdk::database_impl<T>::read_nbt
 }
 
 template<typename T>
-inline pstsdk::database_impl<T>::database_impl(const std::wstring& filename)
+inline fairport::database_impl<T>::database_impl(const std::wstring& filename)
 : m_file(filename)
 {
     std::vector<byte> buffer(sizeof(m_header));
@@ -351,7 +351,7 @@ inline pstsdk::database_impl<T>::database_impl(const std::wstring& filename)
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::nbt_leaf_page> pstsdk::database_impl<T>::read_nbt_leaf_page(const page_info& pi)
+inline std::tr1::shared_ptr<fairport::nbt_leaf_page> fairport::database_impl<T>::read_nbt_leaf_page(const page_info& pi)
 {
     std::vector<byte> buffer = read_page_data(pi);
     disk::page<T>* ppage = (disk::page<T>*)&buffer[0];
@@ -368,7 +368,7 @@ inline std::tr1::shared_ptr<pstsdk::nbt_leaf_page> pstsdk::database_impl<T>::rea
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::nbt_leaf_page> pstsdk::database_impl<T>::read_nbt_leaf_page(const page_info& pi, disk::nbt_leaf_page<T>& the_page)
+inline std::tr1::shared_ptr<fairport::nbt_leaf_page> fairport::database_impl<T>::read_nbt_leaf_page(const page_info& pi, disk::nbt_leaf_page<T>& the_page)
 {
     node_info ni;
     std::vector<std::pair<node_id, node_info> > nodes;
@@ -391,7 +391,7 @@ inline std::tr1::shared_ptr<pstsdk::nbt_leaf_page> pstsdk::database_impl<T>::rea
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::bbt_leaf_page> pstsdk::database_impl<T>::read_bbt_leaf_page(const page_info& pi)
+inline std::tr1::shared_ptr<fairport::bbt_leaf_page> fairport::database_impl<T>::read_bbt_leaf_page(const page_info& pi)
 {
     std::vector<byte> buffer = read_page_data(pi);
     disk::page<T>* ppage = (disk::page<T>*)&buffer[0];
@@ -408,7 +408,7 @@ inline std::tr1::shared_ptr<pstsdk::bbt_leaf_page> pstsdk::database_impl<T>::rea
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::bbt_leaf_page> pstsdk::database_impl<T>::read_bbt_leaf_page(const page_info& pi, disk::bbt_leaf_page<T>& the_page)
+inline std::tr1::shared_ptr<fairport::bbt_leaf_page> fairport::database_impl<T>::read_bbt_leaf_page(const page_info& pi, disk::bbt_leaf_page<T>& the_page)
 {
     block_info bi;
     std::vector<std::pair<block_id, block_info> > blocks;
@@ -431,7 +431,7 @@ inline std::tr1::shared_ptr<pstsdk::bbt_leaf_page> pstsdk::database_impl<T>::rea
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::nbt_nonleaf_page> pstsdk::database_impl<T>::read_nbt_nonleaf_page(const page_info& pi)
+inline std::tr1::shared_ptr<fairport::nbt_nonleaf_page> fairport::database_impl<T>::read_nbt_nonleaf_page(const page_info& pi)
 {
     std::vector<byte> buffer = read_page_data(pi);
     disk::page<T>* ppage = (disk::page<T>*)&buffer[0];
@@ -449,7 +449,7 @@ inline std::tr1::shared_ptr<pstsdk::nbt_nonleaf_page> pstsdk::database_impl<T>::
 
 template<typename T>
 template<typename K, typename V>
-inline std::tr1::shared_ptr<pstsdk::bt_nonleaf_page<K,V> > pstsdk::database_impl<T>::read_bt_nonleaf_page(const page_info& pi, pstsdk::disk::bt_page<T, disk::bt_entry<T> >& the_page)
+inline std::tr1::shared_ptr<fairport::bt_nonleaf_page<K,V> > fairport::database_impl<T>::read_bt_nonleaf_page(const page_info& pi, fairport::disk::bt_page<T, disk::bt_entry<T> >& the_page)
 {
     std::vector<std::pair<K, page_info> > nodes;
     
@@ -467,7 +467,7 @@ inline std::tr1::shared_ptr<pstsdk::bt_nonleaf_page<K,V> > pstsdk::database_impl
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::bbt_nonleaf_page> pstsdk::database_impl<T>::read_bbt_nonleaf_page(const page_info& pi)
+inline std::tr1::shared_ptr<fairport::bbt_nonleaf_page> fairport::database_impl<T>::read_bbt_nonleaf_page(const page_info& pi)
 {
     std::vector<byte> buffer = read_page_data(pi);
     disk::page<T>* ppage = (disk::page<T>*)&buffer[0];
@@ -484,7 +484,7 @@ inline std::tr1::shared_ptr<pstsdk::bbt_nonleaf_page> pstsdk::database_impl<T>::
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::bbt_page> pstsdk::database_impl<T>::read_bbt_page(const page_info& pi)
+inline std::tr1::shared_ptr<fairport::bbt_page> fairport::database_impl<T>::read_bbt_page(const page_info& pi)
 {
     std::vector<byte> buffer = read_page_data(pi);
     disk::page<T>* ppage = (disk::page<T>*)&buffer[0];
@@ -510,7 +510,7 @@ inline std::tr1::shared_ptr<pstsdk::bbt_page> pstsdk::database_impl<T>::read_bbt
 }
         
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::nbt_page> pstsdk::database_impl<T>::read_nbt_page(const page_info& pi)
+inline std::tr1::shared_ptr<fairport::nbt_page> fairport::database_impl<T>::read_nbt_page(const page_info& pi)
 {
     std::vector<byte> buffer = read_page_data(pi);
     disk::page<T>* ppage = (disk::page<T>*)&buffer[0];
@@ -536,13 +536,13 @@ inline std::tr1::shared_ptr<pstsdk::nbt_page> pstsdk::database_impl<T>::read_nbt
 }
 
 template<typename T>
-inline pstsdk::node_info pstsdk::database_impl<T>::lookup_node_info(node_id nid)
+inline fairport::node_info fairport::database_impl<T>::lookup_node_info(node_id nid)
 {
     return read_nbt_root()->lookup(nid); 
 }
 
 template<typename T>
-inline pstsdk::block_info pstsdk::database_impl<T>::lookup_block_info(block_id bid)
+inline fairport::block_info fairport::database_impl<T>::lookup_block_info(block_id bid)
 {
     if(bid == 0)
     {
@@ -557,7 +557,7 @@ inline pstsdk::block_info pstsdk::database_impl<T>::lookup_block_info(block_id b
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::block> pstsdk::database_impl<T>::read_block(const shared_db_ptr& parent, const block_info& bi)
+inline std::tr1::shared_ptr<fairport::block> fairport::database_impl<T>::read_block(const shared_db_ptr& parent, const block_info& bi)
 {
     std::tr1::shared_ptr<block> pblock;
 
@@ -574,7 +574,7 @@ inline std::tr1::shared_ptr<pstsdk::block> pstsdk::database_impl<T>::read_block(
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::data_block> pstsdk::database_impl<T>::read_data_block(const shared_db_ptr& parent, const block_info& bi)
+inline std::tr1::shared_ptr<fairport::data_block> fairport::database_impl<T>::read_data_block(const shared_db_ptr& parent, const block_info& bi)
 {
     if(disk::bid_is_external(bi.id))
         return read_external_block(parent, bi);
@@ -583,7 +583,7 @@ inline std::tr1::shared_ptr<pstsdk::data_block> pstsdk::database_impl<T>::read_d
     disk::extended_block<T>* peblock = (disk::extended_block<T>*)&buffer[0];
     m_file.read(buffer, bi.address);
 
-    // the behavior of read_block depends on this throw; this can not go under PSTSDK_VALIDATION_WEAK
+    // the behavior of read_block depends on this throw; this can not go under FAIRPORT_VALIDATION_WEAK
     if(peblock->block_type != disk::block_type_extended)
         throw unexpected_block("extended block expected");
 
@@ -591,7 +591,7 @@ inline std::tr1::shared_ptr<pstsdk::data_block> pstsdk::database_impl<T>::read_d
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::extended_block> pstsdk::database_impl<T>::read_extended_block(const shared_db_ptr& parent, const block_info& bi)
+inline std::tr1::shared_ptr<fairport::extended_block> fairport::database_impl<T>::read_extended_block(const shared_db_ptr& parent, const block_info& bi)
 {
     if(!disk::bid_is_internal(bi.id))
         throw unexpected_block("internal bid expected");
@@ -625,13 +625,13 @@ inline std::tr1::shared_ptr<pstsdk::extended_block> pstsdk::database_impl<T>::re
 
 //! \cond write_api
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::external_block> pstsdk::database_impl<T>::create_external_block(const shared_db_ptr& parent, size_t size)
+inline std::tr1::shared_ptr<fairport::external_block> fairport::database_impl<T>::create_external_block(const shared_db_ptr& parent, size_t size)
 {
     return std::tr1::shared_ptr<external_block>(new external_block(parent, disk::external_block<T>::max_size, size));
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::extended_block> pstsdk::database_impl<T>::create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<external_block>& pchild_block)
+inline std::tr1::shared_ptr<fairport::extended_block> fairport::database_impl<T>::create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<external_block>& pchild_block)
 {
     std::vector<std::tr1::shared_ptr<data_block> > child_blocks;
     child_blocks.push_back(pchild_block);
@@ -644,7 +644,7 @@ inline std::tr1::shared_ptr<pstsdk::extended_block> pstsdk::database_impl<T>::cr
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::extended_block> pstsdk::database_impl<T>::create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<extended_block>& pchild_block)
+inline std::tr1::shared_ptr<fairport::extended_block> fairport::database_impl<T>::create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<extended_block>& pchild_block)
 {
     std::vector<std::tr1::shared_ptr<data_block> > child_blocks;
     child_blocks.push_back(pchild_block);
@@ -659,7 +659,7 @@ inline std::tr1::shared_ptr<pstsdk::extended_block> pstsdk::database_impl<T>::cr
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::extended_block> pstsdk::database_impl<T>::create_extended_block(const shared_db_ptr& parent, size_t size)
+inline std::tr1::shared_ptr<fairport::extended_block> fairport::database_impl<T>::create_extended_block(const shared_db_ptr& parent, size_t size)
 {
     ushort level = size > disk::extended_block<T>::max_size ? 2 : 1;
 #ifdef __GNUC__
@@ -679,7 +679,7 @@ inline std::tr1::shared_ptr<pstsdk::extended_block> pstsdk::database_impl<T>::cr
 //! \endcond
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::external_block> pstsdk::database_impl<T>::read_external_block(const shared_db_ptr& parent, const block_info& bi)
+inline std::tr1::shared_ptr<fairport::external_block> fairport::database_impl<T>::read_external_block(const shared_db_ptr& parent, const block_info& bi)
 {
     if(bi.id == 0)
     {
@@ -708,7 +708,7 @@ inline std::tr1::shared_ptr<pstsdk::external_block> pstsdk::database_impl<T>::re
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::subnode_block> pstsdk::database_impl<T>::read_subnode_block(const shared_db_ptr& parent, const block_info& bi)
+inline std::tr1::shared_ptr<fairport::subnode_block> fairport::database_impl<T>::read_subnode_block(const shared_db_ptr& parent, const block_info& bi)
 {
     if(bi.id == 0)
     {
@@ -732,7 +732,7 @@ inline std::tr1::shared_ptr<pstsdk::subnode_block> pstsdk::database_impl<T>::rea
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::subnode_leaf_block> pstsdk::database_impl<T>::read_subnode_leaf_block(const shared_db_ptr& parent, const block_info& bi)
+inline std::tr1::shared_ptr<fairport::subnode_leaf_block> fairport::database_impl<T>::read_subnode_leaf_block(const shared_db_ptr& parent, const block_info& bi)
 {
     std::vector<byte> buffer = read_block_data(bi);
     disk::sub_leaf_block<T>* psub = (disk::sub_leaf_block<T>*)&buffer[0];
@@ -751,7 +751,7 @@ inline std::tr1::shared_ptr<pstsdk::subnode_leaf_block> pstsdk::database_impl<T>
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::subnode_nonleaf_block> pstsdk::database_impl<T>::read_subnode_nonleaf_block(const shared_db_ptr& parent, const block_info& bi)
+inline std::tr1::shared_ptr<fairport::subnode_nonleaf_block> fairport::database_impl<T>::read_subnode_nonleaf_block(const shared_db_ptr& parent, const block_info& bi)
 {
     std::vector<byte> buffer = read_block_data(bi);
     disk::sub_nonleaf_block<T>* psub = (disk::sub_nonleaf_block<T>*)&buffer[0];
@@ -770,7 +770,7 @@ inline std::tr1::shared_ptr<pstsdk::subnode_nonleaf_block> pstsdk::database_impl
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::subnode_leaf_block> pstsdk::database_impl<T>::read_subnode_leaf_block(const shared_db_ptr& parent, const block_info& bi, disk::sub_leaf_block<T>& sub_block)
+inline std::tr1::shared_ptr<fairport::subnode_leaf_block> fairport::database_impl<T>::read_subnode_leaf_block(const shared_db_ptr& parent, const block_info& bi, disk::sub_leaf_block<T>& sub_block)
 {
     subnode_info ni;
     std::vector<std::pair<node_id, subnode_info> > subnodes;
@@ -792,7 +792,7 @@ inline std::tr1::shared_ptr<pstsdk::subnode_leaf_block> pstsdk::database_impl<T>
 }
 
 template<typename T>
-inline std::tr1::shared_ptr<pstsdk::subnode_nonleaf_block> pstsdk::database_impl<T>::read_subnode_nonleaf_block(const shared_db_ptr& parent, const block_info& bi, disk::sub_nonleaf_block<T>& sub_block)
+inline std::tr1::shared_ptr<fairport::subnode_nonleaf_block> fairport::database_impl<T>::read_subnode_nonleaf_block(const shared_db_ptr& parent, const block_info& bi, disk::sub_nonleaf_block<T>& sub_block)
 {
     std::vector<std::pair<node_id, block_id> > subnodes;
 
@@ -810,7 +810,7 @@ inline std::tr1::shared_ptr<pstsdk::subnode_nonleaf_block> pstsdk::database_impl
 
 //! \cond write_api
 template<typename T>
-inline pstsdk::block_id pstsdk::database_impl<T>::alloc_bid(bool is_internal)
+inline fairport::block_id fairport::database_impl<T>::alloc_bid(bool is_internal)
 {
 #ifdef __GNUC__
     typename disk::header<T>::block_id_disk disk_id;

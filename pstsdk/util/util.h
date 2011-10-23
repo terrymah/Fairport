@@ -7,8 +7,8 @@
 //! this file stay as small as possible.
 //! \ingroup util
 
-#ifndef PSTSDK_UTIL_UTIL_H
-#define PSTSDK_UTIL_UTIL_H
+#ifndef FAIRPORT_UTIL_UTIL_H
+#define FAIRPORT_UTIL_UTIL_H
 
 #include <cstdio>
 #include <time.h>
@@ -19,7 +19,7 @@
 #include "pstsdk/util/errors.h"
 #include "pstsdk/util/primitives.h"
 
-namespace pstsdk
+namespace fairport
 {
 
 //! \brief A generic class to read and write to a file
@@ -123,7 +123,7 @@ std::vector<byte> wstring_to_bytes(const std::wstring &wstr);
 
 } // end pstsdk namespace
 
-inline pstsdk::file::file(const std::wstring& filename)
+inline fairport::file::file(const std::wstring& filename)
 : m_filename(filename)
 {
     const char* mode = "rb";
@@ -139,13 +139,13 @@ inline pstsdk::file::file(const std::wstring& filename)
         throw std::runtime_error("fopen failed");
 }
 
-inline pstsdk::file::~file()
+inline fairport::file::~file()
 {
     fflush(m_pfile);
     fclose(m_pfile);
 }
 
-inline size_t pstsdk::file::read(std::vector<byte>& buffer, ulonglong offset) const
+inline size_t fairport::file::read(std::vector<byte>& buffer, ulonglong offset) const
 {
 #ifdef _MSC_VER
     if(_fseeki64(m_pfile, offset, SEEK_SET) != 0)
@@ -165,7 +165,7 @@ inline size_t pstsdk::file::read(std::vector<byte>& buffer, ulonglong offset) co
 }
 
 //! \cond write_api
-inline size_t pstsdk::file::write(const std::vector<byte>& buffer, ulonglong offset)
+inline size_t fairport::file::write(const std::vector<byte>& buffer, ulonglong offset)
 {
 #ifdef _MSC_VER
     if(_fseeki64(m_pfile, offset, SEEK_SET) != 0)
@@ -185,31 +185,31 @@ inline size_t pstsdk::file::write(const std::vector<byte>& buffer, ulonglong off
 }
 //! \endcond
 
-inline time_t pstsdk::filetime_to_time_t(ulonglong filetime)
+inline time_t fairport::filetime_to_time_t(ulonglong filetime)
 {
     const ulonglong jan1970 = 116444736000000000ULL;
 
     return (filetime - jan1970) / 10000000;
 }
 
-inline pstsdk::ulonglong pstsdk::time_t_to_filetime(time_t time)
+inline fairport::ulonglong fairport::time_t_to_filetime(time_t time)
 {
     const ulonglong jan1970 = 116444736000000000ULL;
 
     return (time * 10000000) + jan1970;
 }
 
-inline time_t pstsdk::vt_date_to_time_t(double)
+inline time_t fairport::vt_date_to_time_t(double)
 {
     throw not_implemented("vt_date_to_time_t");
 }
 
-inline double pstsdk::time_t_to_vt_date(time_t)
+inline double fairport::time_t_to_vt_date(time_t)
 {
     throw not_implemented("vt_date_to_time_t");
 }
 
-inline bool pstsdk::test_bit(const byte* pbytes, ulong bit)
+inline bool fairport::test_bit(const byte* pbytes, ulong bit)
 {
     return (*(pbytes + (bit >> 3)) & (0x80 >> (bit & 7))) != 0;
 }
@@ -218,7 +218,7 @@ inline bool pstsdk::test_bit(const byte* pbytes, ulong bit)
 
 // We know that std::wstring is always UCS-2LE on Windows.
 
-inline std::wstring pstsdk::bytes_to_wstring(const std::vector<byte> &bytes)
+inline std::wstring fairport::bytes_to_wstring(const std::vector<byte> &bytes)
 {
     if(bytes.size() == 0)
         return std::wstring();
@@ -226,7 +226,7 @@ inline std::wstring pstsdk::bytes_to_wstring(const std::vector<byte> &bytes)
     return std::wstring(reinterpret_cast<const wchar_t *>(&bytes[0]), bytes.size()/sizeof(wchar_t));
 }
 
-inline std::vector<pstsdk::byte> pstsdk::wstring_to_bytes(const std::wstring &wstr)
+inline std::vector<fairport::byte> fairport::wstring_to_bytes(const std::wstring &wstr)
 {
     if(wstr.size() == 0)
         return std::vector<byte>();
@@ -241,7 +241,7 @@ inline std::vector<pstsdk::byte> pstsdk::wstring_to_bytes(const std::wstring &ws
 // big wchar_t really is, or what encoding it uses.
 #include <iconv.h>
 
-inline std::wstring pstsdk::bytes_to_wstring(const std::vector<byte> &bytes)
+inline std::wstring fairport::bytes_to_wstring(const std::vector<byte> &bytes)
 {
     if(bytes.size() == 0)
         return std::wstring();
@@ -270,7 +270,7 @@ inline std::wstring pstsdk::bytes_to_wstring(const std::vector<byte> &bytes)
     return out;
 }
 
-inline std::vector<pstsdk::byte> pstsdk::wstring_to_bytes(const std::wstring &wstr)
+inline std::vector<fairport::byte> fairport::wstring_to_bytes(const std::wstring &wstr)
 {
     if(wstr.size() == 0)
         return std::vector<byte>();

@@ -6,9 +6,9 @@
 #include "pstsdk/ltp.h"
 
 // this function works because the set of named props present in sample1.pst is known
-void test_nameid_map_samp1(pstsdk::shared_db_ptr pdb)
+void test_nameid_map_samp1(fairport::shared_db_ptr pdb)
 {
-    using namespace pstsdk;
+    using namespace fairport;
     name_id_map nm(pdb);
 
     const guid g1 = { 0x20386, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
@@ -53,11 +53,11 @@ void test_nameid_map_samp1(pstsdk::shared_db_ptr pdb)
     assert(not_found);
 }
 
-void test_prop_stream(pstsdk::const_property_object& obj, pstsdk::prop_id id)
+void test_prop_stream(fairport::const_property_object& obj, fairport::prop_id id)
 {
-    pstsdk::prop_stream stream(obj.open_prop_stream(id));
-    std::vector<pstsdk::byte> contents = obj.read_prop<std::vector<pstsdk::byte> >(id);
-    pstsdk::byte b;
+    fairport::prop_stream stream(obj.open_prop_stream(id));
+    std::vector<fairport::byte> contents = obj.read_prop<std::vector<fairport::byte> >(id);
+    fairport::byte b;
     size_t pos = 0;
 
     assert(contents.size() == obj.size(id));
@@ -67,25 +67,25 @@ void test_prop_stream(pstsdk::const_property_object& obj, pstsdk::prop_id id)
         assert(b == contents[pos++]);
 }
 
-void test_table(const pstsdk::table& tc)
+void test_table(const fairport::table& tc)
 {
     using namespace std;
-    using namespace pstsdk;
+    using namespace fairport;
 
     wcout << "Properties on this table (" << tc.size() << "): " << endl;
     std::vector<prop_id> prop_list = tc.get_prop_list();
-    for(pstsdk::uint i = 0; i < prop_list.size(); ++i)
+    for(fairport::uint i = 0; i < prop_list.size(); ++i)
         wcout << hex << prop_list[i] << " ";
     wcout << endl;
 
-    for(pstsdk::uint i = 0; i < tc.size(); ++i)
+    for(fairport::uint i = 0; i < tc.size(); ++i)
     {
         wcout << "RowID: " << tc[i].get_row_id() << endl;
         wstring display_name;
         wstring subject;
 
-         std::vector<pstsdk::ushort> proplist(tc[i].get_prop_list());
-        for(pstsdk::uint j = 0; j < proplist.size(); ++j)
+         std::vector<fairport::ushort> proplist(tc[i].get_prop_list());
+        for(fairport::uint j = 0; j < proplist.size(); ++j)
         {
             try {
                 if(tc[i].get_prop_type(proplist[j]) == prop_type_wstring)
@@ -121,18 +121,18 @@ void test_table(const pstsdk::table& tc)
     }
 }
 
-void test_attachment_table(const pstsdk::node& message, const pstsdk::table& tc)
+void test_attachment_table(const fairport::node& message, const fairport::table& tc)
 {
     using namespace std;
-    using namespace pstsdk;
-    for(pstsdk::uint i = 0; i < tc.size(); ++i)
+    using namespace fairport;
+    for(fairport::uint i = 0; i < tc.size(); ++i)
     {
         node attach = message.lookup(tc[i].get_row_id());
         
         wcout << "Attachment " << i << endl;
         property_bag pc(attach);
-            std::vector<pstsdk::ushort> proplist(pc.get_prop_list());
-            for(pstsdk::uint i = 0; i < proplist.size(); ++i)
+            std::vector<fairport::ushort> proplist(pc.get_prop_list());
+            for(fairport::uint i = 0; i < proplist.size(); ++i)
             {
                 if(pc.get_prop_type(proplist[i]) == prop_type_wstring)
                 {
@@ -159,11 +159,11 @@ void test_attachment_table(const pstsdk::node& message, const pstsdk::table& tc)
     }
 }
 
-void iterate(pstsdk::shared_db_ptr pdb)
+void iterate(fairport::shared_db_ptr pdb)
 {
     using namespace std;
     using namespace std::tr1;
-    using namespace pstsdk;
+    using namespace fairport;
     std::tr1::shared_ptr<const nbt_page> nbt_root = pdb->read_nbt_root();
     for(const_nodeinfo_iterator iter = nbt_root->begin();
             iter != nbt_root->end();
@@ -176,10 +176,10 @@ void iterate(pstsdk::shared_db_ptr pdb)
         try
         {
             property_bag bag(n);
-            std::vector<pstsdk::ushort> proplist(bag.get_prop_list());
+            std::vector<fairport::ushort> proplist(bag.get_prop_list());
 
             // look for mv props
-            for(pstsdk::uint i = 0; i < proplist.size(); ++i)
+            for(fairport::uint i = 0; i < proplist.size(); ++i)
             {
                 switch(bag.get_prop_type(proplist[i]))
                 {
@@ -219,8 +219,8 @@ void iterate(pstsdk::shared_db_ptr pdb)
         {
             
             property_bag pc(n);
-            std::vector<pstsdk::ushort> proplist(pc.get_prop_list());
-            for(pstsdk::uint i = 0; i < proplist.size(); ++i)
+            std::vector<fairport::ushort> proplist(pc.get_prop_list());
+            for(fairport::uint i = 0; i < proplist.size(); ++i)
             {
                 if(pc.get_prop_type(proplist[i]) == prop_type_wstring)
                 {
@@ -258,7 +258,7 @@ void iterate(pstsdk::shared_db_ptr pdb)
 
         try{
             heap h(n);
-            std::tr1::shared_ptr<bth_node<pstsdk::ushort, disk::prop_entry> > bth = h.open_bth<pstsdk::ushort, disk::prop_entry>(h.get_root_id());
+            std::tr1::shared_ptr<bth_node<fairport::ushort, disk::prop_entry> > bth = h.open_bth<fairport::ushort, disk::prop_entry>(h.get_root_id());
          }
         catch(exception&)
         {
@@ -287,7 +287,7 @@ void iterate(pstsdk::shared_db_ptr pdb)
 
 void test_highlevel()
 {
-    using namespace pstsdk;
+    using namespace fairport;
 
     shared_db_ptr uni = open_database(L"test_unicode.pst");
     shared_db_ptr ansi = open_database(L"test_ansi.pst");

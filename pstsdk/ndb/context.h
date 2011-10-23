@@ -1,13 +1,13 @@
 //! \cond write_api
-#ifndef PSTSDK_NDB_CONTEXT_H
-#define PSTSDK_NDB_CONTEXT_H
+#ifndef FAIRPORT_NDB_CONTEXT_H
+#define FAIRPORT_NDB_CONTEXT_H
 
 #include <map>
 
 #include "pstsdk/ndb/node.h"
 #include "pstsdk/ndb/database_iface.h"
 
-namespace pstsdk
+namespace fairport
 {
 
 class db_context_impl : public db_context
@@ -70,7 +70,7 @@ private:
 } // end pstsdk namespace
 
 template<typename T>
-bool pstsdk::db_context_impl::lookup_saved_block(block_id bid, std::tr1::shared_ptr<T>& pcached_block)
+bool fairport::db_context_impl::lookup_saved_block(block_id bid, std::tr1::shared_ptr<T>& pcached_block)
 {
     auto pos = m_blocks.find(bid);
     if(pos != m_blocks.end())
@@ -84,7 +84,7 @@ bool pstsdk::db_context_impl::lookup_saved_block(block_id bid, std::tr1::shared_
 }
 
 template<typename T>
-bool pstsdk::db_context_impl::add_saved_block(const std::tr1::shared_ptr<T>& pblock)
+bool fairport::db_context_impl::add_saved_block(const std::tr1::shared_ptr<T>& pblock)
 {
     auto pos = m_blocks.find(pblock->get_id());
     if(pos == m_blocks.end())
@@ -97,7 +97,7 @@ bool pstsdk::db_context_impl::add_saved_block(const std::tr1::shared_ptr<T>& pbl
     return false;
 }
 
-pstsdk::node_info pstsdk::db_context_impl::lookup_node_info(node_id nid)
+fairport::node_info fairport::db_context_impl::lookup_node_info(node_id nid)
 {
     auto pos = m_nodes.find(nid);
     if(pos != m_nodes.end())
@@ -106,7 +106,7 @@ pstsdk::node_info pstsdk::db_context_impl::lookup_node_info(node_id nid)
     return read_nbt_root()->lookup_node_info(nid);
 }
 
-pstsdk::block_info pstsdk::db_context_impl::lookup_block_info(block_id bid)
+fairport::block_info fairport::db_context_impl::lookup_block_info(block_id bid)
 {
     std::tr1::shared_ptr<block> pblock;
     if(lookup_cached_block(bid, pblock))
@@ -122,57 +122,57 @@ pstsdk::block_info pstsdk::db_context_impl::lookup_block_info(block_id bid)
     return read_bbt_root()->lookup_block_info(bid);
 }
 
-std::tr1::shared_ptr<pstsdk::block> pstsdk::db_context_impl::read_block(block_id bid)
+std::tr1::shared_ptr<fairport::block> fairport::db_context_impl::read_block(block_id bid)
 {
-    std::tr1::shared_ptr<pstsdk::block> presult;
+    std::tr1::shared_ptr<fairport::block> presult;
     if(lookup_saved_block(bid, presult))
         return presult;
     return m_db->read_block(shared_from_this(), lookup_block_info(bid));
 }
 
-std::tr1::shared_ptr<pstsdk::data_block> pstsdk::db_context_impl::read_data_block(block_id bid)
+std::tr1::shared_ptr<fairport::data_block> fairport::db_context_impl::read_data_block(block_id bid)
 {
-    std::tr1::shared_ptr<pstsdk::data_block> presult;
+    std::tr1::shared_ptr<fairport::data_block> presult;
     if(lookup_saved_block(bid, presult))
         return presult;
     return m_db->read_data_block(shared_from_this(), lookup_block_info(bid));
 }
 
-std::tr1::shared_ptr<pstsdk::extended_block> pstsdk::db_context_impl::read_extended_block(block_id bid)
+std::tr1::shared_ptr<fairport::extended_block> fairport::db_context_impl::read_extended_block(block_id bid)
 {
-    std::tr1::shared_ptr<pstsdk::extended_block> presult;
+    std::tr1::shared_ptr<fairport::extended_block> presult;
     if(lookup_saved_block(bid, presult))
         return presult;
     return m_db->read_extended_block(shared_from_this(), lookup_block_info(bid));
 }
 
-std::tr1::shared_ptr<pstsdk::external_block> pstsdk::db_context_impl::read_external_block(block_id bid)
+std::tr1::shared_ptr<fairport::external_block> fairport::db_context_impl::read_external_block(block_id bid)
 {
-    std::tr1::shared_ptr<pstsdk::external_block> presult;
+    std::tr1::shared_ptr<fairport::external_block> presult;
     if(lookup_saved_block(bid, presult))
         return presult;
     return m_db->read_external_block(shared_from_this(), lookup_block_info(bid));
 }
 
-std::tr1::shared_ptr<pstsdk::subnode_block> pstsdk::db_context_impl::read_subnode_block(block_id bid)
+std::tr1::shared_ptr<fairport::subnode_block> fairport::db_context_impl::read_subnode_block(block_id bid)
 {
-    std::tr1::shared_ptr<pstsdk::subnode_block> presult;
+    std::tr1::shared_ptr<fairport::subnode_block> presult;
     if(lookup_saved_block(bid, presult))
         return presult;
     return m_db->read_subnode_block(shared_from_this(), lookup_block_info(bid));
 }
 
-std::tr1::shared_ptr<pstsdk::subnode_leaf_block> pstsdk::db_context_impl::read_subnode_leaf_block(block_id bid)
+std::tr1::shared_ptr<fairport::subnode_leaf_block> fairport::db_context_impl::read_subnode_leaf_block(block_id bid)
 {
-    std::tr1::shared_ptr<pstsdk::subnode_leaf_block> presult;
+    std::tr1::shared_ptr<fairport::subnode_leaf_block> presult;
     if(lookup_saved_block(bid, presult))
         return presult;
     return m_db->read_subnode_leaf_block(shared_from_this(), lookup_block_info(bid));
 }
 
-std::tr1::shared_ptr<pstsdk::subnode_nonleaf_block> pstsdk::db_context_impl::read_subnode_nonleaf_block(block_id bid)
+std::tr1::shared_ptr<fairport::subnode_nonleaf_block> fairport::db_context_impl::read_subnode_nonleaf_block(block_id bid)
 {
-    std::tr1::shared_ptr<pstsdk::subnode_nonleaf_block> presult;
+    std::tr1::shared_ptr<fairport::subnode_nonleaf_block> presult;
     if(lookup_saved_block(bid, presult))
         return presult;
     return m_db->read_subnode_nonleaf_block(shared_from_this(), lookup_block_info(bid));
