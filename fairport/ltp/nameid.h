@@ -9,11 +9,11 @@
 #include <string>
 #include <algorithm>
 
-#include "pstsdk/util/primitives.h"
+#include "fairport/util/primitives.h"
 
-#include "pstsdk/ndb/database_iface.h"
+#include "fairport/ndb/database_iface.h"
 
-#include "pstsdk/ltp/propbag.h"
+#include "fairport/ltp/propbag.h"
 
 namespace fairport
 {

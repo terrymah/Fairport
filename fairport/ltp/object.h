@@ -31,12 +31,12 @@
 #pragma warning(pop)
 #endif
 
-#include "pstsdk/util/primitives.h"
-#include "pstsdk/util/errors.h"
+#include "fairport/util/primitives.h"
+#include "fairport/util/errors.h"
 
-#include "pstsdk/ltp/heap.h"
+#include "fairport/ltp/heap.h"
 
-#include "pstsdk/ndb/node.h"
+#include "fairport/ndb/node.h"
 
 namespace fairport
 {
@@ -174,7 +174,7 @@ protected:
     virtual std::vector<byte> get_value_variable(prop_id id) const = 0;
 };
 
-} // end pstsdk namespace
+} // end fairport namespace
 
 template<typename T>
 inline T fairport::const_property_object::read_prop(prop_id id) const
@@ -410,6 +410,6 @@ inline std::vector<std::string> const_property_object::read_prop_array<std::stri
     return results;
 }
 
-} // end pstsdk namespace
+} // end fairport namespace
 
 #endif

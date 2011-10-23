@@ -14,12 +14,12 @@
 #endif
 #include <boost/iterator/iterator_facade.hpp>
 
-#include "pstsdk/util/primitives.h"
+#include "fairport/util/primitives.h"
 
-#include "pstsdk/ndb/node.h"
+#include "fairport/ndb/node.h"
 
-#include "pstsdk/ltp/object.h"
-#include "pstsdk/ltp/heap.h"
+#include "fairport/ltp/object.h"
+#include "fairport/ltp/heap.h"
 
 namespace fairport
 {
@@ -370,7 +370,7 @@ private:
     table_ptr m_ptable;
 };
 
-} // end pstsdk namespace
+} // end fairport namespace
 
 inline fairport::table_ptr fairport::open_table(const node& n)
 {

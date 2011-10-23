@@ -16,8 +16,8 @@
 #include <vector>
 #include <boost/utility.hpp>
 
-#include "pstsdk/util/errors.h"
-#include "pstsdk/util/primitives.h"
+#include "fairport/util/errors.h"
+#include "fairport/util/primitives.h"
 
 namespace fairport
 {
@@ -121,7 +121,7 @@ std::wstring bytes_to_wstring(const std::vector<byte> &bytes);
 //! \ingroup util
 std::vector<byte> wstring_to_bytes(const std::wstring &wstr);
 
-} // end pstsdk namespace
+} // end fairport namespace
 
 inline fairport::file::file(const std::wstring& filename)
 : m_filename(filename)

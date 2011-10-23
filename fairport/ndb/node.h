@@ -24,10 +24,10 @@
 #pragma warning(pop)
 #endif
 
-#include "pstsdk/util/util.h"
-#include "pstsdk/util/btree.h"
+#include "fairport/util/util.h"
+#include "fairport/util/btree.h"
 
-#include "pstsdk/ndb/database_iface.h"
+#include "fairport/ndb/database_iface.h"
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -864,7 +864,7 @@ private:
     std::vector<std::pair<node_id, subnode_info> > m_subnodes;   //!< The actual subnode information
 };
 
-} // end pstsdk namespace
+} // end fairport namespace
 
 inline fairport::node fairport::subnode_transform_info::operator()(const fairport::subnode_info& info) const
 { 

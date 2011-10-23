@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cassert>
 #include <string>
-#include "pstsdk/util.h"
+#include "fairport/util.h"
 
 void test_wstring_conversion()
 {

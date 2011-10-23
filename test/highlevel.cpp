@@ -2,8 +2,8 @@
 #include <iostream>
 #include <string>
 #include "test.h"
-#include "pstsdk/ndb.h"
-#include "pstsdk/ltp.h"
+#include "fairport/ndb.h"
+#include "fairport/ltp.h"
 
 // this function works because the set of named props present in sample1.pst is known
 void test_nameid_map_samp1(fairport::shared_db_ptr pdb)

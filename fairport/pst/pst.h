@@ -17,15 +17,15 @@
 #include <boost/iterator/filter_iterator.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 
-#include "pstsdk/ndb/database.h"
-#include "pstsdk/ndb/database_iface.h"
-#include "pstsdk/ndb/node.h"
+#include "fairport/ndb/database.h"
+#include "fairport/ndb/database_iface.h"
+#include "fairport/ndb/node.h"
 
-#include "pstsdk/ltp/propbag.h"
-#include "pstsdk/ltp/nameid.h"
+#include "fairport/ltp/propbag.h"
+#include "fairport/ltp/nameid.h"
 
-#include "pstsdk/pst/folder.h"
-#include "pstsdk/pst/message.h"
+#include "fairport/pst/folder.h"
+#include "fairport/pst/message.h"
 
 namespace fairport
 {
@@ -170,7 +170,7 @@ private:
     mutable std::tr1::shared_ptr<name_id_map> m_map;     //!< The official named property map of this store object
 };
 
-} // end pstsdk namespace
+} // end fairport namespace
 
 inline const fairport::property_bag& fairport::pst::get_property_bag() const
 {

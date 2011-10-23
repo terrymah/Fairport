@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cassert>
-#include "pstsdk/disk/disk.h"
-#include "pstsdk/ndb.h"
+#include "fairport/disk/disk.h"
+#include "fairport/ndb.h"
 
 struct node_info
 {

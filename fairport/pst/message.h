@@ -12,11 +12,11 @@
 #include <ostream>
 #include <boost/iterator/transform_iterator.hpp>
 
-#include "pstsdk/ndb/database_iface.h"
-#include "pstsdk/ndb/node.h"
+#include "fairport/ndb/database_iface.h"
+#include "fairport/ndb/node.h"
 
-#include "pstsdk/ltp/propbag.h"
-#include "pstsdk/ltp/table.h"
+#include "fairport/ltp/propbag.h"
+#include "fairport/ltp/table.h"
 
 namespace fairport
 {

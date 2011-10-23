@@ -12,7 +12,7 @@
 
 #include <cstddef>
 
-#include "pstsdk/util/primitives.h"
+#include "fairport/util/primitives.h"
 
 //! \brief Contains the definition of all in memory representations of disk structures
 namespace fairport
@@ -1620,7 +1620,7 @@ inline ushort nameid_get_guid_index(const nameid_hash_entry& n) { return (ushort
 inline bool nameid_is_string(const nameid_hash_entry& n) { return n.index & 0x1; }
 
 } // end disk namespace
-} // end pstsdk namespace
+} // end fairport namespace
 
 
 template<typename T>

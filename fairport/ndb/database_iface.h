@@ -14,8 +14,8 @@
 #include <tr1/memory>
 #endif
 
-#include "pstsdk/util/util.h"
-#include "pstsdk/util/primitives.h"
+#include "fairport/util/util.h"
+#include "fairport/util/primitives.h"
 
 namespace fairport
 {

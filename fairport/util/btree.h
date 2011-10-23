@@ -20,8 +20,8 @@
 #include <vector>
 #include <boost/iterator/iterator_facade.hpp>
 
-#include "pstsdk/util/primitives.h"
-#include "pstsdk/util/errors.h"
+#include "fairport/util/primitives.h"
+#include "fairport/util/errors.h"
 
 #ifdef _MSC_VER
 #pragma warning(push)

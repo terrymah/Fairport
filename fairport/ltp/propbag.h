@@ -9,13 +9,13 @@
 #include <vector>
 #include <algorithm>
 
-#include "pstsdk/util/primitives.h"
-#include "pstsdk/util/errors.h"
+#include "fairport/util/primitives.h"
+#include "fairport/util/errors.h"
 
-#include "pstsdk/ndb/node.h"
+#include "fairport/ndb/node.h"
 
-#include "pstsdk/ltp/object.h"
-#include "pstsdk/ltp/heap.h"
+#include "fairport/ltp/object.h"
+#include "fairport/ltp/heap.h"
 
 namespace fairport
 {
@@ -95,7 +95,7 @@ private:
     std::tr1::shared_ptr<pc_bth_node> m_pbth;
 };
 
-} // end pstsdk namespace
+} // end fairport namespace
 
 inline fairport::property_bag::property_bag(const fairport::node& n)
 {

@@ -17,10 +17,10 @@
 
 #include <vector>
 
-#include "pstsdk/util/btree.h"
-#include "pstsdk/util/util.h"
+#include "fairport/util/btree.h"
+#include "fairport/util/util.h"
 
-#include "pstsdk/ndb/database_iface.h"
+#include "fairport/ndb/database_iface.h"
 
 #ifdef _MSC_VER
 #pragma warning(push)

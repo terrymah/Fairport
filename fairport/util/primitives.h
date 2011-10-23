@@ -373,5 +373,5 @@ const guid ps_mapi = { 0x20328, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
 //! \ingroup primitive
 const guid ps_public_strings = { 0x20329, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
 
-} // end pstsdk namespace
+} // end fairport namespace
 #endif

@@ -10,7 +10,7 @@
 #define FAIRPORT_UTIL_ERRORS_H
 
 #include <stdexcept>
-#include "pstsdk/util/primitives.h"
+#include "fairport/util/primitives.h"
 
 namespace fairport
 {

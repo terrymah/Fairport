@@ -2,6 +2,6 @@
 #ifndef FAIRPORT_DISK_H
 #define FAIRPORT_DISK_H
 
-#include "pstsdk/disk/disk.h"
+#include "fairport/disk/disk.h"
 
 #endif

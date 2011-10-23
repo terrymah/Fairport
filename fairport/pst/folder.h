@@ -16,15 +16,15 @@
 #include <boost/iterator/filter_iterator.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 
-#include "pstsdk/util/primitives.h"
-#include "pstsdk/util/errors.h"
+#include "fairport/util/primitives.h"
+#include "fairport/util/errors.h"
 
-#include "pstsdk/ndb/database_iface.h"
+#include "fairport/ndb/database_iface.h"
 
-#include "pstsdk/ltp/propbag.h"
-#include "pstsdk/ltp/table.h"
+#include "fairport/ltp/propbag.h"
+#include "fairport/ltp/table.h"
 
-#include "pstsdk/pst/message.h"
+#include "fairport/pst/message.h"
 
 namespace fairport
 {

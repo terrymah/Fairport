@@ -5,13 +5,13 @@
 
 #include "test.h"
 
-#include "pstsdk/ndb/database.h"
-#include "pstsdk/ndb/database_iface.h"
-#include "pstsdk/ndb/page.h"
+#include "fairport/ndb/database.h"
+#include "fairport/ndb/database_iface.h"
+#include "fairport/ndb/page.h"
 
-#include "pstsdk/pst/message.h"
-#include "pstsdk/pst/folder.h"
-#include "pstsdk/pst/pst.h"
+#include "fairport/pst/message.h"
+#include "fairport/pst/folder.h"
+#include "fairport/pst/pst.h"
 
 void process_recipient(const fairport::recipient& r)
 {

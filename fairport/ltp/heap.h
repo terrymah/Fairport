@@ -23,11 +23,11 @@
 #include <tr1/memory>
 #endif
 
-#include "pstsdk/util/primitives.h"
+#include "fairport/util/primitives.h"
 
-#include "pstsdk/disk/disk.h"
+#include "fairport/disk/disk.h"
 
-#include "pstsdk/ndb/node.h"
+#include "fairport/ndb/node.h"
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -426,7 +426,7 @@ private:
     std::vector<std::pair<K,V> > m_bth_data;
 };
 
-} // end pstsdk namespace
+} // end fairport namespace
 
 template<typename K, typename V>
 inline std::tr1::shared_ptr<fairport::bth_node<K,V> > fairport::bth_node<K,V>::open_root(const heap_ptr& h, heap_id bth_root)

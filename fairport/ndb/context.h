@@ -4,8 +4,8 @@
 
 #include <map>
 
-#include "pstsdk/ndb/node.h"
-#include "pstsdk/ndb/database_iface.h"
+#include "fairport/ndb/node.h"
+#include "fairport/ndb/database_iface.h"
 
 namespace fairport
 {
@@ -67,7 +67,7 @@ private:
     bool add_saved_block(const std::tr1::shared_ptr<T>& pblock);
 };
 
-} // end pstsdk namespace
+} // end fairport namespace
 
 template<typename T>
 bool fairport::db_context_impl::lookup_saved_block(block_id bid, std::tr1::shared_ptr<T>& pcached_block)

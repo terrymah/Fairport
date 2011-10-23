@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <cassert>
-#include "pstsdk/disk.h"
-#include "pstsdk/util.h"
+#include "fairport/disk.h"
+#include "fairport/util.h"
 
 template<typename T>
 void test_block(fairport::file& file, fairport::disk::block_reference<T>& ref, fairport::ushort size, fairport::byte) 
