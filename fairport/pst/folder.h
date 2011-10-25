@@ -373,7 +373,7 @@ inline fairport::table& fairport::search_folder::get_contents_table()
 }
 
 
-namespace compiler_workarounds
+namespace internal
 {
 
 struct folder_name_equal : public std::unary_function<bool, const fairport::folder&>
@@ -383,11 +383,11 @@ struct folder_name_equal : public std::unary_function<bool, const fairport::fold
     std::wstring m_name;
 };
 
-} // end namespace compiler_workarounds
+} // end namespace internal
 
 inline fairport::folder fairport::folder::open_sub_folder(const std::wstring& name)
 {
-    folder_iterator iter = std::find_if(sub_folder_begin(), sub_folder_end(), compiler_workarounds::folder_name_equal(name));
+    folder_iterator iter = std::find_if(sub_folder_begin(), sub_folder_end(), internal::folder_name_equal(name));
 
     if(iter != sub_folder_end())
         return *iter;

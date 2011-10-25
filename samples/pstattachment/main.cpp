@@ -3,7 +3,7 @@
 // All image attachments are saved in the current working directory, with care
 // taken not to overwrite any existing files.
 
-#include <pstsdk/pst.h>
+#include <fairport/pst.h>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -13,7 +13,7 @@ const std::wstring gifExtn = L"gif";
 const std::wstring jpgExtn = L"jpg";
 const std::wstring pngExtn = L"png";
 
-void saveAttachment(const pstsdk::attachment& attch)
+void saveAttachment(const fairport::attachment& attch)
 {
     std::wstring fname(attch.get_filename());
     // Not sure if this is safe or not
@@ -56,7 +56,7 @@ void saveAttachment(const pstsdk::attachment& attch)
     imgFile.close();
 }
 
-void processAttachment(const pstsdk::attachment& attch)
+void processAttachment(const fairport::attachment& attch)
 {
     // Parse out the extension from the file name
     std::wstring filename = attch.get_filename();
@@ -87,29 +87,29 @@ void processAttachment(const pstsdk::attachment& attch)
     }
 }
 
-void processMessage(const pstsdk::message& msg)
+void processMessage(const fairport::message& msg)
 {
     // Ensure that there is atleast one attachment to the current message
     if(msg.get_attachment_count() > 0)
     {
-        for(pstsdk::message::attachment_iterator iter = msg.attachment_begin(); iter != msg.attachment_end(); ++iter)
+        for(fairport::message::attachment_iterator iter = msg.attachment_begin(); iter != msg.attachment_end(); ++iter)
         {
             processAttachment(*iter);
         }
     }
 }
 
-void traverseAllMessages(const pstsdk::pst& pstFile)
+void traverseAllMessages(const fairport::pst& pstFile)
 {
     // Iterate through all the folders in the given PST object.
-    for(pstsdk::pst::folder_iterator i = pstFile.folder_begin(); i != pstFile.folder_end(); ++i)
+    for(fairport::pst::folder_iterator i = pstFile.folder_begin(); i != pstFile.folder_end(); ++i)
     {
-        pstsdk::folder currFolder = *i;
+        fairport::folder currFolder = *i;
 
         // Process all messages in the current folder.
         if(currFolder.get_message_count() > 0)
         {
-            for(pstsdk::folder::message_iterator j = currFolder.message_begin(); j != currFolder.message_end(); ++j)
+            for(fairport::folder::message_iterator j = currFolder.message_begin(); j != currFolder.message_end(); ++j)
             {
                 processMessage(*j);
             }
@@ -145,7 +145,7 @@ int main(int argc, char* argv[])
         exit(-1);
     }
     std::wstring pstFile(pstF.begin(), pstF.end());
-    pstsdk::pst myFile(pstFile);
+    fairport::pst myFile(pstFile);
 
     traverseAllMessages(myFile);
 }

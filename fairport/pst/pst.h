@@ -98,21 +98,21 @@ public:
     folder open_folder(const std::wstring& name) const;
 
     //! \brief Open a specific message in this file
-    //! \param[in] name The node_id of the message to open
+    //! \param[in] id The node_id of the message to open
     //! \throws key_not_found<node_id> If a folder of the specified id was not found in this file
     //! \returns The folder with that id found in the file
     folder open_folder(node_id id) const
         { return folder(m_db, m_db->lookup_node(id)); }
 
     //! \brief Open a specific message in this file
-    //! \param[in] name The node_id of the message to open
+    //! \param[in] id The node_id of the message to open
     //! \throws key_not_found<node_id> If a search_folder of the specified id was not found in this file
     //! \returns The search_folder with that id found in the file
     search_folder open_search_folder(node_id id) const
         { return search_folder(m_db, m_db->lookup_node(id)); }
 
     //! \brief Open a specific message in this file
-    //! \param[in] name The node_id of the message to open
+    //! \param[in] id The node_id of the message to open
     //! \throws key_not_found<node_id> If a message of the specified id was not found in this file
     //! \returns The message with that id found in the file
     message open_message(node_id id) const
@@ -200,7 +200,7 @@ inline fairport::name_id_map& fairport::pst::get_name_id_map()
 
 inline fairport::folder fairport::pst::open_folder(const std::wstring& name) const
 {
-    folder_iterator iter = std::find_if(folder_begin(), folder_end(), compiler_workarounds::folder_name_equal(name));
+    folder_iterator iter = std::find_if(folder_begin(), folder_end(), internal::folder_name_equal(name));
 
     if(iter != folder_end())
         return *iter;
