@@ -1,0 +1,11 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classfairport_1_1attachment__transform.html" title="Defines a transform from a row to an attachment object." alt="" coords="5,131,397,237"/>
+<area shape="rect" id="node5" href="$classfairport_1_1folder__transform__info.html" title="Defines a transform from a node_info to a folder." alt="" coords="422,138,743,230"/>
+<area shape="rect" id="node7" href="$classfairport_1_1folder__transform__row.html" title="Defines a transform from a row of a hierarchy table to a folder." alt="" coords="768,138,1128,230"/>
+<area shape="rect" id="node9" href="$classfairport_1_1message__transform__info.html" title="{fairport::message_transform_info\&lt; node_info, message \&gt;\n||+ message_transform_info()\l+ operator()()\l}" alt="" coords="1152,138,1509,230"/>
+<area shape="rect" id="node11" href="$classfairport_1_1message__transform__row.html" title="{fairport::message_transform_row\&lt; const_table_row, message \&gt;\n||+ message_transform_row()\l+ operator()()\l}" alt="" coords="1534,138,1929,230"/>
+<area shape="rect" id="node13" href="$structfairport_1_1recipient__transform.html" title="Defines a transform from a row to a recipient object." alt="" coords="1955,145,2317,223"/>
+<area shape="rect" id="node15" href="$classfairport_1_1search__folder__transform__row.html" title="Defines a transform from a row of a hierarchy table to a search_folder." alt="" coords="2341,138,2792,230"/>
+<area shape="rect" id="node17" href="$classfairport_1_1subnode__transform__info.html" title="Defines a transform from a subnode_info to an actual node object." alt="" coords="2817,138,3167,230"/>
+<area shape="rect" id="node19" href="$structinternal_1_1folder__name__equal.html" title="{internal::folder_name_equal\&lt; bool, const fairport::folder &amp; \&gt;\n|+ m_name\l|+ folder_name_equal()\l+ operator()()\l}" alt="" coords="3191,138,3565,230"/>
+</map>

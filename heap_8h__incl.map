@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node13" href="$primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="985,379,1143,405"/>
+<area shape="rect" id="node19" href="$disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="1489,80,1617,107"/>
+<area shape="rect" id="node24" href="$node_8h.html" title="Node and Block definitions." alt="" coords="515,80,649,107"/>
+<area shape="rect" id="node36" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="601,229,719,256"/>
+<area shape="rect" id="node54" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="346,229,477,256"/>
+<area shape="rect" id="node63" href="$database__iface_8h.html" title="Database interface." alt="" coords="897,155,1089,181"/>
+<area shape="rect" id="node46" href="$errors_8h.html" title="The exceptions used by pstsdk." alt="" coords="469,304,605,331"/>
+</map>

@@ -1,0 +1,19 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="1862,80,1980,107"/>
+<area shape="rect" id="node124" href="$folder_8h.html" title="Folder objects." alt="" coords="1549,155,1683,181"/>
+<area shape="rect" id="node143" href="$message_8h.html" title="Message related classes." alt="" coords="2150,229,2303,256"/>
+<area shape="rect" id="node11" href="$database_8h.html" title="Database implementation." alt="" coords="457,453,615,480"/>
+<area shape="rect" id="node57" href="$node_8h.html" title="Node and Block definitions." alt="" coords="1590,528,1724,555"/>
+<area shape="rect" id="node72" href="$database__iface_8h.html" title="Database interface." alt="" coords="448,603,640,629"/>
+<area shape="rect" id="node86" href="$propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="1861,304,2008,331"/>
+<area shape="rect" id="node116" href="$nameid_8h.html" title="Named Property Lookup Map implementation." alt="" coords="1984,229,2125,256"/>
+<area shape="rect" id="node17" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="867,603,999,629"/>
+<area shape="rect" id="node25" href="$primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="1053,827,1211,853"/>
+<area shape="rect" id="node31" href="$errors_8h.html" title="The exceptions used by pstsdk." alt="" coords="145,752,281,779"/>
+<area shape="rect" id="node38" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="571,677,689,704"/>
+<area shape="rect" id="node52" href="$disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="1334,528,1463,555"/>
+<area shape="rect" id="node77" href="$page_8h.html" title="Page definitions." alt="" coords="742,528,876,555"/>
+<area shape="rect" id="node93" href="$object_8h.html" title="Property access base class." alt="" coords="1614,379,1748,405"/>
+<area shape="rect" id="node104" href="$heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="1387,453,1513,480"/>
+<area shape="rect" id="node133" href="$table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="1294,304,1420,331"/>
+</map>
