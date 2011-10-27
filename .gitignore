@@ -17,3 +17,4 @@ Release
 Testing
 CTestTestfile.cmake
 /doc/html
+/samples/pstvalues/values.h
