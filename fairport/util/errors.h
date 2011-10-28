@@ -1,5 +1,5 @@
 //! \file
-//! \brief The exceptions used by pstsdk
+//! \brief The exceptions used by Fairport
 //! \author Terry Mahaffey
 //! \ingroup util
 

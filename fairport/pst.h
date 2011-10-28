@@ -2,16 +2,25 @@
 //! \author Terry Mahaffey
 //! 
 //! \section main_intro Introduction
-//! This is the API Reference for the PST File Format SDK. This library is
-//! header only; meaning there is nothing to build or link to in order to use
-//! it - simply include the proper header file.
+//! This is the API Reference for Fairport. Fairport is a fork of PSTSDK, which
+//! is Microsoft's SDK for accessing PST files. 
 //!
-//! The SDK is organized into layers (represented as "Modules" in this
-//! reference). If you don't know where to start, there is a good chance you
+//! PSTSDK is distributed under the <a href="http://www.apache.org/licenses">
+//! Apache v2.0 License</a>. Fairport is based on PSTSDK, but any and all 
+//! Fairport modifications to are licensed under the 
+//! <a href="http://www.gnu.org/licenses/gpl.txt">GPL v3</a>. If you require 
+//! an Apache licensed library, you can either stick with PSTSDK proper or 
+//! contact me directly about alternative licensing for Fairport.
+//!
+//! Differences between Fairport and PSTSDK:
+//!		- Fairport is not associated with Microsoft, PSTSDK is
+//!		- Fairport is GPL, PSTSDK is Apache
+//!		- Fairport drops all pretense of write support
+//!		- Fairport plans on a richer API set at the PST layer
+//!
+//! Like PSTSDK, Fairport is organized into layers (represented as "Modules" in 
+//! this reference). If you don't know where to start, there is a good chance you
 //! can work in the "PST" Layer and ignore everything else.
-//!
-//! This project is distributed under the
-//! <a href="http://www.apache.org/licenses">Apache v2.0 License</a>.
 //!
 //! \section main_requirements System Requirements
 //! - Boost v1.42 or greater (older versions may work, but are untested). 
@@ -19,16 +28,17 @@
 //!      - Boost.Iostreams
 //!      - Boost.Iterators
 //!      - Boost.Utility
-//! - GCC 4.4.x (with -std=c++0x) or Visual Studio 2010
-//!
-//! Partial support is offered for some older versions of Visual Studio and
-//! GCC. See the <a href="http://pstsdk.codeplex.com">CodePlex site</a> for
-//! details.
+//! - libiconv (non-Windows)
+//! - GCC 4.4.x+ (Linux, Mac, Windows), VC9+ (Windows)
 //!
 //! \section main_getting_help Additional Documentation
-//! See the Documentation on the 
+//! See the original PSTSDK Documentation on the 
 //! <a href="http://pstsdk.codeplex.com">CodePlex site</a> for a series of 
-//! "Quick Start" guides; one for each layer. 
+//! "Quick Start" guides; one for each layer. It's still accurate for 
+//! Fairport. 
+//!
+//! The <a href="https://github.com/terrymah/Fairport/wiki">Fairport Wiki</a>
+//! will eventually contain information specific to Fairport.
 //!
 //! The [MS-PST] reference documentation is included in this distribution 
 //! in the "doc" directory, but it may be out of date. The latest version can
@@ -40,13 +50,14 @@
 //! directory may be of some value as sample code.
 //!
 //! \section main_help Getting Help
-//! The Discussions section of the
-//! <a href="http://pstsdk.codeplex.com">CodePlex site</a> is a good place
-//! to start for any questions or comments about the SDK. Please do not contact
-//! me directly with questions; instead post your question to the appropriate 
-//! discussion topic (or create one), and I'll do my best to answer there. This
-//! way, the question and answer will be publicly available for anyone having
-//! similar issues.
+//! For general PSTSDK questions, you can try the discussion section on the 
+//! <a href="http://pstsdk.codeplex.com">CodePlex site</a>. You can also
+//! try any other official support mechanism Microsoft may offer.
+//!
+//! There is currently no forum for Fairport specific questions. You can 
+//! try contacting me directly if you'd like to talk about me providing 
+//! technical support, or if you feel you've found a bug or have a feature
+//! request you can file an issue.
 //!
 //! \section main_bugs Bug Reports
 //! If you find a bug either in the SDK or the documentation, create a work 
@@ -54,14 +65,20 @@
 //! <a href="http://pstsdk.codeplex.com">CodePlex site</a>. Feel free to vote
 //! up existing issues you feel are important.
 //!
-//! \section main_contributions Contributing
-//! Contributions in the form of patches for either bug fixes or new features
-//! may be submitted in the Source Code section of the 
-//! <a href="http://pstsdk.codeplex.com">CodePlex site</a>
+//! Please use the <a href="https://github.com/terrymah/Fairport/issues">
+//! Issues</a> page for Fairport specific issues or feature requests.
 //!
-//! Contact me directly on CodePlex if you or your company is interested in
-//! becoming a top level developer on this project.
-
+//! \section main_contributions Contributing
+//! All contributions (in the form of code contributed back, pull requests,
+//! etc) must be Apache licensed or similar - despite Fairport itself being GPL
+//! licensed currently. I require this so I have the option of licensing
+//! Fairport itself whole via Apache (or similar) in the future. Perhaps it's
+//! a silly idea. We'll see how long it lasts.
+//!
+//! In the meantime, you are of course (and in fact, required) to publish and
+//! share any modifications you make under GPLv3, but I most likely will
+//! not merge them into Fairport proper.
+//!
 //! \defgroup pst PST Layer
 #ifndef FAIRPORT_PST_H
 #define FAIRPORT_PST_H

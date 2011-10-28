@@ -1,6 +1,0 @@
-file(GLOB sources *.cpp)
-add_executable(FAIRPORT_test ${sources})
-if(ICONV_LIBRARY)
-  target_link_libraries(FAIRPORT_test ${ICONV_LIBRARY})
-endif()
-add_test(NAME FAIRPORT_test COMMAND FAIRPORT_test)
