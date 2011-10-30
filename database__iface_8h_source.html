@@ -257,27 +257,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00403"></a>00403     <span class="keyword">virtual</span> std::tr1::shared_ptr&lt;subnode_block&gt; <a class="code" href="classfairport_1_1db__context.html#ac0bccdd386506109cef634bf8424800a" title="Open a subnode_block in this context.">read_subnode_block</a>(<span class="keyword">const</span> <a class="code" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a>&amp; parent, <span class="keyword">const</span> <a class="code" href="structfairport_1_1block__info.html" title="An in memory, database format agnostic version of disk::bbt_leaf_entry.">block_info</a>&amp; bi) = 0;
 <a name="l00411"></a>00411     <span class="keyword">virtual</span> std::tr1::shared_ptr&lt;subnode_leaf_block&gt; <a class="code" href="classfairport_1_1db__context.html#ac887f639325f10a439aea466732161d2" title="Open a subnode_leaf_block in this context.">read_subnode_leaf_block</a>(<span class="keyword">const</span> <a class="code" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a>&amp; parent, <span class="keyword">const</span> <a class="code" href="structfairport_1_1block__info.html" title="An in memory, database format agnostic version of disk::bbt_leaf_entry.">block_info</a>&amp; bi) = 0;
 <a name="l00419"></a>00419     <span class="keyword">virtual</span> std::tr1::shared_ptr&lt;subnode_nonleaf_block&gt; <a class="code" href="classfairport_1_1db__context.html#a6d94e025ae6d206e47ded5a4c81d5c9c" title="Open a subnode_nonleaf_block in this context.">read_subnode_nonleaf_block</a>(<span class="keyword">const</span> <a class="code" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a>&amp; parent, <span class="keyword">const</span> <a class="code" href="structfairport_1_1block__info.html" title="An in memory, database format agnostic version of disk::bbt_leaf_entry.">block_info</a>&amp; bi) = 0;
-<a name="l00421"></a>00421 
-<a name="l00423"></a>00423     std::tr1::shared_ptr&lt;external_block&gt; create_external_block(<span class="keywordtype">size_t</span> size) { <span class="keywordflow">return</span> create_external_block(shared_from_this(), size); }
-<a name="l00424"></a>00424     std::tr1::shared_ptr&lt;extended_block&gt; create_extended_block(std::tr1::shared_ptr&lt;external_block&gt;&amp; pblock) { <span class="keywordflow">return</span> create_extended_block(shared_from_this(), pblock); }
-<a name="l00425"></a>00425     std::tr1::shared_ptr&lt;extended_block&gt; create_extended_block(std::tr1::shared_ptr&lt;extended_block&gt;&amp; pblock) { <span class="keywordflow">return</span> create_extended_block(shared_from_this(), pblock); }
-<a name="l00426"></a>00426     std::tr1::shared_ptr&lt;extended_block&gt; create_extended_block(<span class="keywordtype">size_t</span> size) { <span class="keywordflow">return</span> create_extended_block(shared_from_this(), size); }
-<a name="l00427"></a>00427     <span class="keyword">virtual</span> std::tr1::shared_ptr&lt;external_block&gt; create_external_block(<span class="keyword">const</span> <a class="code" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a>&amp; parent, <span class="keywordtype">size_t</span> size) = 0;
-<a name="l00428"></a>00428     <span class="keyword">virtual</span> std::tr1::shared_ptr&lt;extended_block&gt; create_extended_block(<span class="keyword">const</span> <a class="code" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a>&amp; parent, std::tr1::shared_ptr&lt;external_block&gt;&amp; pblock) = 0;
-<a name="l00429"></a>00429     <span class="keyword">virtual</span> std::tr1::shared_ptr&lt;extended_block&gt; create_extended_block(<span class="keyword">const</span> <a class="code" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a>&amp; parent, std::tr1::shared_ptr&lt;extended_block&gt;&amp; pblock) = 0;
-<a name="l00430"></a>00430     <span class="keyword">virtual</span> std::tr1::shared_ptr&lt;extended_block&gt; create_extended_block(<span class="keyword">const</span> <a class="code" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a>&amp; parent, <span class="keywordtype">size_t</span> size) = 0;
-<a name="l00431"></a>00431 
-<a name="l00432"></a>00432     <span class="comment">// header functions</span>
-<a name="l00433"></a>00433     <span class="keyword">virtual</span> <a class="code" href="group__primitive.html#ga2be357498d9fb9b60cbd1c58533cf35a">block_id</a> alloc_bid(<span class="keywordtype">bool</span> is_internal) = 0;
-<a name="l00435"></a>00435     <span class="comment">// context support</span>
-<a name="l00436"></a>00436     <span class="comment">//virtual shared_db_ptr create_context() = 0;</span>
-<a name="l00437"></a>00437     <span class="comment">//virtual void save(const shared_db_ptr&amp; ctx) = 0;</span>
-<a name="l00438"></a>00438 };
-<a name="l00439"></a>00439 
-<a name="l00440"></a>00440 }
-<a name="l00441"></a>00441 
-<a name="l00442"></a>00442 <span class="preprocessor">#endif</span>
-<a name="l00443"></a>00443 <span class="preprocessor"></span>
+<a name="l00421"></a>00421 };
+<a name="l00422"></a>00422 
+<a name="l00423"></a>00423 }
+<a name="l00424"></a>00424 
+<a name="l00425"></a>00425 <span class="preprocessor">#endif</span>
+<a name="l00426"></a>00426 <span class="preprocessor"></span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -298,7 +283,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed Oct 26 2011 22:25:40 for Fairport by
+    <li class="footer">Generated on Sun Oct 30 2011 10:20:10 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

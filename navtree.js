@@ -41,7 +41,6 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Class List", "annotated.html", [
-      [ "fairport::alias_tag", "structfairport_1_1alias__tag.html", null ],
       [ "fairport::disk::amap_page< T >", "structfairport_1_1disk_1_1amap__page.html", null ],
       [ "fairport::attachment", "classfairport_1_1attachment.html", null ],
       [ "fairport::attachment_transform", "classfairport_1_1attachment__transform.html", null ],
@@ -173,7 +172,6 @@ var NAVTREE =
     ] ],
     [ "Class Index", "classes.html", null ],
     [ "Class Hierarchy", "hierarchy.html", [
-      [ "fairport::alias_tag", "structfairport_1_1alias__tag.html", null ],
       [ "fairport::attachment", "classfairport_1_1attachment.html", null ],
       [ "fairport::disk::bbt_leaf_entry< T >", "structfairport_1_1disk_1_1bbt__leaf__entry.html", null ],
       [ "fairport::block", "classfairport_1_1block.html", [
@@ -387,7 +385,6 @@ var NAVTREE =
       [ "fairport/ltp/object.h", "object_8h.html", null ],
       [ "fairport/ltp/propbag.h", "propbag_8h.html", null ],
       [ "fairport/ltp/table.h", "table_8h.html", null ],
-      [ "fairport/ndb/context.h", "context_8h.html", null ],
       [ "fairport/ndb/database.h", "database_8h.html", null ],
       [ "fairport/ndb/database_iface.h", "database__iface_8h.html", null ],
       [ "fairport/ndb/node.h", "node_8h.html", null ],

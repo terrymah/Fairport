@@ -153,12 +153,13 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1data__block.html#a3a6c6db4a92c78e49bb18a529f04b604">m_total_size</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">the total or logical size (sum of all external child blocks)  <a href="#a3a6c6db4a92c78e49bb18a529f04b604"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A block which represents end user data. </p>
 <p>This class is the base class of both <a class="el" href="classfairport_1_1extended__block.html">extended_block</a> and <a class="el" href="classfairport_1_1external__block.html">external_block</a>. This base class exists to abstract away their differences, so a node can treat a given block (be it extended or external) simply as a stream of bytes. </p>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00550">550</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00502">502</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a3a164c141360eb4cd165cffc1eae5dcd"></a><!-- doxytag: member="fairport::data_block::data_block" ref="a3a164c141360eb4cd165cffc1eae5dcd" args="(const shared_db_ptr &amp;db, const block_info &amp;info, size_t total_size)" -->
 <div class="memitem">
@@ -201,7 +202,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00557">557</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00509">509</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -219,7 +220,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00559">559</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00511">511</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -298,7 +299,7 @@ Protected Attributes</h2></td></tr>
 <p>Get the total logical size of this block. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The total logical size of this block </dd></dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00605">605</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00551">551</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +339,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The amount of data read </dd></dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l01060">1060</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00911">911</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -375,7 +376,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The type read </dd></dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l01076">1076</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00927">927</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -436,9 +437,10 @@ template&lt;typename T &gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
 <p>the total or logical size (sum of all external child blocks) </p>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00611">611</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00554">554</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -466,7 +468,7 @@ template&lt;typename T &gt; </div>
 </div>
 
 
-    <li class="footer">Generated on Wed Oct 26 2011 22:25:40 for Fairport by
+    <li class="footer">Generated on Sun Oct 30 2011 10:20:10 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

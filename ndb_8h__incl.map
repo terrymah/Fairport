@@ -5,7 +5,7 @@
 <area shape="rect" id="node70" href="$page_8h.html" title="Page definitions." alt="" coords="601,155,735,181"/>
 <area shape="rect" id="node9" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="651,229,783,256"/>
 <area shape="rect" id="node17" href="$primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="180,453,337,480"/>
-<area shape="rect" id="node23" href="$errors_8h.html" title="The exceptions used by pstsdk." alt="" coords="851,379,988,405"/>
+<area shape="rect" id="node23" href="$errors_8h.html" title="The exceptions used by Fairport." alt="" coords="851,379,988,405"/>
 <area shape="rect" id="node30" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="403,304,521,331"/>
 <area shape="rect" id="node44" href="$disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="61,155,189,181"/>
 </map>

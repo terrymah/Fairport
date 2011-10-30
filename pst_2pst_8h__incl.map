@@ -8,7 +8,7 @@
 <area shape="rect" id="node141" href="$message_8h.html" title="Message related classes." alt="" coords="1883,155,2036,181"/>
 <area shape="rect" id="node15" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="835,528,967,555"/>
 <area shape="rect" id="node23" href="$primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="989,752,1147,779"/>
-<area shape="rect" id="node29" href="$errors_8h.html" title="The exceptions used by pstsdk." alt="" coords="38,677,175,704"/>
+<area shape="rect" id="node29" href="$errors_8h.html" title="The exceptions used by Fairport." alt="" coords="38,677,175,704"/>
 <area shape="rect" id="node36" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="393,603,511,629"/>
 <area shape="rect" id="node50" href="$disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="1003,453,1132,480"/>
 <area shape="rect" id="node75" href="$page_8h.html" title="Page definitions." alt="" coords="590,453,724,480"/>

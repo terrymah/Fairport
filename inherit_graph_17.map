@@ -1,5 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$structfairport_1_1disk_1_1bt__page.html" title="fairport::disk::bt_page\&lt; T, bt_entry\&lt; T \&gt; \&gt;" alt="" coords="5,31,280,57"/>
-<area shape="rect" id="node3" href="$structfairport_1_1disk_1_1bbt__nonleaf__page.html" title="BBT non&#45;leaf page." alt="" coords="328,5,571,32"/>
-<area shape="rect" id="node5" href="$structfairport_1_1disk_1_1nbt__nonleaf__page.html" title="NBT non&#45;leaf page." alt="" coords="328,56,571,83"/>
+<area shape="rect" id="node1" href="$structfairport_1_1disk_1_1bt__page.html" title="The fundamental page structure which forms the basis of the two BTrees." alt="" coords="5,5,256,32"/>
 </map>

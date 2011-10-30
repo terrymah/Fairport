@@ -116,16 +116,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1heap.html#a68c704b4822d665eabf8ba7108cc250a">heap</a> (const <a class="el" href="classfairport_1_1node.html">node</a> &amp;n)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a heap object on a node.  <a href="#a68c704b4822d665eabf8ba7108cc250a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1heap.html#a0cf21c5a651d92300e648c7c26090570">heap</a> (const <a class="el" href="classfairport_1_1node.html">node</a> &amp;n, <a class="el" href="structfairport_1_1alias__tag.html">alias_tag</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a heap object on a node alias.  <a href="#a0cf21c5a651d92300e648c7c26090570"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1heap.html#a86f1100959320843feaf275cd8e0dba9">heap</a> (const <a class="el" href="classfairport_1_1node.html">node</a> &amp;n, <a class="el" href="group__primitive.html#gaa303d59ad33197b84bade8b453fa7eec">byte</a> client_sig)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a heap object on the specified node, and validate the client sig.  <a href="#a86f1100959320843feaf275cd8e0dba9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1heap.html#ab2ac58e31198344c0d7f308f4447ffe4">heap</a> (const <a class="el" href="classfairport_1_1node.html">node</a> &amp;n, <a class="el" href="group__primitive.html#gaa303d59ad33197b84bade8b453fa7eec">byte</a> client_sig, <a class="el" href="structfairport_1_1alias__tag.html">alias_tag</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a heap object on the specified node (alias), and validate the client sig.  <a href="#ab2ac58e31198344c0d7f308f4447ffe4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1heap.html#a23a68415ae428f8e4cb7dc732a71dade">heap</a> (const <a class="el" href="classfairport_1_1heap.html">heap</a> &amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="#a23a68415ae428f8e4cb7dc732a71dade"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1heap.html#a5cfbe60bf44db5341f759c0d5556b4cc">heap</a> (const <a class="el" href="classfairport_1_1heap.html">heap</a> &amp;other, <a class="el" href="structfairport_1_1alias__tag.html">alias_tag</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias constructor.  <a href="#a5cfbe60bf44db5341f759c0d5556b4cc"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1heap.html#abb38758ffaba69d0e82ca836aec1b6c3">heap</a> (<a class="el" href="classfairport_1_1heap.html">heap</a> &amp;&amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="#abb38758ffaba69d0e82ca836aec1b6c3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1heap.html#a45c86226acf62eb79adc57888dce0b83">size</a> (<a class="el" href="group__primitive.html#gaa097fc1b2332ee98dc8bb01365de74e8">heap_id</a> id) const </td></tr>
@@ -146,7 +140,7 @@ Public Member Functions</h2></td></tr>
 <p>Note a heap completely controls a node - you can not have multiple heaps per node. You can not use a node which has a heap on it for any other purpose beyond the heap interface. </p>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST 2.3.1] </dd></dl>
 
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00197">197</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00195">195</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a68c704b4822d665eabf8ba7108cc250a"></a><!-- doxytag: member="fairport::heap::heap" ref="a68c704b4822d665eabf8ba7108cc250a" args="(const node &amp;n)" -->
 <div class="memitem">
@@ -166,49 +160,12 @@ Public Member Functions</h2></td></tr>
 <p>Open a heap object on a node. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node to open on top of. It will be copied. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node to open on top of. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00202">202</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0cf21c5a651d92300e648c7c26090570"></a><!-- doxytag: member="fairport::heap::heap" ref="a0cf21c5a651d92300e648c7c26090570" args="(const node &amp;n, alias_tag)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">fairport::heap::heap </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classfairport_1_1node.html">node</a> &amp;&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structfairport_1_1alias__tag.html">alias_tag</a>&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Open a heap object on a node alias. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node to alias </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00206">206</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00200">200</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -246,63 +203,13 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node to open on top of. It will be copied. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node to open on top of. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">client_sig</td><td>Validate the heap has this value for the client sig </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00212">212</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab2ac58e31198344c0d7f308f4447ffe4"></a><!-- doxytag: member="fairport::heap::heap" ref="ab2ac58e31198344c0d7f308f4447ffe4" args="(const node &amp;n, byte client_sig, alias_tag)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">fairport::heap::heap </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classfairport_1_1node.html">node</a> &amp;&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="group__primitive.html#gaa303d59ad33197b84bade8b453fa7eec">byte</a>&#160;</td>
-          <td class="paramname"><em>client_sig</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structfairport_1_1alias__tag.html">alias_tag</a>&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Open a heap object on the specified node (alias), and validate the client sig. </p>
-<dl><dt><b>Exceptions:</b></dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classfairport_1_1sig__mismatch.html" title="An unexpected signature was encountered.">sig_mismatch</a></td><td>If the specified client_sig doesn't match what is in the node </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>The node to alias </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">client_sig</td><td>Validate the heap has this value for the client sig </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00218">218</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00206">206</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -329,44 +236,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00222">222</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5cfbe60bf44db5341f759c0d5556b4cc"></a><!-- doxytag: member="fairport::heap::heap" ref="a5cfbe60bf44db5341f759c0d5556b4cc" args="(const heap &amp;other, alias_tag)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">fairport::heap::heap </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classfairport_1_1heap.html">heap</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structfairport_1_1alias__tag.html">alias_tag</a>&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Alias constructor. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">other</td><td>The heap to alias. The constructed object will share a <a class="el" href="classfairport_1_1heap__impl.html" title="The HN implementation.">heap_impl</a> object with other. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00226">226</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00210">210</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -393,7 +263,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00232">232</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00216">216</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -415,7 +285,7 @@ Public Member Functions</h2></td></tr>
 <p>Each heap is stamped with a signature byte by it's creator. This value is used mostly for validation purposes by the client when opening the heap. </p>
 <dl class="see"><dt><b>See also:</b></dt><dd>heap_client_signature returns The client sig <a class="el" href="group__primitive.html#gaa303d59ad33197b84bade8b453fa7eec">byte</a> </dd></dl>
  
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00243">243</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00227">227</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -435,7 +305,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the node underlying this heap. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The node </dd></dl>
  
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00256">256</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00240">240</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -455,7 +325,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the node underlying this heap. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The node </dd></dl>
  
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00259">259</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00243">243</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -476,7 +346,7 @@ Public Member Functions</h2></td></tr>
 <p>This value has specific meaning to the owner of the heap. It may point to a special structure which contains information about the data structures implemented in this heap or the larger node and subnodes (such as the <a class="el" href="classfairport_1_1table.html">table</a>). Or, it could just point to the root BTH allocation (such as the <a class="el" href="classfairport_1_1property__bag.html">property_bag</a>). In any event, the heap itself gives no special meaning to this value. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The client's root allocation </dd></dl>
  
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00240">240</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00224">224</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -512,7 +382,7 @@ template&lt;typename K , typename V &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The BTH object </dd></dl>
  
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00264">264</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00248">248</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -543,7 +413,7 @@ template&lt;typename K , typename V &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A heap allocation stream device </dd></dl>
  
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00252">252</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00236">236</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -594,7 +464,7 @@ template&lt;typename K , typename V &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of bytes read </dd></dl>
  
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00246">246</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00230">230</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -627,7 +497,7 @@ template&lt;typename K , typename V &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The entire allocation </dd></dl>
  
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00249">249</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00233">233</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -660,7 +530,7 @@ template&lt;typename K , typename V &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The size of the allocation </dd></dl>
  
-<p>Definition at line <a class="el" href="heap_8h_source.html#l00237">237</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
+<p>Definition at line <a class="el" href="heap_8h_source.html#l00221">221</a> of file <a class="el" href="heap_8h_source.html">heap.h</a>.</p>
 
 </div>
 </div>
@@ -688,7 +558,7 @@ template&lt;typename K , typename V &gt; </div>
 </div>
 
 
-    <li class="footer">Generated on Wed Oct 26 2011 22:25:40 for Fairport by
+    <li class="footer">Generated on Sun Oct 30 2011 10:20:10 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

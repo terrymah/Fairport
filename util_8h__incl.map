@@ -1,6 +1,6 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="301,80,432,107"/>
 <area shape="rect" id="node11" href="$primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="288,229,446,256"/>
-<area shape="rect" id="node17" href="$errors_8h.html" title="The exceptions used by pstsdk." alt="" coords="405,155,542,181"/>
+<area shape="rect" id="node17" href="$errors_8h.html" title="The exceptions used by Fairport." alt="" coords="405,155,542,181"/>
 <area shape="rect" id="node24" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="668,80,786,107"/>
 </map>

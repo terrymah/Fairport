@@ -128,8 +128,6 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1node.html#ab61bb12bb470d732e3c4094c3f57cd39">node</a> (const std::tr1::shared_ptr&lt; <a class="el" href="classfairport_1_1node__impl.html">node_impl</a> &gt; &amp;container_node, const <a class="el" href="structfairport_1_1subnode__info.html">subnode_info</a> &amp;info)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1node.html#a5bc8535df756e6dcf999e38c34ebb88a">node</a> (const <a class="el" href="classfairport_1_1node.html">node</a> &amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy construct this node.  <a href="#a5bc8535df756e6dcf999e38c34ebb88a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1node.html#af34423c1dffacff53371dd82b4ff848c">node</a> (const <a class="el" href="classfairport_1_1node.html">node</a> &amp;other, <a class="el" href="structfairport_1_1alias__tag.html">alias_tag</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias constructor.  <a href="#af34423c1dffacff53371dd82b4ff848c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1node.html#a3232210140ec28a288ba0ab495cfc044">node</a> (<a class="el" href="classfairport_1_1node.html">node</a> &amp;&amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="#a3232210140ec28a288ba0ab495cfc044"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1node.html">node</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1node.html#aa5ec8dfc85c8e28b2bb613b1d99bada0">operator=</a> (const <a class="el" href="classfairport_1_1node.html">node</a> &amp;other)</td></tr>
@@ -163,11 +161,11 @@ Public Member Functions</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>An in memory representation of the "node" concept in a PST data file. </p>
 <p>A node is the primary abstraction exposed by the <a class="el" href="group__ndb.html">NDB Layer</a> to the upper layers. It's purpose is to abstract away the details of working with immutable blocks and subnode blocks. It can therefor be thought of simply as a mutable stream of bytes and a collection of sub nodes, themselves a mutable stream of bytes potentially with another collection of subnodes, etc.</p>
-<p>When using the <a class="el" href="classfairport_1_1node.html">node</a> class, think of it as creating an in memory "instance" of the node on the disk. You can have several in memory instances of the same node on disk. You can even have an <a class="el" href="structfairport_1_1alias__tag.html">alias</a> of another in memory instance, as is sometimes required when creating higher level abstractions.</p>
+<p>When using the <a class="el" href="classfairport_1_1node.html">node</a> class, think of it as creating an in memory "instance" of the node on the disk. You can have several in memory instances of the same node on disk. You can even have an alias of another in memory instance, as is sometimes required when creating higher level abstractions.</p>
 <p>There isn't much interesting to do with a node, you can query its size, read from a specific location, get it's id and parent id, iterate over subnodes, etc. Most of the interesting things are done by higher level abstractions which are built on top of and know specifically how to interpret the bytes in a node - such as the <a class="el" href="classfairport_1_1heap.html">heap</a>, <a class="el" href="classfairport_1_1table.html">table</a>, and <a class="el" href="classfairport_1_1property__bag.html">property_bag</a>. </p>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.2.1.1 </dd></dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00319">319</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00304">304</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="ab4ba4c59166c22b6c554e4855cead884"></a><!-- doxytag: member="fairport::node::subnode_iterator" ref="ab4ba4c59166c22b6c554e4855cead884" args="" -->
 <div class="memitem">
@@ -182,7 +180,7 @@ Public Member Functions</h2></td></tr>
 
 <p>A transform iterator, so we can expose the subnodes as a collection of nodes rather than <a class="el" href="structfairport_1_1subnode__info.html">subnode_info</a> objects. </p>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00324">324</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00309">309</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -221,7 +219,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00327">327</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00312">312</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -260,7 +258,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00335">335</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00320">320</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -298,7 +296,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00338">338</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00323">323</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -318,44 +316,6 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Copy construct this node. </p>
-<p>This node will be another instance of the specified node </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">other</td><td>The node to copy </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="node_8h_source.html#l00345">345</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="af34423c1dffacff53371dd82b4ff848c"></a><!-- doxytag: member="fairport::node::node" ref="af34423c1dffacff53371dd82b4ff848c" args="(const node &amp;other, alias_tag)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">fairport::node::node </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classfairport_1_1node.html">node</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structfairport_1_1alias__tag.html">alias_tag</a>&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Alias constructor. </p>
 <p>This node will be an alias of the specified node. They will refer to the same in memory object - they share a <a class="el" href="classfairport_1_1node__impl.html">node_impl</a> instance. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
@@ -364,7 +324,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00353">353</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00331">331</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -391,7 +351,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00359">359</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00337">337</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -412,7 +372,7 @@ Public Member Functions</h2></td></tr>
 <p>Returns the data block associated with this node. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A shared pointer to the data block </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00380">380</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00358">358</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -432,7 +392,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the block_id of the data block of this node. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The id </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00370">370</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00348">348</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -452,7 +412,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the id of this node. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The id </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00368">368</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00346">346</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -473,7 +433,7 @@ Public Member Functions</h2></td></tr>
 <dl class="note"><dt><b>Note:</b></dt><dd>In this context, a "page" is an external block </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of pages </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00430">430</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00395">395</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -501,7 +461,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The size of the page </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00427">427</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00392">392</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -522,7 +482,7 @@ Public Member Functions</h2></td></tr>
 <p>The parent id here is the field in the NBT. It is not the id of the container node, if any. Generally the parent id of a message will be a folder, etc. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The id, zero if this is a subnode </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00375">375</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00353">353</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -542,7 +502,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the block_id of the subnode block of this node. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The id </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00372">372</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00350">350</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -562,7 +522,7 @@ Public Member Functions</h2></td></tr>
 <p>Returns the subnode block associated with this node. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A shared pointer to the subnode block </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00383">383</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00361">361</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -582,7 +542,7 @@ Public Member Functions</h2></td></tr>
 <p>Tells you if this is a subnode. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this is a subnode, false otherwise </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00377">377</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00355">355</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -615,7 +575,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The subnode </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00461">461</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00426">426</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -640,7 +600,7 @@ Public Member Functions</h2></td></tr>
 </pre></div><p> Which can then be used as any iostream would be. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A node stream device for this node </dd></dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00421">421</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00386">386</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -668,7 +628,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>*this after the assignment is done </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00364">364</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00342">342</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -707,7 +667,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The amount of data read </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00387">387</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00365">365</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -743,7 +703,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The type read </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00390">390</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00368">368</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -790,7 +750,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The amount of data read </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00393">393</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00371">371</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -837,7 +797,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The type read </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00396">396</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00374">374</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -857,7 +817,7 @@ template&lt;typename T &gt; </div>
 <p>Returns the size of this node. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The node size </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00425">425</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00390">390</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -879,7 +839,7 @@ template&lt;typename T &gt; </div>
 <p>This is known as a proxy iterator because the dereferenced type is of type node, not node&amp; or const node&amp;. This means the object is an rvalue, constructed specifically for the purpose of being returned from this iterator. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The proxy iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00447">447</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00412">412</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -901,7 +861,7 @@ template&lt;typename T &gt; </div>
 <p>This is known as a proxy iterator because the dereferenced type is of type node, not node&amp; or const node&amp;. This means the object is an rvalue, constructed specifically for the purpose of being returned from this iterator. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The proxy iterator </dd></dl>
 
-<p>Definition at line <a class="el" href="node_8h_source.html#l00457">457</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00422">422</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -921,7 +881,7 @@ template&lt;typename T &gt; </div>
 <p>Returns an iterator positioned at first subnodeinfo. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An iterator over subnodeinfos </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00434">434</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00399">399</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -941,7 +901,7 @@ template&lt;typename T &gt; </div>
 <p>Returns an iterator positioned past the last subnodeinfo. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An iterator over subnodeinfos </dd></dl>
  
-<p>Definition at line <a class="el" href="node_8h_source.html#l00437">437</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
+<p>Definition at line <a class="el" href="node_8h_source.html#l00402">402</a> of file <a class="el" href="node_8h_source.html">node.h</a>.</p>
 
 </div>
 </div>
@@ -969,7 +929,7 @@ template&lt;typename T &gt; </div>
 </div>
 
 
-    <li class="footer">Generated on Wed Oct 26 2011 22:25:40 for Fairport by
+    <li class="footer">Generated on Sun Oct 30 2011 10:20:10 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
