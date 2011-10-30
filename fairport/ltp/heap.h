@@ -168,9 +168,7 @@ public:
 private:
     heap_impl();
     explicit heap_impl(const node& n);
-    heap_impl(const node& n, alias_tag);
     heap_impl(const node& n, byte client_sig);
-    heap_impl(const node& n, byte client_sig, alias_tag);
     heap_impl(const heap_impl& other) 
         : m_node(other.m_node) { }
 
@@ -198,32 +196,18 @@ class heap
 {
 public:
     //! \brief Open a heap object on a node
-    //! \param[in] n The node to open on top of. It will be copied.
+    //! \param[in] n The node to open on top of.
     explicit heap(const node& n)
         : m_pheap(new heap_impl(n)) { }
-    //! \brief Open a heap object on a node alias
-    //! \param[in] n The node to alias
-    heap(const node& n, alias_tag)
-        : m_pheap(new heap_impl(n, alias_tag())) { }
     //! \brief Open a heap object on the specified node, and validate the client sig
     //! \throws sig_mismatch If the specified client_sig doesn't match what is in the node
-    //! \param[in] n The node to open on top of. It will be copied.
+    //! \param[in] n The node to open on top of.
     //! \param[in] client_sig Validate the heap has this value for the client sig
     heap(const node& n, byte client_sig)
         : m_pheap(new heap_impl(n, client_sig)) { }
-    //! \brief Open a heap object on the specified node (alias), and validate the client sig
-    //! \throws sig_mismatch If the specified client_sig doesn't match what is in the node
-    //! \param[in] n The node to alias
-    //! \param[in] client_sig Validate the heap has this value for the client sig
-    heap(const node& n, byte client_sig, alias_tag)
-        : m_pheap(new heap_impl(n, client_sig, alias_tag())) { }
     //! \brief Copy constructor
     //! \param[in] other The heap to copy
     heap(const heap& other)
-        : m_pheap(new heap_impl(*(other.m_pheap))) { }
-    //! \brief Alias constructor
-    //! \param[in] other The heap to alias. The constructed object will share a heap_impl object with other.
-    heap(const heap& other, alias_tag)
         : m_pheap(other.m_pheap) { }
 
 #ifndef BOOST_NO_RVALUE_REFERENCES
@@ -550,34 +534,8 @@ inline fairport::heap_impl::heap_impl(const node& n)
 #endif
 }
 
-inline fairport::heap_impl::heap_impl(const node& n, alias_tag)
-: m_node(n, alias_tag())
-{
-    // need to throw if the node is smaller than first_header
-    disk::heap_first_header first_header = m_node.read<disk::heap_first_header>(0);
-
-#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
-    if(first_header.signature != disk::heap_signature)
-        throw sig_mismatch("invalid heap_sig", 0, n.get_id(), first_header.signature, disk::heap_signature);
-#endif
-}
-
 inline fairport::heap_impl::heap_impl(const node& n, byte client_sig)
 : m_node(n)
-{
-    // need to throw if the node is smaller than first_header
-    disk::heap_first_header first_header = m_node.read<disk::heap_first_header>(0);
-
-#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
-    if(first_header.signature != disk::heap_signature)
-        throw sig_mismatch("invalid heap_sig", 0, n.get_id(), first_header.signature, disk::heap_signature);
-#endif
-    if(first_header.client_signature != client_sig)
-        throw sig_mismatch("invalid client_sig", 0, n.get_id(), first_header.client_signature, client_sig);
-}
-
-inline fairport::heap_impl::heap_impl(const node& n, byte client_sig, alias_tag)
-: m_node(n, alias_tag())
 {
     // need to throw if the node is smaller than first_header
     disk::heap_first_header first_header = m_node.read<disk::heap_first_header>(0);

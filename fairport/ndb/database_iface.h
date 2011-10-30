@@ -418,23 +418,6 @@ public:
     //! \returns The requested block
     virtual std::tr1::shared_ptr<subnode_nonleaf_block> read_subnode_nonleaf_block(const shared_db_ptr& parent, const block_info& bi) = 0;
     //@}
-
-//! \cond write_api
-    std::tr1::shared_ptr<external_block> create_external_block(size_t size) { return create_external_block(shared_from_this(), size); }
-    std::tr1::shared_ptr<extended_block> create_extended_block(std::tr1::shared_ptr<external_block>& pblock) { return create_extended_block(shared_from_this(), pblock); }
-    std::tr1::shared_ptr<extended_block> create_extended_block(std::tr1::shared_ptr<extended_block>& pblock) { return create_extended_block(shared_from_this(), pblock); }
-    std::tr1::shared_ptr<extended_block> create_extended_block(size_t size) { return create_extended_block(shared_from_this(), size); }
-    virtual std::tr1::shared_ptr<external_block> create_external_block(const shared_db_ptr& parent, size_t size) = 0;
-    virtual std::tr1::shared_ptr<extended_block> create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<external_block>& pblock) = 0;
-    virtual std::tr1::shared_ptr<extended_block> create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<extended_block>& pblock) = 0;
-    virtual std::tr1::shared_ptr<extended_block> create_extended_block(const shared_db_ptr& parent, size_t size) = 0;
-
-    // header functions
-    virtual block_id alloc_bid(bool is_internal) = 0;
-//! \endcond
-    // context support
-    //virtual shared_db_ptr create_context() = 0;
-    //virtual void save(const shared_db_ptr& ctx) = 0;
 };
 
 }

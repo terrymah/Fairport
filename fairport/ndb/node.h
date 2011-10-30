@@ -164,20 +164,9 @@ public:
     //! \returns The amount of data read
     size_t read_raw(byte* pdest_buffer, size_t size, ulong offset) const;
 
-//! \cond write_api
-    size_t write(const std::vector<byte>& buffer, ulong offset);
-    template<typename T> void write(const T& obj, ulong offset);
-    size_t write(const std::vector<byte>& buffer, uint page_num, ulong offset);
-    template<typename T> void write(const T& obj, uint page_num, ulong offset);
-    size_t write_raw(const byte* pdest_buffer, size_t size, ulong offset);
-//! \endcond
-
     //! \brief Returns the size of this node
     //! \returns The node size
     size_t size() const;
-//! \cond write_api
-    size_t resize(size_t size);
-//! \endcond
 
     //! \brief Returns the size of a page in this node
     //! \note In this context, a "page" is an external block
@@ -257,7 +246,7 @@ private:
 //! implements a few key operations. This is the device for streaming out
 //! of a node.
 //! \ingroup ndb_noderelated
-class node_stream_device : public boost::iostreams::device<boost::iostreams::seekable>
+class node_stream_device : public boost::iostreams::device<boost::iostreams::input_seekable>
 {
 public:
     //! \brief Default construct the node stream device
@@ -268,10 +257,6 @@ public:
     //! \param[in] n The amount of data to read
     //! \returns The amount of data read
     std::streamsize read(char* pbuffer, std::streamsize n); 
-
-    //! \cond write_api
-    std::streamsize write(const char* pbuffer, std::streamsize n);
-    //! \endcond
 
     //! \brief Move the current position in the stream
     //! \param[in] off The offset to move the current position
@@ -340,17 +325,10 @@ public:
 
     //! \brief Copy construct this node
     //! 
-    //! This node will be another instance of the specified node
-    //! \param[in] other The node to copy
-    node(const node& other)
-        : m_pimpl(new node_impl(*other.m_pimpl)) { }
-
-    //! \brief Alias constructor
-    //!
     //! This node will be an alias of the specified node. They will refer to the
     //! same in memory object - they share a \ref node_impl instance.
     //! \param[in] other The node to alias
-    node(const node& other, alias_tag)
+    node(const node& other)
         : m_pimpl(other.m_pimpl) { }
 
 #ifndef BOOST_NO_RVALUE_REFERENCES
@@ -395,19 +373,6 @@ public:
     //! \copydoc node_impl::read(uint,ulong) const
     template<typename T> T read(uint page_num, ulong offset) const
         { return m_pimpl->read<T>(page_num, offset); }
-
-//! \cond write_api
-    size_t write(std::vector<byte>& buffer, ulong offset) 
-        { return m_pimpl->write(buffer, offset); }
-    template<typename T> void write(const T& obj, ulong offset)
-        { return m_pimpl->write<T>(obj, offset); }
-    size_t write(std::vector<byte>& buffer, uint page_num, ulong offset) 
-        { return m_pimpl->write(buffer, page_num, offset); }
-    template<typename T> void write(const T& obj, uint page_num, ulong offset)
-        { return m_pimpl->write<T>(obj, page_num, offset); }
-    size_t resize(size_t size)
-        { return m_pimpl->resize(size); }
-//! \endcond
 
     //! \brief Creates a stream device over this node
     //!
@@ -497,11 +462,6 @@ public:
     block(const shared_db_ptr& db, const block_info& info)
         : m_modified(false), m_size(info.size), m_id(info.id), m_address(info.address), m_db(db) { }
 
-//! \cond write_api
-    block(const block& other)
-        : m_modified(false), m_size(other.m_size), m_id(0), m_address(0), m_db(other.m_db) { }
-//! \endcond
-
     virtual ~block() { }
 
     //! \brief Returns the blocks internal/external state
@@ -511,9 +471,6 @@ public:
     //! \brief Get the last known size of this block on disk
     //! \returns The last known size of this block on disk
     size_t get_disk_size() const { return m_size; }
-//! \cond write_api
-    void set_disk_size(size_t new_size) { m_size = new_size; }    
-//! \endcond
 
     //! \brief Get the block_id of this block
     //! \returns The block_id of this block
@@ -522,11 +479,6 @@ public:
     //! \brief Get the address of this block on disk
     //! \returns The address of this block, 0 for a new block.
     ulonglong get_address() const { return m_address; }
-//! \cond write_api
-    void set_address(ulonglong new_address) { m_address = new_address; }
-    
-    void touch();
-//! \endcond
 
 protected:
     shared_db_ptr get_db_ptr() const { return shared_db_ptr(m_db); }
@@ -582,12 +534,6 @@ public:
     //! \returns The amount of data read
     virtual size_t read_raw(byte* pdest_buffer, size_t size, ulong offset) const = 0;
 
-//! \cond write_api
-    size_t write(const std::vector<byte>& buffer, ulong offset, std::tr1::shared_ptr<data_block>& presult);
-    template<typename T> void write(const T& buffer, ulong offset, std::tr1::shared_ptr<data_block>& presult);
-    virtual size_t write_raw(const byte* psrc_buffer, size_t size, ulong offset, std::tr1::shared_ptr<data_block>& presult) = 0;
-//! \endcond
-
     //! \brief Get the number of physical pages in this data_block
     //! \note In this context, "page" refers to an external_block
     //! \returns The total number of external_blocks under this data_block
@@ -603,9 +549,6 @@ public:
     //! \brief Get the total logical size of this block
     //! \returns The total logical size of this block
     size_t get_total_size() const { return m_total_size; }
-//! \cond write_api
-    virtual size_t resize(size_t size, std::tr1::shared_ptr<data_block>& presult) = 0;
-//! \endcond
 
 protected:
     size_t m_total_size;    //!< the total or logical size (sum of all external child blocks)
@@ -645,31 +588,10 @@ public:
         : data_block(db, info, total_size), m_child_max_total_size(child_max_total_size), m_child_max_page_count(child_page_max_count), m_max_page_count(page_max_count), m_level(level), m_block_info(bi), m_child_blocks(m_block_info.size()) { }
 #endif
 
-//! \cond write_api
-    // new block constructors
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    extended_block(const shared_db_ptr& db, ushort level, size_t total_size, size_t child_max_total_size, ulong page_max_count, ulong child_page_max_count, std::vector<std::tr1::shared_ptr<data_block> > child_blocks)
-        : data_block(db, block_info(), total_size), m_child_max_total_size(child_max_total_size), m_child_max_page_count(child_page_max_count), m_max_page_count(page_max_count), m_level(level), m_child_blocks(std::move(child_blocks))
-        { m_block_info.resize(m_child_blocks.size()); touch(); }
-#else
-    extended_block(const shared_db_ptr& db, ushort level, size_t total_size, size_t child_max_total_size, ulong page_max_count, ulong child_page_max_count, const std::vector<std::tr1::shared_ptr<data_block> >& child_blocks)
-        : data_block(db, block_info(), total_size), m_child_max_total_size(child_max_total_size), m_child_max_page_count(child_page_max_count), m_max_page_count(page_max_count), m_level(level), m_child_blocks(child_blocks)
-        { m_block_info.resize(m_child_blocks.size()); touch(); }
-#endif
-    extended_block(const shared_db_ptr& db, ushort level, size_t total_size, size_t child_max_total_size, ulong page_max_count, ulong child_page_max_count);
-//! \endcond
-
     size_t read_raw(byte* pdest_buffer, size_t size, ulong offset) const;
-//! \cond write_api
-    size_t write_raw(const byte* psrc_buffer, size_t size, ulong offset, std::tr1::shared_ptr<data_block>& presult);
-//! \endcond
     
     uint get_page_count() const;
     std::tr1::shared_ptr<external_block> get_page(uint page_num) const;
-    
-//! \cond write_api
-    size_t resize(size_t size, std::tr1::shared_ptr<data_block>& presult);
-//! \endcond
     
     //! \brief Get the "level" of this extended_block
     //! 
@@ -720,24 +642,10 @@ public:
         : data_block(db, info, info.size), m_max_size(max_size), m_buffer(buffer) { }
 #endif
 
-//! \cond write_api
-    // new block constructors
-    external_block(const shared_db_ptr& db, size_t max_size, size_t current_size)
-        : data_block(db, block_info(), current_size), m_max_size(max_size), m_buffer(current_size)
-        { touch(); }
-//! \endcond
-
     size_t read_raw(byte* pdest_buffer, size_t size, ulong offset) const;
-//! \cond write_api
-    size_t write_raw(const byte* psrc_buffer, size_t size, ulong offset, std::tr1::shared_ptr<data_block>& presult);
-//! \endcond
 
     uint get_page_count() const { return 1; }
     std::tr1::shared_ptr<external_block> get_page(uint page_num) const;
-
-//! \cond write_api
-    size_t resize(size_t size, std::tr1::shared_ptr<data_block>& presult);
-//! \endcond
 
     bool is_internal() const { return false; }
 
@@ -929,41 +837,6 @@ inline T fairport::node_impl::read(uint page_num, ulong offset) const
     return ensure_data_block()->get_page(page_num)->read<T>(offset); 
 }
 
-//! \cond write_api
-inline size_t fairport::node_impl::write(const std::vector<byte>& buffer, ulong offset)
-{
-    return ensure_data_block()->write(buffer, offset, m_pdata);
-}
-
-inline size_t fairport::node_impl::write_raw(const byte* pdest_buffer, size_t size, ulong offset)
-{
-    ensure_data_block();
-    return m_pdata->write_raw(pdest_buffer, size, offset, m_pdata);
-}
-
-template<typename T> 
-inline void fairport::node_impl::write(const T& obj, ulong offset)
-{
-    return ensure_data_block()->write<T>(obj, offset, m_pdata);
-}
-
-inline size_t fairport::node_impl::write(const std::vector<byte>& buffer, uint page_num, ulong offset)
-{
-    return ensure_data_block()->write(buffer, page_num * get_page_size(0) + offset, m_pdata);
-}
-
-template<typename T> 
-inline void fairport::node_impl::write(const T& obj, uint page_num, ulong offset)
-{
-    return ensure_data_block()->write<T>(obj, page_num * get_page_size(0) + offset, m_pdata);
-}
-
-inline size_t fairport::node_impl::resize(size_t size)
-{
-    return ensure_data_block()->resize(size, m_pdata);
-}
-//! \endcond
-
 inline fairport::data_block* fairport::node_impl::ensure_data_block() const
 { 
     if(!m_pdata) 
@@ -980,19 +853,6 @@ inline fairport::subnode_block* fairport::node_impl::ensure_sub_block() const
     return m_psub.get();
 }
 
-//! \cond write_api
-inline void fairport::block::touch()
-{ 
-    if(!m_modified)
-    {
-        m_modified = true; 
-        m_address = 0;
-        m_size = 0;
-        m_id = get_db_ptr()->alloc_bid(is_internal()); 
-    }
-}
-//! \endcond
-
 inline std::streamsize fairport::node_stream_device::read(char* pbuffer, std::streamsize n)
 {
     size_t read = m_pnode->read_raw(reinterpret_cast<byte*>(pbuffer), static_cast<size_t>(n), static_cast<size_t>(m_pos));
@@ -1003,15 +863,6 @@ inline std::streamsize fairport::node_stream_device::read(char* pbuffer, std::st
     else
         return -1;
 }
-
-//! \cond write_api
-inline std::streamsize fairport::node_stream_device::write(const char* pbuffer, std::streamsize n)
-{
-    size_t written = m_pnode->write_raw(reinterpret_cast<const byte*>(pbuffer), static_cast<size_t>(n), static_cast<size_t>(m_pos));
-    m_pos += written;
-    return written;
-}
-//! \endcond
 
 inline std::streampos fairport::node_stream_device::seek(boost::iostreams::stream_offset off, std::ios_base::seekdir way)
 {
@@ -1086,34 +937,6 @@ inline T fairport::data_block::read(ulong offset) const
     return t;
 }
 
-//! \cond write_api
-inline size_t fairport::data_block::write(const std::vector<byte>& buffer, ulong offset, std::tr1::shared_ptr<data_block>& presult)
-{
-    size_t write_size = buffer.size();
-    
-    if(write_size > 0)
-    {
-        if(offset >= get_total_size())
-            throw std::out_of_range("offset >= size()");
-
-        write_size = write_raw(&buffer[0], write_size, offset, presult);
-    }
-
-    return write_size;
-}
-
-template<typename T> 
-void fairport::data_block::write(const T& buffer, ulong offset, std::tr1::shared_ptr<data_block>& presult)
-{
-    if(offset >= get_total_size())
-        throw std::out_of_range("offset >= size()");
-    if(sizeof(T) + offset > get_total_size())
-        throw std::out_of_range("sizeof(T) + offset >= size()");
-
-    (void)write_raw(reinterpret_cast<const byte*>(&buffer), sizeof(T), offset, presult);
-}
-//! \endcond
-
 inline fairport::uint fairport::extended_block::get_page_count() const
 {
     assert(m_child_max_total_size % m_child_max_page_count == 0);
@@ -1124,21 +947,6 @@ inline fairport::uint fairport::extended_block::get_page_count() const
     return page_count;
 }
 
-//! \cond write_api
-inline fairport::extended_block::extended_block(const shared_db_ptr& db, ushort level, size_t total_size, size_t child_max_total_size, ulong page_max_count, ulong child_page_max_count)
-: data_block(db, block_info(), total_size), m_child_max_total_size(child_max_total_size), m_child_max_page_count(child_page_max_count), m_max_page_count(page_max_count), m_level(level)
-{
-    int total_subblocks = total_size / m_child_max_total_size;
-    if(total_size % m_child_max_total_size != 0)
-        total_subblocks++;
-
-    m_child_blocks.resize(total_subblocks);
-    m_block_info.resize(total_subblocks, 0);
-
-    touch();
-}
-//! \endcond
-
 inline fairport::data_block* fairport::extended_block::get_child_block(uint index) const
 {
     if(index >= m_child_blocks.size())
@@ -1146,15 +954,7 @@ inline fairport::data_block* fairport::extended_block::get_child_block(uint inde
 
     if(m_child_blocks[index] == NULL)
     {
-        if(m_block_info[index] == 0)
-        {
-            if(get_level() == 1)
-                m_child_blocks[index] = get_db_ptr()->create_external_block(m_child_max_total_size);
-            else
-                m_child_blocks[index] = get_db_ptr()->create_extended_block(m_child_max_total_size);
-        }
-        else
-            m_child_blocks[index] = get_db_ptr()->read_data_block(m_block_info[index]);
+	    m_child_blocks[index] = get_db_ptr()->read_data_block(m_block_info[index]);
     }
 
     return m_child_blocks[index].get();
@@ -1187,37 +987,6 @@ inline size_t fairport::external_block::read_raw(byte* pdest_buffer, size_t size
 
     return read_size;
 }
-
-//! \cond write_api
-inline size_t fairport::external_block::write_raw(const byte* psrc_buffer, size_t size, ulong offset, std::tr1::shared_ptr<data_block>& presult)
-{
-    std::tr1::shared_ptr<fairport::external_block> pblock = shared_from_this();
-    if(pblock.use_count() > 2) // one for me, one for the caller
-    {
-        std::tr1::shared_ptr<fairport::external_block> pnewblock(new external_block(*this));
-        return pnewblock->write_raw(psrc_buffer, size, offset, presult);
-    }
-    touch(); // mutate ourselves inplace
-
-    assert(offset <= get_total_size());
-
-    size_t write_size = size;
-
-    if(offset + size > get_total_size())
-        write_size = get_total_size() - offset;
-
-    memcpy(&m_buffer[0]+offset, psrc_buffer, write_size);
-
-    // assign out param
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    presult = std::move(pblock);
-#else
-    presult = pblock;
-#endif
-
-    return write_size;
-}
-//! \endcond
 
 inline size_t fairport::extended_block::read_raw(byte* pdest_buffer, size_t size, ulong offset) const
 {
@@ -1252,145 +1021,6 @@ inline size_t fairport::extended_block::read_raw(byte* pdest_buffer, size_t size
 
     return total_bytes_read;
 }
-
-//! \cond write_api
-inline size_t fairport::extended_block::write_raw(const byte* psrc_buffer, size_t size, ulong offset, std::tr1::shared_ptr<data_block>& presult)
-{
-    std::tr1::shared_ptr<extended_block> pblock = shared_from_this();
-    if(pblock.use_count() > 2) // one for me, one for the caller
-    {
-        std::tr1::shared_ptr<extended_block> pnewblock(new extended_block(*this));
-        return pnewblock->write_raw(psrc_buffer, size, offset, presult);
-    }
-    touch(); // mutate ourselves inplace
-
-    assert(offset <= get_total_size());
-
-    if(offset + size > get_total_size())
-        size = get_total_size() - offset;
-
-    const byte* pend = psrc_buffer + size;
-    size_t total_bytes_written = 0;
-
-    while(psrc_buffer != pend)
-    {
-        // the child this read starts on
-        uint child_pos = offset / m_child_max_total_size;
-        // offset into the child block this read starts on
-        ulong child_offset = offset % m_child_max_total_size;
-
-        // call into our child to write the data
-        size_t bytes_written = get_child_block(child_pos)->write_raw(psrc_buffer, size, child_offset, m_child_blocks[child_pos]);
-        assert(bytes_written <= size);
-    
-        // adjust pointers accordingly
-        psrc_buffer += bytes_written;
-        offset += bytes_written;
-        size -= bytes_written;
-        total_bytes_written += bytes_written;
-
-        assert(psrc_buffer <= pend);
-    }
-
-    // assign out param
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    presult = std::move(pblock);
-#else
-    presult = pblock;
-#endif
-
-    return total_bytes_written;
-}
-
-inline size_t fairport::external_block::resize(size_t size, std::tr1::shared_ptr<data_block>& presult)
-{
-    std::tr1::shared_ptr<external_block> pblock = shared_from_this();
-    if(pblock.use_count() > 2) // one for me, one for the caller
-    {
-        std::tr1::shared_ptr<external_block> pnewblock(new external_block(*this));
-        return pnewblock->resize(size, presult);
-    }
-    touch(); // mutate ourselves inplace
-
-    m_buffer.resize(size > m_max_size ? m_max_size : size);
-    m_total_size = m_buffer.size();
-
-    if(size > get_max_size())
-    {
-        // we need to create an extended_block with us as the first entry
-        std::tr1::shared_ptr<extended_block> pnewxblock = get_db_ptr()->create_extended_block(pblock);
-        return pnewxblock->resize(size, presult);
-    }
-
-    // assign out param
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    presult = std::move(pblock);
-#else
-    presult = pblock;
-#endif
-
-    return size;
-}
-
-inline size_t fairport::extended_block::resize(size_t size, std::tr1::shared_ptr<data_block>& presult)
-{
-    // calculate the number of subblocks needed
-    uint old_num_subblocks = m_block_info.size();
-    uint num_subblocks = size / m_child_max_total_size;
-    
-    if(size % m_child_max_total_size != 0)
-        num_subblocks++;
-
-    if(num_subblocks > m_max_page_count)
-        num_subblocks = m_max_page_count;
-
-    // defer to child if it's 1 (or less)
-    assert(!m_child_blocks.empty());
-    if(num_subblocks < 2)
-        return get_child_block(0)->resize(size, presult);
-
-    std::tr1::shared_ptr<extended_block> pblock = shared_from_this();
-    if(pblock.use_count() > 2) // one for me, one for the caller
-    {
-        std::tr1::shared_ptr<extended_block> pnewblock(new extended_block(*this));
-        return pnewblock->resize(size, presult);
-    }
-    touch(); // mutate ourselves inplace
-
-    // set the total number of subblocks needed
-    m_block_info.resize(num_subblocks, 0);
-    m_child_blocks.resize(num_subblocks);
-
-    if(old_num_subblocks < num_subblocks)
-        get_child_block(old_num_subblocks-1)->resize(m_child_max_total_size, m_child_blocks[old_num_subblocks-1]);
-
-    // size the last subblock appropriately
-    size_t last_child_size = size - (num_subblocks-1) * m_child_max_total_size;
-    get_child_block(num_subblocks-1)->resize(last_child_size, m_child_blocks[num_subblocks-1]);
-
-    if(size > get_max_size())
-    {
-        m_total_size = get_max_size();
-
-        if(get_level() == 2)
-            throw can_not_resize("size > max_size");
-
-        // we need to create a level 2 extended_block with us as the first entry
-        std::tr1::shared_ptr<extended_block> pnewxblock = get_db_ptr()->create_extended_block(pblock);
-        return pnewxblock->resize(size, presult);
-    }
-    
-    // assign out param
-    m_total_size = size;
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    presult = std::move(pblock);
-#else
-    presult = pblock;
-#endif
-
-    return size;
-}
-//! \endcond
 
 inline fairport::const_subnodeinfo_iterator fairport::node_impl::subnode_info_begin() const
 {

@@ -35,10 +35,6 @@ typedef std::tr1::shared_ptr<const table_impl> const_table_ptr;
 //! \param[in] n The node to copy and interpret as a TC
 //! \ingroup ltp_objectrelated
 table_ptr open_table(const node& n);
-//! \brief Open the specified node as a table
-//! \param[in] n The node to alias and interpret as a TC
-//! \ingroup ltp_objectrelated
-table_ptr open_table(const node&, alias_tag);
 
 //! \brief An abstraction of a table row
 //!
@@ -256,9 +252,7 @@ public:
 
 private:
     friend table_ptr open_table(const node& n);
-    friend table_ptr open_table(const node& n, alias_tag);
     basic_table(const node& n);
-    basic_table(const node& n, alias_tag);
 
     std::tr1::shared_ptr<bth_node<row_id, T> > m_prows;
 
@@ -313,15 +307,9 @@ public:
     //! \brief Construct a table from this node
     //! \param[in] n The node to copy and interpret as a table
     explicit table(const node& n);
-    //! \brief Construct a table from this node
-    //! \param[in] n The node to alias and interpret as a table
-    table(const node& n, alias_tag);
     //! \brief Copy constructor
     //! \param[in] other The table to copy
-    table(const table& other);
-    //! \brief Alias constructor
-    //! \param[in] other The table to alias
-    table(const table& other, alias_tag)
+    table(const table& other)
         : m_ptable(other.m_ptable) { }
 
     //! \copydoc table_impl::operator[]()
@@ -393,27 +381,6 @@ inline fairport::table_ptr fairport::open_table(const node& n)
        return table_ptr(new small_table(n));
 }
 
-inline fairport::table_ptr fairport::open_table(const node& n, alias_tag)
-{
-    if(n.get_id() == nid_all_message_search_contents)
-    {
-        //return table_ptr(new gust(n));
-        throw not_implemented("gust table");
-    }
-
-    heap h(n);
-    std::vector<byte> table_info = h.read(h.get_root_id());
-    disk::tc_header* pheader = (disk::tc_header*)&table_info[0];
-
-    std::vector<byte> bth_info = h.read(pheader->row_btree_id);
-    disk::bth_header* pbthheader = (disk::bth_header*)&bth_info[0];
-
-    if(pbthheader->entry_size == 4)
-       return table_ptr(new large_table(n, alias_tag()));
-    else
-       return table_ptr(new small_table(n, alias_tag()));
-}
-
 inline std::vector<fairport::prop_id> fairport::const_table_row::get_prop_list() const
 {
     std::vector<prop_id> columns = m_table->get_prop_list();
@@ -482,37 +449,6 @@ template<typename T>
 inline fairport::basic_table<T>::basic_table(const node& n)
 {
     heap h(n, disk::heap_sig_tc);
-
-    std::vector<byte> table_info = h.read(h.get_root_id());
-    disk::tc_header* pheader = (disk::tc_header*)&table_info[0];
-
-#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
-    if(pheader->signature != disk::heap_sig_tc)
-        throw sig_mismatch("heap_sig_tc expected", 0, n.get_id(), pheader->signature, disk::heap_sig_tc);
-#endif
-
-    m_prows = h.open_bth<row_id, T>(pheader->row_btree_id);
-
-    for(int i = 0; i < pheader->num_columns; ++i)
-        m_columns[pheader->columns[i].id] = pheader->columns[i];
-
-    for(int i = 0; i < disk::tc_offsets_max; ++i)
-        m_offsets[i] = pheader->size_offsets[i];
-
-    if(is_subnode_id(pheader->row_matrix_id))
-    {
-        m_pnode_rowarray.reset(new node(n.lookup(pheader->row_matrix_id)));
-    }
-    else if(pheader->row_matrix_id)
-    {
-        m_vec_rowarray = h.read(pheader->row_matrix_id);
-    }
-}
-
-template<typename T>
-inline fairport::basic_table<T>::basic_table(const node& n, alias_tag)
-{
-    heap h(n, disk::heap_sig_tc, alias_tag());
 
     std::vector<byte> table_info = h.read(h.get_root_id());
     disk::tc_header* pheader = (disk::tc_header*)&table_info[0];
@@ -726,11 +662,6 @@ inline bool fairport::basic_table<T>::prop_exists(ulong row, prop_id id) const
 inline fairport::table::table(const node& n)
 {
     m_ptable = open_table(n);
-}
-
-inline fairport::table::table(const table& other)
-{
-    m_ptable = open_table(other.m_ptable->get_node());
 }
 
 #endif

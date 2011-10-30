@@ -94,20 +94,6 @@ typedef ushort prop_id;
 typedef ulong row_id;
 /*! @} */
 
-//! \brief Tag structure used to indicate a copy constructed class should be
-//! an alias (shallow copy) rather than a deep copy
-//!
-//! When you copy construct an object with the alias tag, changes to the 
-//! alias object also are reflected in the original object. When you copy
-//! construct without an alias tag, you have two unique instances of the object
-//! and changes in either object are not reflected in the other.
-//!
-//! In either case both objects refer to the same physical item on disk - the
-//! alias tag only affects the in memory behavior.
-//!
-//! \ingroup primitive
-struct alias_tag { };
-
 //
 // node id
 //

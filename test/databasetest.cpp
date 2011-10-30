@@ -126,24 +126,6 @@ void test_node_impl(fairport::node& n, size_t expected)
 }
 
 template<typename T>
-void test_node_resize(fairport::node n)
-{
-    // ramp up
-    for(size_t i = 1000; i < 10000000; i += step_size_up(i))
-    {
-        n.resize(i);
-        test_node_impl<T>(n, i);
-    }
-
-    // ramp down
-    for(size_t i = 10000000; i > 0; i -= step_size_down(i))
-    {
-        n.resize(i);
-        test_node_impl<T>(n, i);
-    }
-}
-
-template<typename T>
 void test_node_stream(fairport::node n)
 {
     using namespace std;
@@ -238,8 +220,6 @@ void test_db()
         fairport::node n(db_2, *iter);
         process_node(n);
     }
-    test_node_resize<ulonglong>(db_2->lookup_node(nid_message_store));
-    test_node_stream<ulonglong>(db_2->lookup_node(nid_message_store));
 
     block = 0;
     std::tr1::shared_ptr<const bbt_page> bbt_root = db_2->read_bbt_root();
@@ -263,7 +243,6 @@ void test_db()
         fairport::node n(db_3, *iter);
         process_node(n);
     }
-    test_node_resize<fairport::ulong>(db_3->lookup_node(nid_message_store));
     test_node_stream<fairport::ulong>(db_2->lookup_node(nid_message_store));
 
     block = 0;

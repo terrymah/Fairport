@@ -46,16 +46,6 @@ public:
     //! \returns The amount of data read
     size_t read(std::vector<byte>& buffer, ulonglong offset) const;
 
-//! \cond write_api
-
-    //! \brief Write to the file
-    //! \throw out_of_range if the requested location or location+size is past EOF
-    //! \param[in] buffer The data to write. The size of this vector is the amount of data to write.
-    //! \param[in] offset The location on disk to read the data from.
-    //! \returns The amount of data written
-    size_t write(const std::vector<byte>& buffer, ulonglong offset);
-//! \endcond
-
 private:
     std::wstring m_filename;    //!< The filename used to open this file
     FILE * m_pfile;             //!< The file pointer
@@ -163,27 +153,6 @@ inline size_t fairport::file::read(std::vector<byte>& buffer, ulonglong offset) 
 
     return read;
 }
-
-//! \cond write_api
-inline size_t fairport::file::write(const std::vector<byte>& buffer, ulonglong offset)
-{
-#ifdef _MSC_VER
-    if(_fseeki64(m_pfile, offset, SEEK_SET) != 0)
-#else
-    if(fseek(m_pfile, offset, SEEK_SET) != 0)
-#endif
-    {
-        throw std::out_of_range("fseek failed");
-    }
-
-    size_t write = fwrite(&buffer[0], 1, buffer.size(), m_pfile);
-
-    if(write != buffer.size())
-        throw std::out_of_range("fwrite failed");
-
-    return write;
-}
-//! \endcond
 
 inline time_t fairport::filetime_to_time_t(ulonglong filetime)
 {

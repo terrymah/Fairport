@@ -43,21 +43,12 @@ public:
     //! \brief Construct a property_bag from this node
     //! \param[in] n The node to copy and interpret as a property_bag
     explicit property_bag(const node& n);
-    //! \brief Construct a property_bag from this node
-    //! \param[in] n The node to alias and interpret as a property_bag
-    property_bag(const node& n, alias_tag);
     //! \brief Construct a property_bag from this heap
     //! \param[in] h The heap to copy and interpret as a property_bag
     explicit property_bag(const heap& h);
-    //! \brief Construct a property_bag from this heap
-    //! \param[in] h The heap to alias and interpret as a property_bag
-    property_bag(const heap& h, alias_tag);
     //! \brief Copy construct a property_bag
     //! \param other The property bag to copy
     property_bag(const property_bag& other);
-    //! \brief Alias a property_bag
-    //! \param other The property bag to alias
-    property_bag(const property_bag& other, alias_tag);
 
 #ifndef BOOST_NO_RVALUE_REFERENCES
     //! \brief Move construct a property_bag
@@ -104,13 +95,6 @@ inline fairport::property_bag::property_bag(const fairport::node& n)
     m_pbth = h.open_bth<prop_id, disk::prop_entry>(h.get_root_id());
 }
 
-inline fairport::property_bag::property_bag(const fairport::node& n, alias_tag)
-{
-    heap h(n, disk::heap_sig_pc, alias_tag());
-
-    m_pbth = h.open_bth<prop_id, disk::prop_entry>(h.get_root_id());
-}
-
 inline fairport::property_bag::property_bag(const fairport::heap& h)
 {
 #ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
@@ -123,28 +107,9 @@ inline fairport::property_bag::property_bag(const fairport::heap& h)
     m_pbth = my_heap.open_bth<prop_id, disk::prop_entry>(my_heap.get_root_id());
 }
 
-inline fairport::property_bag::property_bag(const fairport::heap& h, alias_tag)
-{
-#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK
-    if(h.get_client_signature() != disk::heap_sig_pc)
-        throw sig_mismatch("expected heap_sig_pc", 0, h.get_node().get_id(), h.get_client_signature(), disk::heap_sig_pc);
-#endif
-
-    heap my_heap(h, alias_tag());
-
-    m_pbth = my_heap.open_bth<prop_id, disk::prop_entry>(my_heap.get_root_id());
-}
-
 inline fairport::property_bag::property_bag(const property_bag& other)
 {
     heap h(other.m_pbth->get_node());
-
-    m_pbth = h.open_bth<prop_id, disk::prop_entry>(h.get_root_id());
-}
-
-inline fairport::property_bag::property_bag(const property_bag& other, alias_tag)
-{
-    heap h(other.m_pbth->get_node(), alias_tag());
 
     m_pbth = h.open_bth<prop_id, disk::prop_entry>(h.get_root_id());
 }

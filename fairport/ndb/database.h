@@ -119,15 +119,6 @@ public:
     std::tr1::shared_ptr<subnode_nonleaf_block> read_subnode_nonleaf_block(const shared_db_ptr& parent, const block_info& bi);
     //@}
 
-//! \cond write_api
-    std::tr1::shared_ptr<external_block> create_external_block(const shared_db_ptr& parent, size_t size);
-    std::tr1::shared_ptr<extended_block> create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<external_block>& pblock);
-    std::tr1::shared_ptr<extended_block> create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<extended_block>& pblock);
-    std::tr1::shared_ptr<extended_block> create_extended_block(const shared_db_ptr& parent, size_t size);
-
-    block_id alloc_bid(bool is_internal);
-//! \endcond
-
 protected:
     database_impl(); // = delete
     //! \brief Construct a database_impl from this filename
@@ -623,61 +614,6 @@ inline std::tr1::shared_ptr<fairport::extended_block> fairport::database_impl<T>
 #endif
 }
 
-//! \cond write_api
-template<typename T>
-inline std::tr1::shared_ptr<fairport::external_block> fairport::database_impl<T>::create_external_block(const shared_db_ptr& parent, size_t size)
-{
-    return std::tr1::shared_ptr<external_block>(new external_block(parent, disk::external_block<T>::max_size, size));
-}
-
-template<typename T>
-inline std::tr1::shared_ptr<fairport::extended_block> fairport::database_impl<T>::create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<external_block>& pchild_block)
-{
-    std::vector<std::tr1::shared_ptr<data_block> > child_blocks;
-    child_blocks.push_back(pchild_block);
-
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    return std::tr1::shared_ptr<extended_block>(new extended_block(parent, 1, pchild_block->get_total_size(), disk::external_block<T>::max_size, disk::extended_block<T>::max_count, 1, std::move(child_blocks)));
-#else
-    return std::tr1::shared_ptr<extended_block>(new extended_block(parent, 1, pchild_block->get_total_size(), disk::external_block<T>::max_size, disk::extended_block<T>::max_count, 1, child_blocks));
-#endif
-}
-
-template<typename T>
-inline std::tr1::shared_ptr<fairport::extended_block> fairport::database_impl<T>::create_extended_block(const shared_db_ptr& parent, std::tr1::shared_ptr<extended_block>& pchild_block)
-{
-    std::vector<std::tr1::shared_ptr<data_block> > child_blocks;
-    child_blocks.push_back(pchild_block);
-
-    assert(pchild_block->get_level() == 1);
-
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    return std::tr1::shared_ptr<extended_block>(new extended_block(parent, 2, pchild_block->get_total_size(), disk::extended_block<T>::max_size, disk::extended_block<T>::max_count, disk::extended_block<T>::max_count, std::move(child_blocks)));
-#else
-    return std::tr1::shared_ptr<extended_block>(new extended_block(parent, 2, pchild_block->get_total_size(), disk::extended_block<T>::max_size, disk::extended_block<T>::max_count, disk::extended_block<T>::max_count, child_blocks));
-#endif
-}
-
-template<typename T>
-inline std::tr1::shared_ptr<fairport::extended_block> fairport::database_impl<T>::create_extended_block(const shared_db_ptr& parent, size_t size)
-{
-    ushort level = size > disk::extended_block<T>::max_size ? 2 : 1;
-#ifdef __GNUC__
-    // More strange link errors
-    size_t child_max_size;
-    if(level == 1)
-        child_max_size = disk::external_block<T>::max_size;
-    else
-        child_max_size = disk::extended_block<T>::max_size;
-#else
-    size_t child_max_size = level == 1 ? disk::external_block<T>::max_size : disk::extended_block<T>::max_size;
-#endif
-    ulong child_max_blocks = level == 1 ? 1 : disk::extended_block<T>::max_count;
-
-    return std::tr1::shared_ptr<extended_block>(new extended_block(parent, level, size, child_max_size, disk::extended_block<T>::max_count, child_max_blocks));
-}
-//! \endcond
-
 template<typename T>
 inline std::tr1::shared_ptr<fairport::external_block> fairport::database_impl<T>::read_external_block(const shared_db_ptr& parent, const block_info& bi)
 {
@@ -807,30 +743,5 @@ inline std::tr1::shared_ptr<fairport::subnode_nonleaf_block> fairport::database_
     return std::tr1::shared_ptr<subnode_nonleaf_block>(new subnode_nonleaf_block(parent, bi, subnodes));
 #endif
 }
-
-//! \cond write_api
-template<typename T>
-inline fairport::block_id fairport::database_impl<T>::alloc_bid(bool is_internal)
-{
-#ifdef __GNUC__
-    typename disk::header<T>::block_id_disk disk_id;
-    memcpy(&disk_id, m_header.bidNextB, sizeof(disk_id));
-
-    block_id next_bid = disk_id;
-
-    disk_id += disk::block_id_increment;
-    memcpy(m_header.bidNextB, &disk_id, sizeof(disk_id));
-#else
-    block_id next_bid = m_header.bidNextB;
-    m_header.bidNextB += disk::block_id_increment;
-#endif
-
-
-    if(is_internal)
-        next_bid &= disk::block_id_internal_bit;
-
-    return next_bid;
-}
-//! \endcond
 
 #endif
