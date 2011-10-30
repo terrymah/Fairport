@@ -337,8 +337,8 @@ const byte message_subject_prefix_lead_byte = 0x01;
 struct guid
 {
     ulong data1;
-    short data2;
-    short data3;
+    ushort data2;
+    ushort data3;
     byte data4[8];
 } FAIRPORT_MS_STRUCT;
 //! \cond static_asserts
