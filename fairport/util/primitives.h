@@ -29,7 +29,7 @@
 
 //! \brief Global Validation Settings
 //!
-//! You may optionally define one of the following values before including any pstsdk header:
+//! You may optionally define one of the following values before including any Fairport header:
 //! - FAIRPORT_VALIDATION_LEVEL_NONE, no validation - except some type checks
 //! - FAIRPORT_VALIDATION_LEVEL_WEAK, involves fast checks such as signature matching, param validation, etc
 //! - FAIRPORT_VALIDATION_LEVEL_FULL, includes all weak checks plus crc validation and any other "expensive" checks
@@ -45,7 +45,7 @@
 #define FAIRPORT_VALIDATION_LEVEL_WEAK
 #endif
 
-// Many of the low-level data structures in pstsdk rely on being laid out
+// Many of the low-level data structures in Fairport rely on being laid out
 // in the fashion preferred by Visual C++.  For example, these structures
 // need to align ulonglong to the nearest 8 bytes.  Under GCC, we can force
 // this layout behavior on Mac and Linux systems by appending an
