@@ -128,7 +128,10 @@ foreach (0 ... $#ARGV) {
 
         # global const variable, print it out
         elsif(/const\s$valid_types_regex ($varregex) =/) {
-            print "\t{ L\"$2\", $2 },\n";
+			# hack: Ignore guids
+			if($1 ne "guid") {
+				print "\t{ L\"$2\", $2 },\n";
+			}
         }
 
         # template definition
