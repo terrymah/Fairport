@@ -83,48 +83,6 @@ void process_node(const fairport::node& n)
     
 }
 
-size_t step_size_up(size_t i)
-{
-    if(i >= 1000000) return 1000000;
-    if(i >= 100000) return 100000;
-    if(i >= 10000) return 10000;
-    return 1000;
-}
-
-size_t step_size_down(size_t i)
-{
-    if(i > 1000000) return 1000000;
-    if(i > 100000) return 100000;
-    if(i > 10000) return 10000;
-    return 1000;
-}
-
-template<typename T>
-void test_node_impl(fairport::node& n, size_t expected)
-{
-    using namespace fairport;
-
-    assert(n.size() == expected);
-
-    if(expected > 0)
-    {
-        fairport::uint expected_page_count = expected / disk::external_block<T>::max_size;
-        if(expected % disk::external_block<T>::max_size != 0)
-            expected_page_count++;
-
-        fairport::uint actual_page_count = n.get_page_count();
-        assert(expected_page_count == actual_page_count);
-
-        fairport::uint test_value = 0xdeadbeef;
-        size_t offset = expected-sizeof(test_value);
-        n.write(test_value, offset);
-
-        fairport::uint read_test_value = n.read<fairport::uint>(offset);
-
-        assert(test_value == read_test_value);
-    }
-}
-
 template<typename T>
 void test_node_stream(fairport::node n)
 {
