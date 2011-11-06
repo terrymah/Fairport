@@ -313,12 +313,12 @@ public:
     //! \brief Get the number of attachments on this message
     //! \returns The number of attachments
     size_t get_attachment_count() const
-	    { return get_attachment_table().size(); }
+		{ return get_attachment_table().size(); }
 
     //! \brief Get the number of recipients on this message
     //! \returns The number of recipients
     size_t get_recipient_count() const
-	    { return get_recipient_table().size(); }
+		{ return get_recipient_table().size(); }
 
     // lower layer access
     //! \brief Get the property bag backing this message
@@ -420,7 +420,7 @@ inline const fairport::table& fairport::message::get_attachment_table() const
 		}
 		catch (const key_not_found<node_id>&) 
 		{
-			m_attachment_table.reset(new table(nullptr));
+			m_attachment_table.reset(new table());
 		}
 	}
 
@@ -435,9 +435,9 @@ inline const fairport::table& fairport::message::get_recipient_table() const
 		{
 			m_recipient_table.reset(new table(m_bag.get_node().lookup(nid_recipient_table)));
 		}
-		catch (const key_not_found<node_id>&) 
+		catch (const key_not_found<node_id>&)
 		{
-			m_recipient_table.reset(new table(nullptr));
+			m_recipient_table.reset(new table());
 		}
 	}
 

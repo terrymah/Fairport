@@ -347,8 +347,9 @@ class table
 {
 public:
 
-	//! \brief Construct an empty table
-	explicit table(std::nullptr_t);
+    //! \brief Construct an empty table
+    table()
+        : m_ptable(new empty_table()) { }
 
     //! \brief Construct a table from this node
     //! \param[in] n The node to copy and interpret as a table
@@ -398,9 +399,8 @@ public:
     //! \copydoc table_impl::size()
     size_t size() const
         { return m_ptable->size(); }
-private:
-    table();
 
+private:
     table_ptr m_ptable;
 };
 
@@ -410,7 +410,6 @@ inline fairport::table_ptr fairport::open_table(const node& n)
 {
     if(n.get_id() == nid_all_message_search_contents)
     {
-        //return table_ptr(new gust(n));
         throw not_implemented("gust table");
     }
 
@@ -708,10 +707,5 @@ inline bool fairport::basic_table<T>::prop_exists(ulong row, prop_id id) const
 inline fairport::table::table(const node& n)
 {
     m_ptable = open_table(n);
-}
-
-inline fairport::table::table(std::nullptr_t)
-{
-	m_ptable = table_ptr(new empty_table());
 }
 #endif
