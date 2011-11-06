@@ -348,7 +348,7 @@ class table
 public:
 
 	//! \brief Construct an empty table
-	explicit table(nullptr_t);
+	explicit table(std::nullptr_t);
 
     //! \brief Construct a table from this node
     //! \param[in] n The node to copy and interpret as a table
@@ -710,7 +710,7 @@ inline fairport::table::table(const node& n)
     m_ptable = open_table(n);
 }
 
-inline fairport::table::table(nullptr_t)
+inline fairport::table::table(std::nullptr_t)
 {
 	m_ptable = table_ptr(new empty_table());
 }
