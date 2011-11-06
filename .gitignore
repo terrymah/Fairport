@@ -2,6 +2,8 @@
 Makefile
 /test/pstsdk_test
 /test/leah_thumper.jpg
+/test/*.o
+/test/fairport.exe
 *~
 CMakeFiles
 CMakeCache.txt
