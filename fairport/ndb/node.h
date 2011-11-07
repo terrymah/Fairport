@@ -78,17 +78,6 @@ public:
     node_impl(const std::tr1::shared_ptr<node_impl>& container_node, const subnode_info& info)
         : m_id(info.id), m_original_data_id(info.data_bid), m_original_sub_id(info.sub_bid), m_original_parent_id(0), m_parent_id(0), m_pcontainer_node(container_node), m_db(container_node->m_db) { }
 
-    //! \brief Set one node equal to another
-    //!
-    //! The assignment semantics of a node cause the assigned to node to refer
-    //! to the same data on disk as the assigned from node. It still has it's 
-    //! own unique id, parent, etc - only the data contained in this node is 
-    //! 'assigned'
-    //! \param[in] other The node to assign from
-    //! \returns *this after the assignment is done
-    node_impl& operator=(const node_impl& other)
-        { m_pdata = other.m_pdata; m_psub = other.m_psub; return *this; }
-
     //! \brief Get the id of this node
     //! \returns The id
     node_id get_id() const { return m_id; }
@@ -194,6 +183,8 @@ public:
     node lookup(node_id id) const;
 
 private:
+	node_impl& operator=(const node_impl& other); // = delete
+
     //! \brief Loads the data block from disk
     //! \returns The data block for this node
     data_block* ensure_data_block() const;
@@ -330,17 +321,6 @@ public:
     //! \param[in] other The node to alias
     node(const node& other)
         : m_pimpl(other.m_pimpl) { }
-
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    //! \brief Move constructor
-    //! \param[in] other Node to move from
-    node(node&& other)
-        : m_pimpl(std::move(other.m_pimpl)) { }
-#endif
-
-    //! \copydoc node_impl::operator=()
-    node& operator=(const node& other)
-        { *m_pimpl = *(other.m_pimpl); return *this; }
 
     //! \copydoc node_impl::get_id()
     node_id get_id() const { return m_pimpl->get_id(); }
