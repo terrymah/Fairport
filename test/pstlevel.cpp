@@ -51,19 +51,12 @@ void process_message(const fairport::message& m)
     using namespace fairport;
 
     wcout << "Message Subject: " << m.get_subject() << endl;
-    wcout << "\tAttachment Count: " << m.get_attachment_count() << endl;
-
-    if(m.get_attachment_count() > 0)
-    {
-        for_each(m.attachment_begin(), m.attachment_end(), process_attachment);
-    }
+    
+	wcout << "\tAttachment Count: " << m.get_attachment_count() << endl;
+    for_each(m.attachment_begin(), m.attachment_end(), process_attachment);
 
     wcout << "\tRecipient Count: " << m.get_recipient_count() << endl;
-
-    if(m.get_recipient_count() > 0)
-    {
-        for_each(m.recipient_begin(), m.recipient_end(), process_recipient);
-    }
+    for_each(m.recipient_begin(), m.recipient_end(), process_recipient);
 }
 
 

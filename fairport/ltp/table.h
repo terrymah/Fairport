@@ -217,6 +217,48 @@ public:
     virtual size_t row_prop_size(ulong row, prop_id id) const = 0;
 };
 
+//! \brief Null table implementation
+//!
+//! As an optimization some parts of the PST delay create tables. A message,
+//! for example, might not actually have an attachment table subnode unless it
+//! actually contains an attachment. Implementations need to be aware of this
+//! and handle it, by representing the non-existant table as a table with zero
+//! rows so clients can treat table iteration uniformly.
+//!
+//! This object is how Fairport represents such non-existant tables. It's a 
+//! fake table whose only purpose is to have zero rows, with .begin() == .end().
+//! Doing pretty much anything with the table will result in some sort of
+//! exception being thrown.
+//! \ingroup ltp_objectrelated
+class empty_table : public table_impl
+{
+public:
+    node& get_node() 
+        { throw key_not_found<node_id>(0); }
+    const node& get_node() const
+        { throw key_not_found<node_id>(0); }
+    ulong lookup_row(row_id id) const
+		{ throw key_not_found<row_id>(id); }
+    ulonglong get_cell_value(ulong row, prop_id) const
+		{ throw key_not_found<ulong>(row); }
+    std::vector<byte> read_cell(ulong row, prop_id) const
+		{ throw key_not_found<ulong>(row); }
+    hnid_stream_device open_cell_stream(ulong row, prop_id)
+		{ throw key_not_found<ulong>(row); }
+    std::vector<prop_id> get_prop_list() const
+		{ return std::vector<prop_id>(); }
+    prop_type get_prop_type(prop_id id) const
+		{ throw key_not_found<prop_id>(id); }
+    row_id get_row_id(ulong row) const
+ 		{ throw key_not_found<ulong>(row); }
+	size_t size() const
+		{ return 0; }
+    bool prop_exists(ulong row, prop_id) const
+ 		{ throw key_not_found<ulong>(row); }
+    size_t row_prop_size(ulong row, prop_id) const
+ 		{ throw key_not_found<ulong>(row); }
+};
+
 //! \brief Implementation of an ANSI TC (64k rows) and a unicode TC
 //!
 //! ANSI and Unicode TCs differ in the "row index" BTH. On an ANSI PST
@@ -304,6 +346,10 @@ typedef basic_table<ulong> large_table;
 class table
 {
 public:
+
+	//! \brief Construct an empty table
+	explicit table(nullptr_t);
+
     //! \brief Construct a table from this node
     //! \param[in] n The node to copy and interpret as a table
     explicit table(const node& n);
@@ -664,4 +710,8 @@ inline fairport::table::table(const node& n)
     m_ptable = open_table(n);
 }
 
+inline fairport::table::table(nullptr_t)
+{
+	m_ptable = table_ptr(new empty_table());
+}
 #endif

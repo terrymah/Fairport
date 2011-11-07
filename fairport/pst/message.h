@@ -317,10 +317,13 @@ public:
         { return m_bag.read_prop<slong>(0xe08); }
     //! \brief Get the number of attachments on this message
     //! \returns The number of attachments
-    size_t get_attachment_count() const;
+    size_t get_attachment_count() const
+	    { return get_attachment_table().size(); }
+
     //! \brief Get the number of recipients on this message
     //! \returns The number of recipients
-    size_t get_recipient_count() const;
+    size_t get_recipient_count() const
+	    { return get_recipient_table().size(); }
 
     // lower layer access
     //! \brief Get the property bag backing this message
@@ -415,7 +418,16 @@ inline fairport::message::message(const fairport::message& other)
 inline const fairport::table& fairport::message::get_attachment_table() const
 {
     if(!m_attachment_table)
-        m_attachment_table.reset(new table(m_bag.get_node().lookup(nid_attachment_table)));
+	{
+		try
+		{
+			m_attachment_table.reset(new table(m_bag.get_node().lookup(nid_attachment_table)));
+		}
+		catch (const key_not_found<node_id>&) 
+		{
+			m_attachment_table.reset(new table(nullptr));
+		}
+	}
 
     return *m_attachment_table;
 }
@@ -423,7 +435,16 @@ inline const fairport::table& fairport::message::get_attachment_table() const
 inline const fairport::table& fairport::message::get_recipient_table() const
 {
     if(!m_recipient_table)
-        m_recipient_table.reset(new table(m_bag.get_node().lookup(nid_recipient_table)));
+	{
+		try
+		{
+			m_recipient_table.reset(new table(m_bag.get_node().lookup(nid_recipient_table)));
+		}
+		catch (const key_not_found<node_id>&) 
+		{
+			m_recipient_table.reset(new table(nullptr));
+		}
+	}
 
     return *m_recipient_table;
 }
@@ -436,30 +457,6 @@ inline fairport::table& fairport::message::get_attachment_table()
 inline fairport::table& fairport::message::get_recipient_table()
 {
     return const_cast<table&>(const_cast<const message*>(this)->get_recipient_table());
-}
-
-inline size_t fairport::message::get_attachment_count() const
-{
-    size_t count = 0;
-    try 
-    {
-        count = get_attachment_table().size();
-    } 
-    catch (const key_not_found<node_id>&) { }
-
-    return count;
-}
-
-inline size_t fairport::message::get_recipient_count() const
-{
-    size_t count = 0;
-    try
-    {
-        count = get_recipient_table().size();
-    }
-    catch (const key_not_found<node_id>&) { }
-
-    return count;
 }
 
 inline std::wstring fairport::message::get_subject() const
