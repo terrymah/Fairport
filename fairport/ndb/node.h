@@ -56,8 +56,6 @@ namespace fairport
 //! in the construction and destruction semantics plus the addition of some 
 //! convenience functions.
 //! 
-//! \ref node and its \ref node_impl class generally have a one to one mapping,
-//! this isn't true only if someone opens an \ref alias_tag "alias" for a node.
 //! \ingroup ndb_noderelated
 class node_impl : public std::tr1::enable_shared_from_this<node_impl>
 {
@@ -284,9 +282,7 @@ typedef boost::iostreams::stream<node_stream_device> node_stream;
 //!
 //! When using the \ref node class, think of it as creating an in memory 
 //! "instance" of the node on the disk. You can have several in memory
-//! instances of the same node on disk. You can even have an \ref alias_tag 
-//! "alias" of another in memory instance, as is sometimes required when 
-//! creating higher level abstractions. 
+//! instances of the same node on disk. 
 //!
 //! There isn't much interesting to do with a node, you can query its size,
 //! read from a specific location, get it's id and parent id, iterate over
