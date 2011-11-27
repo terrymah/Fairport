@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$structfairport_1_1disk_1_1bth__node.html" title="{fairport::disk::bth_node\&lt; bth_leaf_entry\&lt; K, V \&gt; \&gt;\n|+ entries\l|}" alt="" coords="5,147,320,224"/>
+<area shape="rect" id="node7" href="$structfairport_1_1disk_1_1bth__node.html" title="{fairport::disk::bth_node\&lt; bth_nonleaf_entry\&lt; K \&gt; \&gt;\n|+ entries\l|}" alt="" coords="345,147,665,224"/>
+<area shape="rect" id="node5" href="$structfairport_1_1disk_1_1bth__leaf__node.html" title="BTH Leaf node." alt="" coords="45,275,280,352"/>
+<area shape="rect" id="node9" href="$structfairport_1_1disk_1_1bth__nonleaf__node.html" title="BTH Nonleaf node." alt="" coords="385,275,625,352"/>
+</map>
