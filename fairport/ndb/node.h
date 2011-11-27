@@ -108,7 +108,11 @@ public:
     //! \returns A shared pointer to the subnode block
     std::tr1::shared_ptr<subnode_block> get_subnode_block() const 
         { ensure_sub_block(); return m_psub; }
-    
+  
+    //! \brief Returns the database containing this node
+    //! \returns A shared pointer to the database
+    shared_db_ptr get_db() const { return m_db; }
+
     //! \brief Read data from this node
     //!
     //! Fills the specified buffer with data starting at the specified offset.
@@ -340,7 +344,10 @@ public:
     //! \copydoc node_impl::get_subnode_block()
     std::tr1::shared_ptr<subnode_block> get_subnode_block() const 
         { return m_pimpl->get_subnode_block(); } 
-   
+
+    //! \copydoc node_impl::get_db()
+    shared_db_ptr get_db() const { return m_pimpl->get_db(); }
+
     //! \copydoc node_impl::read(std::vector<byte>&,ulong) const
     size_t read(std::vector<byte>& buffer, ulong offset) const
         { return m_pimpl->read(buffer, offset); }
