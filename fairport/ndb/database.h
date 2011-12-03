@@ -73,7 +73,10 @@ class database_impl : public db_context
 {
 public:
 
-    //! \name Lookup functions
+    bool is_pst() const
+        { return m_header.wVerClient == disk::database_pst; }
+
+	//! \name Lookup functions
     //@{
     node lookup_node(node_id nid)
         { return node(this->shared_from_this(), lookup_node_info(nid)); }

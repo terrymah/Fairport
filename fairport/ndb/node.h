@@ -56,8 +56,6 @@ namespace fairport
 //! in the construction and destruction semantics plus the addition of some 
 //! convenience functions.
 //! 
-//! \ref node and its \ref node_impl class generally have a one to one mapping,
-//! this isn't true only if someone opens an \ref alias_tag "alias" for a node.
 //! \ingroup ndb_noderelated
 class node_impl : public std::tr1::enable_shared_from_this<node_impl>
 {
@@ -98,7 +96,7 @@ public:
 
     //! \brief Tells you if this is a subnode
     //! \returns true if this is a subnode, false otherwise
-    bool is_subnode() { return m_pcontainer_node; }
+    bool is_subnode() const { return m_pcontainer_node; }
 
     //! \brief Returns the data block associated with this node
     //! \returns A shared pointer to the data block
@@ -108,7 +106,11 @@ public:
     //! \returns A shared pointer to the subnode block
     std::tr1::shared_ptr<subnode_block> get_subnode_block() const 
         { ensure_sub_block(); return m_psub; }
-    
+  
+    //! \brief Returns the database containing this node
+    //! \returns A shared pointer to the database
+    shared_db_ptr get_db() const { return m_db; }
+
     //! \brief Read data from this node
     //!
     //! Fills the specified buffer with data starting at the specified offset.
@@ -280,9 +282,7 @@ typedef boost::iostreams::stream<node_stream_device> node_stream;
 //!
 //! When using the \ref node class, think of it as creating an in memory 
 //! "instance" of the node on the disk. You can have several in memory
-//! instances of the same node on disk. You can even have an \ref alias_tag 
-//! "alias" of another in memory instance, as is sometimes required when 
-//! creating higher level abstractions. 
+//! instances of the same node on disk. 
 //!
 //! There isn't much interesting to do with a node, you can query its size,
 //! read from a specific location, get it's id and parent id, iterate over
@@ -332,7 +332,7 @@ public:
     //! \copydoc node_impl::get_parent_id()
     node_id get_parent_id() const { return m_pimpl->get_parent_id(); } 
     //! \copydoc node_impl::is_subnode()
-    bool is_subnode() { return m_pimpl->is_subnode(); } 
+    bool is_subnode() const { return m_pimpl->is_subnode(); } 
 
     //! \copydoc node_impl::get_data_block()
     std::tr1::shared_ptr<data_block> get_data_block() const
@@ -340,7 +340,10 @@ public:
     //! \copydoc node_impl::get_subnode_block()
     std::tr1::shared_ptr<subnode_block> get_subnode_block() const 
         { return m_pimpl->get_subnode_block(); } 
-   
+
+    //! \copydoc node_impl::get_db()
+    shared_db_ptr get_db() const { return m_pimpl->get_db(); }
+
     //! \copydoc node_impl::read(std::vector<byte>&,ulong) const
     size_t read(std::vector<byte>& buffer, ulong offset) const
         { return m_pimpl->read(buffer, offset); }
