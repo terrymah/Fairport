@@ -25,7 +25,9 @@ void test_codepage_1252_to_wstring()
     using namespace fairport;
     
     assert(codepage_1252_to_wstring("") == L"");
+#ifdef _MSC_VER
 #pragma warning(disable:4428)
+#endif
     assert(codepage_1252_to_wstring("ab\xa7") == L"ab\u00a7");
     // Handle the character block with non-trivial Unicode mappings.
     assert(codepage_1252_to_wstring("\x80\x81\x82\x83\x84\x85\x86\x87") ==
