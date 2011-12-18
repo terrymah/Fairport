@@ -138,8 +138,6 @@ BOOST_AUTO_TEST_CASE( process_ansi )
 BOOST_AUTO_TEST_CASE( process_sample1 )
 {
     pst s1(L"sample1.pst");
-    int* p = new int;
-    p;
     process_pst(s1);
 }
 

@@ -3,7 +3,8 @@ Makefile
 /test/pstsdk_test
 /test/leah_thumper.jpg
 /test/*.o
-/test/fairport.exe
+/test/*.obj
+/test/fairport*
 *~
 CMakeFiles
 CMakeCache.txt

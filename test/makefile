@@ -1,42 +1,43 @@
 #
 # Fairport unit test
-# 
-
 #
-# compiler options
-#
-CC=cl
 
-ifeq ($(CC),cl) #MSVC
-OPTIONS=/DEBUG /DFAIRPORT_VALIDATION_LEVEL_FULL /Od /MDd /EHsc /Zi /nologo /W4 /WX /I ".." 
-OUTPUTSWITCH=/Fe
-NOLINK=/c
-DELCMD=del
-else #GCC
+# Detect compiler
+ifdef VCINSTALLDIR # VC
+ifdef USE_GPP
+CC = g++
+ifdef CPP11
 OPTIONS=-Wall -Werror -g -DFAIRPORT_VALIDATION_LEVEL_FULL -std=c++0x -I ".."
-OUTPUTSWITCH=-o 
-NOLINK=-c
+else # else not CPP11
+OPTIONS=-Wall -Werror -g -DFAIRPORT_VALIDATION_LEVEL_FULL -I ".."
+endif # CPP11
+OUTPUT=-o
+else # else not USE_GPP
+CC = cl
+OPTIONS=/DEBUG /DFAIRPORT_VALIDATION_LEVEL_FULL /Od /MDd /EHsc /Zi /nologo /W4 /WX /I ".."
+OUTPUT=/Fe
+endif # USE_GPP
+else # assume g++
+CC = g++
+ifdef CPP11
+OPTIONS=-Wall -Werror -g -DFAIRPORT_VALIDATION_LEVEL_FULL -std=c++0x -I ".."
+else
+OPTIONS=-Wall -Werror -g -DFAIRPORT_VALIDATION_LEVEL_FULL -I ".."
+endif
+OUTPUT=-o
+endif
+
+# Detect OS
+ifdef APPDATA # Windows
+DELCMD=del
+NAME=fairport.exe
+else # assume Unix
 DELCMD=rm
+NAME=fairport
 endif
 
-# source file list
-SRCS=\
-	 unittest.cpp		\
-
-ifeq ($(CC),cl) #MSVC
-OBJS=$(SRCS:.cpp=.obj)
-else #GCC
-OBJS=$(SRCS:.cpp=.o)
-endif
-
-fairport.exe: $(OBJS) 
-	$(CC) $(OPTIONS) $(OUTPUTSWITCH)fairport.exe $(OBJS)
-
-%.obj: %.cpp
-	$(CC) $(NOLINK) $(OPTIONS) $?
-
-%.o: %.cpp
-	$(CC) $(NOLINK) $(OPTIONS) $?
+fairport.exe: unittest.cpp
+	$(CC) unittest.cpp $(OPTIONS) $(OUTPUT)$(NAME)
 
 clean:
-	$(DELCMD) *.obj *.o fairport.exe *.pdb *.ilk *.jpg *.i *.Manifest
+	$(DELCMD) fairport* *.o* *.pdb *.ilk *.jpg *.i *.Manifest
