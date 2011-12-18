@@ -1,9 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include <cassert>
 #include "fairport/util/btree.h"
-#include "test.h"
 
 using namespace fairport;
 using namespace std;
@@ -68,7 +66,9 @@ leaf::leaf(int k1, string v1, int k2, string v2, int k3, string v3)
     values[2] = v3;
 }
 
-void test_btree()
+BOOST_AUTO_TEST_SUITE( btree )
+
+BOOST_AUTO_TEST_CASE( test_btree )
 {
 
     leaf l1(0, "zero", 1, "one", 2, "two");
@@ -90,37 +90,18 @@ void test_btree()
 
     for(int i = 0; i < 9; ++i)
     {
-        assert(strcmp(nl.lookup(i).c_str(), results[i]) == 0);
+        BOOST_CHECK_EQUAL(strcmp(nl.lookup(i).c_str(), results[i]), 0);
     }
 
-    bool knf_caught = false;
-    try
-    {
-        string s(nl.lookup(10));
-    }
-    catch(key_not_found<int>&)
-    {
-        knf_caught = true;
-    }
-    assert(knf_caught);
-
-    knf_caught = false;
-    try
-    {
-        string s(nl.lookup(-1));
-    }
-    catch(key_not_found<int>&)
-    {
-        knf_caught = true;
-    }
-    assert(knf_caught);
+    BOOST_CHECK_THROW(nl.lookup(10), key_not_found<int>);
+    BOOST_CHECK_THROW(nl.lookup(-1), key_not_found<int>);
 
     int i = 0;
     for(non_leaf::const_iterator iter = nl.begin(); 
             iter != nl.end(); 
             ++iter, ++i)
     {
-        assert(strcmp(iter->c_str(), results[i]) == 0);
+        BOOST_CHECK_EQUAL(strcmp(iter->c_str(), results[i]), 0);
     }
 
     const non_leaf& nlr = nl;
@@ -134,7 +115,9 @@ void test_btree()
     int j = 9;
     while(i2 != nl.begin())
     {
-        assert(strcmp((--i2)->c_str(), results[--j]) == 0);
+        BOOST_CHECK_EQUAL(strcmp((--i2)->c_str(), results[--j]), 0);
     }
 
 }
+
+BOOST_AUTO_TEST_SUITE_END()

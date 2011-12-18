@@ -5,7 +5,7 @@
 #
 # compiler options
 #
-CC=g++
+CC=cl
 
 ifeq ($(CC),cl) #MSVC
 OPTIONS=/DEBUG /DFAIRPORT_VALIDATION_LEVEL_FULL /Od /MDd /EHsc /Zi /nologo /W4 /WX /I ".." 
@@ -21,13 +21,7 @@ endif
 
 # source file list
 SRCS=\
-	 btreetest.cpp 		\
-	 databasetest.cpp 	\
-	 main.cpp			\
-	 disktest.cpp		\
-	 highlevel.cpp		\
-	 pstlevel.cpp		\
-	 utiltest.cpp		\
+	 unittest.cpp		\
 
 ifeq ($(CC),cl) #MSVC
 OBJS=$(SRCS:.cpp=.obj)

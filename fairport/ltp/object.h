@@ -237,11 +237,9 @@ inline bool const_property_object::read_prop<bool>(prop_id id) const
 template<>
 inline std::vector<bool> fairport::const_property_object::read_prop_array<bool>(prop_id id) const
 {
-    using namespace std::tr1::placeholders;
-
     std::vector<ulong> values = read_prop_array<ulong>(id);
     std::vector<bool> results(values.size());
-    std::transform(values.begin(), values.end(), results.begin(), std::tr1::bind(std::not_equal_to<ulong>(), 0, _1));
+    std::transform(values.begin(), values.end(), results.begin(), std::tr1::bind(std::not_equal_to<ulong>(), 0, std::tr1::placeholders::_1));
     return results;
 }
 

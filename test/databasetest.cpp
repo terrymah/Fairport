@@ -1,15 +1,14 @@
 #include <iostream>
-#include <cassert>
 #include "fairport/disk/disk.h"
 #include "fairport/ndb.h"
 
-struct node_info
+struct n_info
 {
     fairport::node_id node;
     fairport::node_id parent;
 };
 
-const node_info node_info_uni[] = {
+const n_info node_info_uni[] = {
     { 33, 0 }, { 97, 0 }, { 290, 290 }, { 301, 0 }, { 302, 0 }, { 303, 0 },
     { 481, 0 }, { 513, 0 }, { 609, 0 }, { 641, 0 }, { 673, 0 }, { 801, 0 },
     { 1549, 0 }, { 1550, 0 }, { 1551, 0 }, { 1552, 0 }, { 1579, 0 },
@@ -22,7 +21,7 @@ const node_info node_info_uni[] = {
     { 2097188, 32802 }, { 2097220, 32898 }
 };
 
-const node_info node_info_ansi[] = {
+const n_info node_info_ansi[] = {
     { 33, 0 }, { 97, 0 }, { 290, 290 }, { 301, 0 }, { 302, 0 }, { 303, 0 },
     { 481, 0 }, { 513, 0 }, { 609, 0 }, { 641, 0 }, { 673, 0 }, { 801, 0 },
     { 1549, 0 }, { 1550, 0 }, { 1551, 0 }, { 1552, 0 }, { 1579, 0 },
@@ -35,14 +34,14 @@ const node_info node_info_ansi[] = {
     { 2097188, 32898 } 
 };
 
-struct block_info
+struct b_info
 {
     fairport::block_id block;
     fairport::ushort size;
     fairport::ushort refs;
 };
 
-const block_info block_info_uni[] = {
+const b_info block_info_uni[] = {
     { 4, 156, 4 }, { 8, 268, 4 }, { 12, 172, 4 }, { 16, 204, 3 },
     { 20, 164, 2 }, { 24, 100, 2 }, { 36, 92, 2 }, { 40, 124, 2 },
     { 44, 84, 2 }, { 48, 114, 2 }, { 72, 34, 2 }, { 100, 62, 2 },
@@ -56,7 +55,7 @@ const block_info block_info_uni[] = {
     { 372, 132, 2 }
 };
 
-const block_info block_info_ansi[] = {
+const b_info block_info_ansi[] = {
     { 4, 156, 4 }, { 8, 268, 5 }, { 12, 172, 4 }, { 16, 204, 3 },
     { 20, 164, 2 }, { 24, 100, 2 }, { 36, 92, 2 }, { 40, 124, 2 },
     { 44, 84, 2 }, { 48, 112, 2 }, { 72, 34, 2 }, { 100, 62, 2 },
@@ -80,17 +79,16 @@ void process_node(const fairport::node& n)
     {
         process_node(node(n, *iter));
     }
-    
+
 }
 
-template<typename T>
 void test_node_stream(fairport::node n)
 {
     using namespace std;
     using namespace fairport;
 
-    vector<byte> contents(n.size());
-    byte b;
+    vector<fairport::byte> contents(n.size());
+    fairport::byte b;
     int i = 0;
     node_stream stream(n.open_as_stream());
     stream.unsetf(ios::skipws);
@@ -98,12 +96,12 @@ void test_node_stream(fairport::node n)
     (void)n.read(contents, 0);
 
     // pick a larger node if this fires. I just want to make sure it's non-trivial.
-    assert(n.size() > 100);
+    BOOST_CHECK_MESSAGE(n.size() > 100, "Sample node too small");
 
     while(stream >> b)
     {
-        byte c = contents[i];
-        assert(b == c);
+        fairport::byte c = contents[i];
+        BOOST_CHECK_EQUAL(b, c);
         ++i;
     }
 
@@ -111,108 +109,104 @@ void test_node_stream(fairport::node n)
     stream.clear();
     stream.seekg(0, ios_base::beg);
     stream.seekg( 10, ios_base::beg );
-    assert((int)stream.tellg() == 10);
+    BOOST_CHECK_EQUAL((int)stream.tellg(), 10);
     stream >> b;
-    assert((int)stream.tellg() == 11);
-    assert(b == contents[10]);
+    BOOST_CHECK_EQUAL((int)stream.tellg(), 11);
+    BOOST_CHECK_EQUAL(b, contents[10]);
 
     // test seeking from current
     stream.seekg( 50, ios_base::cur );
-    assert((int)stream.tellg() == 61);
+    BOOST_CHECK_EQUAL((int)stream.tellg(), 61);
     stream >> b;
-    assert(b == contents[61]);
+    BOOST_CHECK_EQUAL(b, contents[61]);
 
     // test seeking from end
     stream.seekg( -20, ios_base::end );
-    assert((int)stream.tellg() == (int)(n.size()-20));
+    BOOST_CHECK_EQUAL((int)stream.tellg(), (int)(n.size()-20));
     stream >> b;
-    assert(b == contents[ n.size() - 5 ]);
-    
+    BOOST_CHECK_EQUAL(b, contents[ n.size() - 5 ]);
 }
 
-void test_db()
+void node_check(fairport::shared_db_ptr db, const n_info* ni)
 {
     using namespace std;
     using namespace std::tr1;
     using namespace fairport;
-    bool caught_invalid_format = false;
     fairport::uint node = 0;
-    fairport::uint block = 0;
 
-    try
-    {
-        shared_db_ptr db = open_large_pst(L"test_ansi.pst");
-    }
-    catch(invalid_format&)
-    {
-        caught_invalid_format = true;
-    }
-    assert(caught_invalid_format);
-    
-    caught_invalid_format = false;
-    try
-    {
-        shared_db_ptr db = open_small_pst(L"test_unicode.pst");
-    }
-    catch(invalid_format&)
-    {
-        caught_invalid_format = true;
-    }
-    assert(caught_invalid_format);
-
-    {
-    shared_db_ptr db_large = open_large_pst(L"test_unicode.pst");
-    shared_db_ptr db_small = open_small_pst(L"test_ansi.pst");
-    }
-    shared_db_ptr db_2 = open_database(L"test_unicode.pst");
-    shared_db_ptr db_3 = open_database(L"test_ansi.pst");
-
-    node = 0;
-    std::tr1::shared_ptr<const nbt_page> nbt_root = db_2->read_nbt_root();
+    std::tr1::shared_ptr<const nbt_page> nbt_root = db->read_nbt_root();
     for(const_nodeinfo_iterator iter = nbt_root->begin();
                     iter != nbt_root->end();
                     ++iter, ++node)
     {
-        assert(iter->id == node_info_uni[node].node);
-        assert(iter->parent_id == node_info_uni[node].parent);
-        fairport::node n(db_2, *iter);
+        BOOST_CHECK_EQUAL(iter->id, ni[node].node);
+        BOOST_CHECK_EQUAL(iter->parent_id, ni[node].parent);
+        fairport::node n(db, *iter);
         process_node(n);
     }
+}
 
-    block = 0;
-    std::tr1::shared_ptr<const bbt_page> bbt_root = db_2->read_bbt_root();
+void block_check(fairport::shared_db_ptr db, const b_info* bi)
+{
+    using namespace std;
+    using namespace std::tr1;
+    using namespace fairport;
+    fairport::uint block = 0;
+
+    std::tr1::shared_ptr<const bbt_page> bbt_root = db->read_bbt_root();
     for(const_blockinfo_iterator iter = bbt_root->begin();
                     iter != bbt_root->end();
                     ++iter, ++block)
     {
-        assert(iter->id == block_info_uni[block].block);
-        assert(iter->size == block_info_uni[block].size);
-        assert(iter->ref_count == block_info_uni[block].refs);
-    }
-  
-    node = 0;
-    std::tr1::shared_ptr<const nbt_page> nbt_root2 = db_3->read_nbt_root();
-    for(const_nodeinfo_iterator iter = nbt_root2->begin();
-                    iter != nbt_root2->end();
-                    ++iter, ++node)
-    {
-        assert(iter->id == node_info_ansi[node].node);
-        assert(iter->parent_id == node_info_ansi[node].parent);
-        fairport::node n(db_3, *iter);
-        process_node(n);
-    }
-    test_node_stream<fairport::ulong>(db_2->lookup_node(nid_message_store));
-
-    block = 0;
-    std::tr1::shared_ptr<const bbt_page> bbt_root2 = db_3->read_bbt_root();
-    for(const_blockinfo_iterator iter = bbt_root2->begin();
-                    iter != bbt_root2->end();
-                    ++iter, ++block)
-    {
-        assert(iter->id == block_info_ansi[block].block);
-        assert(iter->size == block_info_ansi[block].size);
-        assert(iter->ref_count == block_info_ansi[block].refs);
+        BOOST_CHECK_EQUAL(iter->id, bi[block].block);
+        BOOST_CHECK_EQUAL(iter->size, bi[block].size);
+        BOOST_CHECK_EQUAL(iter->ref_count, bi[block].refs);
     }
 }
 
+BOOST_AUTO_TEST_SUITE( database )
 
+BOOST_AUTO_TEST_CASE( db_open )
+{
+    using namespace fairport;
+
+    BOOST_CHECK_THROW(open_large_pst(L"test_ansi.pst"), invalid_format);
+    BOOST_CHECK_THROW(open_small_pst(L"test_unicode.pst"), invalid_format);
+
+    BOOST_CHECK_NO_THROW(open_large_pst(L"test_unicode.pst"));
+    BOOST_CHECK_NO_THROW(open_small_pst(L"test_ansi.pst"));
+}
+
+BOOST_AUTO_TEST_CASE( node_check_uni )
+{
+    node_check(open_large_pst(L"test_unicode.pst"), node_info_uni);
+}
+
+BOOST_AUTO_TEST_CASE( node_check_ansi )
+{
+    node_check(open_small_pst(L"test_ansi.pst"), node_info_ansi);
+}
+
+BOOST_AUTO_TEST_CASE( block_check_uni )
+{
+    block_check(open_large_pst(L"test_unicode.pst"), block_info_uni);
+}
+
+BOOST_AUTO_TEST_CASE( block_check_ansi ) 
+{ 
+    block_check(open_small_pst(L"test_ansi.pst"), block_info_ansi);
+}
+
+BOOST_AUTO_TEST_CASE( test_node_stream_uni )
+{
+    using namespace fairport;
+    test_node_stream(open_database(L"test_unicode.pst")->lookup_node(nid_message_store));
+}
+
+BOOST_AUTO_TEST_CASE( test_node_stream_ansi )
+{
+    using namespace fairport;
+    test_node_stream(open_database(L"test_ansi.pst")->lookup_node(nid_message_store));
+}
+
+BOOST_AUTO_TEST_SUITE_END()

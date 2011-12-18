@@ -1,57 +1,8 @@
-#include <cassert>
 #include <iostream>
 #include <string>
-#include "test.h"
 #include "fairport/ndb.h"
 #include "fairport/ltp.h"
 
-// this function works because the set of named props present in sample1.pst is known
-void test_nameid_map_samp1(fairport::shared_db_ptr pdb)
-{
-    using namespace fairport;
-    name_id_map nm(pdb);
-
-    const guid g1 = { 0x20386, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
-    const guid g2 = { 0x62002, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
-
-    // is the count correct?
-    assert(nm.get_prop_count() == 172);
-
-    // test that the lookup succeeds and matches a few well known named props
-    named_prop t1(ps_public_strings, L"urn:schemas-microsoft-com:office:outlook#storetypeprivate");
-    assert(nm.lookup(t1) == 0x800f);
-    assert(nm.lookup(0x800f).get_name() == L"urn:schemas-microsoft-com:office:outlook#storetypeprivate");
-
-    named_prop t2(ps_public_strings, L"Keywords");
-    assert(nm.lookup(t2) == 0x8012);
-    assert(nm.lookup(0x8012).get_name() == L"Keywords");
-
-    named_prop t3(g1, L"x-ms-exchange-organization-authdomain");
-    assert(nm.lookup(t3) == 0x801c);
-    assert(nm.lookup(0x801c).get_name() == L"x-ms-exchange-organization-authdomain");
-
-    named_prop t4(g2, 0x8233);
-    assert(nm.lookup(t4) == 0x8008);
-    assert(nm.lookup(0x8008).get_id() == 0x8233);
-
-    named_prop t5(g2, 0x8205);
-    assert(nm.lookup(t5) == 0x8000);
-    assert(nm.lookup(0x8000).get_id() == 0x8205);
-
-    // test that the lookup fails for a few known-to-not-exist named props
-    bool not_found = false;
-
-    named_prop t6(ps_public_strings, L"fake-property");
-    try
-    {
-        nm.lookup(t6);
-    } 
-    catch(key_not_found<named_prop>&)
-    {
-        not_found = true;
-    }
-    assert(not_found);
-}
 
 void test_prop_stream(fairport::const_property_object& obj, fairport::prop_id id)
 {
@@ -60,11 +11,11 @@ void test_prop_stream(fairport::const_property_object& obj, fairport::prop_id id
     fairport::byte b;
     size_t pos = 0;
 
-    assert(contents.size() == obj.size(id));
+    BOOST_CHECK_EQUAL(contents.size(), obj.size(id));
 
     stream.unsetf(std::ios::skipws);
     while(stream >> b)
-        assert(b == contents[pos++]);
+        BOOST_CHECK_EQUAL(b, contents[pos++]);
 }
 
 void test_table(const fairport::table& tc)
@@ -72,33 +23,34 @@ void test_table(const fairport::table& tc)
     using namespace std;
     using namespace fairport;
 
-    wcout << "Properties on this table (" << tc.size() << "): " << endl;
+    //wcout << "Properties on this table (" << tc.size() << "): " << endl;
+    (void)tc.size();
+
     std::vector<prop_id> prop_list = tc.get_prop_list();
-    for(fairport::uint i = 0; i < prop_list.size(); ++i)
-        wcout << hex << prop_list[i] << " ";
-    wcout << endl;
 
     for(fairport::uint i = 0; i < tc.size(); ++i)
     {
-        wcout << "RowID: " << tc[i].get_row_id() << endl;
-        wstring display_name;
-        wstring subject;
+        //wcout << "RowID: " << tc[i].get_row_id() << endl;
+        (void)tc[i].get_row_id();
 
-         std::vector<fairport::ushort> proplist(tc[i].get_prop_list());
+        std::vector<fairport::ushort> proplist(tc[i].get_prop_list());
         for(fairport::uint j = 0; j < proplist.size(); ++j)
         {
             try {
                 if(tc[i].get_prop_type(proplist[j]) == prop_type_wstring)
                 {
-                    wcout << "\t" << hex << proplist[j] << ": " << tc[i].read_prop<std::wstring>(proplist[j]) << endl;
+                    //wcout << "\t" << hex << proplist[j] << ": " << tc[i].read_prop<std::wstring>(proplist[j]) << endl;
+                    (void)tc[i].read_prop<std::wstring>(proplist[j]);
                 }
                 else if(tc[i].get_prop_type(proplist[j]) == prop_type_long)
                 {
-                    wcout << "\t" << hex << proplist[j] << ": " << dec << tc[i].read_prop<slong>(proplist[j]) << endl;
+                    //wcout << "\t" << hex << proplist[j] << ": " << dec << tc[i].read_prop<slong>(proplist[j]) << endl;
+                    (void)tc[i].read_prop<slong>(proplist[j]);
                 }
                 else if(tc[i].get_prop_type(proplist[j]) == prop_type_boolean)
                 {
-                    wcout << "\t" << hex << proplist[j] << ": " << dec << (tc[i].read_prop<bool>(proplist[j]) ? L"true" : L"false") << endl;
+                    //wcout << "\t" << hex << proplist[j] << ": " << dec << (tc[i].read_prop<bool>(proplist[j]) ? L"true" : L"false") << endl;
+                    (void)tc[i].read_prop<bool>(proplist[j]);
                 }
                 else if(tc[i].get_prop_type(proplist[j]) == prop_type_binary)
                 {
@@ -107,12 +59,12 @@ void test_table(const fairport::table& tc)
                 }
                 else if(tc[i].get_prop_type(proplist[j]) == prop_type_guid)
                 {
-                    guid g = tc[i].read_prop<guid>(proplist[j]);
-                    (void) g;
+                    (void)tc[i].read_prop<guid>(proplist[j]);
                 }
                 else
                 {
-                    wcout << "\t" << hex << proplist[j] << "(" << dec << tc[i].get_prop_type(proplist[j]) << ")" << endl;
+                    //wcout << "\t" << hex << proplist[j] << "(" << dec << tc[i].get_prop_type(proplist[j]) << ")" << endl;
+                    (void)tc[i].get_prop_type(proplist[j]);
                 }
             } catch(key_not_found<prop_id>&)
             {
@@ -128,34 +80,32 @@ void test_attachment_table(const fairport::node& message, const fairport::table&
     for(fairport::uint i = 0; i < tc.size(); ++i)
     {
         node attach = message.lookup(tc[i].get_row_id());
-        
-        wcout << "Attachment " << i << endl;
-        property_bag pc(attach);
-            std::vector<fairport::ushort> proplist(pc.get_prop_list());
-            for(fairport::uint i = 0; i < proplist.size(); ++i)
-            {
-                if(pc.get_prop_type(proplist[i]) == prop_type_wstring)
-                {
-                    wcout << "\t" << hex << proplist[i] << ": " << pc.read_prop<std::wstring>(proplist[i]) << endl;
-                }
-                else if(pc.get_prop_type(proplist[i]) == prop_type_long)
-                {
-                    wcout << "\t" << hex << proplist[i] << ": " << dec << pc.read_prop<slong>(proplist[i]) << endl;
-                }
-                else if(pc.get_prop_type(proplist[i]) == prop_type_boolean)
-                {
-                    wcout << "\t" << hex << proplist[i] << ": " << dec << (pc.read_prop<bool>(proplist[i]) ? L"true" : L"false") << endl;
-                }
-                else if(pc.get_prop_type(proplist[i]) == prop_type_binary)
-                {
-                    test_prop_stream(pc, proplist[i]);
-                }
-                else
-                {
-                    wcout << "\t" << hex << proplist[i] << "(" << dec << pc.get_prop_type(proplist[i]) << ")" << endl;
-                }
-            }
 
+        property_bag pc(attach);
+        std::vector<fairport::ushort> proplist(pc.get_prop_list());
+        for(fairport::uint i = 0; i < proplist.size(); ++i)
+        {
+            if(pc.get_prop_type(proplist[i]) == prop_type_wstring)
+            {
+                (void)pc.read_prop<std::wstring>(proplist[i]);
+            }
+            else if(pc.get_prop_type(proplist[i]) == prop_type_long)
+            {
+                (void)pc.read_prop<slong>(proplist[i]);
+            }
+            else if(pc.get_prop_type(proplist[i]) == prop_type_boolean)
+            {
+                (void)pc.read_prop<bool>(proplist[i]);
+            }
+            else if(pc.get_prop_type(proplist[i]) == prop_type_binary)
+            {
+                test_prop_stream(pc, proplist[i]);
+            }
+            else
+            {
+                (void)pc.get_prop_type(proplist[i]);
+            }
+        }
     }
 }
 
@@ -170,7 +120,7 @@ void iterate(fairport::shared_db_ptr pdb)
             ++iter)
     {
         node n(pdb, *iter);
-        std::vector<byte> buffer(n.size());
+        std::vector<fairport::byte> buffer(n.size());
         n.read(buffer, 0);
 
         try
@@ -184,26 +134,13 @@ void iterate(fairport::shared_db_ptr pdb)
                 switch(bag.get_prop_type(proplist[i]))
                 {
                 case prop_type_mv_wstring:
-                    {
-                    vector<wstring> wstrings = bag.read_prop_array<wstring>(proplist[i]);
-                    cout << "prop_type_mv_wstring" << endl;
-                    for(size_t i = 0; i < wstrings.size(); ++i)
-                        wcout << wstrings[i] << endl;
-                    }
+                    (void)bag.read_prop_array<wstring>(proplist[i]);
                     break;
                 case prop_type_mv_string:
-                    {
-                    vector<string> strings = bag.read_prop_array<string>(proplist[i]);
-                    cout << "prop_type_mv_string" << endl;
-                    for(size_t i = 0; i < strings.size(); ++i)
-                        cout << strings[i] << endl;
-                    }
+                    (void)bag.read_prop_array<string>(proplist[i]);
                     break;
                 case prop_type_mv_binary:
-                    {
-                    vector<vector<byte> > bins = bag.read_prop_array<vector<byte> >(proplist[i]);
-                    cout << "prop_type_mv_wstring" << endl;
-                    }
+                    (void)bag.read_prop_array<vector<fairport::byte> >(proplist[i]);
                     break;
                 default:
                     break;
@@ -217,7 +154,6 @@ void iterate(fairport::shared_db_ptr pdb)
 
         if(get_nid_type(n.get_id()) == nid_type_message)
         {
-            
             property_bag pc(n);
             std::vector<fairport::ushort> proplist(pc.get_prop_list());
             for(fairport::uint i = 0; i < proplist.size(); ++i)
@@ -240,7 +176,7 @@ void iterate(fairport::shared_db_ptr pdb)
                 if(get_nid_type(si->id) == nid_type_attachment_table)
                 {
                     table atc(node(n, *si));
-                    wcout << "Found Attachment Table: " << atc.size() << endl;
+                    (void)atc.size();
                     test_table(atc);
                     test_attachment_table(n, atc);
                 }
@@ -248,7 +184,7 @@ void iterate(fairport::shared_db_ptr pdb)
                 if(get_nid_type(si->id) == nid_type_recipient_table)
                 {
                     table atc(node(n, *si));
-                    wcout << "Found Recipient Table: " << atc.size() << endl;
+                    (void)atc.size();
                     test_table(atc);
                     //test_attachment_table(n, atc);
                 }
@@ -285,22 +221,69 @@ void iterate(fairport::shared_db_ptr pdb)
     }
 }
 
-void test_highlevel()
+BOOST_AUTO_TEST_SUITE( highlevel )
+
+BOOST_AUTO_TEST_CASE( name_idmap )
 {
     using namespace fairport;
+    shared_db_ptr pdb = open_database(L"sample1.pst");
+    name_id_map nm(pdb);
 
-    shared_db_ptr uni = open_database(L"test_unicode.pst");
-    shared_db_ptr ansi = open_database(L"test_ansi.pst");
-    shared_db_ptr samp1 = open_database(L"sample1.pst");
-    shared_db_ptr samp2 = open_database(L"sample2.pst");
-    shared_db_ptr submess = open_database(L"submessage.pst");
+    const guid g1 = { 0x20386, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
+    const guid g2 = { 0x62002, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
 
-    iterate(uni);
-    iterate(ansi);
-    iterate(samp1);
-    iterate(samp2);
-    iterate(submess);
+    // is the count correct?
+    BOOST_CHECK_EQUAL(nm.get_prop_count(), 172);
 
-    // only valid to call on samp1
-    test_nameid_map_samp1(samp1);
+    // test that the lookup succeeds and matches a few well known named props
+    named_prop t1(ps_public_strings, L"urn:schemas-microsoft-com:office:outlook#storetypeprivate");
+    BOOST_CHECK_EQUAL(nm.lookup(t1), 0x800f);
+    BOOST_CHECK(nm.lookup(0x800f).get_name() == L"urn:schemas-microsoft-com:office:outlook#storetypeprivate");
+
+    named_prop t2(ps_public_strings, L"Keywords");
+    BOOST_CHECK_EQUAL(nm.lookup(t2), 0x8012);
+    BOOST_CHECK(nm.lookup(0x8012).get_name() == L"Keywords");
+
+    named_prop t3(g1, L"x-ms-exchange-organization-authdomain");
+    BOOST_CHECK_EQUAL(nm.lookup(t3), 0x801c);
+    BOOST_CHECK(nm.lookup(0x801c).get_name() == L"x-ms-exchange-organization-authdomain");
+
+    named_prop t4(g2, 0x8233);
+    BOOST_CHECK_EQUAL(nm.lookup(t4), 0x8008);
+    BOOST_CHECK_EQUAL(nm.lookup(0x8008).get_id(), 0x8233);
+
+    named_prop t5(g2, 0x8205);
+    BOOST_CHECK_EQUAL(nm.lookup(t5), 0x8000);
+    BOOST_CHECK_EQUAL(nm.lookup(0x8000).get_id(), 0x8205);
+
+    // test that the lookup fails for a few known-to-not-exist named props
+    named_prop t6(ps_public_strings, L"fake-property");
+    BOOST_CHECK_THROW(nm.lookup(t6), key_not_found<named_prop>);
 }
+
+BOOST_AUTO_TEST_CASE( iterate_uni )
+{
+    iterate(open_database(L"test_unicode.pst"));
+}
+
+BOOST_AUTO_TEST_CASE( iterate_ansi )
+{
+    iterate(open_database(L"test_ansi.pst"));
+}
+
+BOOST_AUTO_TEST_CASE( iterate_sample1 )
+{
+    iterate(open_database(L"sample1.pst"));
+}
+
+BOOST_AUTO_TEST_CASE( iterate_sample2 )
+{
+    iterate(open_database(L"sample2.pst"));
+}
+
+BOOST_AUTO_TEST_CASE( iterate_submessage )
+{
+    iterate(open_database(L"submessage.pst"));
+}
+
+BOOST_AUTO_TEST_SUITE_END()
