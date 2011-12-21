@@ -126,31 +126,31 @@ BOOST_AUTO_TEST_CASE( entry_id )
 BOOST_AUTO_TEST_CASE( folder_by_name )
 {
     pst uni(L"test_unicode.pst");
-    process_folder(uni.open_folder(L"Folder"));
+    BOOST_CHECK_NO_THROW(process_folder(uni.open_folder(L"Folder")));
 }
 
 BOOST_AUTO_TEST_CASE( process_ansi )
 {
     pst ansi(L"test_ansi.pst");
-    process_pst(ansi);
+    BOOST_CHECK_NO_THROW(process_pst(ansi));
 }
 
 BOOST_AUTO_TEST_CASE( process_sample1 )
 {
     pst s1(L"sample1.pst");
-    process_pst(s1);
+    BOOST_CHECK_NO_THROW(process_pst(s1));
 }
 
 BOOST_AUTO_TEST_CASE( process_sample2 )
 {
     pst s2(L"sample2.pst");
-    process_pst(s2);
+    BOOST_CHECK_NO_THROW(process_pst(s2));
 }
 
 BOOST_AUTO_TEST_CASE( process_sub )
 {
     pst submess(L"submessage.pst");
-    process_pst(submess);
+    BOOST_CHECK_NO_THROW(process_pst(submess));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
