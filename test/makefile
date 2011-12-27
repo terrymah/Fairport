@@ -40,4 +40,4 @@ fairport.exe: unittest.cpp
 	$(CC) unittest.cpp $(OPTIONS) $(OUTPUT)$(NAME)
 
 clean:
-	$(DELCMD) fairport* *.o* *.pdb *.ilk *.jpg *.i *.Manifest
+	$(DELCMD) fairport* *.o* *.pdb *.ilk *.jpg *.i *.Manifest *.xml

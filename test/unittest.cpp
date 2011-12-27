@@ -1,6 +1,6 @@
 #define BOOST_TEST_MODULE Fairport
 
-#if _MSC_VER < 1600
+#if _MSC_VER && _MSC_VER < 1600
 #pragma warning(disable: 4996)
 #endif
 
