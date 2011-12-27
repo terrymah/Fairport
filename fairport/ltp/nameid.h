@@ -39,7 +39,7 @@ public:
     //! \param[in] g The GUID which this named prop is a member
     //! \param[in] name The string name for this property
     named_prop(const guid& g, const std::wstring& name)
-        : m_guid(g), m_is_string(true), m_name(name) { }
+        : m_guid(g), m_is_string(true), m_id(0), m_name(name) { }
 
     //! \brief Get the namespace GUID of which this named prop is a member
     //! \returns The GUID for the namespace this named property is in

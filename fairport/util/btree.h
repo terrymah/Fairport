@@ -307,7 +307,7 @@ void fairport::btree_node_leaf<K,V>::next(btree_iter_impl<K,V>& iter) const
 {
     if(++iter.m_leaf_pos == this->num_values())
     {
-        if(iter.m_path.size() > 0)
+        if(!iter.m_path.empty())
         {
             for(typename btree_iter_impl<K,V>::path_iter piter = iter.m_path.begin();
                 piter != iter.m_path.end(); 
@@ -331,7 +331,7 @@ void fairport::btree_node_leaf<K,V>::prev(btree_iter_impl<K,V>& iter) const
 {
     if(iter.m_leaf_pos == 0)
     {
-        if(iter.m_path.size() > 0)
+        if(!iter.m_path.empty())
         {
             for(typename btree_iter_impl<K,V>::path_iter piter = iter.m_path.begin();
                 piter != iter.m_path.end();
