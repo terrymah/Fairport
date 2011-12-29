@@ -827,7 +827,7 @@ static_assert(sizeof(bbt_leaf_entry<ulonglong>) == 24, "bbt_leaf_entry<ulonglong
 template<typename T, typename EntryType>
 struct bt_page
 {
-    static const size_t extra_space = page<T>::page_data_size - (sizeof(T) * sizeof(byte));
+    static const size_t extra_space = page<T>::page_data_size - sizeof(T);
     static const size_t max_entries = extra_space / sizeof(EntryType); //!< Maximum number of entries on a page
     union
     {

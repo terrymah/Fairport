@@ -716,9 +716,16 @@ inline std::tr1::shared_ptr<fairport::subnode_leaf_block> fairport::database_imp
 
     for(int i = 0; i < sub_block.count; ++i)
     {
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable:6385)
+#endif
         ni.id = sub_block.entry[i].nid;
         ni.data_bid = sub_block.entry[i].data;
         ni.sub_bid = sub_block.entry[i].sub;
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
         subnodes.push_back(std::make_pair(sub_block.entry[i].nid, ni));
     }
@@ -737,6 +744,9 @@ inline std::tr1::shared_ptr<fairport::subnode_nonleaf_block> fairport::database_
 
     for(int i = 0; i < sub_block.count; ++i)
     {
+#ifdef _MSC_VER
+#pragma warning(suppress:6385)
+#endif
         subnodes.push_back(std::make_pair(sub_block.entry[i].nid_key, sub_block.entry[i].sub_block_bid));
     }
 

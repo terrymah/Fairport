@@ -455,6 +455,9 @@ inline std::tr1::shared_ptr<fairport::bth_nonleaf_node<K,V> > fairport::bth_node
         // Copy 'page' to a local variable so that it has standard
         // alignment before we pass it by reference to make_pair (required
         // by GCC on Mac and probably other platforms).
+#ifdef _MSC_VER
+#pragma warning(suppress:6385)
+#endif
         heap_id page = pbth_nonleaf_node->entries[i].page;
         child_nodes.push_back(std::make_pair(pbth_nonleaf_node->entries[i].key, page));
     }
@@ -465,7 +468,7 @@ inline std::tr1::shared_ptr<fairport::bth_nonleaf_node<K,V> > fairport::bth_node
     return std::tr1::shared_ptr<bth_nonleaf_node<K,V> >(new bth_nonleaf_node<K,V>(h, id, level, child_nodes));
 #endif
 }
-    
+
 template<typename K, typename V>
 inline std::tr1::shared_ptr<fairport::bth_leaf_node<K,V> > fairport::bth_node<K,V>::open_leaf(const heap_ptr& h, heap_id id)
 {
@@ -483,6 +486,9 @@ inline std::tr1::shared_ptr<fairport::bth_leaf_node<K,V> > fairport::bth_node<K,
 
         for(uint i = 0; i < num_entries; ++i)
         {
+#ifdef _MSC_VER
+#pragma warning(suppress:6385)
+#endif
             entries.push_back(std::make_pair(pbth_leaf_node->entries[i].key, pbth_leaf_node->entries[i].value));
         }
 #ifndef BOOST_NO_RVALUE_REFERENCES

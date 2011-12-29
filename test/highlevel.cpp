@@ -77,9 +77,9 @@ void test_attachment_table(const fairport::node& message, const fairport::table&
 {
     using namespace std;
     using namespace fairport;
-    for(fairport::uint i = 0; i < tc.size(); ++i)
+    for(fairport::uint row = 0; row < tc.size(); ++row)
     {
-        node attach = message.lookup(tc[i].get_row_id());
+        node attach = message.lookup(tc[row].get_row_id());
 
         property_bag pc(attach);
         std::vector<fairport::ushort> proplist(pc.get_prop_list());

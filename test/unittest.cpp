@@ -6,7 +6,7 @@
 
 #ifdef _MSC_VER
 #pragma warning(push)
-#pragma warning(disable: 4389 4535)
+#pragma warning(disable: 6387 6326 6328 6320 6269 6246 6031 6011 6322 6335 6054 6001 4389 4535)
 #endif
 #include <boost/test/included/unit_test.hpp>
 #ifdef _MSC_VER
