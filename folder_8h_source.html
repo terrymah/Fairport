@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.13</span>
+   &#160;<span id="projectnumber">v1.0.14</span>
    </div>
    
   </td>
@@ -243,7 +243,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00230"></a><a class="code" href="classfairport_1_1folder.html#a71fb991d3bd42d980742b43563a08b7d">00230</a>     <a class="code" href="classfairport_1_1folder.html#ad2c2afccac37102bf7d114c972a18878" title="Search folder iterator type; a transform iterator over a filter iterator over table row iterator...">search_folder_iterator</a> <a class="code" href="classfairport_1_1folder.html#a71fb991d3bd42d980742b43563a08b7d" title="Get an iterator to the first search folder in this folder.">sub_search_folder_begin</a>()<span class="keyword"> const</span>
 <a name="l00231"></a>00231 <span class="keyword">        </span>{ <span class="keywordflow">return</span> boost::make_transform_iterator(boost::make_filter_iterator&lt;<a class="code" href="structfairport_1_1is__nid__type.html" title="Functor to determine if an object is of the specified node type.">is_nid_type&lt;nid_type_search_folder&gt;</a> &gt;(<a class="code" href="classfairport_1_1folder.html#a135bd254ea8f792f5fc0f7bb04bb46ff" title="Get the hierarchy table of this folder.">get_hierarchy_table</a>().begin(), <a class="code" href="classfairport_1_1folder.html#a135bd254ea8f792f5fc0f7bb04bb46ff" title="Get the hierarchy table of this folder.">get_hierarchy_table</a>().end()), <a class="code" href="classfairport_1_1search__folder__transform__row.html" title="Defines a transform from a row of a hierarchy table to a search_folder.">search_folder_transform_row</a>(m_db)); }
 <a name="l00234"></a><a class="code" href="classfairport_1_1folder.html#a46568ff553fbb5161f29d23fb2768bde">00234</a>     <a class="code" href="classfairport_1_1folder.html#ad2c2afccac37102bf7d114c972a18878" title="Search folder iterator type; a transform iterator over a filter iterator over table row iterator...">search_folder_iterator</a> <a class="code" href="classfairport_1_1folder.html#a46568ff553fbb5161f29d23fb2768bde" title="Get the end search folder iterator.">sub_search_folder_end</a>()<span class="keyword"> const</span>
-<a name="l00235"></a>00235 <span class="keyword">        </span>{ <span class="keywordflow">return</span> boost::make_transform_iterator(boost::make_filter_iterator&lt;<a class="code" href="structfairport_1_1is__nid__type.html" title="Functor to determine if an object is of the specified node type.">is_nid_type&lt;nid_type_search_folder&gt;</a> &gt;(<a class="code" href="classfairport_1_1folder.html#a135bd254ea8f792f5fc0f7bb04bb46ff" title="Get the hierarchy table of this folder.">get_hierarchy_table</a>().begin(), <a class="code" href="classfairport_1_1folder.html#a135bd254ea8f792f5fc0f7bb04bb46ff" title="Get the hierarchy table of this folder.">get_hierarchy_table</a>().end()), <a class="code" href="classfairport_1_1search__folder__transform__row.html" title="Defines a transform from a row of a hierarchy table to a search_folder.">search_folder_transform_row</a>(m_db)); }
+<a name="l00235"></a>00235 <span class="keyword">        </span>{ <span class="keywordflow">return</span> boost::make_transform_iterator(boost::make_filter_iterator&lt;<a class="code" href="structfairport_1_1is__nid__type.html" title="Functor to determine if an object is of the specified node type.">is_nid_type&lt;nid_type_search_folder&gt;</a> &gt;(<a class="code" href="classfairport_1_1folder.html#a135bd254ea8f792f5fc0f7bb04bb46ff" title="Get the hierarchy table of this folder.">get_hierarchy_table</a>().end(), <a class="code" href="classfairport_1_1folder.html#a135bd254ea8f792f5fc0f7bb04bb46ff" title="Get the hierarchy table of this folder.">get_hierarchy_table</a>().end()), <a class="code" href="classfairport_1_1search__folder__transform__row.html" title="Defines a transform from a row of a hierarchy table to a search_folder.">search_folder_transform_row</a>(m_db)); }
 <a name="l00236"></a>00236 
 <a name="l00241"></a>00241     <a class="code" href="classfairport_1_1folder.html" title="A folder in a PST file.">folder</a> <a class="code" href="classfairport_1_1folder.html#a85be65c99e98f03e7fea057a3f916fd0" title="Open a specific subfolder in this folder, not recursive.">open_sub_folder</a>(<span class="keyword">const</span> std::wstring&amp; name);
 <a name="l00242"></a>00242 
@@ -430,7 +430,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Fri Dec 30 2011 11:13:06 for Fairport by
+    <li class="footer">Generated on Fri Dec 30 2011 14:34:48 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
