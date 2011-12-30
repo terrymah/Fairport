@@ -7,9 +7,12 @@
 
 using namespace fairport;
 
-void wmain(int, wchar_t* argv[])
+int main(int, char* argv[])
 {
-    shared_db_ptr db(open_database(argv[1]));
+    std::string name(argv[1]);
+    std::wstring wname(name.begin(), name.end());
+
+    shared_db_ptr db(open_database(wname));
     property_bag store(db->lookup_node(nid_message_store));
 
     std::vector<prop_id> props = store.get_prop_list();

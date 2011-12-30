@@ -21,3 +21,8 @@ Testing
 CTestTestfile.cmake
 /doc/html
 /samples/pstvalues/values.h
+/samples/nprop
+/samples/pstattach
+/samples/pst_dir
+/samples/pstinfo
+/samples/pstval

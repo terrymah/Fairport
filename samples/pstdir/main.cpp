@@ -8,7 +8,7 @@ using namespace std::tr1::placeholders;
 
 void process_message(int tab_depth, const message& m)
 {
-    for(int i = 0; i < tab_depth; ++i) cout << '\t';
+    for(int i = 0; i < tab_depth; ++i) wcout << '\t';
 
     try {
         wcout << m.get_subject() << endl;
@@ -22,7 +22,7 @@ void process_message(int tab_depth, const message& m)
 
 void process_folder(int tab_depth, const folder& f)
 {
-    for(int i = 0; i < tab_depth; ++i) cout << '\t';
+    for(int i = 0; i < tab_depth; ++i) wcout << '\t';
     wcout << f.get_name() << L" (" << f.get_message_count() << L")\n";
 
     for(folder::message_iterator m = f.message_begin(); m != f.message_end(); ++m)

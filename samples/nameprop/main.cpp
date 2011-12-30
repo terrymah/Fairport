@@ -105,7 +105,7 @@ int main()
     // When structures address into the string stream, they are giving the 
     // offset of the long value for the length of the string they want to access.
     prop_stream sstream(names.open_prop_stream(0x4));
-    ulong size;
+    fairport::ulong size;
     std::vector<char> buffer;
 
     cout << endl << "String Stream (offset, size: string) : " << endl;
@@ -120,7 +120,7 @@ int main()
         wcout << setw(6) << ((size_t)sstream.tellg() - size - 4) << ", " << setw(4) << size << ": " << val << endl;
 
         size_t pos = (size_t)sstream.tellg();
-        pos = (pos + 3L & ~3L);
+        pos = ((pos + 3L) & ~3L);
         sstream.seekg(pos);
     }
 
