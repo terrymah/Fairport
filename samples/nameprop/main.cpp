@@ -42,8 +42,8 @@ void pretty_print(const disk::nameid_hash_entry& id)
 
 int main() 
 {
-    pst p(L"../../test/sample2.pst");
-    property_bag names(p.get_db()->lookup_node(nid_name_id_map));
+    pst pstfile(L"../../test/sample2.pst");
+    property_bag names(pstfile.get_db()->lookup_node(nid_name_id_map));
 
     //
     // dump out the bucket count
@@ -142,16 +142,16 @@ int main()
 
             // calculate the number of values
             hash_values.seekg(0, ios_base::end);
-            size_t size = (size_t)hash_values.tellg();
-            size_t num = size/sizeof(disk::nameid_hash_entry);
+            size_t val_size = (size_t)hash_values.tellg();
+            size_t num = val_size/sizeof(disk::nameid_hash_entry);
             cout << num << (num == 1 ? " entry" : " entries") << endl;
 
-            int i = 0;
+            int j = 0;
             disk::nameid_hash_entry entry;
             hash_values.seekg(0, ios_base::beg);
             while(hash_values.read((char*)&entry, sizeof(entry)) != 0)
             {
-                cout << "\t" << dec << setfill('0') << "[" << setw(4) << i++ << "] ";
+                cout << "\t" << dec << setfill('0') << "[" << setw(4) << j++ << "] ";
                 pretty_print(entry);
                 cout << endl;
             }
