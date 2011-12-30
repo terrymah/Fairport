@@ -1,12 +1,10 @@
 #include <iostream>        // wcout
-#include <algorithm>       // for_each
-#include <functional>      // bind
 
 #include "fairport/pst.h"
 
 using namespace fairport;
 using namespace std;
-using namespace std::placeholders;
+using namespace std::tr1::placeholders;
 
 void process_message(int tab_depth, const message& m)
 {
@@ -27,8 +25,16 @@ void process_folder(int tab_depth, const folder& f)
     for(int i = 0; i < tab_depth; ++i) cout << '\t';
     wcout << f.get_name() << L" (" << f.get_message_count() << L")\n";
 
-    for_each(f.message_begin(), f.message_end(), bind(process_message, tab_depth+1, _1));
-    for_each(f.sub_folder_begin(), f.sub_folder_end(), bind(process_folder, tab_depth+1, _1)); 
+    for(folder::message_iterator m = f.message_begin(); m != f.message_end(); ++m)
+    {
+        process_message(tab_depth+1, *m);
+    }
+
+    for(folder::folder_iterator subf = f.sub_folder_begin(); subf != f.sub_folder_end(); ++subf)
+    {
+        process_folder(tab_depth+1, *subf);
+    }
+
 }
 
 int main(int, char** argv)

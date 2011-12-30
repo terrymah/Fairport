@@ -45,7 +45,9 @@ DELCMD=rm
 NAME=fairport
 endif
 
-fairport.exe: unittest.cpp
+all: $(NAME)
+
+$(NAME): unittest.cpp
 	$(CC) unittest.cpp $(OPTIONS) $(OUTPUT)$(NAME)
 
 clean:
