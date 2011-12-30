@@ -5,6 +5,8 @@
 //! This is the API Reference for Fairport. Fairport is a fork of PSTSDK, which
 //! is Microsoft's SDK for accessing PST files. 
 //!
+//! The latest release can be found <a href="latest.zip">here</a>.
+//!
 //! PSTSDK is distributed under the <a href="http://www.apache.org/licenses">
 //! Apache v2.0 License</a>. Fairport is based on PSTSDK, but any and all 
 //! Fairport modifications to are licensed under the 
