@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0</span>
+   &#160;<span id="projectnumber">v1.0.10</span>
    </div>
    
   </td>
@@ -650,7 +650,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00827"></a>00827 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> EntryType&gt;
 <a name="l00828"></a><a class="code" href="structfairport_1_1disk_1_1bt__page.html">00828</a> <span class="keyword">struct </span><a class="code" href="structfairport_1_1disk_1_1bt__page.html" title="The fundamental page structure which forms the basis of the two BTrees.">bt_page</a>
 <a name="l00829"></a>00829 {
-<a name="l00830"></a><a class="code" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">00830</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">extra_space</a> = <a class="code" href="structfairport_1_1disk_1_1page.html" title="Generic page structure.">page&lt;T&gt;::page_data_size</a> - (<span class="keyword">sizeof</span>(T) * <span class="keyword">sizeof</span>(<a class="code" href="group__primitive.html#gaa303d59ad33197b84bade8b453fa7eec">byte</a>));
+<a name="l00830"></a><a class="code" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">00830</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">extra_space</a> = <a class="code" href="structfairport_1_1disk_1_1page.html" title="Generic page structure.">page&lt;T&gt;::page_data_size</a> - <span class="keyword">sizeof</span>(T);
 <a name="l00831"></a><a class="code" href="structfairport_1_1disk_1_1bt__page.html#a5295dcf6e689ebec29c3413610a525b4">00831</a>     <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code" href="structfairport_1_1disk_1_1bt__page.html#a5295dcf6e689ebec29c3413610a525b4" title="Maximum number of entries on a page.">max_entries</a> = <a class="code" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">extra_space</a> / <span class="keyword">sizeof</span>(EntryType); 
 <a name="l00832"></a>00832     <span class="keyword">union</span>
 <a name="l00833"></a>00833     {
@@ -1190,7 +1190,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Sun Nov 27 2011 08:03:42 for Fairport by
+    <li class="footer">Generated on Fri Dec 30 2011 09:44:02 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

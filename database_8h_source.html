@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0</span>
+   &#160;<span id="projectnumber">v1.0.10</span>
    </div>
    
   </td>
@@ -758,38 +758,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00716"></a>00716 
 <a name="l00717"></a>00717     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a5a6c02f808dece701831ae146391083f" title="Number of entries in the entry array.">count</a>; ++i)
 <a name="l00718"></a>00718     {
-<a name="l00719"></a>00719         ni.<a class="code" href="structfairport_1_1subnode__info.html#a7c874c901a11b3a9ec1003f3f9524b71">id</a> = sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].nid;
-<a name="l00720"></a>00720         ni.<a class="code" href="structfairport_1_1subnode__info.html#a09ca0f533a705291a600a7fe1e434374">data_bid</a> = sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].data;
-<a name="l00721"></a>00721         ni.<a class="code" href="structfairport_1_1subnode__info.html#a784e96100da088f3f10bd01d8da0545e">sub_bid</a> = sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].sub;
-<a name="l00722"></a>00722 
-<a name="l00723"></a>00723         subnodes.push_back(std::make_pair(sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].nid, ni));
-<a name="l00724"></a>00724     }
-<a name="l00725"></a>00725 
-<a name="l00726"></a>00726 <span class="preprocessor">#ifndef BOOST_NO_RVALUE_REFERENCES</span>
-<a name="l00727"></a>00727 <span class="preprocessor"></span>    <span class="keywordflow">return</span> std::tr1::shared_ptr&lt;subnode_leaf_block&gt;(<span class="keyword">new</span> <a class="code" href="classfairport_1_1subnode__leaf__block.html" title="Contains the actual subnode information.">subnode_leaf_block</a>(parent, bi, std::move(subnodes)));
-<a name="l00728"></a>00728 <span class="preprocessor">#else</span>
-<a name="l00729"></a>00729 <span class="preprocessor"></span>    <span class="keywordflow">return</span> std::tr1::shared_ptr&lt;subnode_leaf_block&gt;(<span class="keyword">new</span> <a class="code" href="classfairport_1_1subnode__leaf__block.html" title="Contains the actual subnode information.">subnode_leaf_block</a>(parent, bi, subnodes));
-<a name="l00730"></a>00730 <span class="preprocessor">#endif</span>
-<a name="l00731"></a>00731 <span class="preprocessor"></span>}
+<a name="l00719"></a>00719 <span class="preprocessor">#ifdef _MSC_VER</span>
+<a name="l00720"></a>00720 <span class="preprocessor"></span><span class="preprocessor">#pragma warning(push)</span>
+<a name="l00721"></a>00721 <span class="preprocessor"></span><span class="preprocessor">#pragma warning(disable:6385)</span>
+<a name="l00722"></a>00722 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00723"></a>00723 <span class="preprocessor"></span>        ni.<a class="code" href="structfairport_1_1subnode__info.html#a7c874c901a11b3a9ec1003f3f9524b71">id</a> = sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].nid;
+<a name="l00724"></a>00724         ni.<a class="code" href="structfairport_1_1subnode__info.html#a09ca0f533a705291a600a7fe1e434374">data_bid</a> = sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].data;
+<a name="l00725"></a>00725         ni.<a class="code" href="structfairport_1_1subnode__info.html#a784e96100da088f3f10bd01d8da0545e">sub_bid</a> = sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].sub;
+<a name="l00726"></a>00726 <span class="preprocessor">#ifdef _MSC_VER</span>
+<a name="l00727"></a>00727 <span class="preprocessor"></span><span class="preprocessor">#pragma warning(pop)</span>
+<a name="l00728"></a>00728 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00729"></a>00729 <span class="preprocessor"></span>
+<a name="l00730"></a>00730         subnodes.push_back(std::make_pair(sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].nid, ni));
+<a name="l00731"></a>00731     }
 <a name="l00732"></a>00732 
-<a name="l00733"></a>00733 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00734"></a><a class="code" href="classfairport_1_1database__impl.html#a0f7f7aa7823ff0fd528f5117ecc6cef6">00734</a> <span class="keyword">inline</span> std::tr1::shared_ptr&lt;fairport::subnode_nonleaf_block&gt; <a class="code" href="classfairport_1_1database__impl.html" title="PST implementation.">fairport::database_impl&lt;T&gt;::read_subnode_nonleaf_block</a>(<span class="keyword">const</span> <a class="code" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a>&amp; parent, <span class="keyword">const</span> <a class="code" href="structfairport_1_1block__info.html" title="An in memory, database format agnostic version of disk::bbt_leaf_entry.">block_info</a>&amp; bi, <a class="code" href="structfairport_1_1disk_1_1sub__nonleaf__block.html" title="Subnode non-leaf block.">disk::sub_nonleaf_block&lt;T&gt;</a>&amp; sub_block)
-<a name="l00735"></a>00735 {
-<a name="l00736"></a>00736     std::vector&lt;std::pair&lt;node_id, block_id&gt; &gt; subnodes;
-<a name="l00737"></a>00737 
-<a name="l00738"></a>00738     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a5a6c02f808dece701831ae146391083f" title="Number of entries in the entry array.">count</a>; ++i)
-<a name="l00739"></a>00739     {
-<a name="l00740"></a>00740         subnodes.push_back(std::make_pair(sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].nid_key, sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].sub_block_bid));
-<a name="l00741"></a>00741     }
-<a name="l00742"></a>00742 
-<a name="l00743"></a>00743 <span class="preprocessor">#ifndef BOOST_NO_RVALUE_REFERENCES</span>
-<a name="l00744"></a>00744 <span class="preprocessor"></span>    <span class="keywordflow">return</span> std::tr1::shared_ptr&lt;subnode_nonleaf_block&gt;(<span class="keyword">new</span> <a class="code" href="classfairport_1_1subnode__nonleaf__block.html" title="Contains references to subnode_leaf_blocks.">subnode_nonleaf_block</a>(parent, bi, std::move(subnodes)));
-<a name="l00745"></a>00745 <span class="preprocessor">#else</span>
-<a name="l00746"></a>00746 <span class="preprocessor"></span>    <span class="keywordflow">return</span> std::tr1::shared_ptr&lt;subnode_nonleaf_block&gt;(<span class="keyword">new</span> <a class="code" href="classfairport_1_1subnode__nonleaf__block.html" title="Contains references to subnode_leaf_blocks.">subnode_nonleaf_block</a>(parent, bi, subnodes));
-<a name="l00747"></a>00747 <span class="preprocessor">#endif</span>
-<a name="l00748"></a>00748 <span class="preprocessor"></span>}
-<a name="l00749"></a>00749 
-<a name="l00750"></a>00750 <span class="preprocessor">#endif</span>
+<a name="l00733"></a>00733 <span class="preprocessor">#ifndef BOOST_NO_RVALUE_REFERENCES</span>
+<a name="l00734"></a>00734 <span class="preprocessor"></span>    <span class="keywordflow">return</span> std::tr1::shared_ptr&lt;subnode_leaf_block&gt;(<span class="keyword">new</span> <a class="code" href="classfairport_1_1subnode__leaf__block.html" title="Contains the actual subnode information.">subnode_leaf_block</a>(parent, bi, std::move(subnodes)));
+<a name="l00735"></a>00735 <span class="preprocessor">#else</span>
+<a name="l00736"></a>00736 <span class="preprocessor"></span>    <span class="keywordflow">return</span> std::tr1::shared_ptr&lt;subnode_leaf_block&gt;(<span class="keyword">new</span> <a class="code" href="classfairport_1_1subnode__leaf__block.html" title="Contains the actual subnode information.">subnode_leaf_block</a>(parent, bi, subnodes));
+<a name="l00737"></a>00737 <span class="preprocessor">#endif</span>
+<a name="l00738"></a>00738 <span class="preprocessor"></span>}
+<a name="l00739"></a>00739 
+<a name="l00740"></a>00740 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00741"></a><a class="code" href="classfairport_1_1database__impl.html#a0f7f7aa7823ff0fd528f5117ecc6cef6">00741</a> <span class="keyword">inline</span> std::tr1::shared_ptr&lt;fairport::subnode_nonleaf_block&gt; <a class="code" href="classfairport_1_1database__impl.html" title="PST implementation.">fairport::database_impl&lt;T&gt;::read_subnode_nonleaf_block</a>(<span class="keyword">const</span> <a class="code" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a>&amp; parent, <span class="keyword">const</span> <a class="code" href="structfairport_1_1block__info.html" title="An in memory, database format agnostic version of disk::bbt_leaf_entry.">block_info</a>&amp; bi, <a class="code" href="structfairport_1_1disk_1_1sub__nonleaf__block.html" title="Subnode non-leaf block.">disk::sub_nonleaf_block&lt;T&gt;</a>&amp; sub_block)
+<a name="l00742"></a>00742 {
+<a name="l00743"></a>00743     std::vector&lt;std::pair&lt;node_id, block_id&gt; &gt; subnodes;
+<a name="l00744"></a>00744 
+<a name="l00745"></a>00745     <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a5a6c02f808dece701831ae146391083f" title="Number of entries in the entry array.">count</a>; ++i)
+<a name="l00746"></a>00746     {
+<a name="l00747"></a>00747 <span class="preprocessor">#ifdef _MSC_VER</span>
+<a name="l00748"></a>00748 <span class="preprocessor"></span><span class="preprocessor">#pragma warning(suppress:6385)</span>
+<a name="l00749"></a>00749 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00750"></a>00750 <span class="preprocessor"></span>        subnodes.push_back(std::make_pair(sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].nid_key, sub_block.<a class="code" href="structfairport_1_1disk_1_1sub__block.html#a1a562bac26d7adaf5613191903b861b6" title="Array of entries.">entry</a>[i].sub_block_bid));
+<a name="l00751"></a>00751     }
+<a name="l00752"></a>00752 
+<a name="l00753"></a>00753 <span class="preprocessor">#ifndef BOOST_NO_RVALUE_REFERENCES</span>
+<a name="l00754"></a>00754 <span class="preprocessor"></span>    <span class="keywordflow">return</span> std::tr1::shared_ptr&lt;subnode_nonleaf_block&gt;(<span class="keyword">new</span> <a class="code" href="classfairport_1_1subnode__nonleaf__block.html" title="Contains references to subnode_leaf_blocks.">subnode_nonleaf_block</a>(parent, bi, std::move(subnodes)));
+<a name="l00755"></a>00755 <span class="preprocessor">#else</span>
+<a name="l00756"></a>00756 <span class="preprocessor"></span>    <span class="keywordflow">return</span> std::tr1::shared_ptr&lt;subnode_nonleaf_block&gt;(<span class="keyword">new</span> <a class="code" href="classfairport_1_1subnode__nonleaf__block.html" title="Contains references to subnode_leaf_blocks.">subnode_nonleaf_block</a>(parent, bi, subnodes));
+<a name="l00757"></a>00757 <span class="preprocessor">#endif</span>
+<a name="l00758"></a>00758 <span class="preprocessor"></span>}
+<a name="l00759"></a>00759 
+<a name="l00760"></a>00760 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -810,7 +820,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Sun Nov 27 2011 08:03:42 for Fairport by
+    <li class="footer">Generated on Fri Dec 30 2011 09:44:02 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

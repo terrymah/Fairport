@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0</span>
+   &#160;<span id="projectnumber">v1.0.10</span>
    </div>
    
   </td>
@@ -299,7 +299,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00307"></a>00307 <span class="keyword"></span>{
 <a name="l00308"></a>00308     <span class="keywordflow">if</span>(++iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ada77e66c386645ec8bbcfec1efc2977e" title="The current position on that leaf.">m_leaf_pos</a> == this-&gt;num_values())
 <a name="l00309"></a>00309     {
-<a name="l00310"></a>00310         <span class="keywordflow">if</span>(iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ae7558cd9c49b914eec9ddf406f4befb9" title="The &quot;path&quot; to this leaf, starting at the root of the btree.">m_path</a>.size() &gt; 0)
+<a name="l00310"></a>00310         <span class="keywordflow">if</span>(!iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ae7558cd9c49b914eec9ddf406f4befb9" title="The &quot;path&quot; to this leaf, starting at the root of the btree.">m_path</a>.empty())
 <a name="l00311"></a>00311         {
 <a name="l00312"></a>00312             <span class="keywordflow">for</span>(<span class="keyword">typename</span> <a class="code" href="structfairport_1_1btree__iter__impl.html#ae2aa72c0d2b79cd41077773a433d98ab">btree_iter_impl&lt;K,V&gt;::path_iter</a> piter = iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ae7558cd9c49b914eec9ddf406f4befb9" title="The &quot;path&quot; to this leaf, starting at the root of the btree.">m_path</a>.begin();
 <a name="l00313"></a>00313                 piter != iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ae7558cd9c49b914eec9ddf406f4befb9" title="The &quot;path&quot; to this leaf, starting at the root of the btree.">m_path</a>.end(); 
@@ -323,7 +323,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00331"></a>00331 <span class="keyword"></span>{
 <a name="l00332"></a>00332     <span class="keywordflow">if</span>(iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ada77e66c386645ec8bbcfec1efc2977e" title="The current position on that leaf.">m_leaf_pos</a> == 0)
 <a name="l00333"></a>00333     {
-<a name="l00334"></a>00334         <span class="keywordflow">if</span>(iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ae7558cd9c49b914eec9ddf406f4befb9" title="The &quot;path&quot; to this leaf, starting at the root of the btree.">m_path</a>.size() &gt; 0)
+<a name="l00334"></a>00334         <span class="keywordflow">if</span>(!iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ae7558cd9c49b914eec9ddf406f4befb9" title="The &quot;path&quot; to this leaf, starting at the root of the btree.">m_path</a>.empty())
 <a name="l00335"></a>00335         {
 <a name="l00336"></a>00336             <span class="keywordflow">for</span>(<span class="keyword">typename</span> <a class="code" href="structfairport_1_1btree__iter__impl.html#ae2aa72c0d2b79cd41077773a433d98ab">btree_iter_impl&lt;K,V&gt;::path_iter</a> piter = iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ae7558cd9c49b914eec9ddf406f4befb9" title="The &quot;path&quot; to this leaf, starting at the root of the btree.">m_path</a>.begin();
 <a name="l00337"></a>00337                 piter != iter.<a class="code" href="structfairport_1_1btree__iter__impl.html#ae7558cd9c49b914eec9ddf406f4befb9" title="The &quot;path&quot; to this leaf, starting at the root of the btree.">m_path</a>.end();
@@ -459,7 +459,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Sun Nov 27 2011 08:03:42 for Fairport by
+    <li class="footer">Generated on Fri Dec 30 2011 09:44:02 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

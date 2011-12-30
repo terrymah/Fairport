@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0</span>
+   &#160;<span id="projectnumber">v1.0.10</span>
    </div>
    
   </td>
@@ -149,7 +149,7 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The page trailer.  <a href="#aa0a32824e1ac470654ff67d6c69a3cb1"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">extra_space</a> = <a class="el" href="structfairport_1_1disk_1_1page.html">page</a>&lt;T&gt;::page_data_size - (sizeof(T) * sizeof(<a class="el" href="group__primitive.html#gaa303d59ad33197b84bade8b453fa7eec">byte</a>))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">extra_space</a> = <a class="el" href="structfairport_1_1disk_1_1page.html">page</a>&lt;T&gt;::page_data_size - sizeof(T)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfairport_1_1disk_1_1bt__page.html#a5295dcf6e689ebec29c3413610a525b4">max_entries</a> = <a class="el" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">extra_space</a> / sizeof(EntryType)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum number of entries on a page.  <a href="#a5295dcf6e689ebec29c3413610a525b4"></a><br/></td></tr>
 </table>
@@ -243,7 +243,7 @@ template&lt;typename T, typename EntryType&gt; </div>
 template&lt;typename T, typename EntryType&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const size_t <a class="el" href="structfairport_1_1disk_1_1bt__page.html">fairport::disk::bt_page</a>&lt; T, EntryType &gt;::<a class="el" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">extra_space</a> = <a class="el" href="structfairport_1_1disk_1_1page.html">page</a>&lt;T&gt;::page_data_size - (sizeof(T) * sizeof(<a class="el" href="group__primitive.html#gaa303d59ad33197b84bade8b453fa7eec">byte</a>))<code> [static]</code></td>
+          <td class="memname">const size_t <a class="el" href="structfairport_1_1disk_1_1bt__page.html">fairport::disk::bt_page</a>&lt; T, EntryType &gt;::<a class="el" href="structfairport_1_1disk_1_1bt__page.html#ae67ee56c6c695d3633c7abb785d0e5a0">extra_space</a> = <a class="el" href="structfairport_1_1disk_1_1page.html">page</a>&lt;T&gt;::page_data_size - sizeof(T)<code> [static]</code></td>
         </tr>
       </table>
 </div>
@@ -373,7 +373,7 @@ template&lt;typename T, typename EntryType&gt; </div>
 </div>
 
 
-    <li class="footer">Generated on Sun Nov 27 2011 08:03:43 for Fairport by
+    <li class="footer">Generated on Fri Dec 30 2011 09:44:03 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

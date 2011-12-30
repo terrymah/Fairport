@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0</span>
+   &#160;<span id="projectnumber">v1.0.10</span>
    </div>
    
   </td>
@@ -262,184 +262,182 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00237"></a>00237 <span class="keyword">template</span>&lt;&gt;
 <a name="l00238"></a>00238 <span class="keyword">inline</span> std::vector&lt;bool&gt; fairport::const_property_object::read_prop_array&lt;bool&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
 <a name="l00239"></a>00239 {
-<a name="l00240"></a>00240     <span class="keyword">using namespace </span>std::tr1::placeholders;
-<a name="l00241"></a>00241 
-<a name="l00242"></a>00242     std::vector&lt;ulong&gt; values = read_prop_array&lt;ulong&gt;(id);
-<a name="l00243"></a>00243     std::vector&lt;bool&gt; results(values.size());
-<a name="l00244"></a>00244     std::transform(values.begin(), values.end(), results.begin(), std::tr1::bind(std::not_equal_to&lt;ulong&gt;(), 0, _1));
-<a name="l00245"></a>00245     <span class="keywordflow">return</span> results;
-<a name="l00246"></a>00246 }
-<a name="l00247"></a>00247 
-<a name="l00248"></a>00248 <span class="comment">// See the note in the class definition - convert the time_t read_prop</span>
-<a name="l00249"></a>00249 <span class="comment">// specialization into a member function in GCC</span>
-<a name="l00250"></a>00250 <span class="preprocessor">#ifdef __GNUC__</span>
-<a name="l00251"></a>00251 <span class="preprocessor"></span><span class="keyword">inline</span> time_t const_property_object::read_time_t_prop(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> <span class="keywordtype">id</span>) <span class="keyword">const</span>
-<a name="l00252"></a>00252 <span class="preprocessor">#else</span>
-<a name="l00253"></a>00253 <span class="preprocessor"></span><span class="keyword">template</span>&lt;&gt;
-<a name="l00254"></a>00254 <span class="keyword">inline</span> time_t const_property_object::read_prop&lt;time_t&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
-<a name="l00255"></a>00255 #endif
-<a name="l00256"></a>00256 {
-<a name="l00257"></a>00257     <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9a1fc5576abcc4f25fdf67d568cb5120c0" title="VT_DATE.">prop_type_apptime</a>)
-<a name="l00258"></a>00258     {
-<a name="l00259"></a>00259         <span class="keywordtype">double</span> time_value = read_prop&lt;double&gt;(id);
-<a name="l00260"></a>00260         <span class="keywordflow">return</span> <a class="code" href="group__util.html#ga1702cdbf94fc63b772b3d4ab07fc75fd" title="Convert from a VT_DATE to a time_t.">vt_date_to_time_t</a>(time_value);
-<a name="l00261"></a>00261     }
-<a name="l00262"></a>00262     <span class="keywordflow">else</span>
-<a name="l00263"></a>00263     {
-<a name="l00264"></a>00264         <a class="code" href="group__primitive.html#ga79cbb422be7b1e320c2baef42d558908">ulonglong</a> time_value = read_prop&lt;ulonglong&gt;(id);
-<a name="l00265"></a>00265         <span class="keywordflow">return</span> <a class="code" href="group__util.html#gaebca7320a7bb4d0c95a865bf06ddf892" title="Convert from a filetime to time_t.">filetime_to_time_t</a>(time_value);
-<a name="l00266"></a>00266     }
-<a name="l00267"></a>00267 }
-<a name="l00268"></a>00268 
-<a name="l00269"></a>00269 <span class="preprocessor">#ifdef __GNUC__</span>
-<a name="l00270"></a>00270 <span class="preprocessor"></span><span class="keyword">inline</span> std::vector&lt;time_t&gt; const_property_object::read_time_t_array(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> <span class="keywordtype">id</span>) <span class="keyword">const</span>
-<a name="l00271"></a>00271 <span class="preprocessor">#else</span>
-<a name="l00272"></a>00272 <span class="preprocessor"></span><span class="keyword">template</span>&lt;&gt;
-<a name="l00273"></a>00273 <span class="keyword">inline</span> std::vector&lt;time_t&gt; const_property_object::read_prop_array&lt;time_t&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
-<a name="l00274"></a>00274 #endif
-<a name="l00275"></a>00275 {
-<a name="l00276"></a>00276     <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9ab478d6ed39450a3cd3a1c2389921ea28">prop_type_mv_apptime</a>)
-<a name="l00277"></a>00277     {
-<a name="l00278"></a>00278         std::vector&lt;double&gt; time_values = read_prop_array&lt;double&gt;(id);
-<a name="l00279"></a>00279         std::vector&lt;time_t&gt; result(time_values.size());
-<a name="l00280"></a>00280         std::transform(time_values.begin(), time_values.end(), result.begin(), <a class="code" href="group__util.html#ga1702cdbf94fc63b772b3d4ab07fc75fd" title="Convert from a VT_DATE to a time_t.">vt_date_to_time_t</a>);
-<a name="l00281"></a>00281         <span class="keywordflow">return</span> result;
-<a name="l00282"></a>00282     }
-<a name="l00283"></a>00283     <span class="keywordflow">else</span>
-<a name="l00284"></a>00284     {
-<a name="l00285"></a>00285         std::vector&lt;ulonglong&gt; time_values = read_prop_array&lt;ulonglong&gt;(id);
-<a name="l00286"></a>00286         std::vector&lt;time_t&gt; result(time_values.size());
-<a name="l00287"></a>00287         std::transform(time_values.begin(), time_values.end(), result.begin(), <a class="code" href="group__util.html#gaebca7320a7bb4d0c95a865bf06ddf892" title="Convert from a filetime to time_t.">filetime_to_time_t</a>);
-<a name="l00288"></a>00288         <span class="keywordflow">return</span> result;
-<a name="l00289"></a>00289     }
+<a name="l00240"></a>00240     std::vector&lt;ulong&gt; values = read_prop_array&lt;ulong&gt;(id);
+<a name="l00241"></a>00241     std::vector&lt;bool&gt; results(values.size());
+<a name="l00242"></a>00242     std::transform(values.begin(), values.end(), results.begin(), std::tr1::bind(std::not_equal_to&lt;ulong&gt;(), 0, std::tr1::placeholders::_1));
+<a name="l00243"></a>00243     <span class="keywordflow">return</span> results;
+<a name="l00244"></a>00244 }
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246 <span class="comment">// See the note in the class definition - convert the time_t read_prop</span>
+<a name="l00247"></a>00247 <span class="comment">// specialization into a member function in GCC</span>
+<a name="l00248"></a>00248 <span class="preprocessor">#ifdef __GNUC__</span>
+<a name="l00249"></a>00249 <span class="preprocessor"></span><span class="keyword">inline</span> time_t const_property_object::read_time_t_prop(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> <span class="keywordtype">id</span>) <span class="keyword">const</span>
+<a name="l00250"></a>00250 <span class="preprocessor">#else</span>
+<a name="l00251"></a>00251 <span class="preprocessor"></span><span class="keyword">template</span>&lt;&gt;
+<a name="l00252"></a>00252 <span class="keyword">inline</span> time_t const_property_object::read_prop&lt;time_t&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
+<a name="l00253"></a>00253 #endif
+<a name="l00254"></a>00254 {
+<a name="l00255"></a>00255     <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9a1fc5576abcc4f25fdf67d568cb5120c0" title="VT_DATE.">prop_type_apptime</a>)
+<a name="l00256"></a>00256     {
+<a name="l00257"></a>00257         <span class="keywordtype">double</span> time_value = read_prop&lt;double&gt;(id);
+<a name="l00258"></a>00258         <span class="keywordflow">return</span> <a class="code" href="group__util.html#ga1702cdbf94fc63b772b3d4ab07fc75fd" title="Convert from a VT_DATE to a time_t.">vt_date_to_time_t</a>(time_value);
+<a name="l00259"></a>00259     }
+<a name="l00260"></a>00260     <span class="keywordflow">else</span>
+<a name="l00261"></a>00261     {
+<a name="l00262"></a>00262         <a class="code" href="group__primitive.html#ga79cbb422be7b1e320c2baef42d558908">ulonglong</a> time_value = read_prop&lt;ulonglong&gt;(id);
+<a name="l00263"></a>00263         <span class="keywordflow">return</span> <a class="code" href="group__util.html#gaebca7320a7bb4d0c95a865bf06ddf892" title="Convert from a filetime to time_t.">filetime_to_time_t</a>(time_value);
+<a name="l00264"></a>00264     }
+<a name="l00265"></a>00265 }
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267 <span class="preprocessor">#ifdef __GNUC__</span>
+<a name="l00268"></a>00268 <span class="preprocessor"></span><span class="keyword">inline</span> std::vector&lt;time_t&gt; const_property_object::read_time_t_array(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> <span class="keywordtype">id</span>) <span class="keyword">const</span>
+<a name="l00269"></a>00269 <span class="preprocessor">#else</span>
+<a name="l00270"></a>00270 <span class="preprocessor"></span><span class="keyword">template</span>&lt;&gt;
+<a name="l00271"></a>00271 <span class="keyword">inline</span> std::vector&lt;time_t&gt; const_property_object::read_prop_array&lt;time_t&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
+<a name="l00272"></a>00272 #endif
+<a name="l00273"></a>00273 {
+<a name="l00274"></a>00274     <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9ab478d6ed39450a3cd3a1c2389921ea28">prop_type_mv_apptime</a>)
+<a name="l00275"></a>00275     {
+<a name="l00276"></a>00276         std::vector&lt;double&gt; time_values = read_prop_array&lt;double&gt;(id);
+<a name="l00277"></a>00277         std::vector&lt;time_t&gt; result(time_values.size());
+<a name="l00278"></a>00278         std::transform(time_values.begin(), time_values.end(), result.begin(), <a class="code" href="group__util.html#ga1702cdbf94fc63b772b3d4ab07fc75fd" title="Convert from a VT_DATE to a time_t.">vt_date_to_time_t</a>);
+<a name="l00279"></a>00279         <span class="keywordflow">return</span> result;
+<a name="l00280"></a>00280     }
+<a name="l00281"></a>00281     <span class="keywordflow">else</span>
+<a name="l00282"></a>00282     {
+<a name="l00283"></a>00283         std::vector&lt;ulonglong&gt; time_values = read_prop_array&lt;ulonglong&gt;(id);
+<a name="l00284"></a>00284         std::vector&lt;time_t&gt; result(time_values.size());
+<a name="l00285"></a>00285         std::transform(time_values.begin(), time_values.end(), result.begin(), <a class="code" href="group__util.html#gaebca7320a7bb4d0c95a865bf06ddf892" title="Convert from a filetime to time_t.">filetime_to_time_t</a>);
+<a name="l00286"></a>00286         <span class="keywordflow">return</span> result;
+<a name="l00287"></a>00287     }
+<a name="l00288"></a>00288 
+<a name="l00289"></a>00289 }
 <a name="l00290"></a>00290 
-<a name="l00291"></a>00291 }
-<a name="l00292"></a>00292 
-<a name="l00293"></a>00293 <span class="keyword">template</span>&lt;&gt;
-<a name="l00294"></a><a class="code" href="namespacefairport.html#af1b6b2c358ad3044e6418dd5d679f246">00294</a> <span class="keyword">inline</span> std::vector&lt;byte&gt; const_property_object::read_prop&lt;std::vector&lt;byte&gt; &gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
-<a name="l00295"></a>00295 {
-<a name="l00296"></a>00296     <span class="keywordflow">return</span> get_value_variable(<span class="keywordtype">id</span>); 
-<a name="l00297"></a>00297 }
-<a name="l00298"></a>00298 
-<a name="l00299"></a>00299 <span class="keyword">template</span>&lt;&gt;
-<a name="l00300"></a><a class="code" href="namespacefairport.html#a14f5510d85136bbd53eb77729852775f">00300</a> <span class="keyword">inline</span> std::vector&lt;std::vector&lt;byte&gt; &gt; const_property_object::read_prop_array&lt;std::vector&lt;byte&gt; &gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
-<a name="l00301"></a>00301 {
-<a name="l00302"></a>00302     std::vector&lt;byte&gt; buffer = get_value_variable(<span class="keywordtype">id</span>);
-<a name="l00303"></a>00303 <span class="preprocessor">#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK</span>
-<a name="l00304"></a>00304 <span class="preprocessor"></span>    <span class="keywordflow">if</span>(buffer.size() &lt; <span class="keyword">sizeof</span>(<a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a>))
-<a name="l00305"></a>00305         <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;mv prop too short&quot;</span>);
-<a name="l00306"></a>00306 <span class="preprocessor">#endif</span>
-<a name="l00307"></a>00307 <span class="preprocessor"></span>    <a class="code" href="structfairport_1_1disk_1_1mv__toc.html" title="Multi-valued, variable length property TOC.">disk::mv_toc</a>* ptoc = <span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structfairport_1_1disk_1_1mv__toc.html" title="Multi-valued, variable length property TOC.">disk::mv_toc</a>*<span class="keyword">&gt;</span>(&amp;buffer[0]);
-<a name="l00308"></a>00308     std::vector&lt;std::vector&lt;byte&gt; &gt; results;
-<a name="l00309"></a>00309 
-<a name="l00310"></a>00310 <span class="preprocessor">#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK</span>
-<a name="l00311"></a>00311 <span class="preprocessor"></span>    <span class="keywordflow">if</span>(buffer.size() &lt; (<span class="keyword">sizeof</span>(<a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a>) + ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#a614397f49f43add9e6cf8d4432011c8c">count</a> * <span class="keyword">sizeof</span>(<a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a>)))
-<a name="l00312"></a>00312         <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;mv prop too short&quot;</span>);
-<a name="l00313"></a>00313 <span class="preprocessor">#endif</span>
-<a name="l00314"></a>00314 <span class="preprocessor"></span>
-<a name="l00315"></a>00315     <span class="keywordflow">for</span>(<a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a> i = 0; i &lt; ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#a614397f49f43add9e6cf8d4432011c8c">count</a>; ++i)
-<a name="l00316"></a>00316     {
-<a name="l00317"></a>00317         <a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a> start = ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#acb119b9a692f79d1043ed17e4fb7d6e1">offsets</a>[i];
-<a name="l00318"></a>00318         <a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a> end = (i == (ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#a614397f49f43add9e6cf8d4432011c8c">count</a> - 1)) ? buffer.size() : ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#acb119b9a692f79d1043ed17e4fb7d6e1">offsets</a>[i+1];
-<a name="l00319"></a>00319 <span class="preprocessor">#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK</span>
-<a name="l00320"></a>00320 <span class="preprocessor"></span>        <span class="keywordflow">if</span>(end &lt; start)
-<a name="l00321"></a>00321             <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;inconsistent mv prop toc&quot;</span>);
-<a name="l00322"></a>00322 <span class="preprocessor">#endif</span>
-<a name="l00323"></a>00323 <span class="preprocessor"></span>        results.push_back(std::vector&lt;byte&gt;(&amp;buffer[start], &amp;buffer[start] + (end-start)));
-<a name="l00324"></a>00324     }
-<a name="l00325"></a>00325 
-<a name="l00326"></a>00326     <span class="keywordflow">return</span> results;
-<a name="l00327"></a>00327 }
-<a name="l00328"></a>00328 
-<a name="l00329"></a>00329 <span class="keyword">template</span>&lt;&gt;
-<a name="l00330"></a><a class="code" href="namespacefairport.html#a01956a81f889254918fa26ddc21164f5">00330</a> <span class="keyword">inline</span> std::wstring const_property_object::read_prop&lt;std::wstring&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
-<a name="l00331"></a>00331 {
-<a name="l00332"></a>00332     std::vector&lt;byte&gt; buffer = get_value_variable(<span class="keywordtype">id</span>); 
-<a name="l00333"></a>00333 
-<a name="l00334"></a>00334     <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9adf4c7f0e0bb3f16963d31f6199f7f072">prop_type_string</a>)
-<a name="l00335"></a>00335     {
-<a name="l00336"></a>00336         std::string s(buffer.begin(), buffer.end());
-<a name="l00337"></a>00337         <span class="keywordflow">return</span> <a class="code" href="group__util.html#ga2a1574208d894c4122277a22ac833e56" title="Convert a codepage 1252 string to a std::wstring.">codepage_1252_to_wstring</a>(s);
-<a name="l00338"></a>00338     }
-<a name="l00339"></a>00339     <span class="keywordflow">else</span>
-<a name="l00340"></a>00340     {
-<a name="l00341"></a>00341         <span class="keywordflow">return</span> <a class="code" href="group__util.html#gab71fd9ddb350ff366904aaecbb3dfd70" title="Convert an array of bytes to a std::wstring.">bytes_to_wstring</a>(buffer);
-<a name="l00342"></a>00342     }
-<a name="l00343"></a>00343 }
-<a name="l00344"></a>00344 
-<a name="l00345"></a>00345 <span class="keyword">template</span>&lt;&gt;
-<a name="l00346"></a><a class="code" href="namespacefairport.html#acb0c30a517f75305009be5040c185b9e">00346</a> <span class="keyword">inline</span> std::vector&lt;std::wstring&gt; const_property_object::read_prop_array&lt;std::wstring&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
-<a name="l00347"></a>00347 {
-<a name="l00348"></a>00348     std::vector&lt;std::vector&lt;byte&gt; &gt; buffer = read_prop_array&lt;std::vector&lt;byte&gt; &gt;(id);
-<a name="l00349"></a>00349     std::vector&lt;std::wstring&gt; results;
-<a name="l00350"></a>00350 
-<a name="l00351"></a>00351     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; buffer.size(); ++i)
-<a name="l00352"></a>00352     {
-<a name="l00353"></a>00353         <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9a3d011665fac634afbeebc7f13ef1d501">prop_type_mv_string</a>)
-<a name="l00354"></a>00354         {
-<a name="l00355"></a>00355             std::string s(buffer[i].begin(), buffer[i].end());
-<a name="l00356"></a>00356             results.push_back(<a class="code" href="group__util.html#ga2a1574208d894c4122277a22ac833e56" title="Convert a codepage 1252 string to a std::wstring.">codepage_1252_to_wstring</a>(s));
-<a name="l00357"></a>00357         }
-<a name="l00358"></a>00358         <span class="keywordflow">else</span>
-<a name="l00359"></a>00359         {
-<a name="l00360"></a>00360             results.push_back(<a class="code" href="group__util.html#gab71fd9ddb350ff366904aaecbb3dfd70" title="Convert an array of bytes to a std::wstring.">bytes_to_wstring</a>(buffer[i]));
-<a name="l00361"></a>00361         }
-<a name="l00362"></a>00362     }
-<a name="l00363"></a>00363 
-<a name="l00364"></a>00364     <span class="keywordflow">return</span> results;
-<a name="l00365"></a>00365 }
-<a name="l00366"></a>00366 
-<a name="l00367"></a>00367 <span class="keyword">template</span>&lt;&gt;
-<a name="l00368"></a><a class="code" href="namespacefairport.html#a5f44b2c86b0d1b8b7b45a42743b89e8a">00368</a> <span class="keyword">inline</span> std::string const_property_object::read_prop&lt;std::string&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
-<a name="l00369"></a>00369 {
-<a name="l00370"></a>00370     std::vector&lt;byte&gt; buffer = get_value_variable(<span class="keywordtype">id</span>); 
-<a name="l00371"></a>00371 
-<a name="l00372"></a>00372     <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9adf4c7f0e0bb3f16963d31f6199f7f072">prop_type_string</a>)
-<a name="l00373"></a>00373     {
-<a name="l00374"></a>00374         <span class="keywordflow">return</span> std::string(buffer.begin(), buffer.end());
-<a name="l00375"></a>00375     }
-<a name="l00376"></a>00376     <span class="keywordflow">else</span>
-<a name="l00377"></a>00377     {
-<a name="l00378"></a>00378         <span class="keywordflow">if</span>(buffer.size())
-<a name="l00379"></a>00379         {
-<a name="l00380"></a>00380             <span class="comment">// Note that this code does the wrong thing for non-Latin-1</span>
-<a name="l00381"></a>00381             <span class="comment">// characters.  Use with caution.</span>
-<a name="l00382"></a>00382             std::wstring s(<a class="code" href="group__util.html#gab71fd9ddb350ff366904aaecbb3dfd70" title="Convert an array of bytes to a std::wstring.">bytes_to_wstring</a>(buffer));
-<a name="l00383"></a>00383             <span class="keywordflow">return</span> std::string(s.begin(), s.end());
-<a name="l00384"></a>00384         }
-<a name="l00385"></a>00385         <span class="keywordflow">return</span> std::string();
-<a name="l00386"></a>00386     }
-<a name="l00387"></a>00387 }
-<a name="l00388"></a>00388 
-<a name="l00389"></a>00389 <span class="keyword">template</span>&lt;&gt;
-<a name="l00390"></a><a class="code" href="namespacefairport.html#a341bc7a1e932cd849107c1258dcf9f3a">00390</a> <span class="keyword">inline</span> std::vector&lt;std::string&gt; const_property_object::read_prop_array&lt;std::string&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
-<a name="l00391"></a>00391 {
-<a name="l00392"></a>00392     std::vector&lt;std::vector&lt;byte&gt; &gt; buffer = read_prop_array&lt;std::vector&lt;byte&gt; &gt;(id);
-<a name="l00393"></a>00393     std::vector&lt;std::string&gt; results;
-<a name="l00394"></a>00394 
-<a name="l00395"></a>00395     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; buffer.size(); ++i)
-<a name="l00396"></a>00396     {
-<a name="l00397"></a>00397         <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9a3d011665fac634afbeebc7f13ef1d501">prop_type_mv_string</a>)
-<a name="l00398"></a>00398         {
-<a name="l00399"></a>00399             results.push_back(std::string(buffer[i].begin(), buffer[i].end()));
-<a name="l00400"></a>00400         }
-<a name="l00401"></a>00401         <span class="keywordflow">else</span>
-<a name="l00402"></a>00402         {
-<a name="l00403"></a>00403             <span class="keywordflow">if</span>(buffer[i].size())
-<a name="l00404"></a>00404             {
-<a name="l00405"></a>00405                 std::wstring s(<a class="code" href="group__util.html#gab71fd9ddb350ff366904aaecbb3dfd70" title="Convert an array of bytes to a std::wstring.">bytes_to_wstring</a>(buffer[i]));
-<a name="l00406"></a>00406                 results.push_back(std::string(s.begin(), s.end()));
-<a name="l00407"></a>00407             }
-<a name="l00408"></a>00408             results.push_back(std::string());
-<a name="l00409"></a>00409         }
-<a name="l00410"></a>00410     }
-<a name="l00411"></a>00411 
-<a name="l00412"></a>00412     <span class="keywordflow">return</span> results;
-<a name="l00413"></a>00413 }
+<a name="l00291"></a>00291 <span class="keyword">template</span>&lt;&gt;
+<a name="l00292"></a><a class="code" href="namespacefairport.html#af1b6b2c358ad3044e6418dd5d679f246">00292</a> <span class="keyword">inline</span> std::vector&lt;byte&gt; const_property_object::read_prop&lt;std::vector&lt;byte&gt; &gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
+<a name="l00293"></a>00293 {
+<a name="l00294"></a>00294     <span class="keywordflow">return</span> get_value_variable(<span class="keywordtype">id</span>); 
+<a name="l00295"></a>00295 }
+<a name="l00296"></a>00296 
+<a name="l00297"></a>00297 <span class="keyword">template</span>&lt;&gt;
+<a name="l00298"></a><a class="code" href="namespacefairport.html#a14f5510d85136bbd53eb77729852775f">00298</a> <span class="keyword">inline</span> std::vector&lt;std::vector&lt;byte&gt; &gt; const_property_object::read_prop_array&lt;std::vector&lt;byte&gt; &gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
+<a name="l00299"></a>00299 {
+<a name="l00300"></a>00300     std::vector&lt;byte&gt; buffer = get_value_variable(<span class="keywordtype">id</span>);
+<a name="l00301"></a>00301 <span class="preprocessor">#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK</span>
+<a name="l00302"></a>00302 <span class="preprocessor"></span>    <span class="keywordflow">if</span>(buffer.size() &lt; <span class="keyword">sizeof</span>(<a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a>))
+<a name="l00303"></a>00303         <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;mv prop too short&quot;</span>);
+<a name="l00304"></a>00304 <span class="preprocessor">#endif</span>
+<a name="l00305"></a>00305 <span class="preprocessor"></span>    <a class="code" href="structfairport_1_1disk_1_1mv__toc.html" title="Multi-valued, variable length property TOC.">disk::mv_toc</a>* ptoc = <span class="keyword">reinterpret_cast&lt;</span><a class="code" href="structfairport_1_1disk_1_1mv__toc.html" title="Multi-valued, variable length property TOC.">disk::mv_toc</a>*<span class="keyword">&gt;</span>(&amp;buffer[0]);
+<a name="l00306"></a>00306     std::vector&lt;std::vector&lt;byte&gt; &gt; results;
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308 <span class="preprocessor">#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK</span>
+<a name="l00309"></a>00309 <span class="preprocessor"></span>    <span class="keywordflow">if</span>(buffer.size() &lt; (<span class="keyword">sizeof</span>(<a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a>) + ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#a614397f49f43add9e6cf8d4432011c8c">count</a> * <span class="keyword">sizeof</span>(<a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a>)))
+<a name="l00310"></a>00310         <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;mv prop too short&quot;</span>);
+<a name="l00311"></a>00311 <span class="preprocessor">#endif</span>
+<a name="l00312"></a>00312 <span class="preprocessor"></span>
+<a name="l00313"></a>00313     <span class="keywordflow">for</span>(<a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a> i = 0; i &lt; ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#a614397f49f43add9e6cf8d4432011c8c">count</a>; ++i)
+<a name="l00314"></a>00314     {
+<a name="l00315"></a>00315         <a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a> start = ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#acb119b9a692f79d1043ed17e4fb7d6e1">offsets</a>[i];
+<a name="l00316"></a>00316         <a class="code" href="group__primitive.html#ga9c2e24b05ccdb102ad090c7c08aec439">ulong</a> end = (i == (ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#a614397f49f43add9e6cf8d4432011c8c">count</a> - 1)) ? buffer.size() : ptoc-&gt;<a class="code" href="structfairport_1_1disk_1_1mv__toc.html#acb119b9a692f79d1043ed17e4fb7d6e1">offsets</a>[i+1];
+<a name="l00317"></a>00317 <span class="preprocessor">#ifdef FAIRPORT_VALIDATION_LEVEL_WEAK</span>
+<a name="l00318"></a>00318 <span class="preprocessor"></span>        <span class="keywordflow">if</span>(end &lt; start)
+<a name="l00319"></a>00319             <span class="keywordflow">throw</span> std::length_error(<span class="stringliteral">&quot;inconsistent mv prop toc&quot;</span>);
+<a name="l00320"></a>00320 <span class="preprocessor">#endif</span>
+<a name="l00321"></a>00321 <span class="preprocessor"></span>        results.push_back(std::vector&lt;byte&gt;(&amp;buffer[start], &amp;buffer[start] + (end-start)));
+<a name="l00322"></a>00322     }
+<a name="l00323"></a>00323 
+<a name="l00324"></a>00324     <span class="keywordflow">return</span> results;
+<a name="l00325"></a>00325 }
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327 <span class="keyword">template</span>&lt;&gt;
+<a name="l00328"></a><a class="code" href="namespacefairport.html#a01956a81f889254918fa26ddc21164f5">00328</a> <span class="keyword">inline</span> std::wstring const_property_object::read_prop&lt;std::wstring&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
+<a name="l00329"></a>00329 {
+<a name="l00330"></a>00330     std::vector&lt;byte&gt; buffer = get_value_variable(<span class="keywordtype">id</span>); 
+<a name="l00331"></a>00331 
+<a name="l00332"></a>00332     <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9adf4c7f0e0bb3f16963d31f6199f7f072">prop_type_string</a>)
+<a name="l00333"></a>00333     {
+<a name="l00334"></a>00334         std::string s(buffer.begin(), buffer.end());
+<a name="l00335"></a>00335         <span class="keywordflow">return</span> <a class="code" href="group__util.html#ga2a1574208d894c4122277a22ac833e56" title="Convert a codepage 1252 string to a std::wstring.">codepage_1252_to_wstring</a>(s);
+<a name="l00336"></a>00336     }
+<a name="l00337"></a>00337     <span class="keywordflow">else</span>
+<a name="l00338"></a>00338     {
+<a name="l00339"></a>00339         <span class="keywordflow">return</span> <a class="code" href="group__util.html#gab71fd9ddb350ff366904aaecbb3dfd70" title="Convert an array of bytes to a std::wstring.">bytes_to_wstring</a>(buffer);
+<a name="l00340"></a>00340     }
+<a name="l00341"></a>00341 }
+<a name="l00342"></a>00342 
+<a name="l00343"></a>00343 <span class="keyword">template</span>&lt;&gt;
+<a name="l00344"></a><a class="code" href="namespacefairport.html#acb0c30a517f75305009be5040c185b9e">00344</a> <span class="keyword">inline</span> std::vector&lt;std::wstring&gt; const_property_object::read_prop_array&lt;std::wstring&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
+<a name="l00345"></a>00345 {
+<a name="l00346"></a>00346     std::vector&lt;std::vector&lt;byte&gt; &gt; buffer = read_prop_array&lt;std::vector&lt;byte&gt; &gt;(id);
+<a name="l00347"></a>00347     std::vector&lt;std::wstring&gt; results;
+<a name="l00348"></a>00348 
+<a name="l00349"></a>00349     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; buffer.size(); ++i)
+<a name="l00350"></a>00350     {
+<a name="l00351"></a>00351         <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9a3d011665fac634afbeebc7f13ef1d501">prop_type_mv_string</a>)
+<a name="l00352"></a>00352         {
+<a name="l00353"></a>00353             std::string s(buffer[i].begin(), buffer[i].end());
+<a name="l00354"></a>00354             results.push_back(<a class="code" href="group__util.html#ga2a1574208d894c4122277a22ac833e56" title="Convert a codepage 1252 string to a std::wstring.">codepage_1252_to_wstring</a>(s));
+<a name="l00355"></a>00355         }
+<a name="l00356"></a>00356         <span class="keywordflow">else</span>
+<a name="l00357"></a>00357         {
+<a name="l00358"></a>00358             results.push_back(<a class="code" href="group__util.html#gab71fd9ddb350ff366904aaecbb3dfd70" title="Convert an array of bytes to a std::wstring.">bytes_to_wstring</a>(buffer[i]));
+<a name="l00359"></a>00359         }
+<a name="l00360"></a>00360     }
+<a name="l00361"></a>00361 
+<a name="l00362"></a>00362     <span class="keywordflow">return</span> results;
+<a name="l00363"></a>00363 }
+<a name="l00364"></a>00364 
+<a name="l00365"></a>00365 <span class="keyword">template</span>&lt;&gt;
+<a name="l00366"></a><a class="code" href="namespacefairport.html#a5f44b2c86b0d1b8b7b45a42743b89e8a">00366</a> <span class="keyword">inline</span> std::string const_property_object::read_prop&lt;std::string&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
+<a name="l00367"></a>00367 {
+<a name="l00368"></a>00368     std::vector&lt;byte&gt; buffer = get_value_variable(<span class="keywordtype">id</span>); 
+<a name="l00369"></a>00369 
+<a name="l00370"></a>00370     <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9adf4c7f0e0bb3f16963d31f6199f7f072">prop_type_string</a>)
+<a name="l00371"></a>00371     {
+<a name="l00372"></a>00372         <span class="keywordflow">return</span> std::string(buffer.begin(), buffer.end());
+<a name="l00373"></a>00373     }
+<a name="l00374"></a>00374     <span class="keywordflow">else</span>
+<a name="l00375"></a>00375     {
+<a name="l00376"></a>00376         <span class="keywordflow">if</span>(buffer.size())
+<a name="l00377"></a>00377         {
+<a name="l00378"></a>00378             <span class="comment">// Note that this code does the wrong thing for non-Latin-1</span>
+<a name="l00379"></a>00379             <span class="comment">// characters.  Use with caution.</span>
+<a name="l00380"></a>00380             std::wstring s(<a class="code" href="group__util.html#gab71fd9ddb350ff366904aaecbb3dfd70" title="Convert an array of bytes to a std::wstring.">bytes_to_wstring</a>(buffer));
+<a name="l00381"></a>00381             <span class="keywordflow">return</span> std::string(s.begin(), s.end());
+<a name="l00382"></a>00382         }
+<a name="l00383"></a>00383         <span class="keywordflow">return</span> std::string();
+<a name="l00384"></a>00384     }
+<a name="l00385"></a>00385 }
+<a name="l00386"></a>00386 
+<a name="l00387"></a>00387 <span class="keyword">template</span>&lt;&gt;
+<a name="l00388"></a><a class="code" href="namespacefairport.html#a341bc7a1e932cd849107c1258dcf9f3a">00388</a> <span class="keyword">inline</span> std::vector&lt;std::string&gt; const_property_object::read_prop_array&lt;std::string&gt;(<a class="code" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) <span class="keyword">const</span>
+<a name="l00389"></a>00389 {
+<a name="l00390"></a>00390     std::vector&lt;std::vector&lt;byte&gt; &gt; buffer = read_prop_array&lt;std::vector&lt;byte&gt; &gt;(id);
+<a name="l00391"></a>00391     std::vector&lt;std::string&gt; results;
+<a name="l00392"></a>00392 
+<a name="l00393"></a>00393     <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i = 0; i &lt; buffer.size(); ++i)
+<a name="l00394"></a>00394     {
+<a name="l00395"></a>00395         <span class="keywordflow">if</span>(get_prop_type(<span class="keywordtype">id</span>) == <a class="code" href="group__primitive.html#ggae31329092cb6add5264c7c89b1679ba9a3d011665fac634afbeebc7f13ef1d501">prop_type_mv_string</a>)
+<a name="l00396"></a>00396         {
+<a name="l00397"></a>00397             results.push_back(std::string(buffer[i].begin(), buffer[i].end()));
+<a name="l00398"></a>00398         }
+<a name="l00399"></a>00399         <span class="keywordflow">else</span>
+<a name="l00400"></a>00400         {
+<a name="l00401"></a>00401             <span class="keywordflow">if</span>(buffer[i].size())
+<a name="l00402"></a>00402             {
+<a name="l00403"></a>00403                 std::wstring s(<a class="code" href="group__util.html#gab71fd9ddb350ff366904aaecbb3dfd70" title="Convert an array of bytes to a std::wstring.">bytes_to_wstring</a>(buffer[i]));
+<a name="l00404"></a>00404                 results.push_back(std::string(s.begin(), s.end()));
+<a name="l00405"></a>00405             }
+<a name="l00406"></a>00406             results.push_back(std::string());
+<a name="l00407"></a>00407         }
+<a name="l00408"></a>00408     }
+<a name="l00409"></a>00409 
+<a name="l00410"></a>00410     <span class="keywordflow">return</span> results;
+<a name="l00411"></a>00411 }
+<a name="l00412"></a>00412 
+<a name="l00413"></a>00413 } <span class="comment">// end fairport namespace</span>
 <a name="l00414"></a>00414 
-<a name="l00415"></a>00415 } <span class="comment">// end fairport namespace</span>
-<a name="l00416"></a>00416 
-<a name="l00417"></a>00417 <span class="preprocessor">#endif</span>
+<a name="l00415"></a>00415 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -460,7 +458,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Sun Nov 27 2011 08:03:42 for Fairport by
+    <li class="footer">Generated on Fri Dec 30 2011 09:44:02 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
