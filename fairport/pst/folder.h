@@ -232,7 +232,7 @@ public:
     //! \brief Get the end search folder iterator
     //! \returns an iterator at the end position
     search_folder_iterator sub_search_folder_end() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_search_folder> >(get_hierarchy_table().begin(), get_hierarchy_table().end()), search_folder_transform_row(m_db)); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_search_folder> >(get_hierarchy_table().end(), get_hierarchy_table().end()), search_folder_transform_row(m_db)); }
 
     //! \brief Open a specific subfolder in this folder, not recursive
     //! \param[in] name The name of the folder to open
