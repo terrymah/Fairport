@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classfairport_1_1bt__page.html" title="{fairport::bt_page\&lt; K, V \&gt;\n||+ bt_page()\l+ get_level()\l}" alt="" coords="135,206,304,298"/>
-<area shape="rect" id="node5" href="$classfairport_1_1bt__leaf__page.html" title="Contains the actual key value pairs of the btree." alt="" coords="5,354,203,475"/>
-<area shape="rect" id="node7" href="$classfairport_1_1bt__nonleaf__page.html" title="Contains references to other bt_pages." alt="" coords="227,347,445,483"/>
-</map>

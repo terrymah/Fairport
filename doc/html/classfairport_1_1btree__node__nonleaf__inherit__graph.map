@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node5" href="$classfairport_1_1bt__nonleaf__page.html" title="Contains references to other bt_pages." alt="" coords="5,548,224,684"/>
-<area shape="rect" id="node7" href="$classfairport_1_1bth__nonleaf__node.html" title="Contains references to other bth_node allocations." alt="" coords="249,548,473,684"/>
-<area shape="rect" id="node9" href="$classfairport_1_1btree__node__nonleaf.html" title="{fairport::btree_node_nonleaf\&lt; node_id, subnode_info \&gt;\n||+ ~btree_node_nonleaf()\l+ lookup()\l# get_child()\l# get_child()\l# first()\l# last()\l# next()\l# prev()\l}" alt="" coords="498,526,840,706"/>
-<area shape="rect" id="node2" href="$classfairport_1_1btree__node.html" title="A BTree Node." alt="" coords="267,5,455,229"/>
-<area shape="rect" id="node11" href="$classfairport_1_1subnode__nonleaf__block.html" title="Contains references to subnode_leaf_blocks." alt="" coords="566,757,772,893"/>
-</map>

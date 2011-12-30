@@ -1,9 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$structfairport_1_1disk_1_1bt__page.html" title="{fairport::disk::bt_page\&lt; T, bbt_leaf_entry\&lt; T \&gt; \&gt;\n|+ entries\l+ _ignore\l+ @5\l+ num_entries\l+ num_entries_max\l+ entry_size\l+ level\l+ trailer\l+ extra_space\l+ max_entries\l|}" alt="" coords="5,281,315,490"/>
-<area shape="rect" id="node7" href="$structfairport_1_1disk_1_1bt__page.html" title="{fairport::disk::bt_page\&lt; T, bt_entry\&lt; T \&gt; \&gt;\n|+ entries\l+ _ignore\l+ @5\l+ num_entries\l+ num_entries_max\l+ entry_size\l+ level\l+ trailer\l+ extra_space\l+ max_entries\l|}" alt="" coords="412,281,687,490"/>
-<area shape="rect" id="node13" href="$structfairport_1_1disk_1_1bt__page.html" title="{fairport::disk::bt_page\&lt; T, nbt_leaf_entry\&lt; T \&gt; \&gt;\n|+ entries\l+ _ignore\l+ @5\l+ num_entries\l+ num_entries_max\l+ entry_size\l+ level\l+ trailer\l+ extra_space\l+ max_entries\l|}" alt="" coords="747,281,1057,490"/>
-<area shape="rect" id="node5" href="$structfairport_1_1disk_1_1bbt__leaf__page.html" title="BBT leaf page." alt="" coords="31,541,252,619"/>
-<area shape="rect" id="node9" href="$structfairport_1_1disk_1_1bbt__nonleaf__page.html" title="BBT non&#45;leaf page." alt="" coords="276,541,519,619"/>
-<area shape="rect" id="node11" href="$structfairport_1_1disk_1_1nbt__nonleaf__page.html" title="NBT non&#45;leaf page." alt="" coords="543,541,785,619"/>
-<area shape="rect" id="node15" href="$structfairport_1_1disk_1_1nbt__leaf__page.html" title="NBT leaf page." alt="" coords="809,541,1031,619"/>
-</map>

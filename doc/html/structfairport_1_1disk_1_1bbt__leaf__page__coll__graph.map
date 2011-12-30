@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$structfairport_1_1disk_1_1bt__page.html" title="{fairport::disk::bt_page\&lt; T, bbt_leaf_entry\&lt; T \&gt; \&gt;\n|+ entries\l+ _ignore\l+ @5\l+ num_entries\l+ num_entries_max\l+ entry_size\l+ level\l+ trailer\l+ extra_space\l+ max_entries\l|}" alt="" coords="192,494,502,703"/>
-<area shape="rect" id="node4" href="$classpage__trailer_3_01_t_01_4.html" title="{page_trailer\&lt; T \&gt;\n||}" alt="" coords="142,5,268,83"/>
-<area shape="rect" id="node14" href="$structfairport_1_1disk_1_1bt__page.html" title="The fundamental page structure which forms the basis of the two BTrees." alt="" coords="401,206,652,415"/>
-<area shape="rect" id="node6" href="$classbbt__leaf__entry_3_01_t_01_4.html" title="{bbt_leaf_entry\&lt; T \&gt;\n||}" alt="" coords="88,272,226,349"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$structfairport_1_1disk_1_1sub__block.html" title="{fairport::disk::sub_block\&lt; T, sub_leaf_entry\&lt; T \&gt; \&gt;\n|+ block_type\l+ level\l+ count\l+ entry\l|}" alt="" coords="5,193,328,314"/>
-<area shape="rect" id="node7" href="$structfairport_1_1disk_1_1sub__block.html" title="{fairport::disk::sub_block\&lt; T, sub_nonleaf_entry\&lt; T \&gt; \&gt;\n|+ block_type\l+ level\l+ count\l+ entry\l|}" alt="" coords="353,193,695,314"/>
-<area shape="rect" id="node5" href="$structfairport_1_1disk_1_1sub__leaf__block.html" title="Subnode leaf block." alt="" coords="55,365,279,443"/>
-<area shape="rect" id="node9" href="$structfairport_1_1disk_1_1sub__nonleaf__block.html" title="Subnode non&#45;leaf block." alt="" coords="401,365,647,443"/>
-</map>

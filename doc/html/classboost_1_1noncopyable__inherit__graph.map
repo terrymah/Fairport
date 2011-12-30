@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classfairport_1_1bth__node.html" title="The object which forms the root of the BTH hierarchy." alt="" coords="137,189,313,443"/>
-<area shape="rect" id="node9" href="$classfairport_1_1file.html" title="A generic class to read and write to a file." alt="" coords="337,263,428,369"/>
-<area shape="rect" id="node11" href="$classfairport_1_1name__id__map.html" title="A named property map abstraction." alt="" coords="452,204,607,428"/>
-<area shape="rect" id="node13" href="$classfairport_1_1pst.html" title="A PST file." alt="" coords="631,131,788,501"/>
-<area shape="rect" id="node5" href="$classfairport_1_1bth__leaf__node.html" title="Contains the actual key value pairs of the BTH." alt="" coords="5,549,208,685"/>
-<area shape="rect" id="node7" href="$classfairport_1_1bth__nonleaf__node.html" title="Contains references to other bth_node allocations." alt="" coords="233,549,457,685"/>
-</map>

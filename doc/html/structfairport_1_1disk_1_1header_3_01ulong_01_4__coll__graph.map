@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$structfairport_1_1disk_1_1root.html" title="{fairport::disk::root\&lt; ulong \&gt;\n|+ cOrphans\l+ ibFileEof\l+ ibAMapLast\l+ cbAMapFree\l+ cbPMapFree\l+ brefNBT\l+ brefBBT\l+ fAMapValid\l+ bARVec\l+ cARVec\l|}" alt="" coords="619,753,806,962"/>
-<area shape="rect" id="node19" href="$structfairport_1_1disk_1_1root.html" title="The root of the database." alt="" coords="631,331,794,541"/>
-<area shape="rect" id="node6" href="$structfairport_1_1disk_1_1block__reference.html" title="{fairport::disk::block_reference\&lt; ulong \&gt;\n|+ bid\l+ ib\l|}" alt="" coords="232,390,486,482"/>
-<area shape="rect" id="node10" href="$structfairport_1_1disk_1_1block__reference.html" title="The combination of the id and physical location of a block or page." alt="" coords="350,161,580,253"/>
-</map>

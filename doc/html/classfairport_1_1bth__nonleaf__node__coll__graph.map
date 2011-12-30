@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classfairport_1_1bth__node.html" title="The object which forms the root of the BTH hierarchy." alt="" coords="267,293,443,547"/>
-<area shape="rect" id="node4" href="$classfairport_1_1btree__node.html" title="A BTree Node." alt="" coords="70,5,257,229"/>
-<area shape="rect" id="node10" href="$classfairport_1_1btree__node__nonleaf.html" title="Represents a non&#45;leaf node in a BTree structure." alt="" coords="5,330,243,510"/>
-<area shape="rect" id="node6" href="$classboost_1_1noncopyable.html" title="{noncopyable\n||}" alt="" coords="299,79,392,156"/>
-</map>

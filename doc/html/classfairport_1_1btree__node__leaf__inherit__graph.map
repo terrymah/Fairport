@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node5" href="$classfairport_1_1bt__leaf__page.html" title="Contains the actual key value pairs of the btree." alt="" coords="5,531,203,653"/>
-<area shape="rect" id="node7" href="$classfairport_1_1bth__leaf__node.html" title="Contains the actual key value pairs of the BTH." alt="" coords="227,524,431,660"/>
-<area shape="rect" id="node9" href="$classfairport_1_1btree__node__leaf.html" title="{fairport::btree_node_leaf\&lt; node_id, subnode_info \&gt;\n||+ ~btree_node_leaf()\l+ lookup()\l+ get_value()\l# first()\l# last()\l# next()\l# prev()\l}" alt="" coords="456,509,779,675"/>
-<area shape="rect" id="node2" href="$classfairport_1_1btree__node.html" title="A BTree Node." alt="" coords="235,5,423,229"/>
-<area shape="rect" id="node11" href="$classfairport_1_1subnode__leaf__block.html" title="Contains the actual subnode information." alt="" coords="524,726,711,847"/>
-</map>

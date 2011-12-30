@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$structfairport_1_1disk_1_1amap__page.html" title="The authoritative source of free space in the file." alt="" coords="5,160,211,237"/>
-<area shape="rect" id="node5" href="$structfairport_1_1disk_1_1fmap__page.html" title="A deprecated allocation system optimized for AMap page searching." alt="" coords="235,160,439,237"/>
-<area shape="rect" id="node7" href="$structfairport_1_1disk_1_1fpmap__page.html" title="A deprecated allocation system optimized for PMap page searching." alt="" coords="464,160,675,237"/>
-<area shape="rect" id="node9" href="$structfairport_1_1disk_1_1pmap__page.html" title="An old allocation system optimized for pages." alt="" coords="699,160,905,237"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node7" href="$classfairport_1_1bth__leaf__node.html" title="Contains the actual key value pairs of the BTH." alt="" coords="5,579,208,715"/>
-<area shape="rect" id="node9" href="$classfairport_1_1bth__nonleaf__node.html" title="Contains references to other bth_node allocations." alt="" coords="233,579,457,715"/>
-<area shape="rect" id="node2" href="$classfairport_1_1btree__node.html" title="A BTree Node." alt="" coords="49,5,236,229"/>
-<area shape="rect" id="node4" href="$classboost_1_1noncopyable.html" title="{noncopyable\n||}" alt="" coords="261,79,355,156"/>
-</map>

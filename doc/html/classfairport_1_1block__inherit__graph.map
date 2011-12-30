@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classfairport_1_1data__block.html" title="A block which represents end user data." alt="" coords="203,294,337,474"/>
-<area shape="rect" id="node9" href="$classfairport_1_1subnode__block.html" title="A block which contains information about subnodes." alt="" coords="387,323,545,445"/>
-<area shape="rect" id="node5" href="$classfairport_1_1extended__block.html" title="A data block which refers to other data blocks, in order to extend the physical size limit (8k) to a ..." alt="" coords="5,523,168,674"/>
-<area shape="rect" id="node7" href="$classfairport_1_1external__block.html" title="Contains actual data." alt="" coords="193,531,348,667"/>
-<area shape="rect" id="node11" href="$classfairport_1_1subnode__leaf__block.html" title="Contains the actual subnode information." alt="" coords="373,538,560,659"/>
-<area shape="rect" id="node13" href="$classfairport_1_1subnode__nonleaf__block.html" title="Contains references to subnode_leaf_blocks." alt="" coords="585,531,791,667"/>
-</map>
