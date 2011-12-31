@@ -3,6 +3,10 @@
 // All image attachments are saved in the current working directory, with care
 // taken not to overwrite any existing files.
 
+#if _MSC_VER && _MSC_VER < 1600
+#pragma warning(disable: 4996)
+#endif
+
 #include <fairport/pst.h>
 #include <fstream>
 #include <iostream>

@@ -11,6 +11,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <functional>
 #include <memory>
 #include <cassert>
 #include <boost/iterator/transform_iterator.hpp>

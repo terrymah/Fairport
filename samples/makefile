@@ -40,4 +40,4 @@ pstvalues/values.h: pstvalues/values.pl
 	cd pstvalues; perl values.pl ../../fairport/disk/disk.h ../../fairport/util/primitives.h > values.h
 
 clean: 
-	$(DELCMD) $(NAMEPROP) $(PSTATTACHMENT) $(PSTDIR) $(STOREINFO) $(PSTVALUES)
+	$(DELCMD) $(NAMEPROP) $(PSTATTACHMENT) $(PSTDIR) $(STOREINFO) $(PSTVALUES) *.manifest *.ilk *.pdb *.obj
