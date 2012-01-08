@@ -15,13 +15,6 @@
 //
 // Global compiler hacks
 //
-
-#ifdef BOOST_NO_RVALUE_REFERENCES
-#ifndef SUPPRESS_CPLUSPLUS0X_MESSAGES
-#pragma message("C++0x rvalue references not supported; consider updating your compiler")
-#endif
-#endif
-
 #ifdef BOOST_NO_STATIC_ASSERT
 #include <boost/static_assert.hpp>
 #define static_assert(x,y) BOOST_STATIC_ASSERT(x)

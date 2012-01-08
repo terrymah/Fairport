@@ -16,7 +16,7 @@ endif # USE_GPP
 else # assume g++
 CC = g++
 OPTIONS=$(GCC_OPTIONS)
-OUTPUT=-o
+OUTPUT=-o 
 endif
 
 #
@@ -37,6 +37,11 @@ ifdef APPDATA # Windows
 DELCMD=del
 OS=windows
 else # assume Unix
+UNAME := $(shell uname)
 DELCMD=rm
 OS=unix
+#OSX
+ifeq ($(UNAME),Darwin)
+OPTIONS+= -liconv -gstabs
+endif
 endif
