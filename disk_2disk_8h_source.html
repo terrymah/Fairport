@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.22</span>
+   &#160;<span id="projectnumber">v1.0.23</span>
    </div>
    
   </td>
@@ -149,13 +149,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00069"></a><a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a6133508ebced7628f6dc8b82723cbdd7">00069</a>     <a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a6133508ebced7628f6dc8b82723cbdd7" title="Initial ANSI file version number.">database_format_ansi_min</a> = 14,      
 <a name="l00070"></a><a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a76dadfbd55e6637e68e32aa67914d7d2">00070</a>     <a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a76dadfbd55e6637e68e32aa67914d7d2" title="Current ANSI file version number.">database_format_ansi</a> = 15,          
 <a name="l00071"></a><a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a7de17a0bb528c44ab4cbd129bc57bacd">00071</a>     <a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a7de17a0bb528c44ab4cbd129bc57bacd" title="Initial unicode version number.">database_format_unicode_min</a> = 20,   
-<a name="l00072"></a><a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a371ab89c607e29d130b1997b98408144">00072</a>     <a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a371ab89c607e29d130b1997b98408144" title="Current unicode version number.">database_format_unicode</a> = 23,       
+<a name="l00072"></a><a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a371ab89c607e29d130b1997b98408144">00072</a>     <a class="code" href="group__disk__headerrelated.html#gga9158b2dcec8874c9d50606e046cc54a4a371ab89c607e29d130b1997b98408144" title="Current unicode version number.">database_format_unicode</a> = 23        
 <a name="l00073"></a>00073 };
 <a name="l00074"></a>00074 
 <a name="l00078"></a><a class="code" href="group__disk__headerrelated.html#gab36140732546f5834413332c67b4dea3">00078</a> <span class="keyword">enum</span> <a class="code" href="group__disk__headerrelated.html#gab36140732546f5834413332c67b4dea3" title="Vaild database types (OST vs. PST)">database_type</a>
 <a name="l00079"></a>00079 {
 <a name="l00080"></a><a class="code" href="group__disk__headerrelated.html#ggab36140732546f5834413332c67b4dea3a2286510eba5fd7614ddf33e1e798cdc1">00080</a>     <a class="code" href="group__disk__headerrelated.html#ggab36140732546f5834413332c67b4dea3a2286510eba5fd7614ddf33e1e798cdc1" title="A OST file.">database_ost</a> = 12, 
-<a name="l00081"></a><a class="code" href="group__disk__headerrelated.html#ggab36140732546f5834413332c67b4dea3a7224decfd631e0c18c491722472e990f">00081</a>     <a class="code" href="group__disk__headerrelated.html#ggab36140732546f5834413332c67b4dea3a7224decfd631e0c18c491722472e990f" title="A PST file.">database_pst</a> = 19, 
+<a name="l00081"></a><a class="code" href="group__disk__headerrelated.html#ggab36140732546f5834413332c67b4dea3a7224decfd631e0c18c491722472e990f">00081</a>     <a class="code" href="group__disk__headerrelated.html#ggab36140732546f5834413332c67b4dea3a7224decfd631e0c18c491722472e990f" title="A PST file.">database_pst</a> = 19  
 <a name="l00082"></a>00082 };
 <a name="l00083"></a>00083 
 <a name="l00086"></a><a class="code" href="group__disk__headerrelated.html#gaa633bfca094476c0545602a41f9a15f8">00086</a> <span class="keyword">const</span> <a class="code" href="group__primitive.html#gab1cf1dc76a5b311fa36e6e6c2b6ebaba">ushort</a> <a class="code" href="group__disk__headerrelated.html#gaa633bfca094476c0545602a41f9a15f8" title="PST Magic number.">pst_magic</a> = 0x4D53;
@@ -165,7 +165,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00097"></a>00097 {
 <a name="l00098"></a><a class="code" href="group__disk__headerrelated.html#gga70ae3acb21f0856f22ff7262ffab5937a62e225d7a4b2e435aff40bc435fc6c68">00098</a>     <a class="code" href="group__disk__headerrelated.html#gga70ae3acb21f0856f22ff7262ffab5937a62e225d7a4b2e435aff40bc435fc6c68" title="No &quot;encryption&quot; was used.">crypt_method_none</a> = 0,    
 <a name="l00099"></a><a class="code" href="group__disk__headerrelated.html#gga70ae3acb21f0856f22ff7262ffab5937ac5c0d71a7c2d3f9fb6fd617ff7fb9041">00099</a>     <a class="code" href="group__disk__headerrelated.html#gga70ae3acb21f0856f22ff7262ffab5937ac5c0d71a7c2d3f9fb6fd617ff7fb9041" title="The permute method is used in this file.">crypt_method_permute</a> = 1, 
-<a name="l00100"></a><a class="code" href="group__disk__headerrelated.html#gga70ae3acb21f0856f22ff7262ffab5937a8e52069b04194eb7ecf89e75c3ea91d7">00100</a>     <a class="code" href="group__disk__headerrelated.html#gga70ae3acb21f0856f22ff7262ffab5937a8e52069b04194eb7ecf89e75c3ea91d7" title="The cyclic method is used in this file.">crypt_method_cyclic</a> = 2,  
+<a name="l00100"></a><a class="code" href="group__disk__headerrelated.html#gga70ae3acb21f0856f22ff7262ffab5937a8e52069b04194eb7ecf89e75c3ea91d7">00100</a>     <a class="code" href="group__disk__headerrelated.html#gga70ae3acb21f0856f22ff7262ffab5937a8e52069b04194eb7ecf89e75c3ea91d7" title="The cyclic method is used in this file.">crypt_method_cyclic</a> = 2   
 <a name="l00101"></a>00101 };
 <a name="l00102"></a>00102 
 <a name="l00111"></a>00111 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
@@ -870,7 +870,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01231"></a><a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddca872650abfea536bbf78871ce777e39cb">01231</a>    <a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddca872650abfea536bbf78871ce777e39cb">heap_sig_ch</a> = 0xA5,   <span class="comment">//&lt; \deprecated Internal</span>
 <a name="l01232"></a><a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddca94551d06de072c7f68356d0a975d12c8">01232</a>    <a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddca94551d06de072c7f68356d0a975d12c8">heap_sig_chtc</a> = 0xAC, <span class="comment">//&lt; \deprecated Internal</span>
 <a name="l01233"></a><a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddca6967f89d5c5bef0cd0bc43e3d8bd7cf9">01233</a>    <a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddca6967f89d5c5bef0cd0bc43e3d8bd7cf9">heap_sig_bth</a> = 0xB5,  <span class="comment">//&lt; BTree on Heap</span>
-<a name="l01234"></a><a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddcad40d07a345cd679d358df82d37ac3f15">01234</a>    <a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddcad40d07a345cd679d358df82d37ac3f15">heap_sig_pc</a> = 0xBC,   <span class="comment">//&lt; Property Context</span>
+<a name="l01234"></a><a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddcad40d07a345cd679d358df82d37ac3f15">01234</a>    <a class="code" href="group__disk__heaprelated.html#ggaf1f3d933d2921a58e5e68862eca91ddcad40d07a345cd679d358df82d37ac3f15">heap_sig_pc</a> = 0xBC    <span class="comment">//&lt; Property Context</span>
 <a name="l01235"></a>01235 };
 <a name="l01236"></a>01236 
 <a name="l01239"></a><a class="code" href="namespacefairport_1_1disk.html#affd8e5c97de3545451de0e278fe7fa1f">01239</a> <span class="keyword">enum</span> <a class="code" href="namespacefairport_1_1disk.html#affd8e5c97de3545451de0e278fe7fa1f">heap_fill_level</a>
@@ -1190,7 +1190,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Sun Jan 8 2012 00:20:33 for Fairport by
+    <li class="footer">Generated on Wed Jan 11 2012 00:32:01 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
