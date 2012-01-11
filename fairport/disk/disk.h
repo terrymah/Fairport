@@ -69,7 +69,7 @@ enum database_format
     database_format_ansi_min = 14,      //!< Initial ANSI file version number
     database_format_ansi = 15,          //!< Current ANSI file version number
     database_format_unicode_min = 20,   //!< Initial unicode version number
-    database_format_unicode = 23,       //!< Current unicode version number
+    database_format_unicode = 23        //!< Current unicode version number
 };
 
 //! \brief Vaild database types (OST vs. PST)
@@ -78,7 +78,7 @@ enum database_format
 enum database_type
 {
     database_ost = 12, //!< A OST file
-    database_pst = 19, //!< A PST file
+    database_pst = 19  //!< A PST file
 };
 
 //! \brief PST Magic number
@@ -97,7 +97,7 @@ enum crypt_method
 {
     crypt_method_none = 0,    //!< No "encryption" was used.
     crypt_method_permute = 1, //!< The \ref permute method is used in this file.
-    crypt_method_cyclic = 2,  //!< The \ref cyclic method is used in this file.
+    crypt_method_cyclic = 2   //!< The \ref cyclic method is used in this file.
 };
 
 //! \brief The root of the database
@@ -1231,7 +1231,7 @@ enum heap_client_signature
    heap_sig_ch = 0xA5,   //< \deprecated Internal
    heap_sig_chtc = 0xAC, //< \deprecated Internal
    heap_sig_bth = 0xB5,  //< BTree on Heap
-   heap_sig_pc = 0xBC,   //< Property Context
+   heap_sig_pc = 0xBC    //< Property Context
 };
 
 //! brief Fill level descriptions

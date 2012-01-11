@@ -298,7 +298,7 @@ enum prop_type
     prop_type_guid = 72,
     prop_type_mv_guid = 4168,
     prop_type_binary = 258,
-    prop_type_mv_binary = 4354,
+    prop_type_mv_binary = 4354
 };
 
 //

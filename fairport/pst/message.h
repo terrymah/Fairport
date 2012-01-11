@@ -382,7 +382,7 @@ private:
 
 namespace detail {
     std::vector<byte> property_bag_entry_id(const property_bag& bag);
-};
+}
 
 } // end namespace fairport
 
