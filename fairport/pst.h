@@ -33,6 +33,16 @@
 //! - libiconv (non-Windows)
 //! - GCC 4.4.x+ (Linux, Mac, Windows), VC9+ (Windows)
 //!
+//! Fairport is explicitly tested in these configurations:
+//! - Win7+VC10 /W4 /analyze
+//! - Win7+GCC 4.3.3 -pedantic
+//! - Win7+GCC 4.3.3 -pedantic -std=c++0x
+//! - WinXP+VC9 /W4
+//! - Ubuntu 11.10+GCC 4.6.1 -pedantic
+//! - Ubuntu 11.10+GCC 4.6.1 -pedantic -std=c++0x
+//! - MacOSX 10.7.2+GCC 4.2.1 -pedantic
+//! - MacOSX 10.7.2+Clang 3.0 -pedantic
+//!
 //! \section main_getting_help Additional Documentation
 //! See the original PSTSDK Documentation on the 
 //! <a href="http://pstsdk.codeplex.com">CodePlex site</a> for a series of 
