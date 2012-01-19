@@ -15,15 +15,6 @@
 namespace fairport
 {
 
-//! \brief A block or node can not satisfy a resize request
-//! \ingroup exception
-class can_not_resize : public std::runtime_error
-{
-public:
-    explicit can_not_resize(const std::string& error)
-        : runtime_error(error) { }
-};
-
 //! \brief This function or method has not been implemented.
 //! \ingroup exception
 class not_implemented : public std::logic_error
@@ -31,15 +22,6 @@ class not_implemented : public std::logic_error
 public:
     explicit not_implemented(const std::string& error)
         : logic_error(error) { }
-};
-
-//! \brief An error occured writing to the file.
-//! \ingroup exception
-class write_error : public std::runtime_error
-{
-public:
-    explicit write_error(const std::string& error)
-        : runtime_error(error) { }
 };
 
 //! \brief The database is corrupt.
