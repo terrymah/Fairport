@@ -151,16 +151,19 @@ void block_check(fairport::shared_db_ptr db, const b_info* bi)
     using namespace std;
     using namespace std::tr1;
     using namespace fairport;
-    fairport::uint block = 0;
+    fairport::uint block_num = 0;
 
     std::tr1::shared_ptr<const bbt_page> bbt_root = db->read_bbt_root();
     for(const_blockinfo_iterator iter = bbt_root->begin();
                     iter != bbt_root->end();
-                    ++iter, ++block)
+                    ++iter, ++block_num)
     {
-        BOOST_CHECK_EQUAL(iter->id, bi[block].block);
-        BOOST_CHECK_EQUAL(iter->size, bi[block].size);
-        BOOST_CHECK_EQUAL(iter->ref_count, bi[block].refs);
+        BOOST_CHECK_EQUAL(iter->id, bi[block_num].block);
+        BOOST_CHECK_EQUAL(iter->size, bi[block_num].size);
+        BOOST_CHECK_EQUAL(iter->ref_count, bi[block_num].refs);
+
+        std::tr1::shared_ptr<block> block = db->read_block(iter->id);
+        BOOST_CHECK_EQUAL(block->get_id(), iter->id);
     }
 }
 
@@ -207,6 +210,38 @@ BOOST_AUTO_TEST_CASE( test_node_stream_ansi )
 {
     using namespace fairport;
     test_node_stream(open_database(L"test_ansi.pst")->lookup_node(nid_message_store));
+}
+
+BOOST_AUTO_TEST_CASE( test_page_reads )
+{
+	using namespace fairport;
+	shared_db_ptr pst = open_database(L"test_unicode.pst");
+
+    page_info pi;
+    
+    // NBT Leaf Page
+    pi.address = 34304;
+    pi.id = 0x155;
+    std::tr1::shared_ptr<page> p1 = pst->read_nbt_leaf_page(pi);
+    BOOST_CHECK_EQUAL(pi.id, p1->get_page_id());
+
+    // NBT Non-Leaf Page
+    pi.address = 26624;
+    pi.id = 0x178;
+    std::tr1::shared_ptr<page> p2 = pst->read_nbt_nonleaf_page(pi);
+    BOOST_CHECK_EQUAL(pi.id, p2->get_page_id());
+
+    // BBT Leaf Page
+    pi.address = 25088;
+    pi.id = 0x170;
+    std::tr1::shared_ptr<page> p3 = pst->read_bbt_leaf_page(pi);
+    BOOST_CHECK_EQUAL(pi.id, p3->get_page_id());
+
+    // BBT Non-Leaf Page
+    pi.address = 28160;
+    pi.id = 0x17B;
+    std::tr1::shared_ptr<page> p4 = pst->read_bbt_nonleaf_page(pi);
+    BOOST_CHECK_EQUAL(pi.id, p4->get_page_id());
 }
 
 BOOST_AUTO_TEST_SUITE_END()
