@@ -71,7 +71,6 @@ var NAVTREE =
       [ "fairport::btree_node< K, V >", "classfairport_1_1btree__node.html", null ],
       [ "fairport::btree_node_leaf< K, V >", "classfairport_1_1btree__node__leaf.html", null ],
       [ "fairport::btree_node_nonleaf< K, V >", "classfairport_1_1btree__node__nonleaf.html", null ],
-      [ "fairport::can_not_resize", "classfairport_1_1can__not__resize.html", null ],
       [ "fairport::disk::column_description", "structfairport_1_1disk_1_1column__description.html", null ],
       [ "fairport::const_btree_node_iter< K, V >", "classfairport_1_1const__btree__node__iter.html", null ],
       [ "fairport::const_property_object", "classfairport_1_1const__property__object.html", null ],
@@ -90,8 +89,8 @@ var NAVTREE =
       [ "fairport::extended_block", "classfairport_1_1extended__block.html", null ],
       [ "fairport::disk::extended_block< ulong >", "structfairport_1_1disk_1_1extended__block_3_01ulong_01_4.html", null ],
       [ "fairport::disk::extended_block< ulonglong >", "structfairport_1_1disk_1_1extended__block_3_01ulonglong_01_4.html", null ],
-      [ "fairport::external_block", "classfairport_1_1external__block.html", null ],
       [ "fairport::disk::external_block< T >", "structfairport_1_1disk_1_1external__block.html", null ],
+      [ "fairport::external_block", "classfairport_1_1external__block.html", null ],
       [ "fairport::file", "classfairport_1_1file.html", null ],
       [ "fairport::disk::fmap_page< T >", "structfairport_1_1disk_1_1fmap__page.html", null ],
       [ "fairport::folder", "classfairport_1_1folder.html", null ],
@@ -168,8 +167,7 @@ var NAVTREE =
       [ "fairport::disk::tc_header", "structfairport_1_1disk_1_1tc__header.html", null ],
       [ "unary_function", "classstd_1_1unary__function.html", null ],
       [ "fairport::unexpected_block", "classfairport_1_1unexpected__block.html", null ],
-      [ "fairport::unexpected_page", "classfairport_1_1unexpected__page.html", null ],
-      [ "fairport::write_error", "classfairport_1_1write__error.html", null ]
+      [ "fairport::unexpected_page", "classfairport_1_1unexpected__page.html", null ]
     ] ],
     [ "Class Index", "classes.html", null ],
     [ "Class Hierarchy", "hierarchy.html", [
@@ -324,15 +322,13 @@ var NAVTREE =
       [ "fairport::recipient", "classfairport_1_1recipient.html", null ],
       [ "fairport::disk::root< T >", "structfairport_1_1disk_1_1root.html", null ],
       [ "runtime_error", "classstd_1_1runtime__error.html", [
-        [ "fairport::can_not_resize", "classfairport_1_1can__not__resize.html", null ],
         [ "fairport::database_corrupt", "classfairport_1_1database__corrupt.html", [
           [ "fairport::crc_fail", "classfairport_1_1crc__fail.html", null ],
           [ "fairport::invalid_format", "classfairport_1_1invalid__format.html", null ],
           [ "fairport::sig_mismatch", "classfairport_1_1sig__mismatch.html", null ],
           [ "fairport::unexpected_block", "classfairport_1_1unexpected__block.html", null ],
           [ "fairport::unexpected_page", "classfairport_1_1unexpected__page.html", null ]
-        ] ],
-        [ "fairport::write_error", "classfairport_1_1write__error.html", null ]
+        ] ]
       ] ],
       [ "fairport::search_folder", "classfairport_1_1search__folder.html", null ],
       [ "fairport::disk::sub_block< T, EntryType >", "structfairport_1_1disk_1_1sub__block.html", null ],
