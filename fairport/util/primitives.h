@@ -12,6 +12,8 @@
 #include <boost/config.hpp>
 #include <boost/cstdint.hpp>
 
+#include <string>
+
 //
 // Global compiler hacks
 //
@@ -353,6 +355,24 @@ const guid ps_mapi = { 0x20328, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
 //! \sa [MS-OXPROPS] 1.3.2
 //! \ingroup primitive
 const guid ps_public_strings = { 0x20329, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
+
+//! \brief The PSETID_Task guid
+//! \sa [MS-OXPROPS] 1.3.2
+//! \ingroup primitive
+const guid ps_task = { 0x62003, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
+
+//! \brief The PSETID_Address guid
+//! \sa [MS-OXPROPS] 1.3.2
+//! \ingroup primitive
+const guid ps_contact = { 0x62004, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } };
+
+//! \brief Message class for Task Items
+//! \ingroup primitive
+const std::wstring task_class = L"IPM.Task";
+
+//! \brief Message class for Contact Items
+//! \ingroup primitive
+const std::wstring contact_class = L"IPM.Contact";
 
 } // end fairport namespace
 #endif

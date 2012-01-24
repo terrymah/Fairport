@@ -26,6 +26,7 @@
 
 #include "fairport/pst/folder.h"
 #include "fairport/pst/message.h"
+#include "fairport/pst/pstutil.h"
 
 namespace fairport
 {
@@ -46,8 +47,8 @@ namespace fairport
 //! \ingroup pst_pstrelated
 class pst : private boost::noncopyable
 {
-    typedef boost::filter_iterator<is_nid_type<nid_type_folder>, const_nodeinfo_iterator> folder_filter_iterator;
-    typedef boost::filter_iterator<is_nid_type<nid_type_message>, const_nodeinfo_iterator> message_filter_iterator;
+    typedef boost::filter_iterator<detail::is_nid_type<nid_type_folder>, const_nodeinfo_iterator> folder_filter_iterator;
+    typedef boost::filter_iterator<detail::is_nid_type<nid_type_message>, const_nodeinfo_iterator> message_filter_iterator;
 
 public:
     //! \brief Message iterator type; a transform iterator over a filter iterator over a nodeinfo iterator
@@ -71,20 +72,20 @@ public:
     //! \brief Get an iterator to the first folder in the PST file
     //! \returns an iterator positioned on the first folder in this PST file
     folder_iterator folder_begin() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_folder> >(m_db->read_nbt_root()->begin(), m_db->read_nbt_root()->end()), folder_transform_info(m_db) ); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator<detail::is_nid_type<nid_type_folder> >(m_db->read_nbt_root()->begin(), m_db->read_nbt_root()->end()), folder_transform_info(m_db) ); }
     //! \brief Get the end folder iterator
     //! \returns an iterator at the end position
     folder_iterator folder_end() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_folder> >(m_db->read_nbt_root()->end(), m_db->read_nbt_root()->end()), folder_transform_info(m_db) ); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator<detail::is_nid_type<nid_type_folder> >(m_db->read_nbt_root()->end(), m_db->read_nbt_root()->end()), folder_transform_info(m_db) ); }
 
     //! \brief Get an iterator to the first message in the PST file
     //! \returns an iterator positioned on the first message in this PST file
     message_iterator message_begin() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_message> >(m_db->read_nbt_root()->begin(), m_db->read_nbt_root()->end()), message_transform_info(m_db) ); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator<detail::is_nid_type<nid_type_message> >(m_db->read_nbt_root()->begin(), m_db->read_nbt_root()->end()), message_transform_info(m_db) ); }
     //! \brief Get the end message iterator
     //! \returns an iterator at the end position
     message_iterator message_end() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_message> >(m_db->read_nbt_root()->end(), m_db->read_nbt_root()->end()), message_transform_info(m_db) ); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator<detail::is_nid_type<nid_type_message> >(m_db->read_nbt_root()->end(), m_db->read_nbt_root()->end()), message_transform_info(m_db) ); }
 
     //! \brief Opens the root folder of this file
     //! \note This is specific to PST files, as an OST file has a different root folder

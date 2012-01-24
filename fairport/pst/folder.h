@@ -25,29 +25,14 @@
 #include "fairport/ltp/table.h"
 
 #include "fairport/pst/message.h"
+#include "fairport/pst/contact.h"
+#include "fairport/pst/pstutil.h"
 
 namespace fairport
 {
 
 //! \defgroup pst_folderrelated Folder Objects
 //! \ingroup pst
-
-//! \brief Functor to determine if an object is of the specified node type
-//!
-//! This functor is used to build filters for use by the boost iterator
-//! library. It has overloads for both node_info objects (when filtering
-//! over the NBT) and for const_table_rows (when filtering over a table).
-//! It is used by both the \ref pst object and the \ref folder object.
-//! \tparam Type The node type to identify
-//! \ingroup pst
-template<node_id Type>
-struct is_nid_type
-{
-    bool operator()(const node_info& info)
-        { return get_nid_type(info.id) == Type; }
-    bool operator()(const const_table_row& row)
-        { return get_nid_type(row.get_row_id()) == Type; }
-};
 
 //! \brief Search Folder object
 //!
@@ -60,9 +45,12 @@ struct is_nid_type
 //! \ingroup pst_folderrelated
 class search_folder
 {
+    typedef boost::filter_iterator<detail::is_item_type, const_table_row_iter> row_filter_iterator;
 public:
     //! \brief Message iterator type; a transform iterator over a table row iterator
     typedef boost::transform_iterator<message_transform_row, const_table_row_iter> message_iterator;
+    //! \brief Contact iterator type; a transform iterator over a filter iterator over a table row iterator
+    typedef boost::transform_iterator<contact_transform_row, row_filter_iterator> contact_iterator;
 
     //! \brief Construct a search folder object
     //! \param[in] db The database pointer
@@ -87,6 +75,15 @@ public:
     //! \returns an iterator at the end position
     message_iterator message_end() const
         { return boost::make_transform_iterator(get_contents_table().end(), message_transform_row(m_db)); }
+
+    //! \brief Get an iterator to the first contact in this folder
+    //! \returns an iterator positioned on the first contact in this folder
+    contact_iterator contact_begin() const
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(contact_class), get_contents_table().begin(), get_contents_table().end()), contact_transform_row(m_db)); }
+    //! \brief Get the end contact iterator
+    //! \returns an iterator at the end position
+    contact_iterator contact_end() const
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(contact_class), get_contents_table().end(), get_contents_table().end()), contact_transform_row(m_db)); }
 
     // property access
     //! \brief Get the display name of this folder
@@ -125,6 +122,11 @@ public:
     node_id get_id() const
         { return m_bag.get_node().get_id(); }
 
+    //! \brief Get the MAPI entry ID of this folder
+    //! \returns The MAPI entry ID of this folder
+    std::vector<byte> get_entry_id() const
+        { return calculate_entry_id(m_bag.get_node().get_db(), get_id()); }
+
 private:
     shared_db_ptr m_db;
     property_bag m_bag;
@@ -154,30 +156,12 @@ private:
 };
 
 class folder;
-//! \brief Defines a transform from a row of a hierarchy table to a folder
-//!
-//! Used by the boost iterator library to provide iterators over folder objects
-//! \ingroup pst_folderrelated
-class folder_transform_row : public std::unary_function<const_table_row, folder>
-{
-public:
-    //! \brief Construct a folder_transform_row object
-    //! \param[in] db The database pointer
-    folder_transform_row(const shared_db_ptr& db) 
-        : m_db(db) { }
-    //! \brief Perform the transform
-    //! \param[in] row A row from a hierarchy table refering to a folder
-    //! \returns a folder object.
-    folder operator()(const const_table_row& row) const;
-
-private:
-    shared_db_ptr m_db;
-};
+typedef detail::item_transform_row<folder> folder_transform_row;
 
 //! \brief A folder in a PST file
 //!
 //! The folder object allows access to subfolders, messages, and associated 
-//! messagse which are contained in the folder. Similar to the \ref pst object,
+//! messages which are contained in the folder. Similar to the \ref pst object,
 //! the folder also offers a way to lookup subfolders by name.
 //!
 //! A folder currently doesn't have a concept of sorting. This was deemed
@@ -188,8 +172,9 @@ private:
 //! \ingroup pst_folderrelated
 class folder
 {
-    typedef boost::filter_iterator<is_nid_type<nid_type_search_folder>, const_table_row_iter> search_folder_filter_iterator;
-    typedef boost::filter_iterator<is_nid_type<nid_type_folder>, const_table_row_iter> folder_filter_iterator;
+    typedef boost::filter_iterator<detail::is_item_type, const_table_row_iter> row_filter_iterator;
+    typedef boost::filter_iterator<detail::is_nid_type<nid_type_search_folder>, const_table_row_iter> search_folder_filter_iterator;
+    typedef boost::filter_iterator<detail::is_nid_type<nid_type_folder>, const_table_row_iter> folder_filter_iterator;
 
 public:
     //! \brief Message iterator type; a transform iterator over a table row iterator
@@ -198,6 +183,8 @@ public:
     typedef boost::transform_iterator<folder_transform_row, folder_filter_iterator> folder_iterator;
     //! \brief Search folder iterator type; a transform iterator over a filter iterator over table row iterator
     typedef boost::transform_iterator<search_folder_transform_row, search_folder_filter_iterator> search_folder_iterator;
+    //! \brief Contact iterator type; a transform iterator over a filter iterator over a table row iterator
+    typedef boost::transform_iterator<contact_transform_row, row_filter_iterator> contact_iterator;
 
     //! \brief Construct a folder object
     //! \param[in] db The database pointer
@@ -219,20 +206,20 @@ public:
     //! \brief Get an iterator to the first folder in this folder
     //! \returns an iterator positioned on the first folder in this folder
     folder_iterator sub_folder_begin() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_folder> >(get_hierarchy_table().begin(), get_hierarchy_table().end()), folder_transform_row(m_db)); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator<detail::is_nid_type<nid_type_folder> >(get_hierarchy_table().begin(), get_hierarchy_table().end()), folder_transform_row(m_db)); }
     //! \brief Get the end folder iterator
     //! \returns an iterator at the end position
     folder_iterator sub_folder_end() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_folder> >(get_hierarchy_table().end(), get_hierarchy_table().end()), folder_transform_row(m_db)); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator<detail::is_nid_type<nid_type_folder> >(get_hierarchy_table().end(), get_hierarchy_table().end()), folder_transform_row(m_db)); }
 
     //! \brief Get an iterator to the first search folder in this folder
     //! \returns an iterator positioned on the first search folder in this folder
     search_folder_iterator sub_search_folder_begin() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_search_folder> >(get_hierarchy_table().begin(), get_hierarchy_table().end()), search_folder_transform_row(m_db)); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator<detail::is_nid_type<nid_type_search_folder> >(get_hierarchy_table().begin(), get_hierarchy_table().end()), search_folder_transform_row(m_db)); }
     //! \brief Get the end search folder iterator
     //! \returns an iterator at the end position
     search_folder_iterator sub_search_folder_end() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator<is_nid_type<nid_type_search_folder> >(get_hierarchy_table().end(), get_hierarchy_table().end()), search_folder_transform_row(m_db)); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator<detail::is_nid_type<nid_type_search_folder> >(get_hierarchy_table().end(), get_hierarchy_table().end()), search_folder_transform_row(m_db)); }
 
     //! \brief Open a specific subfolder in this folder, not recursive
     //! \param[in] name The name of the folder to open
@@ -246,6 +233,13 @@ public:
     //! \copydoc search_folder::message_end()
     message_iterator message_end() const
         { return boost::make_transform_iterator(get_contents_table().end(), message_transform_row(m_db)); }
+    
+    //! \copydoc search_folder::contact_begin()
+    contact_iterator contact_begin() const
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(contact_class), get_contents_table().begin(), get_contents_table().end()), contact_transform_row(m_db)); }
+    //! \copydoc search_folder::contact_end()
+    contact_iterator contact_end() const
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(contact_class), get_contents_table().end(), get_contents_table().end()), contact_transform_row(m_db)); }
 
     //! \brief Get an iterator to the first associated message in this folder
     //! \returns an iterator positioned on the first associated message in this folder
@@ -308,7 +302,7 @@ public:
     //! \brief Get the MAPI entry ID of this folder
     //! \returns The MAPI entry ID of this folder
     std::vector<byte> get_entry_id() const
-        { return detail::property_bag_entry_id(m_bag); }
+        { return calculate_entry_id(m_bag.get_node().get_db(), get_id()); }
 
 private:
     shared_db_ptr m_db;

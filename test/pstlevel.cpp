@@ -6,9 +6,7 @@
 #include "fairport/ndb/database_iface.h"
 #include "fairport/ndb/page.h"
 
-#include "fairport/pst/message.h"
-#include "fairport/pst/folder.h"
-#include "fairport/pst/pst.h"
+#include "fairport/pst.h"
 
 void process_recipient(const fairport::recipient& r)
 {
@@ -151,6 +149,27 @@ BOOST_AUTO_TEST_CASE( process_sub )
 {
     pst submess(L"submessage.pst");
     BOOST_CHECK_NO_THROW(process_pst(submess));
+}
+
+BOOST_AUTO_TEST_CASE( contact_processing )
+{
+    pst items(L"items.pst");
+    folder f = items.open_folder(L"Contacts");
+
+    BOOST_CHECK_EQUAL(f.get_message_count(), 1);
+
+    int contacts = 0;
+    for(folder::contact_iterator i = f.contact_begin(); i != f.contact_end(); ++i)
+    {
+        ++contacts;
+        contact c = *i;
+        BOOST_CHECK(c.get_full_name() == L"Terry Mahaffey");
+        BOOST_CHECK(c.get_business_phone() == L"(206) 555-5678");
+        BOOST_CHECK(c.get_company() == L"Widgets, Inc");
+        BOOST_CHECK(c.has_contact_photo());
+    }
+
+    BOOST_CHECK_EQUAL(contacts, 1);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

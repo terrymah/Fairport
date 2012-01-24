@@ -18,6 +18,8 @@
 #include "fairport/ltp/propbag.h"
 #include "fairport/ltp/table.h"
 
+#include "fairport/pst/pstutil.h"
+
 namespace fairport
 {
 
@@ -25,6 +27,7 @@ namespace fairport
 //! \ingroup pst
 
 class message;
+class contact;
 //! \brief Encapsulates an attachment to a message
 //! 
 //! Attachment objects allow you to query for some basic information about
@@ -36,12 +39,15 @@ class attachment
 public:
     // property access
     //! \brief Get the filename of this attachment
+    //! \sa [MS-OXCMSG] 2.2.2.10
+    //! \sa [MS-OXCMSG] 2.2.2.11
     //! \returns The filename
     std::wstring get_filename() const;
     //! \brief Get the attachment data, as a blob
     //!
     //! You might want to consider open_byte_stream if content_size()
     //! is too large for your tastes.
+    //! \sa [MS-OXCMSG] 2.2.2.7
     //! \returns A vector of bytes
     std::vector<byte> get_bytes() const
         { return m_bag.read_prop<std::vector<byte> >(0x3701); }
@@ -53,6 +59,7 @@ public:
     //! prop_stream nstream(a.open_byte_stream());
     //! \endcode
     //! Which can then be used as any iostream would be.
+    //! \sa [MS-OXCMSG] 2.2.2.7
     //! \returns A stream device for the attachment data
     hnid_stream_device open_byte_stream()
         { return m_bag.open_prop_stream(0x3701); }
@@ -61,6 +68,7 @@ public:
     //! The size returned here includes metadata, and as such will be
     //! larger than just the byte stream.
     //! \sa attachment::content_size()
+    //! \sa [MS-OXCMSG] 2.2.2.5
     //! \returns The size of the attachment object, in bytes
     size_t size() const
         { return m_bag.read_prop<uint>(0xe20); }
@@ -74,6 +82,7 @@ public:
     //!
     //! If an attachment is a message, one should use open_as_message() to
     //! access the data rather than open_byte_stream() or similar.
+    //! \sa [MS-OXCMSG] 2.2.2.9
     //! \returns true if this attachment is an attached message
     bool is_message() const
         { return m_bag.read_prop<uint>(0x3705) == 5; }
@@ -94,6 +103,7 @@ public:
 private:
     attachment& operator=(const attachment&); // = delete
     friend class message;
+    friend class contact;
     friend class attachment_transform;
 
 #ifndef BOOST_NO_RVALUE_REFERENCES
@@ -149,18 +159,22 @@ class recipient
 public:
     // property access
     //! \brief Get the display name of this recipient
+    //! \sa [MS-OXOABK] 2.2.3.1
     //! \returns The recipient name
     std::wstring get_name() const
         { return m_row.read_prop<std::wstring>(0x3001); }
     //! \brief Get the type of this recipient
+    //! \sa [MS-OXOMSG] 2.2.3.1
     //! \returns The recipient type
     recipient_type get_type() const
         { return static_cast<recipient_type>(m_row.read_prop<ulong>(0xc15)); }
     //! \brief Get the address type of the recipient
+    //! \sa [MS-OXOABK] 2.2.3.13
     //! \returns The address type
     std::wstring get_address_type() const
         { return m_row.read_prop<std::wstring>(0x3002); }
     //! \brief Get the email address of the recipient
+    //! \sa [MS-OXOABK] 2.2.3.21
     //! \returns The email address
     std::wstring get_email_address() const
         { return m_row.read_prop<std::wstring>(0x39fe); }
@@ -169,6 +183,7 @@ public:
     bool has_email_address() const
         { return m_row.prop_exists(0x39fe); }
     //! \brief Get the name of the recipients account
+    //! \sa [MS-OXOABK] 2.2.3.20
     //! \returns The account name
     std::wstring get_account_name() const
         { return m_row.read_prop<std::wstring>(0x3a00); }
@@ -254,6 +269,7 @@ public:
 
     // property access
     //! \brief Get the subject of this message
+    //! \sa [MS-OXCMSG] 2.2.1.46
     //! \returns The message subject
     std::wstring get_subject() const;
     //! \brief Check to see if a subject is set on this message
@@ -261,6 +277,7 @@ public:
     bool has_subject() const
         { return m_bag.prop_exists(0x37); }
     //! \brief Get the body of this message
+    //! \sa [MS-OXCMSG] 2.2.1.48.1
     //! \returns The message body as a string
     std::wstring get_body() const
         { return m_bag.read_prop<std::wstring>(0x1000); }
@@ -272,6 +289,7 @@ public:
     //! prop_stream body(a.open_body_stream());
     //! \endcode
     //! Which can then be used as any iostream would be.
+    //! \sa [MS-OXCMSG] 2.2.1.48.1
     //! \returns The message body as a stream
     hnid_stream_device open_body_stream()
         { return m_bag.open_prop_stream(0x1000); }
@@ -284,6 +302,7 @@ public:
     bool has_body() const
         { return m_bag.prop_exists(0x1000); }
     //! \brief Get the HTML body of this message
+    //! \sa [MS-OXCMSG] 2.2.1.48.3
     //! \returns The HTML message body as a string
     std::wstring get_html_body() const
         { return m_bag.read_prop<std::wstring>(0x1013); }
@@ -295,6 +314,7 @@ public:
     //! prop_stream htmlbody(a.open_html_body_stream());
     //! \endcode
     //! Which can then be used as any iostream would be.
+    //! \sa [MS-OXCMSG] 2.2.1.48.3
     //! \returns The message body as a stream
     hnid_stream_device open_html_body_stream()
         { return m_bag.open_prop_stream(0x1013); }
@@ -307,6 +327,7 @@ public:
     bool has_html_body() const
         { return m_bag.prop_exists(0x1013); }
     // \brief Get the total size of this message
+    //! \sa [MS-OXCMSG] 2.2.1.7
     //! \returns The message size
     size_t size() const
         { return m_bag.read_prop<slong>(0xe08); }
@@ -330,10 +351,12 @@ public:
         { return m_bag; }
     //! \brief Get the attachment table of this message
     //! \returns The attachment table
-    table& get_attachment_table();
+    table& get_attachment_table()
+        { return const_cast<table&>(const_cast<const message*>(this)->get_attachment_table()); }
     //! \brief Get the recipient table of this message
     //! \returns The recipient table
-    table& get_recipient_table();
+    table& get_recipient_table()
+        { return const_cast<table&>(const_cast<const message*>(this)->get_recipient_table()); }
     //! \copydoc message::get_attachment_table()
     const table& get_attachment_table() const;
     //! \copydoc message::get_recipient_table()
@@ -356,34 +379,8 @@ private:
     mutable std::tr1::shared_ptr<table> m_recipient_table;
 };
 
-class message_transform_row : public std::unary_function<const_table_row, message>
-{
-public:
-    message_transform_row(const shared_db_ptr& db) 
-        : m_db(db) { }
-    message operator()(const const_table_row& row) const
-        { return message(m_db->lookup_node(row.get_row_id())); }
-
-private:
-    shared_db_ptr m_db;
-};
-
-class message_transform_info : public std::unary_function<node_info, message>
-{
-public:
-    message_transform_info(const shared_db_ptr& db) 
-        : m_db(db) { }
-    message operator()(const node_info& info) const
-        { return message(node(m_db, info)); }
-
-private:
-    shared_db_ptr m_db;
-};
-
-namespace detail {
-    std::vector<byte> property_bag_entry_id(const property_bag& bag);
-}
-
+typedef detail::item_transform_row<message> message_transform_row;
+typedef detail::item_transform_info<message> message_transform_info;
 } // end namespace fairport
 
 inline std::wstring fairport::attachment::get_filename() const
@@ -452,16 +449,6 @@ inline const fairport::table& fairport::message::get_recipient_table() const
     return *m_recipient_table;
 }
 
-inline fairport::table& fairport::message::get_attachment_table()
-{
-    return const_cast<table&>(const_cast<const message*>(this)->get_attachment_table());
-}
-
-inline fairport::table& fairport::message::get_recipient_table()
-{
-    return const_cast<table&>(const_cast<const message*>(this)->get_recipient_table());
-}
-
 inline std::wstring fairport::message::get_subject() const
 {
     std::wstring buffer = m_bag.read_prop<std::wstring>(0x37);
@@ -486,33 +473,7 @@ inline std::vector<fairport::byte> fairport::message::get_entry_id() const
     }
     else
     {
-        return detail::property_bag_entry_id(m_bag);
+        return calculate_entry_id(m_bag.get_node().get_db(), get_id());
     }
-}
-
-inline std::vector<fairport::byte> fairport::detail::property_bag_entry_id(const fairport::property_bag& bag)
-{
-    using namespace std;
-
-    // This function doesn't know how to handle anything other than vanilla
-    // PSTs.  OSTs, for example, require a more complex calculation.
-    if (!bag.get_node().get_db()->is_pst())
-        throw key_not_found<prop_id>(0x0fff);
-
-    // A MAPI entry id contains 4 leading 0 bytes, the data store ID, and
-    // the node ID (in little-endian byte order).
-    vector<byte> entry_id(4, 0);
-
-    node store(bag.get_node().get_db()->lookup_node(nid_message_store));
-    property_bag store_props(store);
-    vector<byte> store_id(store_props.read_prop<vector<byte> >(0x0ff9));
-    copy(store_id.begin(), store_id.end(),
-         insert_iterator<vector<byte> >(entry_id, entry_id.end()));
-
-    node_id nid(bag.get_node().get_id());
-    for (size_t i = 0; i < sizeof(node_id); ++i)
-        entry_id.push_back((nid >> 8*i) & 0xff);
-
-    return entry_id;
 }
 #endif
