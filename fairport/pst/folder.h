@@ -353,11 +353,6 @@ inline fairport::folder::folder(const fairport::folder& other)
         m_contents_table.reset(new table(*other.m_hierarchy_table));
 }
 
-inline fairport::folder fairport::folder_transform_row::operator()(const fairport::const_table_row& row) const
-{ 
-    return folder(m_db, m_db->lookup_node(row.get_row_id()));
-}
-
 inline const fairport::table& fairport::search_folder::get_contents_table() const
 {
     if(!m_contents_table)
