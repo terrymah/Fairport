@@ -106,13 +106,9 @@ private:
     friend class contact;
     friend class attachment_transform;
 
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    explicit attachment(property_bag attachment)
-        : m_bag(std::move(attachment)) { }
-#else
     explicit attachment(const property_bag& attachment)
         : m_bag(attachment) { }
-#endif
+
     property_bag m_bag;
 };
 
@@ -230,7 +226,7 @@ struct recipient_transform : public std::unary_function<const_table_row, recipie
 //! on the message. You will most likely find it necessary to get the 
 //! underylying property bag and look up specific properties not exposed here.
 //! \ingroup pst_messagerelated
-class message
+class message : public detail::itembase
 {
 public:
     //! \brief Attachment iterator type; a transform iterator over a table row iterator
@@ -241,13 +237,8 @@ public:
     //! \brief Construct a message object
     //! \param[in] n A message node
     explicit message(const node& n)
-        : m_bag(n) { }
+        : detail::itembase(n) { }
     message(const message& other);
-
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    message(message&& other)
-        : m_bag(std::move(other.m_bag)), m_attachment_table(std::move(other.m_attachment_table)), m_recipient_table(std::move(other.m_recipient_table)) { }
-#endif
 
     // subobject discovery/enumeration
     //! \brief Get an iterator to the first message on this message
@@ -342,13 +333,6 @@ public:
 		{ return get_recipient_table().size(); }
 
     // lower layer access
-    //! \brief Get the property bag backing this message
-    //! \returns The property bag
-    property_bag& get_property_bag()
-        { return m_bag; }
-    //! \copydoc message::get_property_bag()
-    const property_bag& get_property_bag() const
-        { return m_bag; }
     //! \brief Get the attachment table of this message
     //! \returns The attachment table
     table& get_attachment_table()
@@ -362,19 +346,7 @@ public:
     //! \copydoc message::get_recipient_table()
     const table& get_recipient_table() const;
 
-    //! \brief Get the node_id of this message
-    //! \returns The node_id of the message
-    node_id get_id() const
-        { return m_bag.get_node().get_id(); }
-
-    //! \brief Get the MAPI entry ID of this message
-    //! \returns The MAPI entry ID of this message
-    std::vector<byte> get_entry_id() const;
-
 private:
-    message& operator=(const message&); // = delete
-
-    property_bag m_bag;
     mutable std::tr1::shared_ptr<table> m_attachment_table;
     mutable std::tr1::shared_ptr<table> m_recipient_table;
 };
@@ -407,7 +379,7 @@ inline fairport::message fairport::attachment::open_as_message() const
 }
 
 inline fairport::message::message(const fairport::message& other)
-: m_bag(other.m_bag)
+: detail::itembase(other)
 {
     if(other.m_attachment_table)
         m_attachment_table.reset(new table(*other.m_attachment_table));
@@ -461,19 +433,6 @@ inline std::wstring fairport::message::get_subject() const
     else
     {
         return buffer;
-    }
-}
-
-inline std::vector<fairport::byte> fairport::message::get_entry_id() const
-{
-    if (m_bag.get_node().is_subnode())
-    {
-        // Submessages should not have PidTagEntryId.
-        throw key_not_found<prop_id>(0x0fff);
-    }
-    else
-    {
-        return calculate_entry_id(m_bag.get_node().get_db(), get_id());
     }
 }
 #endif

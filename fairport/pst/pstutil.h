@@ -31,6 +31,36 @@ std::vector<byte> calculate_entry_id(const shared_db_ptr& db, node_id nid);
 namespace detail
 {
 
+class itembase
+{
+public:
+    //! \brief Constructs an itembase
+    //! \param[in] n An item node
+    explicit itembase(const node& n)
+        : m_bag(n) { }
+
+    //! \brief Get the node_id of this item
+    //! \returns The node_id of the item
+    node_id get_id() const
+        { return m_bag.get_node().get_id(); }
+
+    //! \brief Get the MAPI entry ID of this item
+    //! \returns The MAPI entry ID of this item
+    std::vector<byte> get_entry_id() const;
+
+    // lower layer access
+    //! \brief Get the property bag backing this item
+    //! \returns The property bag
+    property_bag& get_property_bag()
+        { return m_bag; }
+    //! \copydoc itembase::get_property_bag()
+    const property_bag& get_property_bag() const
+        { return m_bag; }
+
+protected:
+    property_bag m_bag;
+};
+
 template<node_id Type>
 struct is_nid_type
 {
@@ -104,4 +134,16 @@ inline std::vector<fairport::byte> fairport::calculate_entry_id(const shared_db_
     return entry_id;
 }
 
+inline std::vector<fairport::byte> fairport::detail::itembase::get_entry_id() const
+{
+    if (m_bag.get_node().is_subnode())
+    {
+        // subitems should not have PidTagEntryId.
+        throw key_not_found<prop_id>(0x0fff);
+    }
+    else
+    {
+        return calculate_entry_id(m_bag.get_node().get_db(), get_id());
+    }
+}
 #endif

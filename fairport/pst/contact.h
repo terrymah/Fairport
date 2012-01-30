@@ -27,13 +27,13 @@ namespace fairport
 //! \defgroup pst_contactrelated Contact Objects
 //! \ingroup pst
 
-class contact
+class contact : public detail::itembase
 {
 public:
     //! \brief Construct a contact object
     //! \param[in] n The node to construct this contact object on top of
     explicit contact(const node& n)
-        : m_bag(n) { }
+        : detail::itembase(n) { }
 
 	// property access
     //! \brief Get the full name of this contact
@@ -175,22 +175,9 @@ public:
     bool has_contact_photo() const
         { return m_bag.read_prop<bool>(get_name_id_map().lookup(ps_contact, 0x8015)); }
 
-    //! \brief Get the node_id of this contact
-    //! \returns The node_id of the contact
-    node_id get_id() const
-        { return m_bag.get_node().get_id(); }
-
-    //! \brief Get the MAPI entry ID of this contact
-    //! \returns The MAPI entry ID of this contact
-    std::vector<byte> get_entry_id() const
-        { return calculate_entry_id(m_bag.get_node().get_db(), get_id()); }
-
 private:
     const name_id_map& get_name_id_map() const;
 
-    contact& operator=(const contact&); // = delete
-
-    property_bag m_bag;
     mutable std::tr1::shared_ptr<name_id_map> m_map;     //!< The named property map of this store
     mutable std::tr1::shared_ptr<attachment> m_photo;    //!< The contact photo attachment
 };
