@@ -21,7 +21,10 @@
 #include <type_traits>
 #endif
 #include <algorithm>
+#define BOOST_ALL_NO_LIB 1
 #include <boost/iostreams/concepts.hpp>
+#include <boost/date_time/gregorian/gregorian.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
 #ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable:4244)
@@ -152,15 +155,6 @@ public:
     //! \returns A stream device for the requested property
     virtual hnid_stream_device open_prop_stream(prop_id id) = 0;
 
-// GCC has time_t defined as a typedef of a long, so calling
-// read_prop<slong> activates the time_t specialization. I'm
-// turning them into first class member functions in GCC for now until
-// I figure out a portable way to deal with time.
-#ifdef __GNUC__
-    time_t read_time_t_prop(prop_id id) const;
-    std::vector<time_t> read_time_t_array(prop_id id) const;
-#endif
-
 protected:
     //! \brief Implemented by child classes to fetch a 1 byte sized property
     virtual byte get_value_1(prop_id id) const = 0;
@@ -243,46 +237,38 @@ inline std::vector<bool> fairport::const_property_object::read_prop_array<bool>(
     return results;
 }
 
-// See the note in the class definition - convert the time_t read_prop
-// specialization into a member function in GCC
-#ifdef __GNUC__
-inline time_t const_property_object::read_time_t_prop(prop_id id) const
-#else
 template<>
-inline time_t const_property_object::read_prop<time_t>(prop_id id) const
-#endif
+inline boost::posix_time::ptime const_property_object::read_prop<boost::posix_time::ptime>(prop_id id) const
 {
     if(get_prop_type(id) == prop_type_apptime)
     {
         double time_value = read_prop<double>(id);
-        return vt_date_to_time_t(time_value);
+        return boost::posix_time::from_time_t(vt_date_to_time_t(time_value));
     }
     else
     {
         ulonglong time_value = read_prop<ulonglong>(id);
-        return filetime_to_time_t(time_value);
+        return boost::posix_time::from_ftime<boost::posix_time::ptime>(time_value); 
     }
 }
 
-#ifdef __GNUC__
-inline std::vector<time_t> const_property_object::read_time_t_array(prop_id id) const
-#else
 template<>
-inline std::vector<time_t> const_property_object::read_prop_array<time_t>(prop_id id) const
-#endif
+inline std::vector<boost::posix_time::ptime> const_property_object::read_prop_array<boost::posix_time::ptime>(prop_id id) const
 {
     if(get_prop_type(id) == prop_type_mv_apptime)
     {
         std::vector<double> time_values = read_prop_array<double>(id);
         std::vector<time_t> result(time_values.size());
+        std::vector<boost::posix_time::ptime> ptime_result(time_values.size());
         std::transform(time_values.begin(), time_values.end(), result.begin(), vt_date_to_time_t);
-        return result;
+        std::transform(result.begin(), result.end(), ptime_result.begin(), boost::posix_time::from_time_t);
+        return ptime_result;
     }
     else
     {
         std::vector<ulonglong> time_values = read_prop_array<ulonglong>(id);
-        std::vector<time_t> result(time_values.size());
-        std::transform(time_values.begin(), time_values.end(), result.begin(), filetime_to_time_t);
+        std::vector<boost::posix_time::ptime> result(time_values.size());
+        std::transform(time_values.begin(), time_values.end(), result.begin(), boost::posix_time::from_ftime<boost::posix_time::ptime, ulonglong>);
         return result;
     }
 

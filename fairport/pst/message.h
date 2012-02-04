@@ -326,6 +326,16 @@ public:
     //! \returns The number of attachments
     size_t get_attachment_count() const
 		{ return get_attachment_table().size(); }
+    //! \brief Get the delivery time of this message
+    //! \sa [MS-OXOMSG] 2.2.3.9
+    //! \returns The delivery time of this message
+    boost::posix_time::ptime get_delivery_time() const
+        { return m_bag.read_prop<boost::posix_time::ptime>(0x0e06); }
+    //! \brief Get the last modification time of this message
+    //! \sa [MS-OXCMSG] 2.2.1.1
+    //! \returns The last modification time of this message
+    boost::posix_time::ptime get_last_modification_time() const
+        { return m_bag.read_prop<boost::posix_time::ptime>(0x3008); }
 
     //! \brief Get the number of recipients on this message
     //! \returns The number of recipients

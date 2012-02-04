@@ -57,6 +57,8 @@ void process_message(const fairport::message& m)
     //wcout << "\tRecipient Count: " << m.get_recipient_count() << endl;
     (void)m.get_recipient_count();
     for_each(m.recipient_begin(), m.recipient_end(), process_recipient);
+
+    (void)m.get_delivery_time();
 }
 
 

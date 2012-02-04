@@ -166,6 +166,10 @@ void iterate(fairport::shared_db_ptr pdb)
                 {
                     test_prop_stream(pc, proplist[i]);
                 }
+                else if(pc.get_prop_type(proplist[i]) == prop_type_systime)
+                {
+                    (void)pc.read_prop<boost::posix_time::ptime>(proplist[i]);
+                }
             }
 
             // attachment table
