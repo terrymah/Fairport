@@ -248,7 +248,7 @@ inline boost::posix_time::ptime const_property_object::read_prop<boost::posix_ti
     else
     {
         ulonglong time_value = read_prop<ulonglong>(id);
-        return boost::posix_time::from_ftime<boost::posix_time::ptime>(time_value); 
+        return boost::posix_time::from_time_t(filetime_to_time_t(time_value)); 
     }
 }
 
@@ -267,9 +267,11 @@ inline std::vector<boost::posix_time::ptime> const_property_object::read_prop_ar
     else
     {
         std::vector<ulonglong> time_values = read_prop_array<ulonglong>(id);
-        std::vector<boost::posix_time::ptime> result(time_values.size());
-        std::transform(time_values.begin(), time_values.end(), result.begin(), boost::posix_time::from_ftime<boost::posix_time::ptime, ulonglong>);
-        return result;
+        std::vector<time_t> result(time_values.size());
+        std::vector<boost::posix_time::ptime> ptime_result(time_values.size());
+        std::transform(time_values.begin(), time_values.end(), result.begin(), filetime_to_time_t);
+        std::transform(result.begin(), result.end(), ptime_result.begin(), boost::posix_time::from_time_t);
+        return ptime_result;
     }
 
 }
