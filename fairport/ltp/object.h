@@ -22,13 +22,13 @@
 #endif
 #include <algorithm>
 #define BOOST_ALL_NO_LIB 1
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable:4244 6328)
+#endif
 #include <boost/iostreams/concepts.hpp>
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable:4244)
-#endif
 #include <boost/iostreams/stream.hpp>
 #ifdef _MSC_VER
 #pragma warning(pop)
