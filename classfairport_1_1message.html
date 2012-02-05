@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.29</span>
+   &#160;<span id="projectnumber">v1.0.32</span>
    </div>
    
   </td>
@@ -105,11 +105,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">fairport::message Class Reference<div class="ingroups"><a class="el" href="group__pst__messagerelated.html">Message Objects</a></div></div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="fairport::message" -->
+<!-- doxytag: class="fairport::message" --><!-- doxytag: inherits="fairport::detail::itembase" -->
 <p>Represents a message in a PST file.  
  <a href="classfairport_1_1message.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="message_8h_source.html">message.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for fairport::message:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="classfairport_1_1message__inherit__graph.png" border="0" usemap="#fairport_1_1message_inherit__map" alt="Inheritance graph"/></div>
+<map name="fairport_1_1message_inherit__map" id="fairport_1_1message_inherit__map">
+<area shape="rect" id="node2" href="classfairport_1_1detail_1_1itembase.html" title="{fairport::detail::itembase\n|# m_bag\l|+ itembase()\l+ get_id()\l+ get_entry_id()\l+ get_property_bag()\l+ get_property_bag()\l}" alt="" coords="21,5,187,141"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for fairport::message:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="classfairport_1_1message__coll__graph.png" border="0" usemap="#fairport_1_1message_coll__map" alt="Collaboration graph"/></div>
+<map name="fairport_1_1message_coll__map" id="fairport_1_1message_coll__map">
+<area shape="rect" id="node2" href="classfairport_1_1detail_1_1itembase.html" title="{fairport::detail::itembase\n|# m_bag\l|+ itembase()\l+ get_id()\l+ get_entry_id()\l+ get_property_bag()\l+ get_property_bag()\l}" alt="" coords="22,597,188,733"/><area shape="rect" id="node4" href="classfairport_1_1property__bag.html" title="Property Context (PC) Implementation." alt="" coords="29,309,181,533"/><area shape="rect" id="node6" href="classfairport_1_1const__property__object.html" title="Property object base class." alt="" coords="5,5,205,259"/></map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classfairport_1_1message-members.html">List of all members.</a></p>
 <table class="memberdecls">
@@ -130,7 +148,6 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a88e5b9f89687968f88d0cfd743964e2d">message</a> (const <a class="el" href="classfairport_1_1node.html">node</a> &amp;n)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a message object.  <a href="#a88e5b9f89687968f88d0cfd743964e2d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a6719306cd5ebd0f431e7f73168e9cf74">message</a> (const <a class="el" href="classfairport_1_1message.html">message</a> &amp;other)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#ab4f88c3c87512b2a7738793fd69fc94f">message</a> (<a class="el" href="classfairport_1_1message.html">message</a> &amp;&amp;other)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1message.html#a3815ff4441528ba3c4069d6d15a57b7b">attachment_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a8aa3066a2fa9e3216475a4df3df5f8c1">attachment_begin</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator to the first message on this message.  <a href="#a8aa3066a2fa9e3216475a4df3df5f8c1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1message.html#a3815ff4441528ba3c4069d6d15a57b7b">attachment_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a86a9981e3e0f96a58ed92336cc4c4613">attachment_end</a> () const </td></tr>
@@ -162,28 +179,25 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#aacca0c235ca9dd62bb2a6647026d078f">size</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a30af8fe2da1eed214748f01e35124a66">get_attachment_count</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of attachments on this message.  <a href="#a30af8fe2da1eed214748f01e35124a66"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">boost::posix_time::ptime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a060b73eb40bdc140e6f4cd5c8a8b9fa1">get_delivery_time</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the delivery time of this message.  <a href="#a060b73eb40bdc140e6f4cd5c8a8b9fa1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">boost::posix_time::ptime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a9763920e6b3901ce9222aeea79afa2e7">get_last_modification_time</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last modification time of this message.  <a href="#a9763920e6b3901ce9222aeea79afa2e7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a21ff93d3646b8b6abb60bd47587c5187">get_recipient_count</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of recipients on this message.  <a href="#a21ff93d3646b8b6abb60bd47587c5187"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1property__bag.html">property_bag</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a3f278d3c33fcd0d8de6c955a919d527a">get_property_bag</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the property bag backing this message.  <a href="#a3f278d3c33fcd0d8de6c955a919d527a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classfairport_1_1property__bag.html">property_bag</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#afd9ad3a7e98839052a116f0788255018">get_property_bag</a> () const </td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1table.html">table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a730449e4531dbe5316780e3aaaa0b322">get_attachment_table</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the attachment table of this message.  <a href="#a730449e4531dbe5316780e3aaaa0b322"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1table.html">table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a589eb43754a8ecddc213cf352587aad3">get_recipient_table</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the recipient table of this message.  <a href="#a589eb43754a8ecddc213cf352587aad3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1table.html">table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#aecb8c866fb54d08a2d97dfd5151c8b7c">get_attachment_table</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the attachment table of this message.  <a href="#aecb8c866fb54d08a2d97dfd5151c8b7c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1table.html">table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a94948ddb8a4ac821026efea344930491">get_recipient_table</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the recipient table of this message.  <a href="#a94948ddb8a4ac821026efea344930491"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classfairport_1_1table.html">table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a67b9b5ed4907aef0e28fb2407401b933">get_attachment_table</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classfairport_1_1table.html">table</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#a6a296e2d7187f7d6710cf685f0fabcb9">get_recipient_table</a> () const </td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__primitive.html#ga8b92707aae5c5c53a61873aacd434bc7">node_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#ab0773fd78b620cb7cd8c877e555bc871">get_id</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the node_id of this message.  <a href="#ab0773fd78b620cb7cd8c877e555bc871"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="group__primitive.html#gaa303d59ad33197b84bade8b453fa7eec">byte</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html#abe4f635c4386c5f77bcfadbb64d7afe8">get_entry_id</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the MAPI entry ID of this message.  <a href="#abe4f635c4386c5f77bcfadbb64d7afe8"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Represents a message in a PST file. </p>
 <p>A message is the basic abstraction exposed by MAPI - everything is a message; a mail item, a calendar item, a contact, etc.</p>
 <p>This class exposes some common properties on messages as well as iteration mechanisms to get to the attachments and recipients on the message. You will most likely find it necessary to get the underylying property bag and look up specific properties not exposed here. </p>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00218">218</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00229">229</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="a3815ff4441528ba3c4069d6d15a57b7b"></a><!-- doxytag: member="fairport::message::attachment_iterator" ref="a3815ff4441528ba3c4069d6d15a57b7b" args="" -->
 <div class="memitem">
@@ -198,7 +212,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Attachment iterator type; a transform iterator over a table row iterator. </p>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00222">222</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00233">233</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -215,7 +229,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Recipient iterator type; a transform iterator over a table row iterator. </p>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00224">224</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00235">235</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -243,7 +257,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00228">228</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00239">239</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -262,26 +276,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00412">412</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab4f88c3c87512b2a7738793fd69fc94f"></a><!-- doxytag: member="fairport::message::message" ref="ab4f88c3c87512b2a7738793fd69fc94f" args="(message &amp;&amp;other)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">fairport::message::message </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classfairport_1_1message.html">message</a> &amp;&amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="message_8h_source.html#l00233">233</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00391">391</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -303,7 +298,7 @@ Public Member Functions</h2></td></tr>
 <p>Get an iterator to the first message on this message. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an iterator positioned on the first attachment on this message </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00240">240</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00246">246</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -324,7 +319,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the end attachment iterator. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An iterator at the end position </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00244">244</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00250">250</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -345,7 +340,7 @@ Public Member Functions</h2></td></tr>
 <p>Size of the body, in bytes. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The size of the body </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00280">280</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00289">289</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -366,16 +361,16 @@ Public Member Functions</h2></td></tr>
 <p>Get the number of attachments on this message. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of attachments </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00315">315</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00327">327</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a730449e4531dbe5316780e3aaaa0b322"></a><!-- doxytag: member="fairport::message::get_attachment_table" ref="a730449e4531dbe5316780e3aaaa0b322" args="()" -->
+<a class="anchor" id="aecb8c866fb54d08a2d97dfd5151c8b7c"></a><!-- doxytag: member="fairport::message::get_attachment_table" ref="aecb8c866fb54d08a2d97dfd5151c8b7c" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classfairport_1_1table.html">fairport::table</a> &amp; fairport::message::get_attachment_table </td>
+          <td class="memname"><a class="el" href="classfairport_1_1table.html">table</a>&amp; fairport::message::get_attachment_table </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -387,7 +382,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the attachment table of this message. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The attachment table </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00455">455</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00348">348</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -407,7 +402,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the attachment table of this message. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The attachment table </dd></dl>
  
-<p>Definition at line <a class="el" href="message_8h_source.html#l00421">421</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00400">400</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -426,18 +421,19 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Get the body of this message. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.1.48.1 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The message body as a string </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00265">265</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00273">273</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="abe4f635c4386c5f77bcfadbb64d7afe8"></a><!-- doxytag: member="fairport::message::get_entry_id" ref="abe4f635c4386c5f77bcfadbb64d7afe8" args="() const " -->
+<a class="anchor" id="a060b73eb40bdc140e6f4cd5c8a8b9fa1"></a><!-- doxytag: member="fairport::message::get_delivery_time" ref="a060b73eb40bdc140e6f4cd5c8a8b9fa1" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="group__primitive.html#gaa303d59ad33197b84bade8b453fa7eec">fairport::byte</a> &gt; fairport::message::get_entry_id </td>
+          <td class="memname">boost::posix_time::ptime fairport::message::get_delivery_time </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [inline]</code></td>
@@ -446,10 +442,11 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Get the MAPI entry ID of this message. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>The MAPI entry ID of this message </dd></dl>
+<p>Get the delivery time of this message. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOMSG] 2.2.3.9 </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The delivery time of this message </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00480">480</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00332">332</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -468,18 +465,19 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Get the HTML body of this message. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.1.48.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The HTML message body as a string </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00288">288</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00298">298</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ab0773fd78b620cb7cd8c877e555bc871"></a><!-- doxytag: member="fairport::message::get_id" ref="ab0773fd78b620cb7cd8c877e555bc871" args="() const " -->
+<a class="anchor" id="a9763920e6b3901ce9222aeea79afa2e7"></a><!-- doxytag: member="fairport::message::get_last_modification_time" ref="a9763920e6b3901ce9222aeea79afa2e7" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="group__primitive.html#ga8b92707aae5c5c53a61873aacd434bc7">node_id</a> fairport::message::get_id </td>
+          <td class="memname">boost::posix_time::ptime fairport::message::get_last_modification_time </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [inline]</code></td>
@@ -488,51 +486,11 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Get the node_id of this message. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>The node_id of the message </dd></dl>
+<p>Get the last modification time of this message. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.1.1 </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The last modification time of this message </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00344">344</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a3f278d3c33fcd0d8de6c955a919d527a"></a><!-- doxytag: member="fairport::message::get_property_bag" ref="a3f278d3c33fcd0d8de6c955a919d527a" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classfairport_1_1property__bag.html">property_bag</a>&amp; fairport::message::get_property_bag </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the property bag backing this message. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>The property bag </dd></dl>
-
-<p>Definition at line <a class="el" href="message_8h_source.html#l00326">326</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="afd9ad3a7e98839052a116f0788255018"></a><!-- doxytag: member="fairport::message::get_property_bag" ref="afd9ad3a7e98839052a116f0788255018" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="classfairport_1_1property__bag.html">property_bag</a>&amp; fairport::message::get_property_bag </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Get the property bag backing this message. </p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>The property bag </dd></dl>
- 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00329">329</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00337">337</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -553,16 +511,16 @@ Public Member Functions</h2></td></tr>
 <p>Get the number of recipients on this message. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of recipients </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00320">320</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00342">342</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a589eb43754a8ecddc213cf352587aad3"></a><!-- doxytag: member="fairport::message::get_recipient_table" ref="a589eb43754a8ecddc213cf352587aad3" args="()" -->
+<a class="anchor" id="a94948ddb8a4ac821026efea344930491"></a><!-- doxytag: member="fairport::message::get_recipient_table" ref="a94948ddb8a4ac821026efea344930491" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classfairport_1_1table.html">fairport::table</a> &amp; fairport::message::get_recipient_table </td>
+          <td class="memname"><a class="el" href="classfairport_1_1table.html">table</a>&amp; fairport::message::get_recipient_table </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [inline]</code></td>
@@ -574,7 +532,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the recipient table of this message. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The recipient table </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00460">460</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00352">352</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -594,7 +552,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the recipient table of this message. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The recipient table </dd></dl>
  
-<p>Definition at line <a class="el" href="message_8h_source.html#l00438">438</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00417">417</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -613,9 +571,10 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Get the subject of this message. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.1.46 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The message subject </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00465">465</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00434">434</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -636,7 +595,7 @@ Public Member Functions</h2></td></tr>
 <p>Checks to see if this message has a body. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if the body prop exists </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00284">284</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00293">293</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -657,7 +616,7 @@ Public Member Functions</h2></td></tr>
 <p>Checks to see if this message has a HTML body. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if the HTML body property exists </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00307">307</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00318">318</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -678,7 +637,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if a subject is set on this message. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if a subject is set on this message </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00261">261</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00268">268</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -699,7 +658,7 @@ Public Member Functions</h2></td></tr>
 <p>Size of the HTML body, in bytes. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The size of the HTML body </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00303">303</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00314">314</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -722,9 +681,10 @@ Public Member Functions</h2></td></tr>
 <div class="fragment"><pre class="fragment"> <a class="code" href="classfairport_1_1message.html#a88e5b9f89687968f88d0cfd743964e2d" title="Construct a message object.">message</a> m = ...;
  <a class="code" href="group__ltp__objectrelated.html#gad16216622c4efb7d2d205f7316efaec7" title="The actual property stream, defined using the boost iostream library and the hnid_stream_device.">prop_stream</a> body(a.open_body_stream());
 </pre></div><p> Which can then be used as any iostream would be. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.1.48.1 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The message body as a stream </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00276">276</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00285">285</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -747,9 +707,10 @@ Public Member Functions</h2></td></tr>
 <div class="fragment"><pre class="fragment"> <a class="code" href="classfairport_1_1message.html#a88e5b9f89687968f88d0cfd743964e2d" title="Construct a message object.">message</a> m = ...;
  <a class="code" href="group__ltp__objectrelated.html#gad16216622c4efb7d2d205f7316efaec7" title="The actual property stream, defined using the boost iostream library and the hnid_stream_device.">prop_stream</a> htmlbody(a.open_html_body_stream());
 </pre></div><p> Which can then be used as any iostream would be. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.1.48.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The message body as a stream </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00299">299</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00310">310</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -770,7 +731,7 @@ Public Member Functions</h2></td></tr>
 <p>Get an iterator to the first recipient of this message. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An iterator positioned on the first recipient of this message </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00248">248</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00254">254</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -791,7 +752,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the end recipient iterator. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An iterator at the end position </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00252">252</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00258">258</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -808,9 +769,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.1.7 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The message size </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00311">311</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00323">323</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -838,7 +800,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Jan 19 2012 15:35:51 for Fairport by
+    <li class="footer">Generated on Sat Feb 4 2012 20:00:41 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

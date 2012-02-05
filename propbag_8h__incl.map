@@ -1,11 +1,11 @@
 <map id="G" name="G">
 <area shape="rect" id="node7" href="$primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="1037,528,1195,555"/>
-<area shape="rect" id="node13" href="$errors_8h.html" title="The exceptions used by Fairport." alt="" coords="5,453,141,480"/>
-<area shape="rect" id="node18" href="$node_8h.html" title="Node and Block definitions." alt="" coords="873,229,1007,256"/>
-<area shape="rect" id="node62" href="$object_8h.html" title="Property access base class." alt="" coords="989,80,1123,107"/>
-<area shape="rect" id="node72" href="$heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="1258,155,1384,181"/>
-<area shape="rect" id="node34" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="743,379,861,405"/>
-<area shape="rect" id="node48" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="279,379,411,405"/>
-<area shape="rect" id="node57" href="$database__iface_8h.html" title="Database interface." alt="" coords="364,304,556,331"/>
-<area shape="rect" id="node81" href="$disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="1743,229,1872,256"/>
+<area shape="rect" id="node15" href="$errors_8h.html" title="The exceptions used by Fairport." alt="" coords="5,453,141,480"/>
+<area shape="rect" id="node20" href="$node_8h.html" title="Node and Block definitions." alt="" coords="698,229,832,256"/>
+<area shape="rect" id="node64" href="$object_8h.html" title="Property access base class." alt="" coords="729,80,863,107"/>
+<area shape="rect" id="node78" href="$heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="1277,155,1403,181"/>
+<area shape="rect" id="node36" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="743,379,861,405"/>
+<area shape="rect" id="node50" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="279,379,411,405"/>
+<area shape="rect" id="node59" href="$database__iface_8h.html" title="Database interface." alt="" coords="364,304,556,331"/>
+<area shape="rect" id="node87" href="$disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="1759,229,1888,256"/>
 </map>

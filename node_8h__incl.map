@@ -1,7 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node19" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="746,155,864,181"/>
-<area shape="rect" id="node42" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="291,155,423,181"/>
-<area shape="rect" id="node51" href="$database__iface_8h.html" title="Database interface." alt="" coords="576,80,768,107"/>
+<area shape="rect" id="node44" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="291,155,423,181"/>
+<area shape="rect" id="node53" href="$database__iface_8h.html" title="Database interface." alt="" coords="576,80,768,107"/>
 <area shape="rect" id="node29" href="$errors_8h.html" title="The exceptions used by Fairport." alt="" coords="467,229,604,256"/>
 <area shape="rect" id="node33" href="$primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="564,304,721,331"/>
 </map>

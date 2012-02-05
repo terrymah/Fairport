@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.29</span>
+   &#160;<span id="projectnumber">v1.0.32</span>
    </div>
    
   </td>
@@ -134,11 +134,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1const__property__object.html#a0b76601bf73ab0739b211d809db90f51">size</a> (<a class="el" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) const =0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the total size of a variable length property.  <a href="#a0b76601bf73ab0739b211d809db90f51"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfairport_1_1const__property__object.html#aa67d95815c346f9dd1d5dfbe76e18ca6">read_prop</a> (<a class="el" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a property as a given type.  <a href="#aa67d95815c346f9dd1d5dfbe76e18ca6"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfairport_1_1const__property__object.html#a0878389c05c980c7b41f4e33fe3613ba">read_prop</a> (<a class="el" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a property as a given type.  <a href="#a0878389c05c980c7b41f4e33fe3613ba"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfairport_1_1const__property__object.html#a6c16a0236af459182b618f8f1a2dad19">read_prop_array</a> (<a class="el" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a property as an array of the given type.  <a href="#a6c16a0236af459182b618f8f1a2dad19"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classfairport_1_1const__property__object.html#a963a317245608957bd43029fcc8912b4">read_prop_array</a> (<a class="el" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a property as an array of the given type.  <a href="#a963a317245608957bd43029fcc8912b4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classfairport_1_1hnid__stream__device.html">hnid_stream_device</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1const__property__object.html#ae91ca75f972cf049ceec2bc95cafbbfa">open_prop_stream</a> (<a class="el" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a> id)=0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a stream device over a property on this object.  <a href="#ae91ca75f972cf049ceec2bc95cafbbfa"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
@@ -159,7 +159,7 @@ Protected Member Functions</h2></td></tr>
 <p>This class provides a simple interface (using templates) to access properties on an object. It defines a handful of virtual functions child classes implement to read the raw data.</p>
 <p>This class is contains all the conversion logic between the different types, implemented as template specializations, and other property logic such as multivalued property parsing. </p>
 
-<p>Definition at line <a class="el" href="object_8h_source.html#l00096">96</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p>Definition at line <a class="el" href="object_8h_source.html#l00099">99</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ae0e430c9ba488ac6486653861588ef3d"></a><!-- doxytag: member="fairport::const_property_object::~const_property_object" ref="ae0e430c9ba488ac6486653861588ef3d" args="()" -->
 <div class="memitem">
@@ -175,7 +175,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="object_8h_source.html#l00099">99</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p>Definition at line <a class="el" href="object_8h_source.html#l00102">102</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 
 </div>
 </div>
@@ -397,12 +397,12 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa67d95815c346f9dd1d5dfbe76e18ca6"></a><!-- doxytag: member="fairport::const_property_object::read_prop" ref="aa67d95815c346f9dd1d5dfbe76e18ca6" args="(prop_id id) const " -->
+<a class="anchor" id="a0878389c05c980c7b41f4e33fe3613ba"></a><!-- doxytag: member="fairport::const_property_object::read_prop" ref="a0878389c05c980c7b41f4e33fe3613ba" args="(prop_id id) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">time_t fairport::const_property_object::read_prop&lt; time_t &gt; </td>
+          <td class="memname">bool fairport::const_property_object::read_prop&lt; bool &gt; </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a>&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
@@ -434,16 +434,16 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The property value </dd></dl>
 
-<p>Definition at line <a class="el" href="object_8h_source.html#l00180">180</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p>Definition at line <a class="el" href="object_8h_source.html#l00174">174</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a6c16a0236af459182b618f8f1a2dad19"></a><!-- doxytag: member="fairport::const_property_object::read_prop_array" ref="a6c16a0236af459182b618f8f1a2dad19" args="(prop_id id) const " -->
+<a class="anchor" id="a963a317245608957bd43029fcc8912b4"></a><!-- doxytag: member="fairport::const_property_object::read_prop_array" ref="a963a317245608957bd43029fcc8912b4" args="(prop_id id) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; time_t &gt; fairport::const_property_object::read_prop_array&lt; time_t &gt; </td>
+          <td class="memname">std::vector&lt; bool &gt; fairport::const_property_object::read_prop_array&lt; bool &gt; </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__primitive.html#gacd758981ba6d78157e057be8a33d03f3">prop_id</a>&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
@@ -476,7 +476,7 @@ Protected Member Functions</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A vector of the property values </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.3.3.4 </dd></dl>
 
-<p>Definition at line <a class="el" href="object_8h_source.html#l00216">216</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+<p>Definition at line <a class="el" href="object_8h_source.html#l00210">210</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
 
 </div>
 </div>
@@ -533,7 +533,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Jan 19 2012 15:35:51 for Fairport by
+    <li class="footer">Generated on Sat Feb 4 2012 20:00:41 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

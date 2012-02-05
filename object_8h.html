@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.29</span>
+   &#160;<span id="projectnumber">v1.0.32</span>
    </div>
    
   </td>
@@ -99,6 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Defines</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -112,6 +113,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;type_traits&gt;</code><br/>
 <code>#include &lt;algorithm&gt;</code><br/>
 <code>#include &lt;boost/iostreams/concepts.hpp&gt;</code><br/>
+<code>#include &lt;boost/date_time/gregorian/gregorian.hpp&gt;</code><br/>
+<code>#include &lt;boost/date_time/posix_time/posix_time.hpp&gt;</code><br/>
 <code>#include &lt;boost/iostreams/stream.hpp&gt;</code><br/>
 <code>#include &quot;<a class="el" href="primitives_8h_source.html">fairport/util/primitives.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="errors_8h_source.html">fairport/util/errors.h</a>&quot;</code><br/>
@@ -124,7 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="object_8h__incl.png" border="0" usemap="#fairport_2ltp_2object_8h" alt=""/></div>
 <map name="fairport_2ltp_2object_8h" id="fairport_2ltp_2object_8h">
-<area shape="rect" id="node13" href="primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="967,453,1124,480"/><area shape="rect" id="node19" href="errors_8h.html" title="The exceptions used by Fairport." alt="" coords="581,379,718,405"/><area shape="rect" id="node24" href="heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="1136,80,1262,107"/><area shape="rect" id="node39" href="node_8h.html" title="Node and Block definitions." alt="" coords="734,155,868,181"/><area shape="rect" id="node34" href="disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="1568,155,1696,181"/><area shape="rect" id="node52" href="util_2util_8h.html" title="General utility functions and classes." alt="" coords="226,304,344,331"/><area shape="rect" id="node66" href="btree_8h.html" title="Generic BTree implementation." alt="" coords="1049,304,1180,331"/><area shape="rect" id="node75" href="database__iface_8h.html" title="Database interface." alt="" coords="226,229,418,256"/></map>
+<area shape="rect" id="node17" href="primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="967,453,1124,480"/><area shape="rect" id="node25" href="errors_8h.html" title="The exceptions used by Fairport." alt="" coords="581,379,718,405"/><area shape="rect" id="node30" href="heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="1161,80,1287,107"/><area shape="rect" id="node45" href="node_8h.html" title="Node and Block definitions." alt="" coords="734,155,868,181"/><area shape="rect" id="node40" href="disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="1568,155,1696,181"/><area shape="rect" id="node58" href="util_2util_8h.html" title="General utility functions and classes." alt="" coords="226,304,344,331"/><area shape="rect" id="node72" href="btree_8h.html" title="Generic BTree implementation." alt="" coords="1049,304,1180,331"/><area shape="rect" id="node81" href="database__iface_8h.html" title="Database interface." alt="" coords="226,229,418,256"/></map>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
@@ -133,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="object_8h__dep__incl.png" border="0" usemap="#fairport_2ltp_2object_8hdep" alt=""/></div>
 <map name="fairport_2ltp_2object_8hdep" id="fairport_2ltp_2object_8hdep">
-<area shape="rect" id="node3" href="propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="184,80,331,107"/><area shape="rect" id="node7" href="ltp_8h.html" title="fairport/ltp.h" alt="" coords="5,229,99,256"/><area shape="rect" id="node24" href="table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="382,80,508,107"/><area shape="rect" id="node5" href="nameid_8h.html" title="Named Property Lookup Map implementation." alt="" coords="79,155,220,181"/><area shape="rect" id="node9" href="pst_2pst_8h.html" title="PST implementation." alt="" coords="249,304,367,331"/><area shape="rect" id="node14" href="folder_8h.html" title="Folder objects." alt="" coords="346,229,480,256"/><area shape="rect" id="node18" href="message_8h.html" title="Message related classes." alt="" coords="397,155,549,181"/><area shape="rect" id="node11" href="pst_8h.html" title="fairport/pst.h" alt="" coords="365,379,461,405"/></map>
+<area shape="rect" id="node3" href="propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="255,80,401,107"/><area shape="rect" id="node7" href="ltp_8h.html" title="fairport/ltp.h" alt="" coords="43,229,137,256"/><area shape="rect" id="node37" href="table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="474,80,600,107"/><area shape="rect" id="node5" href="nameid_8h.html" title="Named Property Lookup Map implementation." alt="" coords="149,155,291,181"/><area shape="rect" id="node9" href="contact_8h.html" title="Contact related classes." alt="" coords="366,304,508,331"/><area shape="rect" id="node11" href="folder_8h.html" title="Folder objects." alt="" coords="635,379,769,405"/><area shape="rect" id="node13" href="pst_2pst_8h.html" title="PST implementation." alt="" coords="330,453,448,480"/><area shape="rect" id="node22" href="pstutil_8h.html" title="PST Utility related classes and functions." alt="" coords="517,155,653,181"/><area shape="rect" id="node25" href="message_8h.html" title="Message related classes." alt="" coords="518,229,671,256"/><area shape="rect" id="node15" href="pst_8h.html" title="fairport/pst.h" alt="" coords="654,528,751,555"/></map>
 </div>
 </div>
 <p><a href="object_8h_source.html">Go to the source code of this file.</a></p>
@@ -149,6 +152,9 @@ Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefairport.html">fairport</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>Contains the definition of all in memory representations of disk structures. </p>
 <br/></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Defines</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object_8h.html#a5ebdbdce56348e79bc296dba8e572a1f">BOOST_ALL_NO_LIB</a>&#160;&#160;&#160;1</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
@@ -157,6 +163,11 @@ boost::iostreams::stream<br class="typebreak"/>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual property stream, defined using the boost iostream library and the <a class="el" href="classfairport_1_1hnid__stream__device.html">hnid_stream_device</a>.  <a href="group__ltp__objectrelated.html#gad16216622c4efb7d2d205f7316efaec7"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">boost::posix_time::ptime&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefairport.html#ad5ad991d8288fc79becaff27353cc9ad">fairport::const_property_object::read_prop&lt; boost::posix_time::ptime &gt;</a> (prop_id id) const </td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">std::vector<br class="typebreak"/>
+&lt; boost::posix_time::ptime &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefairport.html#aab6b686c7db73fa40eeb1c995c2427aa">fairport::const_property_object::read_prop_array&lt; boost::posix_time::ptime &gt;</a> (prop_id id) const </td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; byte &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacefairport.html#af1b6b2c358ad3044e6418dd5d679f246">fairport::const_property_object::read_prop&lt; std::vector&lt; byte &gt; &gt;</a> (prop_id id) const </td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
@@ -177,7 +188,23 @@ Functions</h2></td></tr>
 <p>In addition to defining a generic read_prop&lt;T&gt;(id) interface, it also defines a stream interface to access large properties. </p>
 
 <p>Definition in file <a class="el" href="object_8h_source.html">object.h</a>.</p>
-</div></div>
+</div><hr/><h2>Define Documentation</h2>
+<a class="anchor" id="a5ebdbdce56348e79bc296dba8e572a1f"></a><!-- doxytag: member="object.h::BOOST_ALL_NO_LIB" ref="a5ebdbdce56348e79bc296dba8e572a1f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOOST_ALL_NO_LIB&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="object_8h_source.html#l00024">24</a> of file <a class="el" href="object_8h_source.html">object.h</a>.</p>
+
+</div>
+</div>
+</div>
 </div>
   <div id="nav-path" class="navpath">
     <ul>
@@ -197,7 +224,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Jan 19 2012 15:35:51 for Fairport by
+    <li class="footer">Generated on Sat Feb 4 2012 20:00:40 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

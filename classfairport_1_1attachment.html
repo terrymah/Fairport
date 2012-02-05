@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.29</span>
+   &#160;<span id="projectnumber">v1.0.32</span>
    </div>
    
   </td>
@@ -135,13 +135,14 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="friends"></a>
 Friends</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1attachment.html#a085a31aed84d3c8d710102131bae556e">message</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1attachment.html#a57c28ba9cafb4350fe19f0f17bac49ae">contact</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1attachment.html#abd6184d41af45ee11d9df00bd9be39bb">attachment_transform</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Encapsulates an attachment to a message. </p>
 <p>Attachment objects allow you to query for some basic information about an attachment, get access to the bytes of the attachment (as a blob or stream), as well as open the attachment as a message if applicable. </p>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00034">34</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00037">37</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="ae9fb3e1f25920199d233bf11bea74867"></a><!-- doxytag: member="fairport::attachment::content_size" ref="ae9fb3e1f25920199d233bf11bea74867" args="() const " -->
 <div class="memitem">
@@ -161,7 +162,7 @@ Friends</h2></td></tr>
 <p>The size here is just for the binary data of the attachment. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The size of the data stream of the attachment, in bytes </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00071">71</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00079">79</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -181,9 +182,10 @@ Friends</h2></td></tr>
 
 <p>Get the attachment data, as a blob. </p>
 <p>You might want to consider open_byte_stream if <a class="el" href="classfairport_1_1attachment.html#ae9fb3e1f25920199d233bf11bea74867" title="Read the size of the content in this attachment.">content_size()</a> is too large for your tastes. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.2.7 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A vector of bytes </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00046">46</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00052">52</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -202,9 +204,12 @@ Friends</h2></td></tr>
 <div class="memdoc">
 
 <p>Get the filename of this attachment. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.2.10 </dd>
+<dd>
+[MS-OXCMSG] 2.2.2.11 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The filename </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00389">389</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00368">368</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -225,7 +230,7 @@ Friends</h2></td></tr>
 <p>Get the property bag backing this attachment. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The property bag </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00088">88</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00097">97</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -245,7 +250,7 @@ Friends</h2></td></tr>
 <p>Get the property bag backing this attachment. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The property bag </dd></dl>
  
-<p>Definition at line <a class="el" href="message_8h_source.html#l00091">91</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00100">100</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -265,9 +270,10 @@ Friends</h2></td></tr>
 
 <p>Returns if this attachment is actually an embedded message. </p>
 <p>If an attachment is a message, one should use <a class="el" href="classfairport_1_1attachment.html#a58b37094b4f8c2f8b2ba51331376a364" title="Interpret this attachment as a message.">open_as_message()</a> to access the data rather than <a class="el" href="classfairport_1_1attachment.html#a73e18eef13dbed8b9e5d93883ef5085b" title="Open a stream of the attachment data.">open_byte_stream()</a> or similar. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.2.9 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this attachment is an attached message </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00078">78</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00087">87</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -289,7 +295,7 @@ Friends</h2></td></tr>
 <dl class="pre"><dt><b>Precondition:</b></dt><dd><a class="el" href="classfairport_1_1attachment.html#adbcd0c069035782e59afa3c8305546d0" title="Returns if this attachment is actually an embedded message.">is_message()</a> == true </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A message object </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00401">401</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00380">380</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -312,9 +318,10 @@ Friends</h2></td></tr>
 <div class="fragment"><pre class="fragment"> attachment a = ...;
  <a class="code" href="group__ltp__objectrelated.html#gad16216622c4efb7d2d205f7316efaec7" title="The actual property stream, defined using the boost iostream library and the hnid_stream_device.">prop_stream</a> nstream(a.open_byte_stream());
 </pre></div><p> Which can then be used as any iostream would be. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXCMSG] 2.2.2.7 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A stream device for the attachment data </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00057">57</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00064">64</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -334,10 +341,12 @@ Friends</h2></td></tr>
 
 <p>Read the size of this attachment. </p>
 <p>The size returned here includes metadata, and as such will be larger than just the byte stream. </p>
-<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classfairport_1_1attachment.html#ae9fb3e1f25920199d233bf11bea74867" title="Read the size of the content in this attachment.">attachment::content_size()</a> </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="classfairport_1_1attachment.html#ae9fb3e1f25920199d233bf11bea74867" title="Read the size of the content in this attachment.">attachment::content_size()</a> </dd>
+<dd>
+[MS-OXCMSG] 2.2.2.5 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The size of the attachment object, in bytes </dd></dl>
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00065">65</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00073">73</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -353,7 +362,22 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00097">97</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00107">107</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a57c28ba9cafb4350fe19f0f17bac49ae"></a><!-- doxytag: member="fairport::attachment::contact" ref="a57c28ba9cafb4350fe19f0f17bac49ae" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classfairport_1_1contact.html">contact</a><code> [friend]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="message_8h_source.html#l00106">106</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -368,7 +392,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="message_8h_source.html#l00096">96</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
+<p>Definition at line <a class="el" href="message_8h_source.html#l00105">105</a> of file <a class="el" href="message_8h_source.html">message.h</a>.</p>
 
 </div>
 </div>
@@ -396,7 +420,7 @@ Friends</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Jan 19 2012 15:35:51 for Fairport by
+    <li class="footer">Generated on Sat Feb 4 2012 20:00:41 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

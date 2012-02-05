@@ -1,10 +1,12 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="184,80,331,107"/>
-<area shape="rect" id="node7" href="$ltp_8h.html" title="fairport/ltp.h" alt="" coords="5,229,99,256"/>
-<area shape="rect" id="node24" href="$table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="382,80,508,107"/>
-<area shape="rect" id="node5" href="$nameid_8h.html" title="Named Property Lookup Map implementation." alt="" coords="79,155,220,181"/>
-<area shape="rect" id="node9" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="249,304,367,331"/>
-<area shape="rect" id="node14" href="$folder_8h.html" title="Folder objects." alt="" coords="346,229,480,256"/>
-<area shape="rect" id="node18" href="$message_8h.html" title="Message related classes." alt="" coords="397,155,549,181"/>
-<area shape="rect" id="node11" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="365,379,461,405"/>
+<area shape="rect" id="node3" href="$propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="255,80,401,107"/>
+<area shape="rect" id="node7" href="$ltp_8h.html" title="fairport/ltp.h" alt="" coords="43,229,137,256"/>
+<area shape="rect" id="node37" href="$table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="474,80,600,107"/>
+<area shape="rect" id="node5" href="$nameid_8h.html" title="Named Property Lookup Map implementation." alt="" coords="149,155,291,181"/>
+<area shape="rect" id="node9" href="$contact_8h.html" title="Contact related classes." alt="" coords="366,304,508,331"/>
+<area shape="rect" id="node11" href="$folder_8h.html" title="Folder objects." alt="" coords="635,379,769,405"/>
+<area shape="rect" id="node13" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="330,453,448,480"/>
+<area shape="rect" id="node22" href="$pstutil_8h.html" title="PST Utility related classes and functions." alt="" coords="517,155,653,181"/>
+<area shape="rect" id="node25" href="$message_8h.html" title="Message related classes." alt="" coords="518,229,671,256"/>
+<area shape="rect" id="node15" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="654,528,751,555"/>
 </map>

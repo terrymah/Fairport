@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.29</span>
+   &#160;<span id="projectnumber">v1.0.32</span>
    </div>
    
   </td>
@@ -99,6 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">fairport/pst/message.h File Reference<div class="ingroups"><a class="el" href="group__pst.html">PST Layer</a></div></div>  </div>
@@ -114,6 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="node_8h_source.html">fairport/ndb/node.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="propbag_8h_source.html">fairport/ltp/propbag.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="table_8h_source.html">fairport/ltp/table.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pstutil_8h_source.html">fairport/pst/pstutil.h</a>&quot;</code><br/>
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for message.h:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -121,7 +123,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="message_8h__incl.png" border="0" usemap="#fairport_2pst_2message_8h" alt=""/></div>
 <map name="fairport_2pst_2message_8h" id="fairport_2pst_2message_8h">
-<area shape="rect" id="node9" href="database__iface_8h.html" title="Database interface." alt="" coords="416,379,608,405"/><area shape="rect" id="node38" href="node_8h.html" title="Node and Block definitions." alt="" coords="886,304,1020,331"/><area shape="rect" id="node63" href="propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="597,80,744,107"/><area shape="rect" id="node97" href="table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="1410,80,1536,107"/><area shape="rect" id="node13" href="util_2util_8h.html" title="General utility functions and classes." alt="" coords="583,453,701,480"/><area shape="rect" id="node28" href="primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="941,603,1099,629"/><area shape="rect" id="node24" href="errors_8h.html" title="The exceptions used by Fairport." alt="" coords="262,528,399,555"/><area shape="rect" id="node53" href="btree_8h.html" title="Generic BTree implementation." alt="" coords="886,453,1017,480"/><area shape="rect" id="node70" href="object_8h.html" title="Property access base class." alt="" coords="923,155,1057,181"/><area shape="rect" id="node80" href="heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="1410,229,1536,256"/><area shape="rect" id="node89" href="disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="1806,304,1935,331"/></map>
+<area shape="rect" id="node9" href="database__iface_8h.html" title="Database interface." alt="" coords="465,453,657,480"/><area shape="rect" id="node40" href="node_8h.html" title="Node and Block definitions." alt="" coords="723,379,857,405"/><area shape="rect" id="node65" href="propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="571,155,717,181"/><area shape="rect" id="node103" href="table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="1918,155,2044,181"/><area shape="rect" id="node113" href="pstutil_8h.html" title="PST Utility related classes and functions." alt="" coords="465,80,601,107"/><area shape="rect" id="node13" href="util_2util_8h.html" title="General utility functions and classes." alt="" coords="639,528,757,555"/><area shape="rect" id="node28" href="primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="1039,677,1196,704"/><area shape="rect" id="node24" href="errors_8h.html" title="The exceptions used by Fairport." alt="" coords="359,603,496,629"/><area shape="rect" id="node55" href="btree_8h.html" title="Generic BTree implementation." alt="" coords="885,528,1016,555"/><area shape="rect" id="node72" href="object_8h.html" title="Property access base class." alt="" coords="1285,229,1419,256"/><area shape="rect" id="node86" href="heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="1614,304,1740,331"/><area shape="rect" id="node95" href="disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="1865,379,1993,405"/></map>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
@@ -130,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="message_8h__dep__incl.png" border="0" usemap="#fairport_2pst_2message_8hdep" alt=""/></div>
 <map name="fairport_2pst_2message_8hdep" id="fairport_2pst_2message_8hdep">
-<area shape="rect" id="node3" href="folder_8h.html" title="Folder objects." alt="" coords="67,80,201,107"/><area shape="rect" id="node5" href="pst_2pst_8h.html" title="PST implementation." alt="" coords="5,155,123,181"/><area shape="rect" id="node7" href="pst_8h.html" title="fairport/pst.h" alt="" coords="113,229,209,256"/></map>
+<area shape="rect" id="node3" href="contact_8h.html" title="Contact related classes." alt="" coords="35,80,177,107"/><area shape="rect" id="node5" href="folder_8h.html" title="Folder objects." alt="" coords="94,155,228,181"/><area shape="rect" id="node7" href="pst_2pst_8h.html" title="PST implementation." alt="" coords="144,229,262,256"/><area shape="rect" id="node9" href="pst_8h.html" title="fairport/pst.h" alt="" coords="32,304,129,331"/></map>
 </div>
 </div>
 <p><a href="message_8h_source.html">Go to the source code of this file.</a></p>
@@ -147,19 +149,23 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a transform from a row to a recipient object.  <a href="structfairport_1_1recipient__transform.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message.html">fairport::message</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a message in a PST file.  <a href="classfairport_1_1message.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message__transform__row.html">fairport::message_transform_row</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1message__transform__info.html">fairport::message_transform_info</a></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefairport.html">fairport</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>Contains the definition of all in memory representations of disk structures. </p>
 <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefairport_1_1detail.html">fairport::detail</a></td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+detail::item_transform_row<br class="typebreak"/>
+&lt; message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefairport.html#ad593e139c3b888ca1aadab0167d418b9">fairport::message_transform_row</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+detail::item_transform_info<br class="typebreak"/>
+&lt; message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefairport.html#ad9d6d23ea2c6ce6856aed9c89197ad1a">fairport::message_transform_info</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pst__messagerelated.html#ga1295eb211f33e76122ab39a9540c7251">fairport::operator&lt;&lt;</a> (std::ostream &amp;out, const attachment &amp;attach)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">operator&lt;&lt; overload for writing an attachment to an ostream  <a href="group__pst__messagerelated.html#ga1295eb211f33e76122ab39a9540c7251"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; byte &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacefairport_1_1detail.html#a64402bb4d58399359e00a82e078069ab">fairport::detail::property_bag_entry_id</a> (const property_bag &amp;bag)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Message related classes. </p>
@@ -187,7 +193,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Jan 19 2012 15:35:51 for Fairport by
+    <li class="footer">Generated on Sat Feb 4 2012 20:00:40 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

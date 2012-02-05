@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$structfairport_1_1disk_1_1column__description.html" title="Describes a column." alt="" coords="5,5,221,32"/>
+<area shape="rect" id="node1" href="$structfairport_1_1disk_1_1bth__node.html" title="fairport::disk::bth_node\&lt; bth_nonleaf_entry\&lt; K \&gt; \&gt;" alt="" coords="6,5,327,32"/>
+<area shape="rect" id="node3" href="$structfairport_1_1disk_1_1bth__nonleaf__node.html" title="BTH Nonleaf node." alt="" coords="377,5,618,32"/>
 </map>

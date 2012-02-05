@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classfairport_1_1contact.html" title="{fairport::contact\n||+ contact()\l+ get_full_name()\l+ get_company()\l+ has_company()\l+ get_job_title()\l+ has_job_title()\l+ get_email_address()\l+ has_email_address()\l+ get_email_address2()\l+ has_email_address2()\l+ get_email_address3()\l+ has_email_address3()\l+ get_business_phone()\l+ has_business_phone()\l+ get_home_phone()\l+ has_home_phone()\l+ get_primary_phone()\l+ has_primary_phone()\l+ get_mobile_phone()\l+ has_mobile_phone()\l+ get_home_address()\l+ has_home_address()\l+ get_business_address()\l+ has_business_address()\l+ get_contact_photo_attachment()\l+ get_contact_photo_attachment()\l+ get_contact_photo_bytes()\l+ open_contact_photo_stream()\l+ has_contact_photo()\l}" alt="" coords="5,189,224,677"/>
+<area shape="rect" id="node5" href="$classfairport_1_1message.html" title="Represents a message in a PST file." alt="" coords="249,219,447,648"/>
+</map>

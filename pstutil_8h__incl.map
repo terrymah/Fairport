@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$database__iface_8h.html" title="Database interface." alt="" coords="195,379,387,405"/>
+<area shape="rect" id="node35" href="$node_8h.html" title="Node and Block definitions." alt="" coords="966,304,1100,331"/>
+<area shape="rect" id="node62" href="$propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="625,80,772,107"/>
+<area shape="rect" id="node100" href="$table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="1747,80,1873,107"/>
+<area shape="rect" id="node9" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="390,453,508,480"/>
+<area shape="rect" id="node23" href="$primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="132,603,289,629"/>
+<area shape="rect" id="node19" href="$errors_8h.html" title="The exceptions used by Fairport." alt="" coords="1629,528,1765,555"/>
+<area shape="rect" id="node52" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="1631,453,1763,480"/>
+<area shape="rect" id="node69" href="$object_8h.html" title="Property access base class." alt="" coords="963,155,1097,181"/>
+<area shape="rect" id="node83" href="$heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="635,229,761,256"/>
+<area shape="rect" id="node92" href="$disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="278,304,407,331"/>
+</map>

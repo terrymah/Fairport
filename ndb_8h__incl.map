@@ -1,11 +1,11 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$database_8h.html" title="Database implementation." alt="" coords="382,80,540,107"/>
-<area shape="rect" id="node49" href="$node_8h.html" title="Node and Block definitions." alt="" coords="934,155,1068,181"/>
-<area shape="rect" id="node67" href="$database__iface_8h.html" title="Database interface." alt="" coords="232,229,424,256"/>
-<area shape="rect" id="node72" href="$page_8h.html" title="Page definitions." alt="" coords="701,155,835,181"/>
+<area shape="rect" id="node51" href="$node_8h.html" title="Node and Block definitions." alt="" coords="934,155,1068,181"/>
+<area shape="rect" id="node69" href="$database__iface_8h.html" title="Database interface." alt="" coords="232,229,424,256"/>
+<area shape="rect" id="node74" href="$page_8h.html" title="Page definitions." alt="" coords="701,155,835,181"/>
 <area shape="rect" id="node9" href="$btree_8h.html" title="Generic BTree implementation." alt="" coords="702,229,834,256"/>
 <area shape="rect" id="node17" href="$primitives_8h.html" title="Primitive structures defined by MS&#45;PST and MAPI." alt="" coords="152,453,310,480"/>
-<area shape="rect" id="node23" href="$errors_8h.html" title="The exceptions used by Fairport." alt="" coords="726,379,863,405"/>
-<area shape="rect" id="node30" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="457,304,575,331"/>
-<area shape="rect" id="node44" href="$disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="48,155,176,181"/>
+<area shape="rect" id="node25" href="$errors_8h.html" title="The exceptions used by Fairport." alt="" coords="726,379,863,405"/>
+<area shape="rect" id="node32" href="$util_2util_8h.html" title="General utility functions and classes." alt="" coords="457,304,575,331"/>
+<area shape="rect" id="node46" href="$disk_2disk_8h.html" title="Disk data structure definitions." alt="" coords="48,155,176,181"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$structfairport_1_1disk_1_1bth__node.html" title="fairport::disk::bth_node\&lt; bth_leaf_entry\&lt; K, V \&gt; \&gt;" alt="" coords="6,5,322,32"/>
-<area shape="rect" id="node3" href="$structfairport_1_1disk_1_1bth__leaf__node.html" title="BTH Leaf node." alt="" coords="371,5,607,32"/>
+<area shape="rect" id="node1" href="$structfairport_1_1disk_1_1bt__page.html" title="fairport::disk::bt_page\&lt; T, nbt_leaf_entry\&lt; T \&gt; \&gt;" alt="" coords="6,5,317,32"/>
+<area shape="rect" id="node3" href="$structfairport_1_1disk_1_1nbt__leaf__page.html" title="NBT leaf page." alt="" coords="365,5,587,32"/>
 </map>

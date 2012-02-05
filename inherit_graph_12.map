@@ -1,3 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$structfairport_1_1disk_1_1block__trailer_3_01ulong_01_4.html" title="ANSI store version of the block trailer." alt="" coords="6,5,239,32"/>
+<area shape="rect" id="node1" href="$classfairport_1_1detail_1_1itembase.html" title="fairport::detail::itembase" alt="" coords="6,31,173,57"/>
+<area shape="rect" id="node3" href="$classfairport_1_1contact.html" title="fairport::contact" alt="" coords="227,5,341,32"/>
+<area shape="rect" id="node5" href="$classfairport_1_1message.html" title="Represents a message in a PST file." alt="" coords="221,56,347,83"/>
 </map>

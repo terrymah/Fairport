@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.29</span>
+   &#160;<span id="projectnumber">v1.0.32</span>
    </div>
    
   </td>
@@ -315,6 +315,14 @@ Variables</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The PS_MAPI guid.  <a href="#ga5b4fee0a9a588647622c56087f4526ea"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const guid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__primitive.html#ga50510e97185f2fe4d7134a9613b8590c">fairport::ps_public_strings</a> = { 0x20329, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The PS_PUBLIC_STRINGS guid.  <a href="#ga50510e97185f2fe4d7134a9613b8590c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const guid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__primitive.html#gace6a181f0ebb9ffbbe9f2529483249e7">fairport::ps_task</a> = { 0x62003, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The PSETID_Task guid.  <a href="#gace6a181f0ebb9ffbbe9f2529483249e7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const guid&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__primitive.html#gaa66dba8eb0d4e189673d3b9fad46b61f">fairport::ps_contact</a> = { 0x62004, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The PSETID_Address guid.  <a href="#gaa66dba8eb0d4e189673d3b9fad46b61f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__primitive.html#gafafa17db48ac83a0858b0d8fdcaf4977">fairport::task_class</a> = &quot;IPM.Task&quot;</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Message class for Task Items.  <a href="#gafafa17db48ac83a0858b0d8fdcaf4977"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__primitive.html#ga02525bf2cb375d45e872867265d77f6c">fairport::contact_class</a> = &quot;IPM.Contact&quot;</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Message class for Contact Items.  <a href="#ga02525bf2cb375d45e872867265d77f6c"></a><br/></td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
 <a class="anchor" id="ga574b54dd07fdd710d51d40e0766d7782"></a><!-- doxytag: member="primitives.h::FAIRPORT_VALIDATION_LEVEL_WEAK" ref="ga574b54dd07fdd710d51d40e0766d7782" args="" -->
@@ -337,7 +345,7 @@ Variables</h2></td></tr>
 </ul>
 <p>Weak validation is the default. </p>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00033">33</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00035">35</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -369,7 +377,7 @@ Variables</h2></td></tr>
 <p>Construct a node_id (NID) from a node type and index. </p>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.2.2.1 </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00140">140</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00142">142</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -390,7 +398,7 @@ Variables</h2></td></tr>
 
 <p>Construct a folders node_id for an OST file. </p>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00144">144</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00146">146</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -406,7 +414,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00081">81</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00083">83</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -421,7 +429,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00066">66</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00068">68</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -436,7 +444,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00084">84</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00086">86</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -451,7 +459,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00085">85</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00087">87</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -466,7 +474,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00080">80</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00082">82</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -481,7 +489,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00082">82</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00084">84</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -496,7 +504,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00087">87</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00089">89</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -511,7 +519,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00089">89</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00091">91</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -526,7 +534,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00063">63</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00065">65</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -541,7 +549,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00065">65</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00067">67</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -556,7 +564,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00061">61</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00063">63</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -571,7 +579,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00062">62</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00064">64</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -586,7 +594,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00064">64</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00066">66</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -601,7 +609,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00067">67</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00069">69</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -682,7 +690,7 @@ Variables</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00099">99</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00101">101</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -798,7 +806,7 @@ Variables</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00149">149</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00151">151</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -880,7 +888,7 @@ Variables</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00271">271</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00273">273</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -907,7 +915,7 @@ Variables</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00310">310</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00312">312</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -937,7 +945,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The index </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.3.1.1/hidIndex </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00231">231</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00233">233</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -966,7 +974,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The heap page </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.3.1.1/hidBlockIndex </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00223">223</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00225">225</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -995,7 +1003,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The node index </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.2.2.1/nidIndex </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00211">211</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00213">213</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -1024,7 +1032,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The node type </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.2.2.1/nidType </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00203">203</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00205">205</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -1053,7 +1061,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this is a heap_id </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.3.3.2 </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00252">252</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00254">254</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -1082,7 +1090,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this is a node_id of a subnode </dd></dl>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.3.3.2 </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00261">261</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00263">263</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -1121,11 +1129,28 @@ Variables</h2></td></tr>
 </dl>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST 2.3.1.1 </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00239">239</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00241">241</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="ga02525bf2cb375d45e872867265d77f6c"></a><!-- doxytag: member="fairport::contact_class" ref="ga02525bf2cb375d45e872867265d77f6c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::wstring <a class="el" href="group__primitive.html#ga02525bf2cb375d45e872867265d77f6c">fairport::contact_class</a> = &quot;IPM.Contact&quot;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Message class for Contact Items. </p>
+
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00375">375</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ga4780f7b1396ac4c0592ffba974452272"></a><!-- doxytag: member="fairport::message_subject_prefix_lead_byte" ref="ga4780f7b1396ac4c0592ffba974452272" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -1140,7 +1165,7 @@ Variables</h2></td></tr>
 <p>A sentinel byte which indicates the message subject contains a prefix. </p>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.5.3.1.1.1 </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00324">324</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00326">326</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -1158,7 +1183,25 @@ Variables</h2></td></tr>
 <p>The portion of a node_id reserved for the type. </p>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-PST] 2.2.2.1/nidType </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00135">135</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00137">137</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa66dba8eb0d4e189673d3b9fad46b61f"></a><!-- doxytag: member="fairport::ps_contact" ref="gaa66dba8eb0d4e189673d3b9fad46b61f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const guid <a class="el" href="group__primitive.html#gaa66dba8eb0d4e189673d3b9fad46b61f">fairport::ps_contact</a> = { 0x62004, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } }</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The PSETID_Address guid. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXPROPS] 1.3.2 </dd></dl>
+
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00367">367</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -1176,7 +1219,7 @@ Variables</h2></td></tr>
 <p>The PS_MAPI guid. </p>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXPROPS] 1.3.2 </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00350">350</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00352">352</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -1193,7 +1236,7 @@ Variables</h2></td></tr>
 
 <p>The NULL guid. </p>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00345">345</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00347">347</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -1211,7 +1254,42 @@ Variables</h2></td></tr>
 <p>The PS_PUBLIC_STRINGS guid. </p>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXPROPS] 1.3.2 </dd></dl>
 
-<p>Definition at line <a class="el" href="primitives_8h_source.html#l00355">355</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00357">357</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gace6a181f0ebb9ffbbe9f2529483249e7"></a><!-- doxytag: member="fairport::ps_task" ref="gace6a181f0ebb9ffbbe9f2529483249e7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const guid <a class="el" href="group__primitive.html#gace6a181f0ebb9ffbbe9f2529483249e7">fairport::ps_task</a> = { 0x62003, 0, 0, { 0xc0, 0, 0, 0, 0, 0, 0, 0x46 } }</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The PSETID_Task guid. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXPROPS] 1.3.2 </dd></dl>
+
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00362">362</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gafafa17db48ac83a0858b0d8fdcaf4977"></a><!-- doxytag: member="fairport::task_class" ref="gafafa17db48ac83a0858b0d8fdcaf4977" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::wstring <a class="el" href="group__primitive.html#gafafa17db48ac83a0858b0d8fdcaf4977">fairport::task_class</a> = &quot;IPM.Task&quot;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Message class for Task Items. </p>
+
+<p>Definition at line <a class="el" href="primitives_8h_source.html#l00371">371</a> of file <a class="el" href="primitives_8h_source.html">primitives.h</a>.</p>
 
 </div>
 </div>
@@ -1234,7 +1312,7 @@ Variables</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Jan 19 2012 15:35:51 for Fairport by
+    <li class="footer">Generated on Sat Feb 4 2012 20:00:40 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

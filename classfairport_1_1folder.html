@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.29</span>
+   &#160;<span id="projectnumber">v1.0.32</span>
    </div>
    
   </td>
@@ -117,23 +117,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 boost::transform_iterator<br class="typebreak"/>
-&lt; <a class="el" href="classfairport_1_1message__transform__row.html">message_transform_row</a>, <br class="typebreak"/>
+&lt; <a class="el" href="namespacefairport.html#ad593e139c3b888ca1aadab0167d418b9">message_transform_row</a>, <br class="typebreak"/>
 <a class="el" href="classfairport_1_1const__table__row__iter.html">const_table_row_iter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#ad1ea3fe092cec03316e2c71ee117286f">message_iterator</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Message iterator type; a transform iterator over a table row iterator.  <a href="#ad1ea3fe092cec03316e2c71ee117286f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 boost::transform_iterator<br class="typebreak"/>
-&lt; <a class="el" href="classfairport_1_1folder__transform__row.html">folder_transform_row</a>, <br class="typebreak"/>
+&lt; <a class="el" href="namespacefairport.html#a70ccb3dd99549f6d995bcb679f4861ee">folder_transform_row</a>, <br class="typebreak"/>
 folder_filter_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#a21f793c764ebeed5dda3a90f24d90207">folder_iterator</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Folder iterator type; a transform iterator over a filter iterator over table row iterator.  <a href="#a21f793c764ebeed5dda3a90f24d90207"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 boost::transform_iterator<br class="typebreak"/>
-&lt; <a class="el" href="classfairport_1_1search__folder__transform__row.html">search_folder_transform_row</a>, <br class="typebreak"/>
+&lt; <a class="el" href="namespacefairport.html#af482371b5cc86c7802b8131eef43337e">search_folder_transform_row</a>, <br class="typebreak"/>
 search_folder_filter_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#ad2c2afccac37102bf7d114c972a18878">search_folder_iterator</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Search folder iterator type; a transform iterator over a filter iterator over table row iterator.  <a href="#ad2c2afccac37102bf7d114c972a18878"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+boost::transform_iterator<br class="typebreak"/>
+&lt; <a class="el" href="namespacefairport.html#a74d82ac5ffb46c5f121be6017529d813">contact_transform_row</a>, <br class="typebreak"/>
+row_filter_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#aac76726b370dc1d7c1c6ec3088347b7a">contact_iterator</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Contact iterator type; a transform iterator over a filter iterator over a table row iterator.  <a href="#aac76726b370dc1d7c1c6ec3088347b7a"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#a96e0d36eb92af37a1359549b54c98d11">folder</a> (const <a class="el" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a> &amp;db, const <a class="el" href="classfairport_1_1node.html">node</a> &amp;n)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a folder object.  <a href="#a96e0d36eb92af37a1359549b54c98d11"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#a2cb862d76ba48dc1046258ac26483ca2">folder</a> (const <a class="el" href="classfairport_1_1node.html">node</a> &amp;n)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a folder object.  <a href="#a2cb862d76ba48dc1046258ac26483ca2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#a807dd9dcff95b17bea00d18b33c439f1">folder</a> (const <a class="el" href="classfairport_1_1folder.html">folder</a> &amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy construct a folder object.  <a href="#a807dd9dcff95b17bea00d18b33c439f1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#a90d4baab09cdeaef64cc803c00ad5cdf">folder</a> (<a class="el" href="classfairport_1_1folder.html">folder</a> &amp;&amp;other)</td></tr>
@@ -150,6 +155,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a specific subfolder in this folder, not recursive.  <a href="#a85be65c99e98f03e7fea057a3f916fd0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1folder.html#ad1ea3fe092cec03316e2c71ee117286f">message_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#ae1659a32e481198a45a7f2984bd1c272">message_begin</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1folder.html#ad1ea3fe092cec03316e2c71ee117286f">message_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#a820f41fee5d37687f1bfb155b964a5a8">message_end</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1folder.html#aac76726b370dc1d7c1c6ec3088347b7a">contact_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#ac57c1d3335c6abb0c164977f306ebc91">contact_begin</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1folder.html#aac76726b370dc1d7c1c6ec3088347b7a">contact_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#a5cca79faaef94bcb5efd4798f774639b">contact_end</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1folder.html#ad1ea3fe092cec03316e2c71ee117286f">message_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#a39b449c073d4dc6b152a11a17b13af13">associated_message_begin</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an iterator to the first associated message in this folder.  <a href="#a39b449c073d4dc6b152a11a17b13af13"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classfairport_1_1folder.html#ad1ea3fe092cec03316e2c71ee117286f">message_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classfairport_1_1folder.html#a75c3ef883330f365ed8c2c5e12823ae0">associated_message_end</a> () const </td></tr>
@@ -179,17 +186,34 @@ Public Member Functions</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A folder in a PST file. </p>
-<p>The folder object allows access to subfolders, messages, and associated messagse which are contained in the folder. Similar to the <a class="el" href="group__pst.html">PST Layer</a> object, the folder also offers a way to lookup subfolders by name.</p>
+<p>The folder object allows access to subfolders, messages, and associated messages which are contained in the folder. Similar to the <a class="el" href="group__pst.html">PST Layer</a> object, the folder also offers a way to lookup subfolders by name.</p>
 <p>A folder currently doesn't have a concept of sorting. This was deemed unnecessary because of the iterator based approach used for exposing sub messages and folders - one can use these iterators to build up a container of messages or folders to be sorted, and calling std::sort directly with an arbitrary sorting functor. </p>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00189">189</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00151">151</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
+<a class="anchor" id="aac76726b370dc1d7c1c6ec3088347b7a"></a><!-- doxytag: member="fairport::folder::contact_iterator" ref="aac76726b370dc1d7c1c6ec3088347b7a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef boost::transform_iterator&lt;<a class="el" href="namespacefairport.html#a74d82ac5ffb46c5f121be6017529d813">contact_transform_row</a>, row_filter_iterator&gt; <a class="el" href="classfairport_1_1folder.html#aac76726b370dc1d7c1c6ec3088347b7a">fairport::folder::contact_iterator</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Contact iterator type; a transform iterator over a filter iterator over a table row iterator. </p>
+
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00165">165</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a21f793c764ebeed5dda3a90f24d90207"></a><!-- doxytag: member="fairport::folder::folder_iterator" ref="a21f793c764ebeed5dda3a90f24d90207" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef boost::transform_iterator&lt;<a class="el" href="classfairport_1_1folder__transform__row.html">folder_transform_row</a>, folder_filter_iterator&gt; <a class="el" href="classfairport_1_1folder.html#a21f793c764ebeed5dda3a90f24d90207">fairport::folder::folder_iterator</a></td>
+          <td class="memname">typedef boost::transform_iterator&lt;<a class="el" href="namespacefairport.html#a70ccb3dd99549f6d995bcb679f4861ee">folder_transform_row</a>, folder_filter_iterator&gt; <a class="el" href="classfairport_1_1folder.html#a21f793c764ebeed5dda3a90f24d90207">fairport::folder::folder_iterator</a></td>
         </tr>
       </table>
 </div>
@@ -197,7 +221,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Folder iterator type; a transform iterator over a filter iterator over table row iterator. </p>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00198">198</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00161">161</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -206,7 +230,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef boost::transform_iterator&lt;<a class="el" href="classfairport_1_1message__transform__row.html">message_transform_row</a>, <a class="el" href="classfairport_1_1const__table__row__iter.html">const_table_row_iter</a>&gt; <a class="el" href="classfairport_1_1folder.html#ad1ea3fe092cec03316e2c71ee117286f">fairport::folder::message_iterator</a></td>
+          <td class="memname">typedef boost::transform_iterator&lt;<a class="el" href="namespacefairport.html#ad593e139c3b888ca1aadab0167d418b9">message_transform_row</a>, <a class="el" href="classfairport_1_1const__table__row__iter.html">const_table_row_iter</a>&gt; <a class="el" href="classfairport_1_1folder.html#ad1ea3fe092cec03316e2c71ee117286f">fairport::folder::message_iterator</a></td>
         </tr>
       </table>
 </div>
@@ -214,7 +238,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Message iterator type; a transform iterator over a table row iterator. </p>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00196">196</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00159">159</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -223,7 +247,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef boost::transform_iterator&lt;<a class="el" href="classfairport_1_1search__folder__transform__row.html">search_folder_transform_row</a>, search_folder_filter_iterator&gt; <a class="el" href="classfairport_1_1folder.html#ad2c2afccac37102bf7d114c972a18878">fairport::folder::search_folder_iterator</a></td>
+          <td class="memname">typedef boost::transform_iterator&lt;<a class="el" href="namespacefairport.html#af482371b5cc86c7802b8131eef43337e">search_folder_transform_row</a>, search_folder_filter_iterator&gt; <a class="el" href="classfairport_1_1folder.html#ad2c2afccac37102bf7d114c972a18878">fairport::folder::search_folder_iterator</a></td>
         </tr>
       </table>
 </div>
@@ -231,31 +255,21 @@ Public Member Functions</h2></td></tr>
 
 <p>Search folder iterator type; a transform iterator over a filter iterator over table row iterator. </p>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00200">200</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00163">163</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a96e0d36eb92af37a1359549b54c98d11"></a><!-- doxytag: member="fairport::folder::folder" ref="a96e0d36eb92af37a1359549b54c98d11" args="(const shared_db_ptr &amp;db, const node &amp;n)" -->
+<a class="anchor" id="a2cb862d76ba48dc1046258ac26483ca2"></a><!-- doxytag: member="fairport::folder::folder" ref="a2cb862d76ba48dc1046258ac26483ca2" args="(const node &amp;n)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">fairport::folder::folder </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="group__ndb.html#ga449e674d1b8ec77136ff4a6ce4105830">shared_db_ptr</a> &amp;&#160;</td>
-          <td class="paramname"><em>db</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const <a class="el" href="classfairport_1_1node.html">node</a> &amp;&#160;</td>
-          <td class="paramname"><em>n</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -264,13 +278,12 @@ Public Member Functions</h2></td></tr>
 <p>Construct a folder object. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">db</td><td>The database pointer </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>A folder node </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00205">205</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00169">169</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -297,7 +310,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00351">351</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00302">302</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -324,7 +337,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00214">214</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00178">178</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -346,7 +359,7 @@ Public Member Functions</h2></td></tr>
 <p>Get an iterator to the first associated message in this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an iterator positioned on the first associated message in this folder </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00252">252</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00223">223</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -367,7 +380,47 @@ Public Member Functions</h2></td></tr>
 <p>Get the end associated message iterator. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an iterator at the end position </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00256">256</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00227">227</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac57c1d3335c6abb0c164977f306ebc91"></a><!-- doxytag: member="fairport::folder::contact_begin" ref="ac57c1d3335c6abb0c164977f306ebc91" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfairport_1_1folder.html#aac76726b370dc1d7c1c6ec3088347b7a">contact_iterator</a> fairport::folder::contact_begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get an iterator to the first contact in this folder. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>an iterator positioned on the first contact in this folder </dd></dl>
+ 
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00215">215</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5cca79faaef94bcb5efd4798f774639b"></a><!-- doxytag: member="fairport::folder::contact_end" ref="a5cca79faaef94bcb5efd4798f774639b" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classfairport_1_1folder.html#aac76726b370dc1d7c1c6ec3088347b7a">contact_iterator</a> fairport::folder::contact_end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get the end contact iterator. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>an iterator at the end position </dd></dl>
+ 
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00218">218</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -388,7 +441,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the associated contents table of this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The associated contents table </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00437">437</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00383">383</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -408,7 +461,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the associated contents table of this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The associated contents table </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00429">429</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00375">375</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -429,7 +482,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the number of associated messages in this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of associated messages </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00275">275</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00246">246</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -449,7 +502,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the contents table of this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The contents table </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00411">411</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00357">357</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -469,7 +522,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the contents table of this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The contents table </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00403">403</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00349">349</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -489,7 +542,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the database pointer used by this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The database pointer </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00286">286</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00257">257</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -510,7 +563,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the MAPI entry ID of this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The MAPI entry ID of this folder </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00310">310</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00281">281</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -531,7 +584,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the hierarchy table of this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The hierarchy table </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00424">424</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00370">370</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -551,7 +604,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the hierarchy table of this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The hierarchy table </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00416">416</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00362">362</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -572,7 +625,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the node_id of this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The node_id of the folder </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00305">305</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00276">276</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -592,7 +645,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the number of messages in this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of messages </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00271">271</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00242">242</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -612,7 +665,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the display name of this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The name of this folder </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00261">261</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00232">232</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -632,7 +685,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the property bag backing this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The property bag </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00280">280</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00251">251</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -652,7 +705,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the property bag backing this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The property bag </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00283">283</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00254">254</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -673,7 +726,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the number of sub folders in this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of subfolders </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00265">265</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00236">236</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -693,7 +746,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the number of unread messages in this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The number of unread messages </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00268">268</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00239">239</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -713,7 +766,7 @@ Public Member Functions</h2></td></tr>
 <p>Get an iterator to the first message in this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an iterator positioned on the first message in this folder </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00244">244</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00208">208</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -733,7 +786,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the end message iterator. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an iterator at the end position </dd></dl>
  
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00247">247</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00211">211</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -767,7 +820,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The first folder by that name found in this folder </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00393">393</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00339">339</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -788,7 +841,7 @@ Public Member Functions</h2></td></tr>
 <p>Get an iterator to the first folder in this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an iterator positioned on the first folder in this folder </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00221">221</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00185">185</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -809,7 +862,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the end folder iterator. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an iterator at the end position </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00225">225</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00189">189</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -830,7 +883,7 @@ Public Member Functions</h2></td></tr>
 <p>Get an iterator to the first search folder in this folder. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an iterator positioned on the first search folder in this folder </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00230">230</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00194">194</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -851,7 +904,7 @@ Public Member Functions</h2></td></tr>
 <p>Get the end search folder iterator. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>an iterator at the end position </dd></dl>
 
-<p>Definition at line <a class="el" href="folder_8h_source.html#l00234">234</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
+<p>Definition at line <a class="el" href="folder_8h_source.html#l00198">198</a> of file <a class="el" href="folder_8h_source.html">folder.h</a>.</p>
 
 </div>
 </div>
@@ -879,7 +932,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Jan 19 2012 15:35:51 for Fairport by
+    <li class="footer">Generated on Sat Feb 4 2012 20:00:41 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
