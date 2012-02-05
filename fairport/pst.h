@@ -35,8 +35,7 @@
 //!
 //! Fairport is explicitly tested in these configurations:
 //! - Win7+VC10 /W4 /analyze
-//! - Win7+GCC 4.3.3 -pedantic
-//! - Win7+GCC 4.3.3 -pedantic -std=c++0x
+//! - Win7+GCC 4.6.2 -pedantic
 //! - WinXP+VC9 /W4
 //! - Ubuntu 11.10+GCC 4.6.1 -pedantic
 //! - Ubuntu 11.10+GCC 4.6.1 -pedantic -std=c++0x
