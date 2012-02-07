@@ -57,7 +57,12 @@ public:
     const property_bag& get_property_bag() const
         { return m_bag; }
 
-protected:
+    //! \brief Get the database pointer used by this folder
+    //! \returns The database pointer
+    shared_db_ptr get_db() const 
+        { return m_bag.get_node().get_db(); }
+
+private:
     property_bag m_bag;
 };
 

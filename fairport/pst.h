@@ -99,5 +99,6 @@
 #include "fairport/pst/folder.h"
 #include "fairport/pst/message.h"
 #include "fairport/pst/contact.h"
+#include "fairport/pst/task.h"
 
 #endif

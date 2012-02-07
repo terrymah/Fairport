@@ -26,6 +26,7 @@
 
 #include "fairport/pst/message.h"
 #include "fairport/pst/contact.h"
+#include "fairport/pst/task.h"
 #include "fairport/pst/pstutil.h"
 
 namespace fairport
@@ -43,7 +44,7 @@ namespace fairport
 //! This object exists to reflect that limited interface. Eventually this
 //! object may support querying the criteria used to create the search folder.
 //! \ingroup pst_folderrelated
-class search_folder
+class search_folder : public detail::itembase
 {
     typedef boost::filter_iterator<detail::is_item_type, const_table_row_iter> row_filter_iterator;
 public:
@@ -51,84 +52,65 @@ public:
     typedef boost::transform_iterator<message_transform_row, const_table_row_iter> message_iterator;
     //! \brief Contact iterator type; a transform iterator over a filter iterator over a table row iterator
     typedef boost::transform_iterator<contact_transform_row, row_filter_iterator> contact_iterator;
+    //! \brief Task iterator type; a transform iterator over a filter iterator over a table row iterator
+    typedef boost::transform_iterator<task_transform_row, row_filter_iterator> task_iterator;
 
     //! \brief Construct a search folder object
     //! \param[in] n A search folder node
     search_folder(const node& n)
-        : m_bag(n) { }
-    //! \brief Copy construct a search folder object
-    search_folder(const search_folder& other);
-
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    //! \brief Move construct a search folder
-    search_folder(search_folder&& other)
-        : m_db(std::move(other.m_db)), m_bag(std::move(other.m_bag)), m_contents_table(std::move(other.m_contents_table)) { }
-#endif
+        : detail::itembase(n) { }
 
     // subobject discovery/enumeration
     //! \brief Get an iterator to the first message in this folder
     //! \returns an iterator positioned on the first message in this folder
     message_iterator message_begin() const
-        { return boost::make_transform_iterator(get_contents_table().begin(), message_transform_row(m_db)); }
+        { return boost::make_transform_iterator(get_contents_table().begin(), message_transform_row(get_db())); }
     //! \brief Get the end message iterator
     //! \returns an iterator at the end position
     message_iterator message_end() const
-        { return boost::make_transform_iterator(get_contents_table().end(), message_transform_row(m_db)); }
+        { return boost::make_transform_iterator(get_contents_table().end(), message_transform_row(get_db())); }
 
     //! \brief Get an iterator to the first contact in this folder
     //! \returns an iterator positioned on the first contact in this folder
     contact_iterator contact_begin() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(contact_class), get_contents_table().begin(), get_contents_table().end()), contact_transform_row(m_db)); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(contact_class), get_contents_table().begin(), get_contents_table().end()), contact_transform_row(get_db())); }
     //! \brief Get the end contact iterator
     //! \returns an iterator at the end position
     contact_iterator contact_end() const
-        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(contact_class), get_contents_table().end(), get_contents_table().end()), contact_transform_row(m_db)); }
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(contact_class), get_contents_table().end(), get_contents_table().end()), contact_transform_row(get_db())); }
+
+    //! \brief Get an iterator to the first task in this folder
+    //! \returns an iterator positioned on the first task in this folder
+    task_iterator task_begin() const
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(task_class), get_contents_table().begin(), get_contents_table().end()), task_transform_row(get_db())); }
+    //! \brief Get the end contact iterator
+    //! \returns an iterator at the end position
+    task_iterator task_end() const
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(task_class), get_contents_table().end(), get_contents_table().end()), task_transform_row(get_db())); }
 
     // property access
     //! \brief Get the display name of this folder
     //! \returns The name of this folder
     std::wstring get_name() const
-        { return m_bag.read_prop<std::wstring>(0x3001); }
+        { return get_property_bag().read_prop<std::wstring>(0x3001); }
     //! \brief Get the number of unread messages in this folder
     //! \returns The number of unread messages
     size_t get_unread_message_count() const
-        { return m_bag.read_prop<slong>(0x3603); }
+        { return get_property_bag().read_prop<slong>(0x3603); }
     //! \brief Get the number of messages in this folder
     //! \returns The number of messages
     size_t get_message_count() const
-        { return m_bag.read_prop<slong>(0x3602); }
+        { return get_property_bag().read_prop<slong>(0x3602); }
 
     // lower layer access
-    //! \brief Get the property bag backing this folder
-    //! \returns The property bag
-    property_bag& get_property_bag()
-        { return m_bag; }
-    //! \copydoc search_folder::get_property_bag()
-    const property_bag& get_property_bag() const
-        { return m_bag; }
-    //! \brief Get the database pointer used by this folder
-    //! \returns The database pointer
-    shared_db_ptr get_db() const 
-        { return m_db; }
+
     //! \brief Get the contents table of this folder
     //! \returns The contents table
     table& get_contents_table();
     //! \copydoc search_folder::get_contents_table()
     const table& get_contents_table() const;
 
-    //! \brief Get the node_id of this search folder
-    //! \returns The node_id of the search folder
-    node_id get_id() const
-        { return m_bag.get_node().get_id(); }
-
-    //! \brief Get the MAPI entry ID of this folder
-    //! \returns The MAPI entry ID of this folder
-    std::vector<byte> get_entry_id() const
-        { return calculate_entry_id(m_bag.get_node().get_db(), get_id()); }
-
 private:
-    shared_db_ptr m_db;
-    property_bag m_bag;
     mutable std::tr1::shared_ptr<table> m_contents_table;
 };
 
@@ -148,7 +130,7 @@ typedef detail::item_transform_row<search_folder> search_folder_transform_row;
 //! container of messages or folders to be sorted, and calling std::sort
 //! directly with an arbitrary sorting functor.
 //! \ingroup pst_folderrelated
-class folder
+class folder : public detail::itembase
 {
     typedef boost::filter_iterator<detail::is_item_type, const_table_row_iter> row_filter_iterator;
     typedef boost::filter_iterator<detail::is_nid_type<nid_type_search_folder>, const_table_row_iter> search_folder_filter_iterator;
@@ -163,21 +145,13 @@ public:
     typedef boost::transform_iterator<search_folder_transform_row, search_folder_filter_iterator> search_folder_iterator;
     //! \brief Contact iterator type; a transform iterator over a filter iterator over a table row iterator
     typedef boost::transform_iterator<contact_transform_row, row_filter_iterator> contact_iterator;
+    //! \brief Task iterator type; a transform iterator over a filter iterator over a table row iterator
+    typedef boost::transform_iterator<task_transform_row, row_filter_iterator> task_iterator;
 
     //! \brief Construct a folder object
     //! \param[in] n A folder node
     folder(const node& n)
-        : m_bag(n) { }
-    //! \brief Copy construct a folder object
-    //! \param[in] other folder to copy
-    folder(const folder& other);
-
-#ifndef BOOST_NO_RVALUE_REFERENCES
-    //! \brief Move construct a folder object
-    //! \param[in] other folder to move from
-    folder(folder&& other)
-        : m_bag(std::move(other.m_bag)), m_contents_table(std::move(other.m_contents_table)), m_associated_contents_table(std::move(other.m_associated_contents_table)), m_hierarchy_table(std::move(other.m_hierarchy_table)) { }
-#endif
+        : detail::itembase(n) { }
 
     // subobject discovery/enumeration
     //! \brief Get an iterator to the first folder in this folder
@@ -218,6 +192,13 @@ public:
     contact_iterator contact_end() const
         { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(contact_class), get_contents_table().end(), get_contents_table().end()), contact_transform_row(get_db())); }
 
+    //! \copydoc search_folder::task_begin()
+    task_iterator task_begin() const
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(task_class), get_contents_table().begin(), get_contents_table().end()), task_transform_row(get_db())); }
+    //! \copydoc search_folder::task_end()
+    task_iterator task_end() const
+        { return boost::make_transform_iterator(boost::make_filter_iterator(detail::is_item_type(task_class), get_contents_table().end(), get_contents_table().end()), task_transform_row(get_db())); }
+
     //! \brief Get an iterator to the first associated message in this folder
     //! \returns an iterator positioned on the first associated message in this folder
     message_iterator associated_message_begin() const
@@ -230,32 +211,24 @@ public:
     // property access
     //! \copydoc search_folder::get_name()
     std::wstring get_name() const
-        { return m_bag.read_prop<std::wstring>(0x3001); }
+        { return get_property_bag().read_prop<std::wstring>(0x3001); }
     //! \brief Get the number of sub folders in this folder
     //! \returns The number of subfolders
     size_t get_subfolder_count() const
         { return get_hierarchy_table().size(); } 
     //! \copydoc search_folder::get_unread_message_count()
     size_t get_unread_message_count() const
-        { return m_bag.read_prop<slong>(0x3603); }
+        { return get_property_bag().read_prop<slong>(0x3603); }
     //! \copydoc search_folder::get_message_count()
     size_t get_message_count() const
-        { return m_bag.read_prop<slong>(0x3602); }
+        { return get_property_bag().read_prop<slong>(0x3602); }
     //! \brief Get the number of associated messages in this folder
     //! \returns The number of associated messages
     size_t get_associated_message_count() const
-        { return m_bag.read_prop<slong>(0x3617); }
+        { return get_property_bag().read_prop<slong>(0x3617); }
 
     // lower layer access
-    //! \copydoc search_folder::get_property_bag()
-    property_bag& get_property_bag()
-        { return m_bag; }
-    //! \copydoc search_folder::get_property_bag()
-    const property_bag& get_property_bag() const
-        { return m_bag; }
-    //! \copydoc search_folder::get_db()
-    shared_db_ptr get_db() const 
-        { return m_bag.get_node().get_db(); }
+
     //! \brief Get the hierarchy table of this folder
     //! \returns The hierarchy table
     table& get_hierarchy_table();
@@ -271,18 +244,7 @@ public:
     //! \copydoc folder::get_associated_contents_table()
     const table& get_associated_contents_table() const;
 
-    //! \brief Get the node_id of this folder
-    //! \returns The node_id of the folder
-    node_id get_id() const
-        { return m_bag.get_node().get_id(); }
-
-    //! \brief Get the MAPI entry ID of this folder
-    //! \returns The MAPI entry ID of this folder
-    std::vector<byte> get_entry_id() const
-        { return calculate_entry_id(get_db(), get_id()); }
-
 private:
-    property_bag m_bag;
     mutable std::tr1::shared_ptr<table> m_contents_table;
     mutable std::tr1::shared_ptr<table> m_associated_contents_table;
     mutable std::tr1::shared_ptr<table> m_hierarchy_table;
@@ -292,28 +254,10 @@ typedef detail::item_transform_info<folder> folder_transform_info;
 
 } // end namespace fairport
 
-inline fairport::search_folder::search_folder(const fairport::search_folder& other)
-: m_db(other.m_db), m_bag(other.m_bag) 
-{ 
-    if(other.m_contents_table)
-        m_contents_table.reset(new table(*other.m_contents_table));
-}
-
-inline fairport::folder::folder(const fairport::folder& other)
-: m_bag(other.m_bag) 
-{ 
-    if(other.m_contents_table)
-        m_contents_table.reset(new table(*other.m_contents_table));
-    if(other.m_associated_contents_table)
-        m_contents_table.reset(new table(*other.m_associated_contents_table));
-    if(other.m_hierarchy_table)
-        m_contents_table.reset(new table(*other.m_hierarchy_table));
-}
-
 inline const fairport::table& fairport::search_folder::get_contents_table() const
 {
     if(!m_contents_table)
-        m_contents_table.reset(new table(m_db->lookup_node(make_nid(nid_type_search_contents_table, get_nid_index(m_bag.get_node().get_id())))));
+        m_contents_table.reset(new table(get_db()->lookup_node(make_nid(nid_type_search_contents_table, get_nid_index(get_property_bag().get_node().get_id())))));
 
     return *m_contents_table;
 }
@@ -349,7 +293,7 @@ inline fairport::folder fairport::folder::open_sub_folder(const std::wstring& na
 inline const fairport::table& fairport::folder::get_contents_table() const
 {
     if(!m_contents_table)
-        m_contents_table.reset(new table(get_db()->lookup_node(make_nid(nid_type_contents_table, get_nid_index(m_bag.get_node().get_id())))));
+        m_contents_table.reset(new table(get_db()->lookup_node(make_nid(nid_type_contents_table, get_nid_index(get_property_bag().get_node().get_id())))));
 
     return *m_contents_table;
 }
@@ -362,7 +306,7 @@ inline fairport::table& fairport::folder::get_contents_table()
 inline const fairport::table& fairport::folder::get_hierarchy_table() const
 {
     if(!m_hierarchy_table)
-        m_hierarchy_table.reset(new table(get_db()->lookup_node(make_nid(nid_type_hierarchy_table, get_nid_index(m_bag.get_node().get_id())))));
+        m_hierarchy_table.reset(new table(get_db()->lookup_node(make_nid(nid_type_hierarchy_table, get_nid_index(get_property_bag().get_node().get_id())))));
 
     return *m_hierarchy_table;
 }
@@ -375,7 +319,7 @@ inline fairport::table& fairport::folder::get_hierarchy_table()
 inline const fairport::table& fairport::folder::get_associated_contents_table() const
 {
     if(!m_associated_contents_table)
-        m_associated_contents_table.reset(new table(get_db()->lookup_node(make_nid(nid_type_associated_contents_table, get_nid_index(m_bag.get_node().get_id())))));
+        m_associated_contents_table.reset(new table(get_db()->lookup_node(make_nid(nid_type_associated_contents_table, get_nid_index(get_property_bag().get_node().get_id())))));
 
     return *m_associated_contents_table;
 }

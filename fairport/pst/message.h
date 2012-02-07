@@ -244,11 +244,11 @@ public:
     //! \brief Get an iterator to the first message on this message
     //! \returns an iterator positioned on the first attachment on this message
     attachment_iterator attachment_begin() const
-        { return boost::make_transform_iterator(get_attachment_table().begin(), attachment_transform(m_bag.get_node())); }
+        { return boost::make_transform_iterator(get_attachment_table().begin(), attachment_transform(get_property_bag().get_node())); }
     //! \brief Get the end attachment iterator
     //! \returns An iterator at the end position
     attachment_iterator attachment_end() const
-        { return boost::make_transform_iterator(get_attachment_table().end(), attachment_transform(m_bag.get_node())); }
+        { return boost::make_transform_iterator(get_attachment_table().end(), attachment_transform(get_property_bag().get_node())); }
     //! \brief Get an iterator to the first recipient of this message
     //! \returns An iterator positioned on the first recipient of this message
     recipient_iterator recipient_begin() const
@@ -266,12 +266,12 @@ public:
     //! \brief Check to see if a subject is set on this message
     //! \returns true if a subject is set on this message
     bool has_subject() const
-        { return m_bag.prop_exists(0x37); }
+        { return get_property_bag().prop_exists(0x37); }
     //! \brief Get the body of this message
     //! \sa [MS-OXCMSG] 2.2.1.48.1
     //! \returns The message body as a string
     std::wstring get_body() const
-        { return m_bag.read_prop<std::wstring>(0x1000); }
+        { return get_property_bag().read_prop<std::wstring>(0x1000); }
     //! \brief Get the body of this message
     //! 
     //! The returned stream device can be used to construct a proper stream:
@@ -283,20 +283,20 @@ public:
     //! \sa [MS-OXCMSG] 2.2.1.48.1
     //! \returns The message body as a stream
     hnid_stream_device open_body_stream()
-        { return m_bag.open_prop_stream(0x1000); }
+        { return get_property_bag().open_prop_stream(0x1000); }
     //! \brief Size of the body, in bytes
     //! \returns The size of the body
     size_t body_size() const
-        { return m_bag.size(0x1000); }
+        { return get_property_bag().size(0x1000); }
     //! \brief Checks to see if this message has a body
     //! \returns true if the body prop exists
     bool has_body() const
-        { return m_bag.prop_exists(0x1000); }
+        { return get_property_bag().prop_exists(0x1000); }
     //! \brief Get the HTML body of this message
     //! \sa [MS-OXCMSG] 2.2.1.48.3
     //! \returns The HTML message body as a string
     std::wstring get_html_body() const
-        { return m_bag.read_prop<std::wstring>(0x1013); }
+        { return get_property_bag().read_prop<std::wstring>(0x1013); }
     //! \brief Get the HTML body of this message
     //! 
     //! The returned stream device can be used to construct a proper stream:
@@ -308,20 +308,20 @@ public:
     //! \sa [MS-OXCMSG] 2.2.1.48.3
     //! \returns The message body as a stream
     hnid_stream_device open_html_body_stream()
-        { return m_bag.open_prop_stream(0x1013); }
+        { return get_property_bag().open_prop_stream(0x1013); }
     //! \brief Size of the HTML body, in bytes
     //! \returns The size of the HTML body
     size_t html_body_size() const
-        { return m_bag.size(0x1013); }
+        { return get_property_bag().size(0x1013); }
     //! \brief Checks to see if this message has a HTML body
     //! \returns true if the HTML body property exists
     bool has_html_body() const
-        { return m_bag.prop_exists(0x1013); }
+        { return get_property_bag().prop_exists(0x1013); }
     // \brief Get the total size of this message
     //! \sa [MS-OXCMSG] 2.2.1.7
     //! \returns The message size
     size_t size() const
-        { return m_bag.read_prop<slong>(0xe08); }
+        { return get_property_bag().read_prop<slong>(0xe08); }
     //! \brief Get the number of attachments on this message
     //! \returns The number of attachments
     size_t get_attachment_count() const
@@ -330,12 +330,12 @@ public:
     //! \sa [MS-OXOMSG] 2.2.3.9
     //! \returns The delivery time of this message
     boost::posix_time::ptime get_delivery_time() const
-        { return m_bag.read_prop<boost::posix_time::ptime>(0x0e06); }
+        { return get_property_bag().read_prop<boost::posix_time::ptime>(0x0e06); }
     //! \brief Get the last modification time of this message
     //! \sa [MS-OXCMSG] 2.2.1.1
     //! \returns The last modification time of this message
     boost::posix_time::ptime get_last_modification_time() const
-        { return m_bag.read_prop<boost::posix_time::ptime>(0x3008); }
+        { return get_property_bag().read_prop<boost::posix_time::ptime>(0x3008); }
 
     //! \brief Get the number of recipients on this message
     //! \returns The number of recipients
@@ -403,7 +403,7 @@ inline const fairport::table& fairport::message::get_attachment_table() const
 	{
 		try
 		{
-			m_attachment_table.reset(new table(m_bag.get_node().lookup(nid_attachment_table)));
+			m_attachment_table.reset(new table(get_property_bag().get_node().lookup(nid_attachment_table)));
 		}
 		catch (const key_not_found<node_id>&) 
 		{
@@ -420,7 +420,7 @@ inline const fairport::table& fairport::message::get_recipient_table() const
 	{
 		try
 		{
-			m_recipient_table.reset(new table(m_bag.get_node().lookup(nid_recipient_table)));
+			m_recipient_table.reset(new table(get_property_bag().get_node().lookup(nid_recipient_table)));
 		}
 		catch (const key_not_found<node_id>&)
 		{
@@ -433,7 +433,7 @@ inline const fairport::table& fairport::message::get_recipient_table() const
 
 inline std::wstring fairport::message::get_subject() const
 {
-    std::wstring buffer = m_bag.read_prop<std::wstring>(0x37);
+    std::wstring buffer = get_property_bag().read_prop<std::wstring>(0x37);
 
     if(buffer.size() && buffer[0] == message_subject_prefix_lead_byte)
     {

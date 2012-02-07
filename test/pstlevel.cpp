@@ -174,4 +174,34 @@ BOOST_AUTO_TEST_CASE( contact_processing )
     BOOST_CHECK_EQUAL(contacts, 1);
 }
 
+BOOST_AUTO_TEST_CASE( task_processing )
+{
+    pst items(L"items.pst");
+    folder f = items.open_folder(L"Tasks");
+
+    BOOST_CHECK_EQUAL(f.get_message_count(), 3);
+
+    int tasks = 0;
+    int due_date_tasks = 0;
+    int complete_tasks = 0;
+    int incomplete_tasks = 0;
+
+    for(folder::task_iterator i = f.task_begin(); i != f.task_end(); ++i)
+    {
+        ++tasks;
+        task t = *i;
+        if(t.has_due_date())
+            ++due_date_tasks;
+        if(t.is_complete())
+            ++complete_tasks;
+        else
+            ++incomplete_tasks;
+    }
+
+    BOOST_CHECK_EQUAL(tasks, 3);
+    BOOST_CHECK_EQUAL(due_date_tasks, 1);
+    BOOST_CHECK_EQUAL(complete_tasks, 1);
+    BOOST_CHECK_EQUAL(incomplete_tasks, 2);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
