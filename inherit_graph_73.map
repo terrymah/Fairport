@@ -1,3 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classnbt__leaf__entry_3_01_t_01_4.html" title="nbt_leaf_entry\&lt; T \&gt;" alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node1" href="$classstd_1_1runtime__error.html" title="runtime_error" alt="" coords="6,107,109,133"/>
+<area shape="rect" id="node3" href="$classfairport_1_1database__corrupt.html" title="The database is corrupt." alt="" coords="158,107,333,133"/>
+<area shape="rect" id="node5" href="$classfairport_1_1crc__fail.html" title="A CRC of an item failed." alt="" coords="412,5,527,32"/>
+<area shape="rect" id="node7" href="$classfairport_1_1invalid__format.html" title="The database was not in the expected format." alt="" coords="392,56,547,83"/>
+<area shape="rect" id="node9" href="$classfairport_1_1sig__mismatch.html" title="An unexpected signature was encountered." alt="" coords="393,107,545,133"/>
+<area shape="rect" id="node11" href="$classfairport_1_1unexpected__block.html" title="An unexpected block or block type was encountered." alt="" coords="382,157,557,184"/>
+<area shape="rect" id="node13" href="$classfairport_1_1unexpected__page.html" title="An unexpected page or page type was encountered." alt="" coords="382,208,557,235"/>
 </map>

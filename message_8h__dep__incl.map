@@ -1,6 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$contact_8h.html" title="Contact related classes." alt="" coords="35,80,177,107"/>
-<area shape="rect" id="node5" href="$folder_8h.html" title="Folder objects." alt="" coords="94,155,228,181"/>
-<area shape="rect" id="node7" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="144,229,262,256"/>
-<area shape="rect" id="node9" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="32,304,129,331"/>
+<area shape="rect" id="node5" href="$folder_8h.html" title="Folder objects." alt="" coords="197,155,331,181"/>
+<area shape="rect" id="node7" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="247,229,365,256"/>
+<area shape="rect" id="node9" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="109,304,206,331"/>
+<area shape="rect" id="node14" href="$task_8h.html" title="Task related classes." alt="" coords="202,80,327,107"/>
 </map>

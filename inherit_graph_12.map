@@ -1,5 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classfairport_1_1detail_1_1itembase.html" title="fairport::detail::itembase" alt="" coords="6,31,173,57"/>
-<area shape="rect" id="node3" href="$classfairport_1_1contact.html" title="fairport::contact" alt="" coords="227,5,341,32"/>
-<area shape="rect" id="node5" href="$classfairport_1_1message.html" title="Represents a message in a PST file." alt="" coords="221,56,347,83"/>
+<area shape="rect" id="node1" href="$classfairport_1_1detail_1_1itembase.html" title="fairport::detail::itembase" alt="" coords="6,107,173,133"/>
+<area shape="rect" id="node3" href="$classfairport_1_1contact.html" title="Encapsulates a contact." alt="" coords="240,5,355,32"/>
+<area shape="rect" id="node5" href="$classfairport_1_1folder.html" title="A folder in a PST file." alt="" coords="244,56,351,83"/>
+<area shape="rect" id="node7" href="$classfairport_1_1message.html" title="Represents a message in a PST file." alt="" coords="235,107,360,133"/>
+<area shape="rect" id="node9" href="$classfairport_1_1search__folder.html" title="Search Folder object." alt="" coords="221,157,373,184"/>
+<area shape="rect" id="node11" href="$classfairport_1_1task.html" title="Encapsulates a task." alt="" coords="249,208,346,235"/>
 </map>

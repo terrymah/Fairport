@@ -1,4 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$classfairport_1_1contact.html" title="{fairport::contact\n||+ contact()\l+ get_full_name()\l+ get_company()\l+ has_company()\l+ get_job_title()\l+ has_job_title()\l+ get_email_address()\l+ has_email_address()\l+ get_email_address2()\l+ has_email_address2()\l+ get_email_address3()\l+ has_email_address3()\l+ get_business_phone()\l+ has_business_phone()\l+ get_home_phone()\l+ has_home_phone()\l+ get_primary_phone()\l+ has_primary_phone()\l+ get_mobile_phone()\l+ has_mobile_phone()\l+ get_home_address()\l+ has_home_address()\l+ get_business_address()\l+ has_business_address()\l+ get_contact_photo_attachment()\l+ get_contact_photo_attachment()\l+ get_contact_photo_bytes()\l+ open_contact_photo_stream()\l+ has_contact_photo()\l}" alt="" coords="5,189,224,677"/>
-<area shape="rect" id="node5" href="$classfairport_1_1message.html" title="Represents a message in a PST file." alt="" coords="249,219,447,648"/>
+<area shape="rect" id="node3" href="$classfairport_1_1contact.html" title="Encapsulates a contact." alt="" coords="5,205,224,693"/>
+<area shape="rect" id="node5" href="$classfairport_1_1folder.html" title="A folder in a PST file." alt="" coords="249,235,473,664"/>
+<area shape="rect" id="node7" href="$classfairport_1_1message.html" title="Represents a message in a PST file." alt="" coords="499,235,696,664"/>
+<area shape="rect" id="node9" href="$classfairport_1_1search__folder.html" title="Search Folder object." alt="" coords="720,330,925,569"/>
+<area shape="rect" id="node11" href="$classfairport_1_1task.html" title="Encapsulates a task." alt="" coords="950,359,1079,539"/>
 </map>

@@ -1,9 +1,10 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$ltp_8h.html" title="fairport/ltp.h" alt="" coords="5,80,99,107"/>
-<area shape="rect" id="node5" href="$contact_8h.html" title="Contact related classes." alt="" coords="242,229,384,256"/>
-<area shape="rect" id="node7" href="$folder_8h.html" title="Folder objects." alt="" coords="339,304,473,331"/>
-<area shape="rect" id="node15" href="$pstutil_8h.html" title="PST Utility related classes and functions." alt="" coords="175,80,311,107"/>
-<area shape="rect" id="node18" href="$message_8h.html" title="Message related classes." alt="" coords="26,155,179,181"/>
-<area shape="rect" id="node11" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="253,453,349,480"/>
-<area shape="rect" id="node9" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="145,379,263,405"/>
+<area shape="rect" id="node5" href="$contact_8h.html" title="Contact related classes." alt="" coords="175,229,317,256"/>
+<area shape="rect" id="node7" href="$folder_8h.html" title="Folder objects." alt="" coords="337,304,471,331"/>
+<area shape="rect" id="node15" href="$pstutil_8h.html" title="PST Utility related classes and functions." alt="" coords="408,80,544,107"/>
+<area shape="rect" id="node18" href="$message_8h.html" title="Message related classes." alt="" coords="285,155,437,181"/>
+<area shape="rect" id="node22" href="$task_8h.html" title="Task related classes." alt="" coords="597,229,723,256"/>
+<area shape="rect" id="node11" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="406,453,503,480"/>
+<area shape="rect" id="node9" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="446,379,564,405"/>
 </map>

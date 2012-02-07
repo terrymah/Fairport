@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">Fairport
-   &#160;<span id="projectnumber">v1.0.33</span>
+   &#160;<span id="projectnumber">v1.0.34</span>
    </div>
    
   </td>
@@ -101,10 +101,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">fairport::contact Class Reference</div>  </div>
+<div class="title">fairport::contact Class Reference<div class="ingroups"><a class="el" href="group__pst__contactrelated.html">Contact Objects</a></div></div>  </div>
 </div>
 <div class="contents">
 <!-- doxytag: class="fairport::contact" --><!-- doxytag: inherits="fairport::detail::itembase" -->
+<p>Encapsulates a contact.  
+ <a href="classfairport_1_1contact.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="contact_8h_source.html">contact.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for fairport::contact:</div>
@@ -113,7 +116,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classfairport_1_1contact__inherit__graph.png" border="0" usemap="#fairport_1_1contact_inherit__map" alt="Inheritance graph"/></div>
 <map name="fairport_1_1contact_inherit__map" id="fairport_1_1contact_inherit__map">
-<area shape="rect" id="node2" href="classfairport_1_1detail_1_1itembase.html" title="{fairport::detail::itembase\n|# m_bag\l|+ itembase()\l+ get_id()\l+ get_entry_id()\l+ get_property_bag()\l+ get_property_bag()\l}" alt="" coords="31,5,197,141"/></map>
+<area shape="rect" id="node2" href="classfairport_1_1detail_1_1itembase.html" title="{fairport::detail::itembase\n||+ itembase()\l+ get_id()\l+ get_entry_id()\l+ get_property_bag()\l+ get_property_bag()\l+ get_db()\l}" alt="" coords="31,6,197,157"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Collaboration diagram for fairport::contact:</div>
@@ -122,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classfairport_1_1contact__coll__graph.png" border="0" usemap="#fairport_1_1contact_coll__map" alt="Collaboration graph"/></div>
 <map name="fairport_1_1contact_coll__map" id="fairport_1_1contact_coll__map">
-<area shape="rect" id="node2" href="classfairport_1_1detail_1_1itembase.html" title="{fairport::detail::itembase\n|# m_bag\l|+ itembase()\l+ get_id()\l+ get_entry_id()\l+ get_property_bag()\l+ get_property_bag()\l}" alt="" coords="31,597,197,733"/><area shape="rect" id="node4" href="classfairport_1_1property__bag.html" title="Property Context (PC) Implementation." alt="" coords="39,309,191,533"/><area shape="rect" id="node6" href="classfairport_1_1const__property__object.html" title="Property object base class." alt="" coords="14,5,215,259"/></map>
+<area shape="rect" id="node2" href="classfairport_1_1detail_1_1itembase.html" title="{fairport::detail::itembase\n||+ itembase()\l+ get_id()\l+ get_entry_id()\l+ get_property_bag()\l+ get_property_bag()\l+ get_db()\l}" alt="" coords="31,6,197,157"/></map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classfairport_1_1contact-members.html">List of all members.</a></p>
@@ -188,8 +191,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Check to see if this contact has a contact photo associated with it.  <a href="#ad377b0d7c8ca9b903697dd4760341734"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00030">30</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<div class="textblock"><p>Encapsulates a contact. </p>
+<p>A contact object is a higher level abstraction of a message, offering propreties specific to Outlook contacts. </p>
+<dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] </dd></dl>
+
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00036">36</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="acac46cd209261bc043d0fce11e777ad5"></a><!-- doxytag: member="fairport::contact::contact" ref="acac46cd209261bc043d0fce11e777ad5" args="(const node &amp;n)" -->
 <div class="memitem">
@@ -214,7 +220,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00035">35</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00041">41</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -237,7 +243,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.3.8 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The business address of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00148">148</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00154">154</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -259,7 +265,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.4.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The business phone number of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00098">98</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00104">104</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -281,7 +287,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.6.2 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The company of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00048">48</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00054">54</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -303,7 +309,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.8.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The photo of this contact, as an attachment </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00158">158</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00164">164</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -324,7 +330,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.8.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The photo of this contact, as an attachment </dd></dl>
  
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00197">197</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00203">203</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -346,7 +352,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.8.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The raw bytes of the photo of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00165">165</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00171">171</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -368,7 +374,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.2.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The email address of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00068">68</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00074">74</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -390,7 +396,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.2.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The second email address of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00078">78</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00084">84</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -412,7 +418,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.2.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The third email address of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00088">88</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00094">94</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -434,7 +440,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.1.8 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The full name of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00042">42</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00048">48</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -456,7 +462,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.3.8 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The home address of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00138">138</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00144">144</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -478,7 +484,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.4.4 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The home phone number of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00108">108</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00114">114</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -500,7 +506,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.6.1 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The job title of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00058">58</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00064">64</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -522,7 +528,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.4.7 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The mobile phone number of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00128">128</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00134">134</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -544,7 +550,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.4.5 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The primary phone number of this contact </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00118">118</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00124">124</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -565,7 +571,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a business address associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a business address associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00152">152</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00158">158</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -586,7 +592,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a business phone number associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a business phone number associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00102">102</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00108">108</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -607,7 +613,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a company associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a company associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00052">52</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00058">58</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -629,7 +635,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.8.1 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a contact photo associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00175">175</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00181">181</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -650,7 +656,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has an email address associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has an email address associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00072">72</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00078">78</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -671,7 +677,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a second email address associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a second email address associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00082">82</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00088">88</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -692,7 +698,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a third email address associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a third email address associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00092">92</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00098">98</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -713,7 +719,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a home address associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a home address associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00142">142</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00148">148</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -734,7 +740,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a home phone number associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a home phone number associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00112">112</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00118">118</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -755,7 +761,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a job title associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a job title associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00062">62</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00068">68</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -776,7 +782,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a mobile phone number associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a mobile phone number associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00132">132</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00138">138</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -797,7 +803,7 @@ Public Member Functions</h2></td></tr>
 <p>Check to see if this contact has a primary phone number associated with it. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if this contact has a primary phone number associated with it </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00122">122</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00128">128</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -819,7 +825,7 @@ Public Member Functions</h2></td></tr>
 <dl class="see"><dt><b>See also:</b></dt><dd>[MS-OXOCNTC] 2.2.1.8.3 </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A stream of the photo </dd></dl>
 
-<p>Definition at line <a class="el" href="contact_8h_source.html#l00170">170</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
+<p>Definition at line <a class="el" href="contact_8h_source.html#l00176">176</a> of file <a class="el" href="contact_8h_source.html">contact.h</a>.</p>
 
 </div>
 </div>
@@ -847,7 +853,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Mon Feb 6 2012 19:25:14 for Fairport by
+    <li class="footer">Generated on Mon Feb 6 2012 21:50:24 for Fairport by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

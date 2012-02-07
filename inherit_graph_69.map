@@ -1,3 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$structfairport_1_1subnode__info.html" title="An in memory, database format agnostic version of disk::sub_leaf_entry." alt="" coords="6,5,157,32"/>
+<area shape="rect" id="node1" href="$classboost_1_1iterator__facade.html" title="iterator_facade" alt="" coords="5,31,115,57"/>
+<area shape="rect" id="node3" href="$classfairport_1_1const__btree__node__iter.html" title="The actual iterator type used by the btree_node class hierarchy." alt="" coords="163,5,413,32"/>
+<area shape="rect" id="node5" href="$classfairport_1_1const__table__row__iter.html" title="The iterator type exposed by the table for row iteration." alt="" coords="191,56,385,83"/>
 </map>

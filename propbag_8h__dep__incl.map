@@ -1,10 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$nameid_8h.html" title="Named Property Lookup Map implementation." alt="" coords="81,80,223,107"/>
-<area shape="rect" id="node5" href="$ltp_8h.html" title="fairport/ltp.h" alt="" coords="5,155,99,181"/>
-<area shape="rect" id="node7" href="$contact_8h.html" title="Contact related classes." alt="" coords="183,229,325,256"/>
-<area shape="rect" id="node9" href="$folder_8h.html" title="Folder objects." alt="" coords="350,304,484,331"/>
-<area shape="rect" id="node11" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="467,379,585,405"/>
-<area shape="rect" id="node20" href="$pstutil_8h.html" title="PST Utility related classes and functions." alt="" coords="399,80,535,107"/>
-<area shape="rect" id="node23" href="$message_8h.html" title="Message related classes." alt="" coords="450,155,603,181"/>
-<area shape="rect" id="node13" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="478,453,575,480"/>
+<area shape="rect" id="node3" href="$nameid_8h.html" title="Named Property Lookup Map implementation." alt="" coords="97,155,239,181"/>
+<area shape="rect" id="node5" href="$ltp_8h.html" title="fairport/ltp.h" alt="" coords="5,229,99,256"/>
+<area shape="rect" id="node7" href="$contact_8h.html" title="Contact related classes." alt="" coords="175,229,317,256"/>
+<area shape="rect" id="node9" href="$folder_8h.html" title="Folder objects." alt="" coords="434,304,568,331"/>
+<area shape="rect" id="node11" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="645,379,763,405"/>
+<area shape="rect" id="node17" href="$task_8h.html" title="Task related classes." alt="" coords="343,229,468,256"/>
+<area shape="rect" id="node24" href="$pstutil_8h.html" title="PST Utility related classes and functions." alt="" coords="525,80,661,107"/>
+<area shape="rect" id="node27" href="$message_8h.html" title="Message related classes." alt="" coords="517,155,669,181"/>
+<area shape="rect" id="node13" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="518,453,615,480"/>
 </map>

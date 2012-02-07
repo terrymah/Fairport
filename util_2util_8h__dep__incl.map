@@ -1,20 +1,21 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$node_8h.html" title="Node and Block definitions." alt="" coords="743,155,877,181"/>
-<area shape="rect" id="node57" href="$database_8h.html" title="Database implementation." alt="" coords="1331,229,1489,256"/>
-<area shape="rect" id="node67" href="$database__iface_8h.html" title="Database interface." alt="" coords="1045,80,1237,107"/>
-<area shape="rect" id="node71" href="$page_8h.html" title="Page definitions." alt="" coords="1281,155,1415,181"/>
-<area shape="rect" id="node84" href="$util_8h.html" title="fairport/util.h" alt="" coords="1542,80,1639,107"/>
-<area shape="rect" id="node5" href="$heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="434,229,560,256"/>
-<area shape="rect" id="node7" href="$object_8h.html" title="Property access base class." alt="" coords="430,304,564,331"/>
-<area shape="rect" id="node9" href="$propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="296,379,443,405"/>
-<area shape="rect" id="node15" href="$contact_8h.html" title="Contact related classes." alt="" coords="817,603,959,629"/>
-<area shape="rect" id="node19" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="719,752,837,779"/>
-<area shape="rect" id="node28" href="$pstutil_8h.html" title="PST Utility related classes and functions." alt="" coords="765,453,901,480"/>
-<area shape="rect" id="node31" href="$message_8h.html" title="Message related classes." alt="" coords="950,528,1103,555"/>
-<area shape="rect" id="node43" href="$table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="593,379,719,405"/>
-<area shape="rect" id="node59" href="$ndb_8h.html" title="fairport/ndb.h" alt="" coords="1229,304,1331,331"/>
-<area shape="rect" id="node13" href="$ltp_8h.html" title="fairport/ltp.h" alt="" coords="313,528,407,555"/>
-<area shape="rect" id="node11" href="$nameid_8h.html" title="Named Property Lookup Map implementation." alt="" coords="499,453,640,480"/>
-<area shape="rect" id="node17" href="$folder_8h.html" title="Folder objects." alt="" coords="555,677,689,704"/>
-<area shape="rect" id="node21" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="839,827,936,853"/>
+<area shape="rect" id="node3" href="$node_8h.html" title="Node and Block definitions." alt="" coords="874,155,1008,181"/>
+<area shape="rect" id="node65" href="$database_8h.html" title="Database implementation." alt="" coords="1490,229,1648,256"/>
+<area shape="rect" id="node76" href="$database__iface_8h.html" title="Database interface." alt="" coords="1179,80,1371,107"/>
+<area shape="rect" id="node80" href="$page_8h.html" title="Page definitions." alt="" coords="1439,155,1573,181"/>
+<area shape="rect" id="node94" href="$util_8h.html" title="fairport/util.h" alt="" coords="1701,80,1797,107"/>
+<area shape="rect" id="node5" href="$heap_8h.html" title="Heap&#45;on&#45;Node (HN) and BTree&#45;on&#45;Heap (BTH) implementation." alt="" coords="566,229,692,256"/>
+<area shape="rect" id="node7" href="$object_8h.html" title="Property access base class." alt="" coords="562,304,696,331"/>
+<area shape="rect" id="node9" href="$propbag_8h.html" title="Property Bag (or Property Context, or PC) implementation." alt="" coords="452,379,599,405"/>
+<area shape="rect" id="node15" href="$contact_8h.html" title="Contact related classes." alt="" coords="663,603,805,629"/>
+<area shape="rect" id="node19" href="$pst_2pst_8h.html" title="PST implementation." alt="" coords="1190,752,1308,779"/>
+<area shape="rect" id="node25" href="$task_8h.html" title="Task related classes." alt="" coords="300,603,425,629"/>
+<area shape="rect" id="node32" href="$pstutil_8h.html" title="PST Utility related classes and functions." alt="" coords="1025,453,1161,480"/>
+<area shape="rect" id="node35" href="$message_8h.html" title="Message related classes." alt="" coords="754,528,907,555"/>
+<area shape="rect" id="node50" href="$table_8h.html" title="Table (or Table Context, or TC) implementation." alt="" coords="671,379,797,405"/>
+<area shape="rect" id="node67" href="$ndb_8h.html" title="fairport/ndb.h" alt="" coords="1397,304,1499,331"/>
+<area shape="rect" id="node13" href="$ltp_8h.html" title="fairport/ltp.h" alt="" coords="211,528,305,555"/>
+<area shape="rect" id="node11" href="$nameid_8h.html" title="Named Property Lookup Map implementation." alt="" coords="347,453,488,480"/>
+<area shape="rect" id="node17" href="$folder_8h.html" title="Folder objects." alt="" coords="747,677,881,704"/>
+<area shape="rect" id="node21" href="$pst_8h.html" title="fairport/pst.h" alt="" coords="699,827,796,853"/>
 </map>

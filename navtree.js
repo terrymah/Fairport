@@ -30,6 +30,7 @@ var NAVTREE =
         [ "Pages", "group__ndb__pagerelated.html", null ]
       ] ],
       [ "Message Objects", "group__pst__utilrelated.html", null ],
+      [ "Contact Objects", "group__pst__taskrelated.html", null ],
       [ "PST Layer", "group__pst.html", [
         [ "Contact Objects", "group__pst__contactrelated.html", null ],
         [ "Folder Objects", "group__pst__folderrelated.html", null ],
@@ -92,8 +93,8 @@ var NAVTREE =
       [ "fairport::extended_block", "classfairport_1_1extended__block.html", null ],
       [ "fairport::disk::extended_block< ulong >", "structfairport_1_1disk_1_1extended__block_3_01ulong_01_4.html", null ],
       [ "fairport::disk::extended_block< ulonglong >", "structfairport_1_1disk_1_1extended__block_3_01ulonglong_01_4.html", null ],
-      [ "fairport::disk::external_block< T >", "structfairport_1_1disk_1_1external__block.html", null ],
       [ "fairport::external_block", "classfairport_1_1external__block.html", null ],
+      [ "fairport::disk::external_block< T >", "structfairport_1_1disk_1_1external__block.html", null ],
       [ "fairport::file", "classfairport_1_1file.html", null ],
       [ "fairport::disk::fmap_page< T >", "structfairport_1_1disk_1_1fmap__page.html", null ],
       [ "fairport::folder", "classfairport_1_1folder.html", null ],
@@ -166,6 +167,7 @@ var NAVTREE =
       [ "fairport::subnode_transform_info", "classfairport_1_1subnode__transform__info.html", null ],
       [ "fairport::table", "classfairport_1_1table.html", null ],
       [ "fairport::table_impl", "classfairport_1_1table__impl.html", null ],
+      [ "fairport::task", "classfairport_1_1task.html", null ],
       [ "fairport::disk::tc_header", "structfairport_1_1disk_1_1tc__header.html", null ],
       [ "unary_function", "classstd_1_1unary__function.html", null ],
       [ "fairport::unexpected_block", "classfairport_1_1unexpected__block.html", null ],
@@ -273,7 +275,6 @@ var NAVTREE =
       [ "fairport::disk::extended_block< ulong >", "structfairport_1_1disk_1_1extended__block_3_01ulong_01_4.html", null ],
       [ "fairport::disk::extended_block< ulonglong >", "structfairport_1_1disk_1_1extended__block_3_01ulonglong_01_4.html", null ],
       [ "fairport::disk::external_block< T >", "structfairport_1_1disk_1_1external__block.html", null ],
-      [ "fairport::folder", "classfairport_1_1folder.html", null ],
       [ "fairport::guid", "structfairport_1_1guid.html", null ],
       [ "fairport::disk::gust_column_description", "structfairport_1_1disk_1_1gust__column__description.html", null ],
       [ "fairport::disk::gust_header", "structfairport_1_1disk_1_1gust__header.html", null ],
@@ -290,7 +291,10 @@ var NAVTREE =
       [ "fairport::detail::is_nid_type< Type >", "structfairport_1_1detail_1_1is__nid__type.html", null ],
       [ "fairport::detail::itembase", "classfairport_1_1detail_1_1itembase.html", [
         [ "fairport::contact", "classfairport_1_1contact.html", null ],
-        [ "fairport::message", "classfairport_1_1message.html", null ]
+        [ "fairport::folder", "classfairport_1_1folder.html", null ],
+        [ "fairport::message", "classfairport_1_1message.html", null ],
+        [ "fairport::search_folder", "classfairport_1_1search__folder.html", null ],
+        [ "fairport::task", "classfairport_1_1task.html", null ]
       ] ],
       [ "iterator_facade", "classboost_1_1iterator__facade.html", [
         [ "fairport::const_btree_node_iter< K, V >", "classfairport_1_1const__btree__node__iter.html", null ],
@@ -336,7 +340,6 @@ var NAVTREE =
           [ "fairport::unexpected_page", "classfairport_1_1unexpected__page.html", null ]
         ] ]
       ] ],
-      [ "fairport::search_folder", "classfairport_1_1search__folder.html", null ],
       [ "fairport::disk::sub_block< T, EntryType >", "structfairport_1_1disk_1_1sub__block.html", null ],
       [ "fairport::disk::sub_block< T, sub_leaf_entry< T > >", "structfairport_1_1disk_1_1sub__block.html", [
         [ "fairport::disk::sub_leaf_block< T >", "structfairport_1_1disk_1_1sub__leaf__block.html", null ]
@@ -396,6 +399,7 @@ var NAVTREE =
       [ "fairport/pst/message.h", "message_8h.html", null ],
       [ "fairport/pst/pst.h", "pst_2pst_8h.html", null ],
       [ "fairport/pst/pstutil.h", "pstutil_8h.html", null ],
+      [ "fairport/pst/task.h", "task_8h.html", null ],
       [ "fairport/util/btree.h", "btree_8h.html", null ],
       [ "fairport/util/errors.h", "errors_8h.html", null ],
       [ "fairport/util/primitives.h", "primitives_8h.html", null ],
