@@ -29,13 +29,13 @@ var NAVTREE =
         [ "Blocks", "group__ndb__blockrelated.html", null ],
         [ "Pages", "group__ndb__pagerelated.html", null ]
       ] ],
-      [ "Message Objects", "group__pst__utilrelated.html", null ],
-      [ "Contact Objects", "group__pst__taskrelated.html", null ],
       [ "PST Layer", "group__pst.html", [
         [ "Contact Objects", "group__pst__contactrelated.html", null ],
         [ "Folder Objects", "group__pst__folderrelated.html", null ],
         [ "Message Objects", "group__pst__messagerelated.html", null ],
-        [ "PST", "group__pst__pstrelated.html", null ]
+        [ "PST", "group__pst__pstrelated.html", null ],
+        [ "PST Utilities", "group__pst__utilrelated.html", null ],
+        [ "Task Objects", "group__pst__taskrelated.html", null ]
       ] ],
       [ "Util Layer", "group__util.html", [
         [ "BTree", "group__btree.html", null ],
