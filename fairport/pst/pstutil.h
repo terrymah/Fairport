@@ -18,7 +18,8 @@
 
 namespace fairport
 {
-//! \defgroup pst_utilrelated Message Objects
+
+//! \defgroup pst_utilrelated PST Utilities
 //! \ingroup pst
 
 //! \brief Construct a MAPI entry id from a given nid

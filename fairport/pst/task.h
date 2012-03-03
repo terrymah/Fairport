@@ -24,14 +24,14 @@
 namespace fairport 
 {
 
-//! \defgroup pst_taskrelated Contact Objects
+//! \defgroup pst_taskrelated Task Objects
 //! \ingroup pst
 
 //! \brief Encapsulates a task
 //! 
-//! A contact object is a higher level abstraction of a task, offering propreties
+//! A task object is a higher level abstraction of a message, offering propreties
 //! specific to Outlook tasks.
-//! \sa [MS-OXOCNTC]
+//! \sa [MS-OXOTASK]
 //! \ingroup pst_taskrelated
 class task : public detail::itembase
 {
